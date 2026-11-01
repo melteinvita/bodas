@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Portal privado de los novios · MelTeInvita</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/novios.css">
+</head>
+<body data-page="novios">
+
+  <header class="couple-hero">
+    <small>PORTAL PRIVADO DE LOS NOVIOS</small>
+    <h1 id="couple-title">Boda de Alejandro &amp; Martina</h1>
+    <p id="couple-date">12 de junio de 2027 · Finca Los Olivos</p>
+  </header>
+
+  <!-- PUERTA DE ACCESO: sin token no se muestran invitados -->
+  <section class="access-gate" id="access-gate" hidden>
+    <div class="access-card">
+      <h2>Acceso privado</h2>
+      <p>Este enlace es personal. Introduce la clave que te hemos enviado para ver las confirmaciones.</p>
+      <form id="access-form">
+        <label for="access-token">Clave de acceso</label>
+        <input type="password" id="access-token" autocomplete="off" spellcheck="false" required>
+        <p class="auth-error" id="access-error" role="alert"></p>
+        <button type="submit" class="btn btn-primary" id="access-submit">Entrar</button>
+      </form>
+      <p class="field-help">Si no la encuentras, escríbenos y te la enviamos de nuevo.</p>
+    </div>
+  </section>
+
+  <!-- CARGA -->
+  <section class="portal-loading" id="couple-loading" hidden>
+    <p>Cargando vuestras confirmaciones…</p>
+  </section>
+
+  <!-- ERROR DE ENLACE O CONEXIÓN -->
+  <section class="access-gate" id="couple-error" hidden>
+    <div class="access-card">
+      <h2>No hemos podido abrir el portal</h2>
+      <p id="couple-error-text">El enlace no es válido o ha caducado.</p>
+      <button type="button" class="btn btn-primary" id="couple-retry">Volver a intentar</button>
+    </div>
+  </section>
+
+  <main class="couple-container" id="couple-app" hidden>
+
+    <!-- COLUMNA PRINCIPAL: ESTADÍSTICAS Y TABLA DE INVITADOS -->
+    <section class="panel-card">
+      <div class="row-between">
+        <div>
+          <h2 class="pane-title">Respuestas de vuestros invitados</h2>
+          <p class="pane-subtitle" style="margin-bottom:0;">Consulta confirmaciones, alergias, menús y canciones. Las alergias son datos de salud: no compartas este enlace.</p>
+        </div>
+        <div class="row-actions">
+          <button type="button" class="btn btn-secondary" id="btn-refresh-rsvp">↻ Actualizar</button>
+          <button type="button" class="btn btn-primary" id="btn-download-csv">📊 Descargar CSV</button>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box"><strong id="c-yes">0</strong><small>Personas confirmadas</small></div>
+        <div class="stat-box"><strong id="c-no">0</strong><small>No asistirán</small></div>
+        <div class="stat-box"><strong id="c-bus">0</strong><small>Plazas de autobús</small></div>
+        <div class="stat-box"><strong id="c-allergies">0</strong><small>Alergias que revisar</small></div>
+      </div>
+
+      <div class="filter-bar">
+        <input type="search" id="search-guest" placeholder="🔍 Buscar invitado, alergia o canción...">
+        <select id="filter-status">
+          <option value="all">Todos los invitados</option>
+          <option value="yes">Solo confirmados (Sí)</option>
+          <option value="no">No asisten (No)</option>
+          <option value="bus">Usarán autobús</option>
+          <option value="allergy">Con alergias / intolerancias</option>
+        </select>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="rsvp-table">
+          <thead>
+            <tr>
+              <th>Invitado</th>
+              <th>Asiste</th>
+              <th>Personas</th>
+              <th>Menú</th>
+              <th>Bus</th>
+              <th>Alergias / notas</th>
+              <th>Canción sugerida</th>
+              <th>Acompañantes</th>
+            </tr>
+          </thead>
+          <tbody id="couple-tbody"></tbody>
+        </table>
+      </div>
+      <p class="empty-state" id="couple-empty" hidden>Aún no hay confirmaciones.</p>
+    </section>
+
+    <!-- COLUMNA LATERAL: ENLACE Y CÓDIGO QR PARA TARJETAS IMPRESAS -->
+    <aside class="qr-card">
+      <h3>Vuestra invitación</h3>
+      <p class="qr-help">Este QR lleva a vuestra invitación pública. No incluye la clave del portal.</p>
+      <div class="qr-box" id="qr-code" aria-label="Código QR de la invitación"></div>
+
+      <label class="mini-label" for="invite-link">Enlace para invitados</label>
+      <input type="text" id="invite-link" class="link-input" readonly>
+
+      <div class="qr-actions">
+        <a href="#" target="_blank" rel="noopener" class="btn btn-gold" id="btn-open-invite" style="justify-content:center;">↗ Abrir invitación</a>
+        <button type="button" class="btn btn-secondary" id="btn-copy-invite" style="justify-content:center;">📋 Copiar enlace</button>
+        <button type="button" class="btn btn-secondary" id="btn-share-wa" style="justify-content:center;">💬 Enviar por WhatsApp</button>
+      </div>
+
+      <p class="privacy-box">🔒 Guarda este enlace. Cualquiera que tenga la clave puede ver la lista de invitados.</p>
+    </aside>
+
+  </main>
+
+  <footer class="portal-footer">
+    <a href="aviso-legal.html">Aviso legal</a>
+    <span aria-hidden="true">·</span>
+    <a href="privacidad.html">Privacidad</a>
+    <span aria-hidden="true">·</span>
+    <a href="cookies.html">Cookies</a>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/plantillas.js"></script>
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/nube.js"></script>
+  <script src="js/novios.js"></script>
+  <script src="js/cookies.js"></script>
+</body>
+</html>

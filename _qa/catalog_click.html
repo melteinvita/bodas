@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QA catálogo</title>
+<style>html,body{margin:0;background:#111;color:#eee;font:12px/1.5 Consolas,monospace}pre{padding:12px;white-space:pre-wrap}iframe{position:fixed;left:-9999px;top:0;border:0;width:1280px;height:900px}</style>
+</head>
+<body>
+<pre id="report">midiendo…</pre>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id') || 'gamer';
+  var out = [];
+  var report = document.getElementById('report');
+  function log(s) { out.push(s); report.textContent = out.join('\n'); }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  var f = document.createElement('iframe');
+  f.src = '../catalogo.html?lang=es';
+  f.onload = async function () {
+    var doc = f.contentDocument, win = f.contentWindow;
+    win.addEventListener('error', function (e) { log('JS ERROR: ' + e.message); });
+    await sleep(1200);
+    var cards = doc.querySelectorAll('#catalog-grid [data-template]');
+    log('cards=' + cards.length);
+    var card = doc.querySelector('#catalog-grid [data-template="' + id + '"]');
+    if (!card) { log('CARD MISSING ' + id); return; }
+    var name = card.querySelector('.tpl-name');
+    log('name=' + (name ? name.textContent.trim() : '-'));
+
+    var demoBtn = card.querySelector('.card-actions button');
+    if (demoBtn) {
+      demoBtn.click();
+      await sleep(900);
+      var modal = doc.getElementById('demo-modal');
+      var frame = modal ? modal.querySelector('iframe') : null;
+      log('demo visible=' + (modal ? !modal.hidden && win.getComputedStyle(modal).display !== 'none' : 'NO MODAL') + ' | src=' + (frame ? frame.getAttribute('src') : '-'));
+      var close = modal ? modal.querySelector('.demo-close, [data-close], button') : null;
+      if (close) { close.click(); await sleep(400); }
+    } else {
+      log('DEMO BTN MISSING');
+    }
+
+    var choose = card.querySelector('.card-actions button:last-child');
+    if (choose) {
+      choose.click();
+      await sleep(700);
+      var select = doc.getElementById('contact-style');
+      log('select value=' + (select ? select.value : 'MISSING') + ' | options=' + (select ? select.options.length : '-'));
+      log('select label=' + (select && select.selectedIndex >= 0 ? select.options[select.selectedIndex].textContent.trim() : '-'));
+      log('hash=' + doc.location.hash);
+    } else {
+      log('CHOOSE BTN MISSING');
+    }
+    log('DONE');
+  };
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>

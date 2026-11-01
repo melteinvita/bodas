@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QA interactivo</title>
+<style>html,body{margin:0;background:#111;color:#eee;font:12px/1.5 Consolas,monospace}pre{padding:12px;white-space:pre-wrap}iframe{position:fixed;left:0;top:0;border:0;width:390px;height:800px;visibility:hidden}</style>
+</head>
+<body>
+<pre id="report">midiendo…</pre>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id') || 'gamer';
+  var out = [];
+  var report = document.getElementById('report');
+  function log(s) { out.push(s); report.textContent = out.join('\n'); }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  var f = document.createElement('iframe');
+  f.src = '../invitacion.html?demo=' + id + '&lang=es';
+  f.onload = async function () {
+    var doc = f.contentDocument, win = f.contentWindow;
+    win.addEventListener('error', function (e) { log('JS ERROR: ' + e.message); });
+    var st = doc.createElement('style');
+    st.textContent = '.music-toggle{display:none!important}';
+    doc.head.appendChild(st);
+    await sleep(900);
+
+    var ov = doc.getElementById('envelope-overlay');
+    var body = doc.body;
+    var seal = doc.getElementById('wax-seal');
+    log('id=' + id + ' | body=' + body.className);
+    log('overlay before=' + (ov ? ov.className : 'MISSING') + ' | opacity=' + (ov ? win.getComputedStyle(ov).opacity : '-'));
+    if (!seal) { log('SEAL MISSING'); return; }
+
+    seal.click();
+    await sleep(1800);
+    log('overlay after=' + (ov ? ov.className : 'MISSING') + ' | opacity=' + (ov ? win.getComputedStyle(ov).opacity : '-') + ' | display=' + (ov ? win.getComputedStyle(ov).display : '-'));
+    log('body after=' + body.className);
+    var shell = doc.getElementById('invite-shell');
+    log('shell display=' + (shell ? win.getComputedStyle(shell).display : '-') + ' | status hidden=' + (doc.getElementById('invite-status') ? doc.getElementById('invite-status').hidden : '-'));
+
+    var val = doc.querySelector('#lang-switcher button[data-lang="val"]');
+    log('lang buttons=' + doc.querySelectorAll('#lang-switcher button').length + ' | val=' + !!val);
+    if (val) {
+      val.click();
+      await sleep(600);
+      log('html.lang=' + doc.documentElement.lang);
+      var rsvpTitle = doc.querySelector('#sec-rsvp .section-title');
+      log('rsvp title=' + (rsvpTitle ? rsvpTitle.textContent.trim() : 'MISSING'));
+      log('story kicker=' + (doc.querySelector('#sec-story .eyebrow') ? doc.querySelector('#sec-story .eyebrow').textContent.trim() : '-'));
+    }
+
+    var name = doc.getElementById('rsvp-name');
+    var attend = doc.getElementById('rsvp-attending');
+    var guests = doc.getElementById('rsvp-guests');
+    var consent = doc.getElementById('rsvp-consent');
+    var submit = doc.getElementById('rsvp-submit');
+    if (name && attend && consent && submit) {
+      name.value = 'Prueba QA';
+      if (guests) guests.value = '1';
+      attend.value = attend.options[0].value;
+      attend.dispatchEvent(new win.Event('change', { bubbles: true }));
+      consent.checked = true;
+      submit.click();
+      await sleep(1800);
+      log('rsvp error hidden=' + doc.getElementById('rsvp-error').hidden + ' | success hidden=' + doc.getElementById('rsvp-success').hidden + ' | submit disabled=' + submit.disabled);
+    } else {
+      log('RSVP FIELDS MISSING');
+    }
+
+    log('DONE');
+  };
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>

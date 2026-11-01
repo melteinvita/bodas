@@ -1,0 +1,4062 @@
+@import url('../fonts/fonts.css');
+
+:root {
+  --bg-page: #faf7f0;
+  --bg-card: #ffffff;
+  --bg-alt: #f0eee6;
+  --text-main: #29372c;
+  --text-muted: #657065;
+  --accent: #5b6d52;
+  --accent-light: #d8e0d2;
+  --gold: #c5a869;
+  --border-col: #e4e1d6;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --hero-overlay: linear-gradient(180deg, rgba(25,35,28,0.25) 0%, rgba(22,33,26,0.78) 100%);
+  --radius-card: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   19 PLANTILLAS VISUALES (TEMAS)
+   ========================================================================== */
+
+/* 01 · OLIVO MEDITERRÁNEO */
+body.theme-olivo {
+  --bg-page: #faf7f0;
+  --bg-card: #ffffff;
+  --bg-alt: #eef1ea;
+  --text-main: #28362b;
+  --text-muted: #606e62;
+  --accent: #5b6d52;
+  --accent-light: #dfe6da;
+  --gold: #c5a869;
+  --border-col: #e0ded4;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+/* 02 · EDITORIAL MINIMALISTA */
+body.theme-editorial {
+  --bg-page: #f8f7f4;
+  --bg-card: #ffffff;
+  --bg-alt: #efede8;
+  --text-main: #111111;
+  --text-muted: #595959;
+  --accent: #111111;
+  --accent-light: #e5e4e0;
+  --gold: #8c8275;
+  --border-col: #d4d2cc;
+  --font-heading: 'Bodoni Moda', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.82) 100%);
+}
+body.theme-editorial .hero-photo-bg {
+  filter: grayscale(35%) contrast(1.08);
+}
+body.theme-editorial .hero-names {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+body.theme-editorial .editorial-big-date {
+  display: block !important;
+}
+
+/* 03 · FLORES ROMÁNTICAS */
+body.theme-flores {
+  --bg-page: #fffaf8;
+  --bg-card: #ffffff;
+  --bg-alt: #f9ecee;
+  --text-main: #4a3538;
+  --text-muted: #82676b;
+  --accent: #c98a94;
+  --accent-light: #f4dfe2;
+  --gold: #d4af7a;
+  --border-col: #f0d8dc;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 24px;
+  --hero-overlay: linear-gradient(180deg, rgba(74,45,50,0.18) 0%, rgba(65,36,41,0.72) 100%);
+}
+body.theme-flores .hero-amp {
+  font-family: var(--font-script);
+  font-size: 1.4em;
+}
+
+/* 04 · SOBRE PREMIUM */
+body.theme-sobre {
+  --bg-page: #f7f3e8;
+  --bg-card: #fffdf8;
+  --bg-alt: #efe8d5;
+  --text-main: #2c261e;
+  --text-muted: #6e6353;
+  --accent: #9c7c38;
+  --accent-light: #ebe1ca;
+  --gold: #b89348;
+  --border-col: #dfd4bc;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 8px;
+  --hero-overlay: linear-gradient(180deg, rgba(32,26,18,0.28) 0%, rgba(28,22,14,0.82) 100%);
+}
+body.theme-sobre .invite-shell {
+  border-left: 1px solid #dfd4bc;
+  border-right: 1px solid #dfd4bc;
+}
+
+/* 05 · TERRACOTA RÚSTICA Y NATURAL */
+body.theme-terracota {
+  --bg-page: #f8f1e9;
+  --bg-card: #fffaf4;
+  --bg-alt: #efe2d3;
+  --text-main: #3d281e;
+  --text-muted: #7a5c4d;
+  --accent: #b85d43;
+  --accent-light: #f0d5cb;
+  --gold: #c88a58;
+  --border-col: #e4cebc;
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 22px;
+  --hero-overlay: linear-gradient(180deg, rgba(68,36,22,0.2) 0%, rgba(56,28,16,0.78) 100%);
+}
+body.theme-terracota .hero-arch-frame {
+  border-radius: 220px 220px 18px 18px;
+  border: 2px solid rgba(255,245,235,0.45);
+  padding: 28px 18px;
+}
+
+/* 06 · NOCHE ELEGANTE Y ATREVIDA */
+body.theme-noche {
+  --bg-page: #0d131a;
+  --bg-card: #151e29;
+  --bg-alt: #111923;
+  --text-main: #f3ead8;
+  --text-muted: #b5aa96;
+  --accent: #d4af37;
+  --accent-light: #253346;
+  --gold: #e5c158;
+  --border-col: #2b394c;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 10px;
+  --hero-overlay: linear-gradient(180deg, rgba(8,12,18,0.4) 0%, rgba(10,14,20,0.88) 100%);
+}
+body.theme-noche .btn-primary {
+  color: #0d131a;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SOBRE INTERACTIVO 3D (APERTURA ANIMADA CON SELLO DE LACRE)
+   ========================================================================== */
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.85s ease, visibility 0.85s ease;
+  overflow: hidden;
+}
+.envelope-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Colores del sobre */
+.envelope-overlay.env-marfil {
+  background: radial-gradient(circle at center, #f6f0e2 0%, #e2d6be 100%);
+  --env-body: #efe7d6;
+  --env-flap: #e5dac3;
+  --env-side: #ebe1cd;
+  --env-text: #3d3326;
+  --seal-bg: radial-gradient(circle at 35% 30%, #e2c16c, #b58932 65%, #825e18 100%);
+  --seal-border: #d4af53;
+  --seal-text: #fff9e6;
+}
+.envelope-overlay.env-verde {
+  background: radial-gradient(circle at center, #2c3e30 0%, #17231a 100%);
+  --env-body: #253629;
+  --env-flap: #2f4434;
+  --env-side: #203024;
+  --env-text: #f3ead8;
+  --seal-bg: radial-gradient(circle at 35% 30%, #e5c46d, #b88b32 65%, #846018 100%);
+  --seal-border: #dcb75b;
+  --seal-text: #fff9e6;
+}
+.envelope-overlay.env-burdeos {
+  background: radial-gradient(circle at center, #591c27 0%, #330d14 100%);
+  --env-body: #f5ede2;
+  --env-flap: #eadecd;
+  --env-side: #efe5d6;
+  --env-text: #4a151f;
+  --seal-bg: radial-gradient(circle at 35% 30%, #a8283b, #731322 65%, #4d0a14 100%);
+  --seal-border: #8f1d2e;
+  --seal-text: #fcebeb;
+}
+.envelope-overlay.env-burdeos .env-top-hint { color: #f3e6d8; opacity: .8; }
+.envelope-overlay.env-burdeos .env-skip-btn { color: #f3e6d8; }
+.envelope-overlay.env-noche {
+  background: radial-gradient(circle at center, #162130 0%, #090e14 100%);
+  --env-body: #182332;
+  --env-flap: #213044;
+  --env-side: #141e2b;
+  --env-text: #e8eef5;
+  --seal-bg: radial-gradient(circle at 35% 30%, #e0e5ec, #9aa4b2 65%, #657080 100%);
+  --seal-border: #c5cdd8;
+  --seal-text: #141e2b;
+}
+
+.env-top-hint {
+  color: var(--env-text);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.envelope-stage {
+  position: relative;
+  width: min(360px, 90vw);
+  height: 250px;
+  perspective: 1100px;
+}
+
+.envelope-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--env-body);
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.32), 0 4px 14px rgba(0,0,0,0.12);
+  overflow: visible;
+}
+
+/* Tarjeta interior que sube al abrir */
+.envelope-letter {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 10%;
+  bottom: 10%;
+  background: #fffdf9;
+  border: 1px solid #e5dcc8;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  color: #2c261e;
+  z-index: 2;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, box-shadow 0.85s ease 0.35s;
+}
+.envelope-letter small {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8c7b60;
+}
+.envelope-letter h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+.envelope-letter p {
+  font-size: 11px;
+  color: #6b5e4c;
+}
+
+/* Solapas laterales e inferior */
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 8px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.envelope-pocket::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--env-side) 50%, transparent 50%),
+              linear-gradient(225deg, var(--env-side) 50%, transparent 50%);
+  filter: drop-shadow(0 -1px 2px rgba(0,0,0,0.08));
+}
+.envelope-pocket::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--env-body);
+  clip-path: polygon(0 100%, 50% 44%, 100% 100%);
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Solapa superior móvil */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  background: var(--env-flap);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.1s 0.35s;
+  z-index: 4;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+}
+
+/* Sello de lacre */
+.wax-seal {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--seal-bg);
+  border: 3px double var(--seal-border);
+  color: var(--seal-text);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35), inset 0 2px 5px rgba(255,255,255,0.35);
+  transition: transform 0.35s ease, opacity 0.4s ease;
+  font-family: var(--font-heading);
+  user-select: none;
+  animation: pulseSeal 2.2s infinite ease-in-out;
+}
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.07);
+}
+.wax-seal span {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.wax-seal small {
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+@keyframes pulseSeal {
+  0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 0 0 rgba(212,175,55,0.4); }
+  50% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 12px rgba(212,175,55,0); }
+}
+
+/* Estado Abierto */
+.envelope-stage.opening .wax-seal {
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  pointer-events: none;
+}
+.envelope-stage.opening .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+.envelope-stage.opening .envelope-letter {
+  transform: translateY(-95px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+}
+
+.env-skip-btn {
+  margin-top: 32px;
+  background: transparent;
+  color: var(--env-text);
+  border: 1px solid currentColor;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.env-skip-btn:hover { opacity: 1; }
+
+/* ==========================================================================
+   CONTENEDOR DE LA INVITACIÓN
+   ========================================================================== */
+.invite-shell {
+  max-width: 580px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  min-height: 100vh;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Botón flotante de música */
+.music-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.88);
+  color: #222;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s;
+}
+.music-toggle:hover { transform: scale(1.08); }
+.music-toggle.playing {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* PORTADA (HERO) */
+.hero {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 56px 26px 48px;
+  color: #ffffff;
+  overflow: hidden;
+}
+.hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 6s ease;
+  z-index: 1;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 460px;
+}
+
+/* Adornos por plantilla */
+.template-ornament {
+  margin-bottom: 14px;
+  opacity: 0.92;
+}
+.template-ornament svg {
+  width: 68px;
+  height: 36px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.editorial-big-date {
+  display: none;
+  font-family: var(--font-heading);
+  font-size: 38px;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.45);
+  padding-bottom: 8px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.hero .eyebrow {
+  color: rgba(255,255,255,0.88);
+}
+
+.hero-names {
+  font-family: var(--font-heading);
+  font-size: clamp(42px, 10vw, 64px);
+  font-weight: 400;
+  line-height: 1.04;
+  margin: 12px 0 16px;
+}
+.hero-names span { display: block; }
+.hero-amp {
+  display: block;
+  font-style: italic;
+  font-size: 0.55em;
+  margin: 6px 0;
+  opacity: 0.9;
+}
+.hero-date-pill {
+  display: inline-block;
+  padding: 7px 20px;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  backdrop-filter: blur(4px);
+}
+
+/* SECCIONES GENERALES */
+.section {
+  padding: 54px 28px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-col);
+}
+.section-alt {
+  background: var(--bg-alt);
+}
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  margin: 6px 0 16px;
+  color: var(--text-main);
+}
+.section-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.85;
+}
+.divider-ornament {
+  margin: 22px auto 0;
+  color: var(--gold);
+  font-size: 22px;
+  letter-spacing: 6px;
+}
+
+/* CUENTA ATRÁS */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 400px;
+  margin: 24px auto 22px;
+}
+.cd-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius-card);
+  padding: 14px 6px;
+}
+.section:not(.section-alt) .cd-box {
+  background: var(--bg-alt);
+}
+.cd-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.cd-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+/* BOTONES */
+.btn-primary, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 14px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--accent);
+}
+.btn-outline:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ITINERARIO DE EVENTOS */
+.timeline {
+  position: relative;
+  max-width: 420px;
+  margin: 28px auto 0;
+  text-align: left;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--border-col);
+}
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius-card);
+  padding: 14px 18px;
+  flex: 1;
+}
+.timeline-time {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+}
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  margin: 2px 0 4px;
+  color: var(--text-main);
+}
+.timeline-place {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* GALERÍA DE FOTOS */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.gallery-item {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  border: 1px solid var(--border-col);
+}
+.gallery-item:first-child {
+  grid-column: span 2;
+  aspect-ratio: 16/10;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* DETALLES Y REGALOS */
+.info-cards {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+  text-align: left;
+}
+.info-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius-card);
+  padding: 18px 20px;
+}
+.info-card h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.info-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.iban-box {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-card);
+}
+.iban-number {
+  font-family: monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+/* FORMULARIO RSVP */
+.rsvp-form {
+  max-width: 440px;
+  margin: 24px auto 0;
+  text-align: left;
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-col);
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--border-col);
+  border-radius: 8px;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.rsvp-success {
+  display: none;
+  padding: 24px;
+  border-radius: var(--radius-card);
+  background: var(--accent-light);
+  color: var(--text-main);
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+/* FOOTER */
+.invite-footer {
+  padding: 38px 20px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+.invite-footer h3 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   AJUSTES DE SEGURIDAD, ACCESIBILIDAD Y NUEVAS FUNCIONES
+   ========================================================================== */
+[hidden] { display: none !important; }
+body.preload .invite-shell,
+body.preload .envelope-overlay { opacity: 0; pointer-events: none; }
+body.envelope-locked { overflow: hidden; }
+body.envelope-locked .invite-shell { overflow: hidden; }
+
+/* El sello ahora es un botón real: accesible con teclado */
+.wax-seal {
+  padding: 0;
+  font: inherit;
+  font-family: var(--font-heading);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.wax-seal:focus-visible,
+.env-skip-btn:focus-visible,
+.music-toggle:focus-visible,
+.lang-switcher button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Selector de idioma por encima del sobre (z-index 9999) */
+.lang-switcher {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10001;
+  display: flex;
+  gap: 3px;
+  background: rgba(255,255,255,.92);
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,.14);
+  backdrop-filter: blur(6px);
+}
+.lang-switcher button {
+  border: 0;
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font: 700 10px var(--font-body);
+  cursor: pointer;
+  letter-spacing: 1px;
+  color: #222;
+  min-width: 34px;
+}
+.lang-switcher button[aria-pressed="true"] {
+  background: var(--accent);
+  color: #fff;
+}
+.music-toggle { z-index: 10000; }
+
+/* Aviso de invitación no encontrada o sin conexión */
+.invite-status {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-page);
+  color: var(--text-main);
+}
+.invite-status-card {
+  max-width: 430px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-col);
+  border-radius: var(--radius-card);
+  padding: 34px 26px;
+  box-shadow: 0 18px 50px rgba(30,30,20,.1);
+}
+.invite-status-card h1 {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 500;
+  margin: 6px 0 10px;
+}
+.invite-status-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; }
+
+/* Saludo personalizado del invitado */
+.guest-banner {
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-main);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-col);
+}
+.guest-banner strong { font-weight: 600; }
+
+/* Error visible del RSVP: nunca se muestra el éxito si falla el envío */
+.rsvp-error {
+  display: none;
+  padding: 20px;
+  border-radius: var(--radius-card);
+  background: #fbeaea;
+  border: 1px solid #e8b9b9;
+  color: #6d1f1f;
+  margin-top: 18px;
+  text-align: left;
+}
+.rsvp-error strong { display: block; margin-bottom: 6px; }
+.rsvp-error p { font-size: 13px; margin-bottom: 12px; color: #6d1f1f; }
+.rsvp-error .btn-primary { background: #6d1f1f; border-color: #6d1f1f; }
+.rsvp-success {
+  text-align: left;
+  line-height: 1.6;
+}
+.rsvp-success strong { display: block; font-size: 16px; margin-bottom: 4px; }
+
+/* Acompañantes: nombre y menú por persona */
+.companions-head {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+.companions-head small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-muted);
+}
+.companions-list { display: grid; gap: 8px; margin-bottom: 15px; }
+.companion-row {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 8px;
+}
+.companion-row input,
+.companion-row select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--border-col);
+  border-radius: 8px;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font: 13px var(--font-body);
+  min-width: 0;
+}
+.companion-row input:only-child { grid-column: span 2; }
+
+/* Consentimiento RGPD */
+.consent-group { margin-top: 4px; }
+.consent-label {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.5;
+  cursor: pointer;
+  color: var(--text-muted) !important;
+}
+.consent-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+}
+.consent-label a,
+.privacy-note a,
+.footer-legal a { color: var(--accent); text-decoration: underline; }
+.privacy-note {
+  margin: 7px 0 0 27px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.btn-primary:disabled { opacity: .6; cursor: wait; transform: none; }
+
+/* Footer legal */
+.footer-legal {
+  margin-top: 18px;
+  font-size: 10px;
+  letter-spacing: .5px;
+  color: var(--text-muted);
+}
+.footer-legal a { color: var(--text-muted); }
+.footer-legal span { margin: 0 5px; }
+
+/* Sin JavaScript */
+.noscript-warning {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10003;
+  background: #222d24;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .companion-row { grid-template-columns: 1fr; }
+  .companion-row input:only-child { grid-column: auto; }
+  .lang-switcher { top: 10px; left: 10px; }
+  .lang-switcher button { padding: 5px 8px; min-width: 30px; }
+}
+
+/* ==========================================================================
+   CAPA DE PROFUNDIDAD VISUAL · 9 PLANTILLAS
+   --------------------------------------------------------------------------
+   Todo es CSS puro: gradientes, sombras, clip-path y pseudo-elementos.
+   No se cargan imágenes, fuentes ni recursos externos (CSP estricto).
+   Las reglas respetan la estructura del DOM de invitacion.html y no tocan
+   la geometría del sobre, del sello ni del formulario de RSVP.
+   ========================================================================== */
+
+/* --- Ajustes comunes de legibilidad ------------------------------------- */
+body[data-template] .section { padding: 56px 28px; }
+body[data-template] .section-title { text-wrap: balance; overflow-wrap: anywhere; }
+body[data-template] .section-text { text-wrap: pretty; }
+body[data-template] .section > .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+body[data-template] .section > .eyebrow::before,
+body[data-template] .section > .eyebrow::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+
+/* Separador común: líneas + punto central, sin glifos de emoji */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0;
+  letter-spacing: 0;
+  background: radial-gradient(circle, currentColor 0 1.6px, transparent 2.2px) center / 10px 10px no-repeat;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  width: 62px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: .8;
+}
+.divider-ornament::after { transform: scaleX(-1); }
+
+/* --- Sobre: relieve real del sello de lacre ----------------------------- */
+.wax-seal {
+  background-image:
+    radial-gradient(circle at 32% 24%, rgba(255,255,255,.5), transparent 40%),
+    radial-gradient(circle at 72% 80%, rgba(0,0,0,.3), transparent 46%),
+    var(--seal-bg);
+  text-shadow: 0 1px 1px rgba(0,0,0,.35);
+}
+.wax-seal::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.42);
+  box-shadow: inset 0 0 8px rgba(0,0,0,.28);
+  pointer-events: none;
+}
+.wax-seal::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,.22);
+  pointer-events: none;
+}
+@keyframes pulseSeal {
+  0%, 100% {
+    box-shadow: 0 10px 24px rgba(0,0,0,.38),
+                inset 0 3px 6px rgba(255,255,255,.42),
+                inset 0 -4px 8px rgba(0,0,0,.35),
+                0 0 0 0 rgba(212,175,55,.42);
+  }
+  50% {
+    box-shadow: 0 12px 28px rgba(0,0,0,.44),
+                inset 0 3px 6px rgba(255,255,255,.42),
+                inset 0 -4px 8px rgba(0,0,0,.35),
+                0 0 0 12px rgba(212,175,55,0);
+  }
+}
+.envelope-flap {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(0,0,0,.07)),
+    linear-gradient(90deg, rgba(0,0,0,.06), transparent 32%, transparent 68%, rgba(0,0,0,.06));
+  background-color: var(--env-flap);
+}
+.envelope-letter {
+  background-image:
+    radial-gradient(circle at 50% 0%, #ffffff 0%, #f9f3e6 62%, #f2e9d7 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(160,140,100,.28),
+    inset 0 0 26px rgba(160,140,100,.14);
+}
+.envelope-letter::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(170,148,104,.28);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   01 · OLIVO MEDITERRÁNEO
+   ========================================================================== */
+body.theme-olivo {
+  background-color: #f2eee2;
+  background-image:
+    radial-gradient(circle at 12% 16%, rgba(197,168,105,.12), transparent 44%),
+    radial-gradient(circle at 88% 6%, rgba(91,109,82,.12), transparent 40%),
+    repeating-linear-gradient(0deg, rgba(120,110,85,.035) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(120,110,85,.025) 0 1px, transparent 1px 6px);
+}
+body.theme-olivo .invite-shell {
+  border-left: 1px solid rgba(197,168,105,.6);
+  border-right: 1px solid rgba(197,168,105,.6);
+  box-shadow: 0 14px 60px rgba(60,70,50,.12);
+}
+body.theme-olivo .hero-names { letter-spacing: .01em; }
+body.theme-olivo .hero-date-pill {
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: inset 0 0 0 3px rgba(197,168,105,.18);
+  letter-spacing: .24em;
+}
+body.theme-olivo .section { position: relative; }
+body.theme-olivo .section::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,168,105,.85), transparent);
+}
+body.theme-olivo .section > .eyebrow { color: #6c7f60; letter-spacing: .28em; }
+body.theme-olivo .section-title { letter-spacing: .01em; }
+body.theme-olivo .section-title::after {
+  content: '';
+  display: block;
+  width: 96px;
+  height: 9px;
+  margin: 12px auto 0;
+  background:
+    radial-gradient(circle at 50% 50%, #c5a869 0 2px, transparent 2.4px) center / 9px 9px no-repeat,
+    linear-gradient(90deg, transparent, rgba(197,168,105,.8) 15%, rgba(197,168,105,.8) 85%, transparent) left center / 32px 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(197,168,105,.8) 15%, rgba(197,168,105,.8) 85%, transparent) right center / 32px 1px no-repeat;
+}
+body.theme-olivo .cd-box,
+body.theme-olivo .timeline-card,
+body.theme-olivo .info-card,
+body.theme-olivo .rsvp-form,
+body.theme-olivo .iban-box {
+  background: #fffdf7;
+  border: 1px solid rgba(91,109,82,.3);
+  box-shadow:
+    inset 0 0 0 3px #fffdf7,
+    inset 0 0 0 4px rgba(197,168,105,.38),
+    0 10px 24px rgba(70,80,60,.08);
+}
+body.theme-olivo .timeline::before {
+  width: 0;
+  border-left: 1px dashed rgba(91,109,82,.45);
+  background: none;
+}
+body.theme-olivo .timeline-dot {
+  background: #f8f5ea;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 4px #faf7f0, 0 0 0 5px rgba(197,168,105,.3);
+}
+body.theme-olivo .timeline-time { color: #a9894e; letter-spacing: .18em; }
+body.theme-olivo .timeline-title { font-size: 22px; }
+body.theme-olivo .gallery-item {
+  border: 6px solid #fffdf7;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(91,109,82,.28),
+    0 12px 24px rgba(60,70,50,.12);
+}
+body.theme-olivo .gallery-item:first-child { border-radius: 4px 4px 2px 2px; }
+body.theme-olivo .info-card h4 { color: #4e6047; }
+body.theme-olivo .btn-primary {
+  background: linear-gradient(180deg, #6a7d5f 0%, #4d5f46 100%);
+  border-color: #4d5f46;
+  box-shadow: 0 8px 18px rgba(77,95,70,.26);
+}
+body.theme-olivo .btn-outline { border-color: rgba(91,109,82,.55); }
+body.theme-olivo .divider-ornament { color: #c5a869; letter-spacing: 8px; }
+body.theme-olivo .invite-footer { border-top: 1px solid rgba(197,168,105,.4); }
+
+/* ==========================================================================
+   02 · EDITORIAL MINIMALISTA
+   ========================================================================== */
+body.theme-editorial { background: #efece6; }
+body.theme-editorial .invite-shell {
+  box-shadow: 0 0 0 1px #141414, 22px 0 60px rgba(0,0,0,.06), -22px 0 60px rgba(0,0,0,.06);
+}
+body.theme-editorial .hero-content { max-width: 520px; }
+body.theme-editorial .hero-names {
+  font-size: clamp(46px, 12.4vw, 76px);
+  line-height: .9;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+body.theme-editorial .hero-amp {
+  font-size: .4em;
+  font-style: normal;
+  margin: 6px 0;
+  letter-spacing: 0;
+}
+body.theme-editorial .editorial-big-date {
+  font-size: clamp(28px, 7.6vw, 42px);
+  letter-spacing: .22em;
+  border-bottom: 1px solid #141414;
+}
+body.theme-editorial .hero-date-pill {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,.75);
+  border-bottom: 1px solid rgba(255,255,255,.75);
+  border-radius: 0;
+  padding: 7px 2px;
+  letter-spacing: .32em;
+}
+body.theme-editorial .section { padding: 64px 26px; border-bottom: 1px solid #141414; }
+body.theme-editorial .section-alt { background: #ffffff; }
+body.theme-editorial .section > .eyebrow {
+  font-size: 9.5px;
+  letter-spacing: .34em;
+  color: #141414;
+}
+body.theme-editorial .section > .eyebrow::before,
+body.theme-editorial .section > .eyebrow::after { width: 14px; opacity: .9; }
+body.theme-editorial .section-title {
+  font-size: clamp(30px, 8vw, 43px);
+  line-height: 1.02;
+  letter-spacing: -.025em;
+  font-weight: 400;
+}
+body.theme-editorial .section-text { font-size: 14.5px; line-height: 1.9; color: #4a4a4a; }
+body.theme-editorial .divider-ornament { font-size: 0; letter-spacing: 0; margin-top: 26px; background: none; gap: 0; }
+body.theme-editorial .divider-ornament::before {
+  content: '';
+  display: block;
+  width: 132px;
+  height: 2px;
+  background: #141414;
+  margin: 0 auto;
+  opacity: 1;
+}
+body.theme-editorial .divider-ornament::after { display: none; }
+body.theme-editorial .cd-box {
+  background: transparent;
+  border: 0;
+  border-top: 2px solid #141414;
+  border-radius: 0;
+  padding: 14px 2px 10px;
+}
+body.theme-editorial .cd-num { font-size: 34px; letter-spacing: -.03em; color: #141414; }
+body.theme-editorial .cd-label { letter-spacing: .22em; color: #141414; }
+body.theme-editorial .timeline { counter-reset: ed; max-width: 440px; }
+body.theme-editorial .timeline::before { left: 14px; width: 1px; background: #141414; top: 0; bottom: 44px; }
+body.theme-editorial .timeline-item {
+  position: relative;
+  counter-increment: ed;
+  gap: 18px;
+  padding-bottom: 30px;
+}
+body.theme-editorial .timeline-item::after {
+  content: counter(ed, decimal-leading-zero);
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font: 400 56px/1 var(--font-heading);
+  letter-spacing: -.04em;
+  color: rgba(20,20,20,.09);
+  pointer-events: none;
+}
+body.theme-editorial .timeline-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  background: #141414;
+  border: 0;
+  color: #fff;
+  font-size: 11px;
+}
+body.theme-editorial .timeline-card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid #141414;
+  border-radius: 0;
+  padding: 12px 0 0;
+  position: relative;
+  z-index: 1;
+}
+body.theme-editorial .timeline-time { font-size: 10px; letter-spacing: .3em; color: #141414; }
+body.theme-editorial .timeline-title { font-size: 24px; letter-spacing: -.02em; }
+body.theme-editorial .timeline-place { color: #6a6a6a; }
+body.theme-editorial .info-cards { gap: 0; border-top: 1px solid #141414; }
+body.theme-editorial .info-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #141414;
+  border-radius: 0;
+  padding: 22px 0;
+}
+body.theme-editorial .info-card h4 {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+body.theme-editorial .info-card p { font-size: 13.5px; }
+body.theme-editorial .iban-box {
+  background: #fff;
+  border: 1px solid #141414;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 #141414;
+}
+body.theme-editorial .rsvp-form {
+  background: #fff;
+  border: 1px solid #141414;
+  border-radius: 0;
+  box-shadow: 8px 8px 0 #141414;
+}
+body.theme-editorial .rsvp-form input,
+body.theme-editorial .rsvp-form select,
+body.theme-editorial .rsvp-form textarea {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #141414;
+  background: transparent;
+  padding-left: 2px;
+}
+body.theme-editorial .gallery-grid { gap: 8px; }
+body.theme-editorial .gallery-item {
+  border-radius: 0;
+  border: 1px solid #141414;
+  padding: 0;
+}
+body.theme-editorial .gallery-item img { filter: grayscale(18%) contrast(1.05); }
+body.theme-editorial .btn-primary,
+body.theme-editorial .btn-outline {
+  border-radius: 0;
+  letter-spacing: .2em;
+  padding: 13px 24px;
+}
+body.theme-editorial .btn-primary { background: #141414; border-color: #141414; }
+body.theme-editorial .btn-primary:hover { background: #fff; color: #141414; }
+body.theme-editorial .btn-outline { border-color: #141414; color: #141414; }
+body.theme-editorial .btn-outline:hover { background: #141414; color: #fff; }
+body.theme-editorial .invite-footer { border-top: 1px solid #141414; }
+body.theme-editorial .invite-footer h3 { text-transform: uppercase; letter-spacing: .12em; font-size: 24px; }
+
+/* ==========================================================================
+   03 · FLORES ROMÁNTICAS
+   ========================================================================== */
+body.theme-flores {
+  background-color: #fdf3f2;
+  background-image:
+    radial-gradient(circle at 16% 10%, rgba(212,158,165,.28), transparent 46%),
+    radial-gradient(circle at 86% 28%, rgba(143,163,146,.2), transparent 44%),
+    radial-gradient(circle at 50% 92%, rgba(212,175,122,.16), transparent 52%);
+}
+body.theme-flores .invite-shell { box-shadow: 0 18px 60px rgba(140,100,105,.16); }
+body.theme-flores .hero-names {
+  font-family: var(--font-script);
+  font-size: clamp(52px, 15.4vw, 90px);
+  line-height: 1.05;
+  font-weight: 400;
+}
+body.theme-flores .hero-names span { line-height: 1.12; }
+body.theme-flores .hero-amp { font-size: .48em; margin: 0; opacity: .85; }
+body.theme-flores .hero-date-pill {
+  background: rgba(255,250,248,.16);
+  border-color: rgba(255,255,255,.68);
+  letter-spacing: .3em;
+}
+body.theme-flores .section {
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(212,158,165,.12), transparent 32%),
+    radial-gradient(circle at 0% 100%, rgba(143,163,146,.12), transparent 34%);
+}
+body.theme-flores .section-alt { background-color: #fbeeef; }
+body.theme-flores .section > .eyebrow {
+  color: #b3737f;
+  letter-spacing: .3em;
+  gap: 12px;
+}
+body.theme-flores .section > .eyebrow::before,
+body.theme-flores .section > .eyebrow::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+  background-image:
+    radial-gradient(circle at 50% 8%, #d49ea5 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 92% 50%, #d49ea5 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 50% 92%, #d49ea5 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 8% 50%, #d49ea5 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 50% 50%, #b3737f 0 1.2px, transparent 1.6px);
+  background-repeat: no-repeat;
+  opacity: .9;
+}
+body.theme-flores .section-title { font-size: clamp(30px, 7.6vw, 40px); letter-spacing: .01em; }
+body.theme-flores .section-title::after {
+  content: '';
+  display: block;
+  width: 104px;
+  height: 9px;
+  margin: 12px auto 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(201,138,148,.95) 0 2.6px, transparent 3px) center / 10px 10px no-repeat,
+    linear-gradient(90deg, transparent, rgba(212,158,165,.6) 12%, rgba(212,158,165,.6) 88%, transparent) left center / 34px 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(212,158,165,.6) 12%, rgba(212,158,165,.6) 88%, transparent) right center / 34px 1px no-repeat;
+}
+body.theme-flores .cd-box,
+body.theme-flores .timeline-card,
+body.theme-flores .info-card,
+body.theme-flores .rsvp-form,
+body.theme-flores .iban-box {
+  position: relative;
+  background: #fffdfc;
+  border: 1px solid rgba(212,158,165,.5);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(160,110,120,.12);
+}
+body.theme-flores .cd-box::before,
+body.theme-flores .timeline-card::before,
+body.theme-flores .info-card::before,
+body.theme-flores .rsvp-form::before,
+body.theme-flores .iban-box::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212,158,165,.38);
+  border-radius: 16px;
+  pointer-events: none;
+}
+body.theme-flores .cd-box::before { inset: 4px; border-radius: 14px; }
+body.theme-flores .timeline::before {
+  background: linear-gradient(180deg, transparent, rgba(212,158,165,.65), transparent);
+  width: 1px;
+}
+body.theme-flores .timeline-dot {
+  background: #fffefd;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 0 5px #fffaf8, 0 0 0 6px rgba(212,158,165,.45);
+  color: #c07f8a;
+}
+body.theme-flores .timeline-time { color: #bd7f8a; }
+body.theme-flores .gallery-grid { gap: 14px; }
+body.theme-flores .gallery-item {
+  border: 6px solid #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(160,110,120,.18);
+}
+body.theme-flores .gallery-item:first-child { border-radius: 28px; }
+body.theme-flores .info-card h4 { color: #9c646e; }
+body.theme-flores .btn-primary {
+  background: linear-gradient(180deg, #d59aa3 0%, #c07f8a 100%);
+  border-color: #c07f8a;
+  box-shadow: 0 10px 22px rgba(192,127,138,.3);
+}
+body.theme-flores .btn-outline { border-color: rgba(201,138,148,.6); color: #8f5a63; }
+body.theme-flores .btn-outline:hover { background: #c07f8a; border-color: #c07f8a; }
+body.theme-flores .divider-ornament { color: #d49ea5; }
+body.theme-flores .invite-footer h3 { font-family: var(--font-script); font-size: 40px; font-weight: 400; }
+
+/* ==========================================================================
+   04 · SOBRE PREMIUM
+   ========================================================================== */
+body.theme-sobre {
+  background-color: #efe6d3;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(184,147,72,.05) 0 2px, transparent 2px 7px),
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.65), transparent 58%);
+}
+body.theme-sobre .invite-shell {
+  background-color: #fbf7ec;
+  background-image:
+    radial-gradient(circle at 18% 16%, rgba(255,255,255,.9), transparent 46%),
+    repeating-linear-gradient(0deg, rgba(150,130,90,.045) 0 1px, transparent 1px 3px);
+  box-shadow: 0 22px 70px rgba(70,55,30,.2);
+}
+body.theme-sobre .hero-names { letter-spacing: .02em; }
+body.theme-sobre .hero-date-pill {
+  border: 1px solid rgba(184,147,72,.85);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  letter-spacing: .3em;
+}
+body.theme-sobre .section > .eyebrow { letter-spacing: .34em; color: #9c7c38; }
+body.theme-sobre .section-title {
+  letter-spacing: .06em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.95), 0 -1px 0 rgba(120,95,45,.14);
+}
+body.theme-sobre .cd-box,
+body.theme-sobre .timeline-card,
+body.theme-sobre .info-card,
+body.theme-sobre .rsvp-form,
+body.theme-sobre .iban-box {
+  border: 1px solid rgba(184,147,72,.58);
+  box-shadow:
+    inset 0 0 0 4px #fffdf8,
+    inset 0 0 0 5px rgba(42,54,43,.3),
+    0 10px 24px rgba(90,70,35,.14);
+}
+body.theme-sobre .cd-box { background: #fffdf8; }
+body.theme-sobre .timeline::before {
+  width: 0;
+  border-left: 1px solid rgba(184,147,72,.6);
+  background: none;
+}
+body.theme-sobre .timeline-dot {
+  background: #fffdf8;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 4px #fbf7ec, 0 0 0 5px rgba(184,147,72,.4);
+}
+body.theme-sobre .timeline-time { letter-spacing: .18em; color: #96762f; }
+body.theme-sobre .gallery-item {
+  border: 1px solid rgba(184,147,72,.6);
+  border-radius: 2px;
+  padding: 8px;
+  background: #fffdf8;
+  box-shadow:
+    inset 0 0 0 1px rgba(42,54,43,.2),
+    0 10px 22px rgba(90,70,35,.14);
+}
+body.theme-sobre .gallery-item img { border-radius: 0; }
+body.theme-sobre .info-card h4 { color: #8a6a2c; letter-spacing: .02em; }
+body.theme-sobre .btn-primary {
+  background: linear-gradient(180deg, #a9873f 0%, #8c6c2e 100%);
+  border-color: #8c6c2e;
+  box-shadow: 0 10px 22px rgba(140,108,46,.3);
+  letter-spacing: .16em;
+}
+body.theme-sobre .btn-outline { border-color: rgba(140,108,46,.7); color: #6f5522; }
+body.theme-sobre .divider-ornament { letter-spacing: 9px; }
+body.theme-sobre .invite-footer { border-top: 1px solid rgba(184,147,72,.5); }
+
+/* ==========================================================================
+   05 · TERRACOTA NATURAL
+   ========================================================================== */
+body.theme-terracota {
+  background-color: #f6e9dd;
+  background-image:
+    radial-gradient(circle at 10% 12%, rgba(184,93,67,.14), transparent 42%),
+    radial-gradient(circle at 90% 82%, rgba(140,98,73,.14), transparent 44%);
+}
+body.theme-terracota .hero-arch-frame {
+  border-radius: 240px 240px 20px 20px;
+  border: 2px solid rgba(255,245,235,.55);
+  padding: 34px 20px 30px;
+  background: linear-gradient(180deg, rgba(70,36,20,.08), rgba(70,36,20,.24));
+  box-shadow:
+    0 0 0 7px rgba(255,245,235,.14),
+    inset 0 0 44px rgba(80,40,20,.2);
+}
+body.theme-terracota .hero-names { letter-spacing: .005em; }
+body.theme-terracota #sec-story { background-color: #f0ddcd; }
+body.theme-terracota #sec-location { background-color: #fbf4ec; }
+body.theme-terracota #sec-gallery { background-color: #f6e7d8; }
+body.theme-terracota #sec-details { background-color: #fbf4ec; }
+body.theme-terracota #sec-gifts { background-color: #f1e0d0; }
+body.theme-terracota #sec-rsvp { background-color: #fbf4ec; }
+body.theme-terracota .section > .eyebrow { color: #a9503a; letter-spacing: .28em; }
+body.theme-terracota .section > .eyebrow::before,
+body.theme-terracota .section > .eyebrow::after {
+  content: '';
+  width: 14px;
+  height: 18px;
+  background: none;
+  border: 1px solid currentColor;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  opacity: .5;
+}
+body.theme-terracota .section-title { letter-spacing: -.005em; }
+body.theme-terracota .cd-box {
+  background: #fffaf4;
+  border: 1px solid rgba(184,93,67,.28);
+  border-radius: 64px 64px 16px 16px;
+  box-shadow: 0 12px 24px rgba(150,90,60,.14);
+  padding-top: 20px;
+}
+body.theme-terracota .timeline::before { background: rgba(184,93,67,.32); }
+body.theme-terracota .timeline-dot {
+  background: var(--accent);
+  color: #fff8f0;
+  border: 0;
+  box-shadow: 0 10px 20px rgba(184,93,67,.3);
+}
+body.theme-terracota .timeline-card {
+  background: #fffaf4;
+  border: 1px solid rgba(184,93,67,.24);
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 12px 26px rgba(150,90,60,.12);
+}
+body.theme-terracota .timeline-time { color: #a9503a; }
+body.theme-terracota .gallery-item {
+  border-radius: 150px 150px 16px 16px;
+  border: 2px solid rgba(184,93,67,.38);
+  box-shadow: 0 16px 32px rgba(140,80,50,.2);
+  background: #fffaf4;
+}
+body.theme-terracota .gallery-item:first-child { border-radius: 190px 190px 18px 18px; }
+body.theme-terracota .info-card {
+  background: #fffaf4;
+  border: 1px solid rgba(184,93,67,.28);
+  border-radius: 84px 84px 18px 18px;
+  box-shadow: 0 16px 30px rgba(150,90,60,.14);
+  padding: 34px 22px 26px;
+  text-align: center;
+}
+body.theme-terracota .info-card h4 { color: #a9503a; }
+body.theme-terracota .rsvp-form {
+  background: #fffaf4;
+  border: 1px solid rgba(184,93,67,.32);
+  border-radius: 30px;
+  box-shadow: 0 18px 36px rgba(150,90,60,.14);
+}
+body.theme-terracota .iban-box { background: #fffaf4; border-style: solid; border-color: rgba(184,93,67,.35); }
+body.theme-terracota .btn-primary {
+  background: linear-gradient(180deg, #c46a4e 0%, #a84f37 100%);
+  border-color: #a84f37;
+  box-shadow: 0 10px 24px rgba(168,79,55,.3);
+}
+body.theme-terracota .btn-outline { border-color: rgba(184,93,67,.6); color: #9d4a34; }
+body.theme-terracota .btn-outline:hover { background: #b85d43; border-color: #b85d43; }
+body.theme-terracota .divider-ornament { color: #c88a58; }
+body.theme-terracota .invite-footer { background: #f1e0d0; }
+
+/* ==========================================================================
+   06 · NOCHE ELEGANTE
+   ========================================================================== */
+body.theme-noche {
+  background-color: #070b11;
+  background-image:
+    radial-gradient(1px 1px at 22% 26%, rgba(255,255,255,.75), transparent 100%),
+    radial-gradient(1px 1px at 68% 12%, rgba(212,175,55,.85), transparent 100%),
+    radial-gradient(1.6px 1.6px at 84% 64%, rgba(255,255,255,.6), transparent 100%),
+    radial-gradient(circle at 50% 0%, rgba(212,175,55,.12), transparent 58%);
+  background-size: 230px 230px, 330px 330px, 290px 290px, 100% 100%;
+}
+body.theme-noche .hero-photo-bg { filter: saturate(.8) brightness(.86) contrast(1.06); }
+body.theme-noche .section { border-bottom: 1px solid rgba(212,175,55,.2); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  body.theme-noche .hero-names {
+    background-image: linear-gradient(180deg, #fff6d8 0%, #e9c85e 42%, #b98f2a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 2px 18px rgba(212,175,55,.28));
+  }
+  body.theme-noche .hero-names .hero-amp { color: transparent; }
+}
+body.theme-noche .section-alt { background: rgba(16,24,34,.6); }
+body.theme-noche .section > .eyebrow { color: var(--gold); letter-spacing: .34em; }
+body.theme-noche .section > .eyebrow::before,
+body.theme-noche .section > .eyebrow::after {
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.9), transparent);
+  opacity: .9;
+}
+body.theme-noche .section-title {
+  letter-spacing: .12em;
+  color: #f2d98c;
+  text-shadow: 0 0 26px rgba(212,175,55,.25);
+}
+body.theme-noche .section-text { color: #cfc4ae; }
+body.theme-noche .cd-box,
+body.theme-noche .timeline-card,
+body.theme-noche .info-card,
+body.theme-noche .rsvp-form,
+body.theme-noche .iban-box {
+  background: linear-gradient(160deg, rgba(30,43,59,.78), rgba(14,21,30,.68));
+  border: 1px solid rgba(212,175,55,.3);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+body.theme-noche .timeline::before {
+  background: linear-gradient(180deg, transparent, rgba(212,175,55,.45), transparent);
+}
+body.theme-noche .timeline-dot {
+  background: radial-gradient(circle at 30% 24%, #2b3c52, #0f1721);
+  border: 1px solid rgba(212,175,55,.62);
+  color: var(--gold);
+  box-shadow: 0 0 18px rgba(212,175,55,.3);
+}
+body.theme-noche .timeline-time { color: var(--gold); }
+body.theme-noche .gallery-item {
+  border: 1px solid rgba(212,175,55,.38);
+  box-shadow: 0 14px 30px rgba(0,0,0,.5);
+}
+body.theme-noche .gallery-item img { filter: saturate(.88) brightness(.92); }
+body.theme-noche .info-card h4 { color: #efd28a; }
+body.theme-noche .iban-box { border-style: solid; border-color: rgba(212,175,55,.42); }
+body.theme-noche .rsvp-form input,
+body.theme-noche .rsvp-form select,
+body.theme-noche .rsvp-form textarea,
+body.theme-noche .companion-row input,
+body.theme-noche .companion-row select {
+  background: rgba(8,13,20,.75);
+  border-color: rgba(212,175,55,.28);
+  color: #f3ead8;
+}
+body.theme-noche .btn-primary {
+  background: linear-gradient(180deg, #eacd72 0%, #b9912f 100%);
+  border-color: #e0bd63;
+  color: #121a24;
+  box-shadow: 0 10px 26px rgba(212,175,55,.3);
+}
+body.theme-noche .btn-primary:hover { color: #0d131a; }
+body.theme-noche .btn-outline {
+  border-color: rgba(212,175,55,.62);
+  color: #f0d894;
+}
+body.theme-noche .btn-outline:hover { background: #d4af37; border-color: #d4af37; color: #0d131a; }
+body.theme-noche .divider-ornament { color: #e5c158; letter-spacing: 9px; }
+body.theme-noche .invite-footer h3 { color: #f2d98c; }
+
+/* ==========================================================================
+   07 · GÓTICO & ROCK
+   ========================================================================== */
+body.theme-gotico {
+  --bg-page: #0b0b0d;
+  --bg-card: #111114;
+  --bg-alt: #14141a;
+  --text-main: #ded9d1;
+  --text-muted: #a39d96;
+  --accent: #9e1b24;
+  --accent-light: #2a1215;
+  --gold: #b9b2a6;
+  --border-col: #2a2a31;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(5,5,7,.2) 0%, rgba(6,6,9,.8) 100%);
+  background-color: #08080a;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(158,27,36,.16), transparent 46%),
+    radial-gradient(circle at 50% 100%, rgba(158,27,36,.08), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px);
+}
+body.theme-gotico .invite-shell {
+  box-shadow: 0 0 0 1px rgba(185,178,166,.2), 0 30px 80px rgba(0,0,0,.72);
+}
+body.theme-gotico .hero-photo-bg {
+  filter: grayscale(.28) contrast(1.12) brightness(.96) sepia(.07);
+}
+body.theme-gotico .hero::after {
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 38%, rgba(5,5,7,.7) 100%),
+    linear-gradient(180deg, rgba(5,5,7,.18) 0%, rgba(6,6,9,.78) 100%);
+}
+body.theme-gotico .hero-names {
+  font-weight: 700;
+  font-size: clamp(34px, 8.8vw, 54px);
+  letter-spacing: .015em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 34px rgba(158,27,36,.5);
+}
+body.theme-gotico .hero-amp { color: #b6252f; font-style: normal; font-size: .5em; }
+body.theme-gotico .hero-date-pill {
+  border: 1px solid rgba(158,27,36,.75);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  letter-spacing: .36em;
+  color: #e9e3da;
+  background: rgba(8,8,10,.28);
+}
+body.theme-gotico .section { border-bottom: 1px solid #23232a; }
+body.theme-gotico .section-alt {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(158,27,36,.1), transparent 58%),
+    repeating-linear-gradient(45deg, rgba(185,178,166,.02) 0 1px, transparent 1px 6px);
+}
+body.theme-gotico .section > .eyebrow { color: #c0393f; letter-spacing: .34em; }
+body.theme-gotico .section > .eyebrow::before,
+body.theme-gotico .section > .eyebrow::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: #9e1b24;
+  transform: rotate(45deg);
+  opacity: .95;
+}
+body.theme-gotico .section-title {
+  color: #eae3d9;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+body.theme-gotico .section-title::after {
+  content: '';
+  display: block;
+  width: 104px;
+  height: 9px;
+  margin: 12px auto 0;
+  background:
+    radial-gradient(circle at 50% 50%, #9e1b24 0 2.6px, transparent 3px) center / 10px 10px no-repeat,
+    linear-gradient(90deg, transparent, rgba(185,178,166,.6) 12%, rgba(185,178,166,.6) 88%, transparent) left center / 34px 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(185,178,166,.6) 12%, rgba(185,178,166,.6) 88%, transparent) right center / 34px 1px no-repeat;
+}
+body.theme-gotico .section-text { color: #b3aca4; }
+body.theme-gotico .cd-box,
+body.theme-gotico .timeline-card,
+body.theme-gotico .info-card,
+body.theme-gotico .rsvp-form,
+body.theme-gotico .iban-box {
+  position: relative;
+  background: linear-gradient(168deg, #16161b 0%, #0e0e12 100%);
+  border: 1px solid rgba(185,178,166,.24);
+  box-shadow:
+    inset 0 0 0 4px rgba(158,27,36,.14),
+    inset 0 0 22px rgba(0,0,0,.6),
+    0 14px 32px rgba(0,0,0,.6);
+}
+body.theme-gotico .cd-box::before,
+body.theme-gotico .timeline-card::before,
+body.theme-gotico .info-card::before,
+body.theme-gotico .rsvp-form::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(158,27,36,.34);
+  pointer-events: none;
+}
+body.theme-gotico .cd-num { color: #c83540; }
+body.theme-gotico .timeline::before { background: rgba(158,27,36,.45); }
+body.theme-gotico .timeline-dot {
+  background: #101013;
+  border: 1px solid #9e1b24;
+  color: #d9d2c8;
+  box-shadow:
+    0 0 0 4px #0b0b0d,
+    0 0 0 5px rgba(185,178,166,.24),
+    0 0 16px rgba(158,27,36,.4);
+}
+body.theme-gotico .timeline-time { color: #c0393f; letter-spacing: .22em; }
+body.theme-gotico .timeline-title { color: #ece5db; }
+body.theme-gotico .gallery-item {
+  border: 1px solid rgba(185,178,166,.3);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(158,27,36,.32),
+    0 16px 34px rgba(0,0,0,.62);
+}
+body.theme-gotico .gallery-item img { filter: grayscale(.45) contrast(1.1) brightness(.88); }
+body.theme-gotico .info-card h4 { color: #d8cfc2; letter-spacing: .04em; }
+body.theme-gotico .rsvp-form input,
+body.theme-gotico .rsvp-form select,
+body.theme-gotico .rsvp-form textarea,
+body.theme-gotico .companion-row input,
+body.theme-gotico .companion-row select {
+  background: #0a0a0c;
+  border-color: #2b2b33;
+  color: #e4ded5;
+}
+body.theme-gotico .btn-primary {
+  background: linear-gradient(180deg, #aa2530 0%, #7c121a 100%);
+  border-color: #aa2530;
+  border-radius: 2px;
+  letter-spacing: .24em;
+  box-shadow: 0 12px 26px rgba(158,27,36,.36);
+}
+body.theme-gotico .btn-outline {
+  border-radius: 2px;
+  border-color: rgba(185,178,166,.42);
+  color: #ded9d1;
+}
+body.theme-gotico .btn-outline:hover { background: #9e1b24; border-color: #9e1b24; color: #fff; }
+body.theme-gotico .divider-ornament { color: #9e1b24; letter-spacing: 10px; }
+body.theme-gotico .invite-footer { border-top: 1px solid #23232a; }
+body.theme-gotico .invite-footer h3 { color: #e9e2d8; }
+
+/* ==========================================================================
+   08 · ALTA ETIQUETA
+   ========================================================================== */
+body.theme-elegante {
+  --bg-page: #f4f1ea;
+  --bg-card: #fbf9f5;
+  --bg-alt: #f1eee6;
+  --text-main: #1c252c;
+  --text-muted: #5b646b;
+  --accent: #1c252c;
+  --accent-light: #e9e4d7;
+  --gold: #c2a675;
+  --border-col: #ded6c5;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(10,14,20,.18) 0%, rgba(8,12,18,.58) 100%);
+  background-color: #eeebe2;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(194,166,117,.2), transparent 56%),
+    radial-gradient(circle at 0% 100%, rgba(28,37,44,.05), transparent 40%);
+}
+body.theme-elegante .invite-shell {
+  border-left: 1px solid rgba(194,166,117,.55);
+  border-right: 1px solid rgba(194,166,117,.55);
+  box-shadow: 0 20px 60px rgba(50,45,35,.14);
+}
+body.theme-elegante .hero-content { max-width: 480px; }
+body.theme-elegante .hero-content::before {
+  content: attr(data-monogram);
+  display: block;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 18px;
+  border: 1px solid rgba(194,166,117,.95);
+  border-radius: 50%;
+  background: rgba(28,37,44,.42);
+  backdrop-filter: blur(3px);
+  box-shadow:
+    0 0 0 4px rgba(28,37,44,.18),
+    inset 0 0 0 3px rgba(194,166,117,.35),
+    0 10px 26px rgba(0,0,0,.25);
+  font-family: 'Great Vibes', cursive;
+  font-size: 23px;
+  line-height: 74px;
+  letter-spacing: 1px;
+  color: #f2e4c6;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+body.theme-elegante .hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: .015em;
+  font-size: clamp(44px, 10.4vw, 66px);
+  line-height: 1;
+}
+body.theme-elegante .hero-amp {
+  font-family: 'Great Vibes', cursive;
+  font-style: normal;
+  font-size: .62em;
+  color: #e6d2a6;
+  margin: 2px 0;
+}
+body.theme-elegante .hero-date-pill {
+  border: 0;
+  border-top: 1px solid rgba(194,166,117,.75);
+  border-bottom: 1px solid rgba(194,166,117,.75);
+  border-radius: 0;
+  padding: 9px 2px;
+  letter-spacing: .4em;
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+}
+body.theme-elegante .section {
+  position: relative;
+  padding: 60px 28px;
+  border-bottom: 0;
+}
+body.theme-elegante .section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 66px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(194,166,117,.9), transparent);
+}
+body.theme-elegante .section-alt { background-color: #f0ede4; }
+body.theme-elegante .section > .eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: .38em;
+  color: #a98f5d;
+}
+body.theme-elegante .section > .eyebrow::before,
+body.theme-elegante .section > .eyebrow::after {
+  width: 18px;
+  background: linear-gradient(90deg, transparent, rgba(194,166,117,.9));
+  opacity: 1;
+}
+body.theme-elegante .section > .eyebrow::after {
+  background: linear-gradient(90deg, rgba(194,166,117,.9), transparent);
+}
+body.theme-elegante .section-title {
+  font-size: clamp(19px, 5vw, 27px);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+body.theme-elegante .section-text { font-size: 15.5px; line-height: 1.95; }
+body.theme-elegante .cd-box,
+body.theme-elegante .timeline-card,
+body.theme-elegante .info-card,
+body.theme-elegante .rsvp-form,
+body.theme-elegante .iban-box {
+  position: relative;
+  background: #fbf9f5;
+  border: 1px solid rgba(194,166,117,.6);
+  border-radius: 0;
+  box-shadow:
+    inset 0 0 0 4px #fbf9f5,
+    inset 0 0 0 5px rgba(194,166,117,.34),
+    0 14px 30px rgba(60,55,40,.09);
+}
+body.theme-elegante .cd-box::before,
+body.theme-elegante .timeline-card::before,
+body.theme-elegante .info-card::before,
+body.theme-elegante .rsvp-form::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  pointer-events: none;
+  opacity: .75;
+  background:
+    linear-gradient(#c2a675, #c2a675) left top / 12px 1px no-repeat,
+    linear-gradient(#c2a675, #c2a675) left top / 1px 12px no-repeat,
+    linear-gradient(#c2a675, #c2a675) right top / 12px 1px no-repeat,
+    linear-gradient(#c2a675, #c2a675) right top / 1px 12px no-repeat,
+    linear-gradient(#c2a675, #c2a675) left bottom / 12px 1px no-repeat,
+    linear-gradient(#c2a675, #c2a675) left bottom / 1px 12px no-repeat,
+    linear-gradient(#c2a675, #c2a675) right bottom / 12px 1px no-repeat,
+    linear-gradient(#c2a675, #c2a675) right bottom / 1px 12px no-repeat;
+}
+body.theme-elegante .cd-box::before { inset: 4px; }
+body.theme-elegante .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; }
+body.theme-elegante .cd-label { font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: .2em; }
+body.theme-elegante .timeline::before {
+  background: linear-gradient(180deg, transparent, rgba(194,166,117,.7), transparent);
+}
+body.theme-elegante .timeline-dot {
+  background: #fbf9f5;
+  border: 1px solid var(--gold);
+  color: #a98f5d;
+  box-shadow: 0 0 0 4px #f4f1ea;
+}
+body.theme-elegante .timeline-time {
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  letter-spacing: .22em;
+  color: #a98f5d;
+}
+body.theme-elegante .timeline-title { font-size: 24px; letter-spacing: .01em; font-weight: 600; }
+body.theme-elegante .gallery-item {
+  border: 1px solid rgba(194,166,117,.65);
+  border-radius: 0;
+  padding: 7px;
+  background: #fbf9f5;
+  box-shadow: 0 12px 26px rgba(60,55,40,.1);
+}
+body.theme-elegante .info-card h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #8f7746;
+}
+body.theme-elegante .form-group label,
+body.theme-elegante .companions-head,
+body.theme-elegante .consent-label {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .16em;
+}
+body.theme-elegante .btn-primary,
+body.theme-elegante .btn-outline {
+  border-radius: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: .24em;
+  padding: 14px 26px;
+}
+body.theme-elegante .btn-primary { background: #1c252c; border-color: #1c252c; }
+body.theme-elegante .btn-outline { border-color: #c2a675; color: #1c252c; }
+body.theme-elegante .btn-outline:hover { background: #c2a675; border-color: #c2a675; color: #fff; }
+body.theme-elegante .divider-ornament { color: #c2a675; letter-spacing: 12px; }
+body.theme-elegante .invite-footer h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  font-weight: 400;
+  color: #1c252c;
+}
+body.theme-elegante .invite-footer { border-top: 1px solid rgba(194,166,117,.5); }
+
+/* ==========================================================================
+   09 · GALAXIA LEJANA
+   ========================================================================== */
+body.theme-starwars {
+  --bg-page: #070913;
+  --bg-card: #0b0f1d;
+  --bg-alt: #0a0e1a;
+  --text-main: #e8ecf7;
+  --text-muted: #9aa6c4;
+  --accent: #ffe81f;
+  --accent-light: #151d33;
+  --gold: #ffe81f;
+  --border-col: #1e2842;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 0px;
+  --hero-overlay: linear-gradient(180deg, rgba(4,7,17,.22) 0%, rgba(4,7,17,.9) 100%);
+  background-color: #05070f;
+  background-image:
+    radial-gradient(1.4px 1.4px at 18% 22%, #ffffff, transparent 100%),
+    radial-gradient(1px 1px at 72% 14%, rgba(255,255,255,.85), transparent 100%),
+    radial-gradient(1.8px 1.8px at 44% 68%, rgba(255,232,31,.8), transparent 100%),
+    radial-gradient(1.2px 1.2px at 88% 54%, rgba(46,103,248,.9), transparent 100%),
+    radial-gradient(1px 1px at 30% 86%, rgba(255,255,255,.7), transparent 100%),
+    radial-gradient(circle at 20% 8%, rgba(46,103,248,.2), transparent 46%),
+    radial-gradient(circle at 84% 72%, rgba(235,33,46,.1), transparent 42%);
+  background-size: 260px 260px, 340px 340px, 300px 300px, 380px 380px, 240px 240px, 100% 100%, 100% 100%;
+}
+body.theme-starwars .hero-photo-bg {
+  filter: saturate(.9) brightness(.8) contrast(1.05);
+}
+body.theme-starwars .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .9;
+  background-image:
+    radial-gradient(1px 1px at 22% 26%, #fff, transparent 100%),
+    radial-gradient(1.4px 1.4px at 62% 44%, rgba(255,232,31,.9), transparent 100%),
+    radial-gradient(1px 1px at 84% 18%, rgba(255,255,255,.9), transparent 100%),
+    radial-gradient(1.2px 1.2px at 38% 74%, rgba(46,103,248,.95), transparent 100%);
+  background-size: 210px 210px, 280px 280px, 250px 250px, 320px 320px;
+}
+body.theme-starwars .hero-names {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(26px, 7.4vw, 44px);
+  letter-spacing: .14em;
+  line-height: 1.12;
+  color: #ffffff;
+  text-shadow: 0 0 26px rgba(46,103,248,.6);
+}
+body.theme-starwars .hero-amp {
+  font-style: normal;
+  font-size: .5em;
+  letter-spacing: 0;
+  color: #ffe81f;
+  text-shadow: 0 0 18px rgba(255,232,31,.7);
+}
+body.theme-starwars .hero-date-pill {
+  border: 1px solid rgba(255,232,31,.65);
+  border-radius: 0;
+  background: rgba(7,9,19,.55);
+  color: #ffe81f;
+  letter-spacing: .34em;
+  font-weight: 600;
+  font-size: 10px;
+}
+body.theme-starwars .hero .eyebrow { color: #ffe81f; letter-spacing: .4em; }
+body.theme-starwars .section { border-bottom: 1px solid rgba(46,103,248,.2); }
+body.theme-starwars .section-alt { background: rgba(8,12,24,.55); }
+body.theme-starwars .section > .eyebrow { color: #ffe81f; letter-spacing: .42em; }
+body.theme-starwars .section > .eyebrow::before,
+body.theme-starwars .section > .eyebrow::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: #2e67f8;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(46,103,248,.95);
+  opacity: 1;
+}
+body.theme-starwars .section-title {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: clamp(16px, 4.6vw, 23px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+}
+body.theme-starwars .section-text { color: #b9c4dd; }
+body.theme-starwars .cd-box,
+body.theme-starwars .timeline-card,
+body.theme-starwars .info-card,
+body.theme-starwars .rsvp-form,
+body.theme-starwars .iban-box {
+  position: relative;
+  background: linear-gradient(160deg, rgba(15,23,44,.94), rgba(7,11,22,.94));
+  border: 1px solid rgba(46,103,248,.55);
+  border-radius: 0;
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  box-shadow: inset 0 0 26px rgba(46,103,248,.14);
+}
+body.theme-starwars .cd-box::before,
+body.theme-starwars .timeline-card::before,
+body.theme-starwars .info-card::before,
+body.theme-starwars .rsvp-form::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 54px;
+  height: 2px;
+  background: #eb212e;
+  box-shadow: 0 0 12px rgba(235,33,46,.85);
+  pointer-events: none;
+}
+body.theme-starwars .cd-num { color: #ffe81f; font-family: var(--font-heading); font-weight: 700; }
+body.theme-starwars .cd-label { color: #8f9dbd; letter-spacing: .2em; }
+body.theme-starwars .timeline::before {
+  background: linear-gradient(180deg, transparent, rgba(46,103,248,.65), transparent);
+}
+body.theme-starwars .timeline-dot {
+  border-radius: 0;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  background: #0a1226;
+  border: 1px solid #2e67f8;
+  color: #ffe81f;
+  box-shadow: 0 0 18px rgba(46,103,248,.45);
+}
+body.theme-starwars .timeline-time { color: #ffe81f; letter-spacing: .2em; }
+body.theme-starwars .timeline-title { color: #fff; text-transform: uppercase; font-size: 15px; letter-spacing: .1em; }
+body.theme-starwars .timeline-place { color: #9aa6c4; }
+body.theme-starwars .gallery-item {
+  border: 1px solid rgba(46,103,248,.55);
+  border-radius: 0;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  box-shadow: 0 0 22px rgba(46,103,248,.22);
+}
+body.theme-starwars .gallery-item img { filter: saturate(.9) contrast(1.06); }
+body.theme-starwars .info-card h4 {
+  color: #ffe81f;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: .12em;
+}
+body.theme-starwars .rsvp-form input,
+body.theme-starwars .rsvp-form select,
+body.theme-starwars .rsvp-form textarea,
+body.theme-starwars .companion-row input,
+body.theme-starwars .companion-row select {
+  background: #060a15;
+  border-color: #243049;
+  color: #e8ecf7;
+}
+body.theme-starwars .rsvp-form input:focus,
+body.theme-starwars .rsvp-form select:focus,
+body.theme-starwars .rsvp-form textarea:focus {
+  outline: 1px solid rgba(255,232,31,.7);
+  outline-offset: 1px;
+}
+
+/* Story con aire de "opening crawl", legible en móvil */
+body.theme-starwars #sec-story {
+  position: relative;
+  overflow: hidden;
+  padding: 68px 26px 74px;
+  background-color: #04060e;
+  background-image:
+    radial-gradient(circle at 50% 34%, rgba(46,103,248,.16), transparent 62%),
+    radial-gradient(1.2px 1.2px at 16% 24%, #fff, transparent 100%),
+    radial-gradient(1px 1px at 78% 18%, rgba(255,255,255,.8), transparent 100%),
+    radial-gradient(1.4px 1.4px at 62% 76%, rgba(255,232,31,.75), transparent 100%),
+    radial-gradient(1px 1px at 34% 62%, rgba(255,255,255,.7), transparent 100%);
+  background-size: 100% 100%, 220px 220px, 300px 300px, 260px 260px, 340px 340px;
+}
+body.theme-starwars #sec-story::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-top: 1px solid rgba(255,232,31,.35);
+  border-bottom: 1px solid rgba(255,232,31,.35);
+  pointer-events: none;
+}
+body.theme-starwars #sec-story .section-title {
+  color: #ffe81f;
+  font-size: clamp(15px, 4.4vw, 21px);
+  letter-spacing: .3em;
+  margin-bottom: 20px;
+}
+body.theme-starwars #sec-story .section-text {
+  color: #ffe81f;
+  font-size: 14.5px;
+  line-height: 2;
+  text-align: justify;
+  text-justify: inter-word;
+  letter-spacing: .015em;
+  max-width: 420px;
+  text-shadow: 0 0 20px rgba(255,232,31,.3);
+}
+body.theme-starwars #sec-story .section-text::first-letter {
+  font-size: 1.7em;
+  color: #fff;
+  padding-right: 2px;
+}
+body.theme-starwars .btn-primary {
+  background: linear-gradient(180deg, #ffe81f 0%, #d9c000 100%);
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  color: #05070f;
+  font-weight: 800;
+  letter-spacing: .18em;
+  box-shadow: 0 0 26px rgba(255,232,31,.3);
+}
+body.theme-starwars .btn-outline {
+  border-radius: 0;
+  border-color: rgba(46,103,248,.7);
+  color: #cfe0ff;
+}
+body.theme-starwars .btn-outline:hover { background: #2e67f8; border-color: #2e67f8; color: #fff; }
+body.theme-starwars .divider-ornament { color: #ffe81f; letter-spacing: 12px; }
+body.theme-starwars .invite-footer {
+  border-top: 1px solid rgba(46,103,248,.3);
+  background: rgba(4,6,14,.6);
+}
+body.theme-starwars .invite-footer h3 { color: #ffe81f; text-transform: uppercase; letter-spacing: .16em; font-size: 20px; }
+
+/* ==========================================================================
+   19 PLANTILLAS · MICROINTERACCIONES COMUNES
+   --------------------------------------------------------------------------
+   Solo transiciones y elevación muy contenida: no altera geometrías ni
+   funcionalidad. Respeta prefers-reduced-motion al final del archivo.
+   ========================================================================== */
+body[data-template] .cd-box,
+body[data-template] .timeline-card,
+body[data-template] .info-card,
+body[data-template] .gallery-item {
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+body[data-template] .timeline-card:hover,
+body[data-template] .info-card:hover { transform: translateY(-3px); }
+body[data-template] .gallery-item { position: relative; }
+body[data-template] .gallery-item img { transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+body[data-template] .gallery-item:hover img { transform: scale(1.04); }
+body[data-template] .btn-primary:hover { box-shadow: 0 12px 26px rgba(0,0,0,.16); }
+
+/* ==========================================================================
+   10 · IBIZA & FORMENTERA
+   Lino, cal, sol mediterráneo y agua turquesa. Portada 100 % CSS.
+   ========================================================================== */
+body.theme-ibiza {
+  --bg-page: #fbf7ef;
+  --bg-card: #ffffff;
+  --bg-alt: #eef6f6;
+  --text-main: #103b49;
+  --text-muted: #57787f;
+  --accent: #1ca3ec;
+  --accent-light: #dff1fb;
+  --gold: #e0b25c;
+  --border-col: #dbe9e8;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 26px;
+  --hero-overlay: linear-gradient(180deg, rgba(255,255,255,0) 46%, rgba(9,64,82,.14) 80%, rgba(8,54,70,.26) 100%);
+  background-color: #f4ede1;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(120,90,50,.055) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(120,90,50,.05) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 84% 6%, rgba(28,163,236,.12), transparent 38%);
+}
+body.theme-ibiza .invite-shell { box-shadow: 0 26px 70px rgba(16,59,73,.16); }
+body.theme-ibiza .hero {
+  color: #0d3a48;
+  background-color: #eaf7fa;
+  background-image:
+    radial-gradient(circle at 50% 21%, #ffe7a8 0 54px, rgba(255,214,120,.5) 55px 92px, rgba(255,214,120,0) 93px),
+    radial-gradient(ellipse at 50% 22%, rgba(255,240,190,.55), transparent 46%),
+    linear-gradient(180deg, #c8ecfb 0%, #e9f8fb 40%, #fbf4e7 68%, #f2e5d1 100%);
+}
+body.theme-ibiza .hero::before {
+  content: '';
+  position: absolute;
+  left: -18%;
+  right: -18%;
+  top: 34%;
+  height: 120px;
+  border-radius: 50%;
+  border-top: 1px solid rgba(28,163,236,.5);
+  box-shadow:
+    0 -12px 0 -1px rgba(28,163,236,.22),
+    0 -24px 0 -2px rgba(28,163,236,.12);
+  pointer-events: none;
+  z-index: 1;
+}
+body.theme-ibiza .hero::after {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.28), transparent 46%),
+    var(--hero-overlay);
+}
+body.theme-ibiza .hero-content {
+  padding: 22px 16px 12px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,253,248,.55));
+  border: 1px solid rgba(255,255,255,.65);
+  box-shadow: 0 18px 50px rgba(16,59,73,.08);
+}
+body.theme-ibiza .hero .eyebrow { color: #0d7fa6; letter-spacing: .3em; }
+body.theme-ibiza .hero .eyebrow::before {
+  content: '✺ IBIZA VIBES · MEDITERRANEAN WEDDING ✺';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 8px;
+  letter-spacing: .3em;
+  color: #0d7fa6;
+}
+body.theme-ibiza .hero-names {
+  color: #0b3340;
+  font-weight: 500;
+  letter-spacing: .005em;
+  text-shadow: 0 2px 26px rgba(255,255,255,.85);
+}
+body.theme-ibiza .hero-amp { color: #1ca3ec; font-style: normal; }
+body.theme-ibiza .hero-date-pill {
+  border-color: rgba(13,127,166,.55);
+  color: #0b3340;
+  background: rgba(255,255,255,.55);
+}
+body.theme-ibiza .template-ornament { color: #0d7fa6; }
+body.theme-ibiza .section {
+  position: relative;
+  border-bottom: 0;
+}
+body.theme-ibiza .section-alt { background-color: #eef7f7; }
+body.theme-ibiza .section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #1ca3ec, transparent);
+  opacity: .5;
+}
+body.theme-ibiza .section > .eyebrow { color: #0d86ad; }
+body.theme-ibiza .section-title { font-weight: 600; letter-spacing: .005em; }
+body.theme-ibiza .cd-box,
+body.theme-ibiza .timeline-card,
+body.theme-ibiza .info-card,
+body.theme-ibiza .rsvp-form,
+body.theme-ibiza .iban-box {
+  background: #ffffff;
+  border: 1px solid rgba(16,59,73,.08);
+  border-radius: 26px;
+  box-shadow: 0 14px 34px rgba(16,59,73,.08);
+}
+body.theme-ibiza .cd-num { color: #0d7fa6; }
+body.theme-ibiza .timeline::before { background: linear-gradient(180deg, rgba(28,163,236,.5), rgba(226,180,95,.5)); }
+body.theme-ibiza .timeline-dot {
+  background: #ffffff;
+  border-color: rgba(28,163,236,.6);
+  color: #0d7fa6;
+  box-shadow: 0 4px 14px rgba(28,163,236,.2);
+}
+body.theme-ibiza .gallery-item { border: 0; box-shadow: 0 12px 30px rgba(16,59,73,.12); }
+body.theme-ibiza .gallery-item:first-child { border-radius: 150px 150px 22px 22px; }
+body.theme-ibiza .info-card h4 { color: #0d7fa6; }
+body.theme-ibiza .iban-box { border-style: solid; border-color: rgba(28,163,236,.35); }
+body.theme-ibiza .btn-primary {
+  background: linear-gradient(135deg, #29b1f0, #0d86ad);
+  border-color: transparent;
+  color: #063a4d;
+  box-shadow: 0 12px 26px rgba(28,163,236,.28);
+}
+body.theme-ibiza .btn-outline { border-color: rgba(13,127,166,.55); color: #0d6b8c; background: #fff; }
+body.theme-ibiza .btn-outline:hover { background: #0d86ad; border-color: #0d86ad; }
+body.theme-ibiza .divider-ornament { color: #e0b25c; }
+body.theme-ibiza .invite-footer { background: #f2e5d1; border-top: 0; }
+
+/* ==========================================================================
+   11 · LOS BRIDGERTON
+   Regencia inglesa: porcelana, azul empolvado, oro y panfleto de sociedad.
+   ========================================================================== */
+body.theme-bridgerton {
+  --bg-page: #f6f2e7;
+  --bg-card: #fdfbf7;
+  --bg-alt: #e9eef4;
+  --text-main: #243447;
+  --text-muted: #5c6f85;
+  --accent: #6889a8;
+  --accent-light: #dfe7ef;
+  --gold: #c5a059;
+  --border-col: #d9d2c1;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --radius-card: 3px;
+  --hero-overlay: linear-gradient(180deg, rgba(30,48,68,.06) 0%, rgba(30,48,68,.28) 56%, rgba(28,44,62,.62) 100%);
+  background-color: #f1ecdf;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(197,160,89,.14), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(36,52,71,.035) 0 1px, transparent 1px 26px);
+}
+body.theme-bridgerton .invite-shell {
+  border-left: 1px solid rgba(197,160,89,.45);
+  border-right: 1px solid rgba(197,160,89,.45);
+  box-shadow: 0 24px 70px rgba(36,52,71,.16);
+}
+body.theme-bridgerton .hero {
+  background-color: #6889a8;
+  background-image:
+    radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.28), transparent 55%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, #7d9ab6 0%, #6889a8 52%, #4d6a86 100%);
+  color: #fdfbf7;
+}
+body.theme-bridgerton .hero::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(197,160,89,.9);
+  outline: 1px solid rgba(197,160,89,.38);
+  outline-offset: 5px;
+  background:
+    radial-gradient(circle at 0 0, rgba(236,205,146,.95) 0 5px, transparent 6px),
+    radial-gradient(circle at 100% 0, rgba(236,205,146,.95) 0 5px, transparent 6px),
+    radial-gradient(circle at 0 100%, rgba(236,205,146,.95) 0 5px, transparent 6px),
+    radial-gradient(circle at 100% 100%, rgba(236,205,146,.95) 0 5px, transparent 6px);
+  pointer-events: none;
+  z-index: 2;
+  opacity: .85;
+}
+body.theme-bridgerton .hero .eyebrow { color: #f0dcb4; letter-spacing: .34em; }
+body.theme-bridgerton .hero .eyebrow::before {
+  content: '♛ CRÓNICAS DE SOCIEDAD DE LADY WHISTLEDOWN ♛';
+  display: block;
+  margin: 0 auto 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px;
+  letter-spacing: .28em;
+  color: #f0dcb4;
+}
+body.theme-bridgerton .hero-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(56px, 16vw, 92px);
+  font-weight: 400;
+  line-height: .95;
+  text-shadow: 0 6px 26px rgba(20,35,55,.35);
+}
+body.theme-bridgerton .hero-amp { color: #e8cf9c; font-size: .48em; margin: 2px 0; }
+body.theme-bridgerton .hero-date-pill {
+  border-color: rgba(240,220,180,.65);
+  color: #f8eed9;
+  background: rgba(36,52,71,.18);
+}
+body.theme-bridgerton .template-ornament { color: #e8cf9c; }
+body.theme-bridgerton .section {
+  position: relative;
+  border-bottom: 1px solid rgba(197,160,89,.3);
+}
+body.theme-bridgerton .section-alt { background-color: #e9eef4; }
+body.theme-bridgerton .section > .eyebrow { color: #a8843f; letter-spacing: .32em; }
+body.theme-bridgerton .section-title { font-weight: 400; }
+body.theme-bridgerton .section-title::after {
+  content: '';
+  display: block;
+  width: 92px;
+  height: 1px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, #c5a059 26%, #c5a059 74%, transparent);
+  box-shadow: 0 3px 0 -1px rgba(197,160,89,.35);
+}
+body.theme-bridgerton .cd-box,
+body.theme-bridgerton .timeline-card,
+body.theme-bridgerton .info-card,
+body.theme-bridgerton .rsvp-form,
+body.theme-bridgerton .iban-box {
+  background: #fdfbf7;
+  border: 1px solid rgba(197,160,89,.55);
+  box-shadow:
+    inset 0 0 0 4px #fdfbf7,
+    inset 0 0 0 5px rgba(197,160,89,.28),
+    0 10px 24px rgba(36,52,71,.06);
+}
+body.theme-bridgerton .cd-num { color: #4d6a86; }
+body.theme-bridgerton #sec-story {
+  background-color: #fdfbf7;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(197,160,89,.1), transparent 60%);
+  box-shadow: inset 0 0 0 10px #fdfbf7, inset 0 0 0 11px rgba(197,160,89,.4);
+}
+body.theme-bridgerton #sec-story .section-title::before {
+  content: 'Querido y gentil lector…';
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 27px;
+  line-height: 1.1;
+  color: #6889a8;
+  margin-bottom: 4px;
+}
+body.theme-bridgerton #sec-story .section-text { font-size: 15.5px; line-height: 1.9; }
+body.theme-bridgerton #sec-story .section-text::first-letter {
+  float: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  line-height: .82;
+  padding: 4px 7px 0 0;
+  color: #6889a8;
+}
+body.theme-bridgerton .timeline::before {
+  background: repeating-linear-gradient(180deg, #c5a059 0 4px, transparent 4px 9px);
+}
+body.theme-bridgerton .timeline-dot {
+  background: #fdfbf7;
+  border-color: #c5a059;
+  color: #a8843f;
+  position: relative;
+}
+body.theme-bridgerton .timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(197,160,89,.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+body.theme-bridgerton .timeline-time { color: #a8843f; letter-spacing: .16em; }
+body.theme-bridgerton .gallery-item {
+  border: 1px solid rgba(197,160,89,.6);
+  box-shadow: 0 0 0 4px #fdfbf7, 0 0 0 5px rgba(197,160,89,.3);
+}
+body.theme-bridgerton .gallery-item:first-child { border-radius: 48% 48% 3px 3px / 26% 26% 3px 3px; }
+body.theme-bridgerton .gallery-item:not(:first-child) { border-radius: 3px; }
+body.theme-bridgerton .info-card h4 { color: #4d6a86; }
+body.theme-bridgerton .btn-primary { background: #4d6a86; border-color: #4d6a86; color: #fdfbf7; }
+body.theme-bridgerton .btn-outline { border-color: #c5a059; color: #4d6a86; background: #fdfbf7; }
+body.theme-bridgerton .btn-outline:hover { background: #6889a8; border-color: #6889a8; }
+body.theme-bridgerton .divider-ornament { color: #c5a059; }
+body.theme-bridgerton .invite-footer { background: #4d6a86; border-top: 0; color: #e8eef5; }
+body.theme-bridgerton .invite-footer h3 { color: #f8eed9; font-family: 'Great Vibes', cursive; font-size: 36px; font-weight: 400; }
+body.theme-bridgerton .invite-footer a { color: #e8eef5; }
+
+
+/* ==========================================================================
+   12 · POSITANO & AMALFI
+   Cobalto, limón de Sorrento y cenefas de mayólica. Portada 100 % CSS.
+   ========================================================================== */
+body.theme-amalfi {
+  --bg-page: #fffdf2;
+  --bg-card: #ffffff;
+  --bg-alt: #f3f5fc;
+  --text-main: #14265c;
+  --text-muted: #4c5b85;
+  --accent: #1034a6;
+  --accent-light: #e2e7f7;
+  --gold: #f4c430;
+  --border-col: #d8ddef;
+  --font-heading: 'Bodoni Moda', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 4px;
+  --hero-overlay: linear-gradient(180deg, rgba(10,25,80,.04) 0%, rgba(10,25,80,.36) 100%);
+  background-color: #fffdf2;
+  background-image:
+    radial-gradient(circle at 12% 6%, rgba(16,52,166,.06), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(244,196,48,.12), transparent 42%);
+}
+body.theme-amalfi .invite-shell { box-shadow: 0 24px 60px rgba(16,52,166,.14); }
+body.theme-amalfi .hero {
+  background-color: #1034a6;
+  background-image:
+    radial-gradient(circle at 50% 26%, rgba(244,196,48,.22), transparent 52%),
+    repeating-linear-gradient(45deg, rgba(255,253,242,.028) 0 10px, transparent 10px 20px),
+    linear-gradient(180deg, #1b47c2 0%, #1034a6 58%, #0a2478 100%);
+  color: #fffdf2;
+}
+body.theme-amalfi .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(90deg, #f4c430 0 9px, #fffdf2 9px 18px, #1034a6 18px 27px),
+    repeating-linear-gradient(90deg, #f4c430 0 9px, #fffdf2 9px 18px, #1034a6 18px 27px);
+  background-size: 100% 8px, 100% 8px;
+  background-position: top left, bottom left;
+  background-repeat: no-repeat;
+}
+body.theme-amalfi .hero .eyebrow { color: #ffe68a; letter-spacing: .32em; }
+body.theme-amalfi .hero .eyebrow::before {
+  content: '✦ POSITANO · COSTA AMALFITANA ✦';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 8px;
+  letter-spacing: .34em;
+  color: #ffe68a;
+}
+body.theme-amalfi .hero-names {
+  font-weight: 400;
+  letter-spacing: .015em;
+  font-size: clamp(40px, 9.6vw, 60px);
+  text-shadow: 0 3px 24px rgba(4,14,50,.35);
+}
+body.theme-amalfi .hero-amp { color: #f4c430; font-style: normal; }
+body.theme-amalfi .hero-date-pill { border-color: rgba(244,196,48,.7); color: #fff8d8; background: rgba(10,25,80,.2); }
+body.theme-amalfi .template-ornament { color: #f4c430; }
+body.theme-amalfi .section {
+  border-bottom: 0;
+  padding-top: 62px;
+  padding-bottom: 62px;
+  background-image:
+    repeating-linear-gradient(90deg, #1034a6 0 9px, #fffdf2 9px 18px, #f4c430 18px 27px),
+    repeating-linear-gradient(90deg, #1034a6 0 9px, #fffdf2 9px 18px, #f4c430 18px 27px);
+  background-size: 100% 6px, 100% 6px;
+  background-position: top left, bottom left;
+  background-repeat: no-repeat;
+}
+body.theme-amalfi .section-alt { background-color: #f3f5fc; }
+body.theme-amalfi .section > .eyebrow { color: #1034a6; letter-spacing: .3em; }
+body.theme-amalfi .section-title { font-weight: 400; letter-spacing: .01em; }
+body.theme-amalfi .cd-box,
+body.theme-amalfi .timeline-card,
+body.theme-amalfi .info-card,
+body.theme-amalfi .rsvp-form,
+body.theme-amalfi .iban-box {
+  background: #ffffff;
+  border: 1px solid #1034a6;
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    inset 0 0 0 4px rgba(244,196,48,.9),
+    0 10px 24px rgba(16,52,166,.09);
+}
+body.theme-amalfi .cd-num { color: #1034a6; }
+body.theme-amalfi .timeline::before {
+  background: repeating-linear-gradient(180deg, rgba(16,52,166,.55) 0 5px, transparent 5px 10px);
+}
+body.theme-amalfi .timeline-dot {
+  background: #fffdf2;
+  border: 2px solid #1034a6;
+  border-radius: 2px;
+  color: #1034a6;
+}
+body.theme-amalfi .timeline-time { color: #1034a6; letter-spacing: .14em; }
+body.theme-amalfi .timeline-title { font-family: 'Bodoni Moda', serif; }
+body.theme-amalfi .gallery-item {
+  border: 1px solid #1034a6;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(244,196,48,.95);
+}
+body.theme-amalfi .gallery-item:first-child { border-radius: 130px 130px 4px 4px; }
+body.theme-amalfi .info-card h4 { color: #1034a6; }
+body.theme-amalfi .iban-box { border-style: solid; border-color: #1034a6; }
+body.theme-amalfi .btn-primary { background: #1034a6; border-color: #1034a6; color: #fffdf2; }
+body.theme-amalfi .btn-outline { border-color: #1034a6; color: #1034a6; background: #fffdf2; }
+body.theme-amalfi .btn-outline:hover { background: #f4c430; border-color: #f4c430; color: #14265c; }
+body.theme-amalfi .divider-ornament { color: #f4c430; }
+body.theme-amalfi .invite-footer { background: #1034a6; color: #e8ecfb; border-top: 0; }
+body.theme-amalfi .invite-footer h3 { color: #fffdf2; }
+body.theme-amalfi .invite-footer a { color: #e8ecfb; }
+
+/* ==========================================================================
+   13 · BODEGA GRAN RESERVA
+   Etiqueta de crianza, papel crema, cobre y tipografía de bodega clásica.
+   ========================================================================== */
+body.theme-bodega {
+  --bg-page: #f2ebdf;
+  --bg-card: #f9f4ea;
+  --bg-alt: #efe6d7;
+  --text-main: #3a1218;
+  --text-muted: #6f4a46;
+  --accent: #5e1924;
+  --accent-light: #ead9d4;
+  --gold: #b87333;
+  --border-col: #d9c8b6;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(30,6,9,.18) 0%, rgba(24,5,8,.72) 100%);
+  background-color: #efe6d6;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(184,115,51,.16), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(94,25,36,.03) 0 1px, transparent 1px 7px);
+}
+body.theme-bodega .invite-shell { box-shadow: 0 26px 70px rgba(58,18,24,.22); }
+body.theme-bodega .hero {
+  background-color: #3f0d15;
+  background-image:
+    radial-gradient(ellipse at 50% 20%, rgba(184,115,51,.28), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 9px),
+    linear-gradient(160deg, #6b1c2a 0%, #4a1019 60%, #2e0a10 100%);
+}
+body.theme-bodega .hero::before {
+  content: '';
+  position: absolute;
+  inset: 17px;
+  border: 1px solid rgba(216,178,120,.75);
+  outline: 1px solid rgba(216,178,120,.28);
+  outline-offset: 4px;
+  pointer-events: none;
+  z-index: 2;
+}
+body.theme-bodega .hero .eyebrow { color: #e2bc86; letter-spacing: .36em; }
+body.theme-bodega .hero .eyebrow::before {
+  content: '★ GRAN RESERVA · COSECHA ESPECIAL ★';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 8px;
+  letter-spacing: .32em;
+  color: #e2bc86;
+}
+body.theme-bodega .hero-names {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(32px, 8.4vw, 50px);
+  color: #fbf3e4;
+}
+body.theme-bodega .hero-amp { color: #d8a15f; font-size: .46em; font-style: normal; }
+body.theme-bodega .hero-date-pill { border-color: rgba(216,161,95,.7); color: #f2dfc4; background: rgba(30,6,9,.25); }
+body.theme-bodega .template-ornament { color: #d8a15f; }
+body.theme-bodega .section {
+  background-color: #f6f0e6;
+  background-image: repeating-linear-gradient(0deg, rgba(94,25,36,.035) 0 1px, transparent 1px 28px);
+  border-bottom: 1px solid rgba(94,25,36,.14);
+}
+body.theme-bodega .section-alt { background-color: #efe6d7; }
+body.theme-bodega .section > .eyebrow { color: #8c4a3d; letter-spacing: .32em; }
+body.theme-bodega .section-title { color: #4a1019; }
+body.theme-bodega .section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, #b87333 30%, #b87333 70%, transparent);
+}
+body.theme-bodega .cd-box,
+body.theme-bodega .timeline-card,
+body.theme-bodega .info-card,
+body.theme-bodega .rsvp-form,
+body.theme-bodega .iban-box {
+  background: #f9f4ea;
+  border: 1px solid rgba(184,115,51,.65);
+  box-shadow:
+    inset 0 0 0 3px #f9f4ea,
+    inset 0 0 0 4px rgba(94,25,36,.24),
+    0 8px 20px rgba(58,18,24,.07);
+}
+body.theme-bodega .cd-num { color: #5e1924; }
+body.theme-bodega .info-card h4,
+body.theme-bodega .timeline-time { color: #7d2b2a; letter-spacing: .12em; }
+body.theme-bodega .timeline::before {
+  background: repeating-linear-gradient(180deg, rgba(184,115,51,.8) 0 5px, transparent 5px 10px);
+}
+body.theme-bodega .timeline-dot { background: #5e1924; border-color: #b87333; color: #f0d5b0; }
+body.theme-bodega .gallery-item {
+  border: 1px solid rgba(184,115,51,.7);
+  box-shadow: 0 0 0 5px #f6f0e6, 0 0 0 6px rgba(94,25,36,.22);
+}
+body.theme-bodega .iban-box { border-style: solid; border-color: #b87333; }
+body.theme-bodega .btn-primary { background: #5e1924; border-color: #5e1924; color: #f8ead8; }
+body.theme-bodega .btn-outline { border-color: rgba(94,25,36,.6); color: #5e1924; background: #f9f4ea; }
+body.theme-bodega .btn-outline:hover { background: #5e1924; border-color: #5e1924; color: #f8ead8; }
+body.theme-bodega .divider-ornament { color: #b87333; }
+body.theme-bodega .invite-footer {
+  background: #4a1019;
+  color: #e6cdb0;
+  border-top: 1px solid rgba(216,161,95,.4);
+}
+body.theme-bodega .invite-footer h3 { color: #f0d5b0; }
+body.theme-bodega .invite-footer a { color: #e6cdb0; }
+
+
+/* ==========================================================================
+   14 · PASAPORTE & BOARDING PASS
+   Documento oficial, guilloché, sello de aduana y panel de salidas.
+   ========================================================================== */
+body.theme-viajeros {
+  --bg-page: #e9e4d6;
+  --bg-card: #f7f4ea;
+  --bg-alt: #efe9da;
+  --text-main: #162436;
+  --text-muted: #4e5a6b;
+  --accent: #162436;
+  --accent-light: #dde3e9;
+  --gold: #c59b27;
+  --border-col: #cfc6ae;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(10,18,28,.2) 0%, rgba(8,14,22,.72) 100%);
+  background-color: #e9e4d6;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(22,36,54,.1), transparent 55%),
+    repeating-linear-gradient(45deg, rgba(22,36,54,.03) 0 1px, transparent 1px 8px);
+}
+body.theme-viajeros .invite-shell { box-shadow: 0 26px 70px rgba(22,36,54,.24); }
+body.theme-viajeros .hero {
+  background-color: #162436;
+  background-image:
+    repeating-radial-gradient(circle at 50% 42%, transparent 0 17px, rgba(197,155,39,.16) 17px 18px),
+    radial-gradient(ellipse at 50% 20%, rgba(197,155,39,.2), transparent 55%),
+    linear-gradient(160deg, #1d3149 0%, #162436 55%, #0d1826 100%);
+  color: #f7f4ea;
+}
+body.theme-viajeros .hero::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(197,155,39,.8);
+  outline: 1px solid rgba(197,155,39,.35);
+  outline-offset: 4px;
+  pointer-events: none;
+  z-index: 2;
+}
+body.theme-viajeros .hero-content::before {
+  content: 'ADMITTED';
+  position: absolute;
+  top: -92px;
+  right: 2px;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed rgba(197,155,39,.62);
+  border-radius: 50%;
+  color: rgba(197,155,39,.82);
+  font: 700 8px/1 'Montserrat', sans-serif;
+  letter-spacing: .18em;
+  transform: rotate(-14deg);
+  opacity: .85;
+  pointer-events: none;
+}
+body.theme-viajeros .hero .eyebrow { color: #e8cf8a; letter-spacing: .3em; }
+body.theme-viajeros .hero .eyebrow::before {
+  content: '✈ PASAPORTE OFICIAL · UNIÓN DE VIAJEROS ✈';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 8px;
+  letter-spacing: .28em;
+  color: #e8cf8a;
+}
+body.theme-viajeros .hero-names {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: clamp(24px, 7vw, 38px);
+  color: #f7f4ea;
+}
+body.theme-viajeros .hero-amp { color: #c59b27; font-style: normal; font-size: .5em; }
+body.theme-viajeros .hero-date-pill {
+  border-color: rgba(197,155,39,.6);
+  color: #f0e2bc;
+  background: rgba(9,17,28,.28);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .26em;
+}
+body.theme-viajeros .template-ornament { color: #e8cf8a; }
+body.theme-viajeros .section {
+  background-color: #f7f4ea;
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba(22,36,54,.045), transparent 46%),
+    radial-gradient(ellipse at 100% 100%, rgba(197,155,39,.07), transparent 46%);
+  border-bottom: 1px solid rgba(22,36,54,.16);
+}
+body.theme-viajeros .section-alt { background-color: #efe9da; }
+body.theme-viajeros .section > .eyebrow { color: #96721b; letter-spacing: .3em; }
+body.theme-viajeros .section-title { letter-spacing: .04em; }
+body.theme-viajeros .cd-box,
+body.theme-viajeros .timeline-card,
+body.theme-viajeros .info-card,
+body.theme-viajeros .rsvp-form,
+body.theme-viajeros .iban-box {
+  background: #f7f4ea;
+  border: 1px solid rgba(22,36,54,.28);
+  box-shadow: inset 0 0 0 3px #f7f4ea, inset 0 0 0 4px rgba(197,155,39,.28);
+}
+body.theme-viajeros .cd-num { color: #162436; }
+body.theme-viajeros .cd-label { letter-spacing: .2em; }
+body.theme-viajeros #sec-itinerary {
+  margin-top: 36px;
+  padding: 22px 16px 18px;
+  background: #0f1b2a;
+  border: 1px solid rgba(197,155,39,.5);
+  border-radius: 4px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.6);
+}
+body.theme-viajeros #sec-itinerary > .eyebrow { color: #e8cf8a; }
+body.theme-viajeros #sec-itinerary .timeline { max-width: 100%; }
+body.theme-viajeros .timeline::before { display: none; }
+body.theme-viajeros .timeline-item { gap: 0; padding-bottom: 0; }
+body.theme-viajeros .timeline-dot { display: none; }
+body.theme-viajeros .timeline-card {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: baseline;
+  gap: 2px 12px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px dashed rgba(197,155,39,.25);
+  border-radius: 0;
+  padding: 10px 4px;
+  box-shadow: none;
+}
+body.theme-viajeros .timeline-item:last-child .timeline-card { border-bottom: 0; }
+body.theme-viajeros .timeline-time {
+  color: #ffd76a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+body.theme-viajeros .timeline-title {
+  color: #f3ecd9;
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  margin: 0;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+body.theme-viajeros .timeline-place { grid-column: 2; color: #93a4ba; font-size: 11.5px; }
+body.theme-viajeros .gallery-item {
+  border: 1px solid rgba(22,36,54,.3);
+  box-shadow: 0 0 0 4px #f7f4ea, 0 0 0 5px rgba(197,155,39,.35);
+}
+body.theme-viajeros .info-card h4 { color: #96721b; letter-spacing: .06em; }
+body.theme-viajeros .rsvp-form {
+  position: relative;
+  padding-top: 46px;
+  background: #f7f4ea;
+}
+body.theme-viajeros .rsvp-form::before {
+  content: 'BOARDING PASS · FIRST CLASS · GATE 01';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 9px 12px;
+  background: #162436;
+  color: #e8cf8a;
+  font: 700 8.5px/1.6 'Montserrat', sans-serif;
+  letter-spacing: .24em;
+  text-align: center;
+  border-radius: 1px 1px 0 0;
+}
+body.theme-viajeros .rsvp-form::after {
+  content: '';
+  display: block;
+  height: 28px;
+  margin-top: 18px;
+  background: repeating-linear-gradient(90deg, #162436 0 2px, transparent 2px 4px, #162436 4px 7px, transparent 7px 12px);
+  opacity: .75;
+}
+body.theme-viajeros .btn-primary { background: #162436; border-color: #162436; color: #f7f4ea; }
+body.theme-viajeros .btn-outline { border-color: #c59b27; color: #4a3a10; background: #f7f4ea; }
+body.theme-viajeros .btn-outline:hover { background: #c59b27; border-color: #c59b27; color: #162436; }
+body.theme-viajeros .divider-ornament { color: #c59b27; }
+body.theme-viajeros .invite-footer { background: #162436; color: #d8d2c0; border-top: 0; }
+body.theme-viajeros .invite-footer h3 { color: #e8cf8a; font-family: 'Cinzel', serif; letter-spacing: .12em; }
+body.theme-viajeros .invite-footer a { color: #d8d2c0; }
+
+/* ==========================================================================
+   15 · COACHELLA & TOMORROWLAND
+   Cartel de festival, atardecer californiano, neón y acreditación VIP.
+   ========================================================================== */
+body.theme-festival {
+  --bg-page: #140a26;
+  --bg-card: #1e0f3c;
+  --bg-alt: #170c2e;
+  --text-main: #fdf3ff;
+  --text-muted: #c3afe2;
+  --accent: #ff477e;
+  --accent-light: #2f1550;
+  --gold: #ffbe0b;
+  --border-col: #3a1f63;
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 14px;
+  --hero-overlay: linear-gradient(180deg, rgba(20,6,40,.02) 0%, rgba(18,6,34,.3) 60%, rgba(15,5,28,.72) 100%);
+  background-color: #140a26;
+  background-image:
+    radial-gradient(circle at 82% 0%, rgba(255,71,126,.16), transparent 42%),
+    radial-gradient(circle at 8% 100%, rgba(255,190,11,.08), transparent 40%);
+}
+body.theme-festival .invite-shell { box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+body.theme-festival .hero {
+  background-color: #2a1050;
+  background-image:
+    radial-gradient(circle 195px at 50% 31%, #ffe9a8 0%, #ffc25c 42%, rgba(255,71,126,0) 100%),
+    radial-gradient(circle 320px at 50% 31%, rgba(255,190,11,.3), transparent 100%),
+    linear-gradient(180deg, #2b0f52 0%, #6b1d68 34%, #ff477e 62%, #ff9a3c 78%, #1c0d33 100%);
+  color: #ffffff;
+}
+body.theme-festival .hero::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 62%;
+  height: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(255,190,11,.7);
+  box-shadow: 0 0 24px 6px rgba(255,71,126,.4);
+}
+body.theme-festival .hero::after {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255,71,126,.22), transparent 55%),
+    var(--hero-overlay);
+}
+body.theme-festival .hero .eyebrow { color: #ffbe0b; letter-spacing: .3em; }
+body.theme-festival .hero .eyebrow::before {
+  content: '★ COACHELLA & WEDFEST PRESENTAN ★';
+  display: block;
+  margin: 0 auto 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: .26em;
+  color: #ffbe0b;
+}
+body.theme-festival .hero-names {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(42px, 12.6vw, 76px);
+  line-height: .9;
+  letter-spacing: -.01em;
+  background: linear-gradient(180deg, #ffffff 0%, #ffe1ec 55%, #ffbe0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  filter: drop-shadow(0 4px 18px rgba(20,6,40,.45));
+}
+body.theme-festival .hero-amp {
+  color: #ffbe0b;
+  -webkit-text-fill-color: #ffbe0b;
+  font-style: normal;
+  font-size: .44em;
+}
+body.theme-festival .hero-date-pill {
+  border-color: rgba(255,190,11,.75);
+  color: #fff2c8;
+  background: rgba(20,6,40,.25);
+}
+body.theme-festival .hero-content::after {
+  content: 'LIVE MAIN STAGE · ALL NIGHT LONG';
+  display: block;
+  margin-top: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px;
+  letter-spacing: .34em;
+  color: #ffbe0b;
+}
+body.theme-festival .template-ornament { color: #ffbe0b; }
+body.theme-festival .section { border-bottom: 1px solid rgba(255,71,126,.16); }
+body.theme-festival .section-alt { background-color: #170c2e; }
+body.theme-festival .section > .eyebrow { color: #ff477e; letter-spacing: .34em; }
+body.theme-festival .section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .005em;
+}
+body.theme-festival .cd-box,
+body.theme-festival .timeline-card,
+body.theme-festival .info-card,
+body.theme-festival .rsvp-form,
+body.theme-festival .iban-box {
+  background: linear-gradient(160deg, #251147, #1a0c33);
+  border: 1px solid rgba(255,71,126,.35);
+  border-left: 3px solid #ff477e;
+  border-radius: 4px 14px 14px 4px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+body.theme-festival .cd-num { color: #ffbe0b; }
+body.theme-festival .timeline::before { background: linear-gradient(180deg, #ffbe0b, #ff477e); }
+body.theme-festival .timeline-dot {
+  background: #ffbe0b;
+  border-color: #ffbe0b;
+  color: #1c0d33;
+  box-shadow: 0 0 18px rgba(255,190,11,.45);
+}
+body.theme-festival .timeline-time { color: #ffbe0b; letter-spacing: .16em; }
+body.theme-festival .timeline-title { font-family: 'Fraunces', serif; font-weight: 700; }
+body.theme-festival .gallery-item {
+  border: 1px solid rgba(255,190,11,.5);
+  box-shadow: 0 0 22px rgba(255,71,126,.22), inset 0 0 0 3px rgba(28,13,51,.9);
+}
+body.theme-festival .info-card h4 { color: #ffbe0b; }
+body.theme-festival .iban-box { border-style: solid; border-color: rgba(255,190,11,.5); }
+body.theme-festival .rsvp-form { padding-top: 42px; position: relative; }
+body.theme-festival .rsvp-form::before {
+  content: 'VIP ACCESS · WEDFEST';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, #ff477e, #ffbe0b);
+  color: #1c0d33;
+  font: 800 8.5px/1.4 'Montserrat', sans-serif;
+  letter-spacing: .28em;
+  text-align: center;
+  border-radius: 2px 12px 0 0;
+}
+body.theme-festival .btn-primary {
+  background: linear-gradient(135deg, #ff477e, #ffbe0b);
+  border-color: transparent;
+  color: #1c0d33;
+  box-shadow: 0 12px 26px rgba(255,71,126,.3);
+}
+body.theme-festival .btn-outline { border-color: rgba(255,190,11,.7); color: #ffbe0b; }
+body.theme-festival .btn-outline:hover { background: #ffbe0b; border-color: #ffbe0b; color: #1c0d33; }
+body.theme-festival .divider-ornament { color: #ffbe0b; }
+body.theme-festival .invite-footer { border-top: 1px solid rgba(255,190,11,.3); }
+body.theme-festival .invite-footer h3 { color: #ffbe0b; text-transform: uppercase; font-family: 'Fraunces', serif; }
+
+
+/* ==========================================================================
+   16 · HARRY POTTER & HOGWARTS
+   Pergamino envejecido, lacre escarlata, El Profeta y Andén 9¾.
+   ========================================================================== */
+body.theme-harrypotter {
+  --bg-page: #efe2c4;
+  --bg-card: #f7edd6;
+  --bg-alt: #f0e3c6;
+  --text-main: #3b2414;
+  --text-muted: #6b5136;
+  --accent: #740001;
+  --accent-light: #eadcc0;
+  --gold: #d3a625;
+  --border-col: #cdb78d;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --radius-card: 3px;
+  --hero-overlay: linear-gradient(180deg, rgba(60,30,10,.04) 0%, rgba(50,24,8,.32) 100%);
+  background-color: #e7d8b8;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(116,0,1,.08), transparent 40%),
+    radial-gradient(ellipse at 85% 80%, rgba(116,0,1,.06), transparent 45%);
+}
+body.theme-harrypotter .invite-shell {
+  box-shadow: inset 0 0 60px rgba(90,50,10,.16), 0 22px 60px rgba(59,36,20,.2);
+}
+body.theme-harrypotter .hero {
+  color: #3b2414;
+  background-color: #f3e7c9;
+  box-shadow: inset 0 0 90px rgba(90,50,10,.28);
+  background-image:
+    radial-gradient(ellipse at 18% 12%, rgba(120,70,20,.24), transparent 38%),
+    radial-gradient(ellipse at 82% 72%, rgba(120,70,20,.2), transparent 42%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,250,235,.6), transparent 70%),
+    linear-gradient(180deg, #f6ecd1 0%, #f0e2c0 62%, #e6d2a8 100%);
+}
+body.theme-harrypotter .hero::after {
+  background: var(--hero-overlay);
+  box-shadow: inset 0 0 120px rgba(90,50,10,.35);
+}
+body.theme-harrypotter .hero::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(116,0,1,.65);
+  outline: 1px solid rgba(211,166,37,.65);
+  outline-offset: 4px;
+  pointer-events: none;
+  z-index: 2;
+}
+body.theme-harrypotter .hero .eyebrow { color: #740001; letter-spacing: .3em; }
+body.theme-harrypotter .hero .eyebrow::before {
+  content: '✦ COLEGIO HOGWARTS DE MAGIA Y HECHICERÍA ✦';
+  display: block;
+  margin: 0 auto 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: #740001;
+}
+body.theme-harrypotter .hero-names {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(28px, 7.6vw, 44px);
+  color: #43240f;
+}
+body.theme-harrypotter .hero-amp { color: #740001; font-size: .5em; }
+body.theme-harrypotter .hero-date-pill {
+  border-color: rgba(116,0,1,.5);
+  color: #4a2a12;
+  background: rgba(255,248,230,.5);
+}
+body.theme-harrypotter .template-ornament { color: #740001; }
+body.theme-harrypotter .hero-content::before {
+  content: 'H';
+  display: grid;
+  place-items: center;
+  font: 700 92px/1 'Cinzel', serif;
+  color: rgba(116,0,1,.08);
+  position: absolute;
+  left: 50%;
+  top: -292px;
+  width: 178px;
+  height: 178px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 1px solid rgba(116,0,1,.22);
+  box-shadow:
+    inset 0 0 0 5px rgba(255,248,230,.45),
+    inset 0 0 0 6px rgba(211,166,37,.38),
+    0 0 0 8px rgba(211,166,37,.08);
+  background:
+    radial-gradient(circle at 50% 4%, rgba(211,166,37,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 96%, rgba(211,166,37,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 4% 50%, rgba(211,166,37,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 96% 50%, rgba(211,166,37,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 50%, rgba(255,248,230,.28), transparent 68%);
+  opacity: .9;
+  pointer-events: none;
+}
+body.theme-harrypotter .section {
+  background-color: #f6ecd5;
+  background-image: repeating-linear-gradient(0deg, rgba(59,36,20,.035) 0 1px, transparent 1px 3px);
+  border-bottom: 1px solid rgba(116,0,1,.18);
+}
+body.theme-harrypotter .section-alt { background-color: #efe1c2; }
+body.theme-harrypotter .section > .eyebrow { color: #740001; letter-spacing: .3em; }
+body.theme-harrypotter .section-title { color: #4a240f; }
+body.theme-harrypotter #sec-story {
+  background-color: #f5e9cd;
+  border-top: 4px solid #740001;
+  border-bottom: 4px solid #740001;
+  box-shadow: inset 0 0 0 9px #f5e9cd, inset 0 0 0 11px rgba(116,0,1,.5);
+}
+body.theme-harrypotter #sec-story .section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 30px;
+}
+body.theme-harrypotter #sec-story .section-title::before {
+  content: 'EL PROFETA · EDICIÓN ESPECIAL DE BODAS';
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: .28em;
+  color: #740001;
+  margin-bottom: 8px;
+}
+body.theme-harrypotter #sec-story .section-text { text-align: justify; font-size: 15.5px; }
+body.theme-harrypotter #sec-story .section-text::first-letter {
+  float: left;
+  font-family: 'Cinzel', serif;
+  font-size: 48px;
+  line-height: .8;
+  padding: 2px 8px 0 0;
+  color: #740001;
+}
+body.theme-harrypotter .cd-box,
+body.theme-harrypotter .timeline-card,
+body.theme-harrypotter .info-card,
+body.theme-harrypotter .iban-box {
+  background: #f8efdb;
+  border: 1px solid rgba(116,0,1,.35);
+  box-shadow: inset 0 0 0 3px #f8efdb, inset 0 0 0 4px rgba(211,166,37,.4);
+}
+body.theme-harrypotter .cd-num { color: #740001; }
+body.theme-harrypotter #sec-itinerary .eyebrow::before {
+  content: '«Juro solemnemente que esto es una travesura»';
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: .03em;
+  color: #7a5a33;
+}
+body.theme-harrypotter .timeline::before {
+  background: repeating-linear-gradient(180deg, rgba(116,0,1,.55) 0 4px, transparent 4px 9px);
+}
+body.theme-harrypotter .timeline::after {
+  content: '«Travesura realizada»';
+  display: block;
+  margin-top: 14px;
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #7a5a33;
+}
+body.theme-harrypotter .timeline-dot {
+  background: #f6ecd5;
+  border: 1px solid #740001;
+  color: #740001;
+  box-shadow: 0 0 0 3px rgba(211,166,37,.25);
+}
+body.theme-harrypotter .timeline-time { color: #740001; letter-spacing: .14em; }
+body.theme-harrypotter .gallery-item {
+  border: 1px solid rgba(116,0,1,.45);
+  box-shadow: 0 0 0 4px #f6ecd5, 0 0 0 5px rgba(211,166,37,.45);
+}
+body.theme-harrypotter .info-card h4 { color: #740001; }
+body.theme-harrypotter .iban-box { border-style: solid; border-color: rgba(116,0,1,.45); }
+body.theme-harrypotter .rsvp-form {
+  position: relative;
+  padding-top: 48px;
+  background: #f8efdb;
+  border: 1px solid #740001;
+  box-shadow: inset 0 0 0 4px #f8efdb, inset 0 0 0 5px rgba(211,166,37,.55);
+}
+body.theme-harrypotter .rsvp-form::before {
+  content: 'HOGWARTS EXPRESS · LONDRES → HOGWARTS · ANDÉN 9¾';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: #740001;
+  color: #f0d9a6;
+  font: 600 8px/1.6 'Cinzel', serif;
+  letter-spacing: .14em;
+  text-align: center;
+  border-radius: 2px 2px 0 0;
+}
+body.theme-harrypotter .btn-primary { background: #740001; border-color: #740001; color: #f6e8c8; }
+body.theme-harrypotter .btn-outline { border-color: #740001; color: #740001; background: #f8efdb; }
+body.theme-harrypotter .btn-outline:hover { background: #740001; border-color: #740001; color: #f6e8c8; }
+body.theme-harrypotter .divider-ornament { color: #d3a625; }
+body.theme-harrypotter .invite-footer { background: #740001; color: #ecd9a8; border-top: 0; }
+body.theme-harrypotter .invite-footer h3 { color: #f0d9a6; letter-spacing: .08em; }
+body.theme-harrypotter .invite-footer a { color: #ecd9a8; }
+
+/* ==========================================================================
+   17 · EL SEÑOR DE LOS ANILLOS
+   Rivendel, pergamino élfico, halo del Anillo Único y arcos de la Comarca.
+   ========================================================================== */
+body.theme-lotr {
+  --bg-page: #ece3cf;
+  --bg-card: #f4efe4;
+  --bg-alt: #e7dcc4;
+  --text-main: #22301f;
+  --text-muted: #5d5a45;
+  --accent: #1b3324;
+  --accent-light: #dfd6bd;
+  --gold: #d4af37;
+  --border-col: #c9b98f;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --radius-card: 4px;
+  --hero-overlay: linear-gradient(180deg, rgba(8,18,12,.14) 0%, rgba(6,14,9,.58) 100%);
+  background-color: #e7dcc4;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(27,51,36,.18), transparent 55%),
+    radial-gradient(ellipse at 90% 90%, rgba(212,175,55,.12), transparent 45%);
+}
+body.theme-lotr .invite-shell { box-shadow: 0 26px 70px rgba(34,48,31,.24); }
+body.theme-lotr .hero {
+  background-color: #132418;
+  background-image:
+    radial-gradient(ellipse at 50% 40%, rgba(212,175,55,.2), transparent 52%),
+    radial-gradient(ellipse at 20% 80%, rgba(70,110,80,.3), transparent 55%),
+    linear-gradient(180deg, #23412c 0%, #1b3324 52%, #0e1c13 100%);
+  color: #f4efe4;
+}
+body.theme-lotr .hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(230px, 58vw);
+  height: min(230px, 58vw);
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  border: 2px solid rgba(212,175,55,.75);
+  box-shadow:
+    0 0 0 7px rgba(212,175,55,.12),
+    0 0 34px rgba(212,175,55,.35),
+    inset 0 0 34px rgba(212,175,55,.22);
+  pointer-events: none;
+  z-index: 1;
+}
+body.theme-lotr .hero .eyebrow { color: #e6c985; letter-spacing: .24em; }
+body.theme-lotr .hero .eyebrow::before {
+  content: '✦ UN ANILLO PARA UNIRLOS A TODOS · TIERRA MEDIA ✦';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 7.5px;
+  letter-spacing: .18em;
+  line-height: 1.8;
+  color: #e6c985;
+  max-width: 290px;
+}
+body.theme-lotr .hero-names {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-size: clamp(22px, 6.6vw, 34px);
+  color: #f4efe4;
+  text-shadow: 0 2px 20px rgba(212,175,55,.35);
+}
+body.theme-lotr .hero-amp { color: #d4af37; font-size: .5em; font-style: normal; }
+body.theme-lotr .hero-date-pill { border-color: rgba(212,175,55,.6); color: #f0e2bc; background: rgba(10,20,14,.3); }
+body.theme-lotr .template-ornament { color: #e6c985; }
+body.theme-lotr .section {
+  background-color: #f4efe4;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(27,51,36,.05), transparent 26%),
+    radial-gradient(circle at 88% 78%, rgba(27,51,36,.05), transparent 26%);
+  border-bottom: 1px solid rgba(27,51,36,.18);
+}
+body.theme-lotr .section-alt { background-color: #e9dfc7; }
+body.theme-lotr .section > .eyebrow { color: #4f6440; letter-spacing: .28em; }
+body.theme-lotr .section-title { color: #1b3324; letter-spacing: .03em; }
+body.theme-lotr .cd-box,
+body.theme-lotr .timeline-card,
+body.theme-lotr .info-card,
+body.theme-lotr .rsvp-form,
+body.theme-lotr .iban-box {
+  background: #f4efe4;
+  border: 1px solid rgba(212,175,55,.65);
+  box-shadow: inset 0 0 0 3px #f4efe4, inset 0 0 0 4px rgba(27,51,36,.25), 0 10px 24px rgba(27,51,36,.08);
+}
+body.theme-lotr .cd-num { color: #1b3324; }
+body.theme-lotr .info-card,
+body.theme-lotr .gallery-item {
+  border-radius: 50% 50% 14px 14px / 32% 32% 14px 14px;
+}
+body.theme-lotr .info-card { padding: 42px 24px 30px; }
+body.theme-lotr .gallery-item:first-child { aspect-ratio: 4 / 4.4; }
+body.theme-lotr .timeline::before {
+  background: repeating-linear-gradient(180deg, rgba(212,175,55,.85) 0 5px, transparent 5px 11px);
+}
+body.theme-lotr .timeline-dot { background: #1b3324; border-color: #d4af37; color: #e6c985; }
+body.theme-lotr .timeline-time { color: #8a6d24; letter-spacing: .18em; }
+body.theme-lotr #sec-itinerary .eyebrow::before {
+  content: 'EL VIAJE DE LA COMUNIDAD';
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: .26em;
+  color: #8a6d24;
+}
+body.theme-lotr .info-card h4 { color: #1b3324; }
+body.theme-lotr .iban-box { border-style: solid; border-color: rgba(212,175,55,.7); }
+body.theme-lotr .btn-primary { background: #1b3324; border-color: #1b3324; color: #f4efe4; }
+body.theme-lotr .btn-outline { border-color: #8a6d24; color: #42502f; background: #f4efe4; }
+body.theme-lotr .btn-outline:hover { background: #d4af37; border-color: #d4af37; color: #1b3324; }
+body.theme-lotr .divider-ornament { color: #d4af37; }
+body.theme-lotr .invite-footer { background: #1b3324; color: #d9cfb6; border-top: 0; }
+body.theme-lotr .invite-footer h3 { color: #e6c985; letter-spacing: .1em; }
+body.theme-lotr .invite-footer a { color: #d9cfb6; }
+
+
+/* ==========================================================================
+   18 · PREMIOS OSCAR & HOLLYWOOD
+   Póster de estreno, terciopelo rojo, marquesina de oro y entrada VIP.
+   ========================================================================== */
+body.theme-hollywood {
+  --bg-page: #0b0b0b;
+  --bg-card: #121212;
+  --bg-alt: #161513;
+  --text-main: #f4efe4;
+  --text-muted: #b9b0a0;
+  --accent: #c90016;
+  --accent-light: #2a0f12;
+  --gold: #e5c158;
+  --border-col: #2c2b28;
+  --font-heading: 'Bodoni Moda', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --radius-card: 2px;
+  --hero-overlay: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.52) 60%, rgba(0,0,0,.9) 100%);
+  background-color: #0b0b0b;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(229,193,88,.07), transparent 50%);
+}
+body.theme-hollywood .invite-shell { box-shadow: 0 30px 90px rgba(0,0,0,.8); }
+body.theme-hollywood .hero {
+  background-color: #0b0b0b;
+  background-image:
+    radial-gradient(ellipse at 50% 8%, rgba(229,193,88,.26), transparent 52%),
+    radial-gradient(ellipse at 50% 50%, rgba(201,0,22,.2), transparent 66%),
+    linear-gradient(180deg, #1c0b0d 0%, #0e0809 58%, #0b0b0b 100%);
+  color: #f6eed9;
+}
+body.theme-hollywood .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(90,6,12,.9) 0%, rgba(90,6,12,.25) 60%, rgba(90,6,12,0) 100%),
+    linear-gradient(270deg, rgba(90,6,12,.9) 0%, rgba(90,6,12,.25) 60%, rgba(90,6,12,0) 100%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 2px, transparent 2px 24px);
+  background-size: 30% 100%, 30% 100%, 30% 100%, 30% 100%;
+  background-position: left top, right top, left top, right top;
+  background-repeat: no-repeat;
+  opacity: .9;
+}
+body.theme-hollywood .hero .eyebrow { color: #e5c158; letter-spacing: .3em; }
+body.theme-hollywood .hero .eyebrow::before {
+  content: '★ THE ACADEMY AWARDS · Y EL OSCAR ES PARA... ★';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 7.5px;
+  letter-spacing: .24em;
+  line-height: 1.8;
+  color: #e5c158;
+}
+body.theme-hollywood .hero-names {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: clamp(30px, 8.6vw, 54px);
+  color: #f1d98f;
+  text-shadow: 0 4px 26px rgba(229,193,88,.3);
+}
+body.theme-hollywood .hero-amp { color: #c90016; font-style: normal; font-size: .46em; }
+body.theme-hollywood .hero-date-pill {
+  border-color: rgba(229,193,88,.65);
+  color: #f6eed9;
+  background: rgba(201,0,22,.35);
+}
+body.theme-hollywood .hero-content::after {
+  content: 'UNA PRODUCCIÓN DE AMOR ETERNO · PROTAGONIZADA POR LOS NOVIOS';
+  display: block;
+  margin-top: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6.5px;
+  letter-spacing: .26em;
+  line-height: 1.8;
+  color: rgba(229,193,88,.85);
+}
+body.theme-hollywood .template-ornament { color: #e5c158; }
+body.theme-hollywood .hero-content::before {
+  content: '';
+  position: absolute;
+  inset: -16px -10px;
+  border: 1px solid rgba(229,193,88,.42);
+  box-shadow: 0 0 0 4px rgba(229,193,88,.06);
+  pointer-events: none;
+}
+body.theme-hollywood .section { border-bottom: 1px solid rgba(229,193,88,.18); }
+body.theme-hollywood .section-alt { background-color: #161513; }
+body.theme-hollywood .section > .eyebrow { color: #e5c158; letter-spacing: .32em; }
+body.theme-hollywood .section-title { font-weight: 400; letter-spacing: .02em; color: #f4efe4; }
+body.theme-hollywood .cd-box,
+body.theme-hollywood .timeline-card,
+body.theme-hollywood .info-card,
+body.theme-hollywood .rsvp-form,
+body.theme-hollywood .iban-box {
+  background: linear-gradient(160deg, #171717, #101010);
+  border: 1px solid rgba(229,193,88,.4);
+  box-shadow: inset 0 0 0 3px #101010, inset 0 0 0 4px rgba(201,0,22,.25), 0 12px 30px rgba(0,0,0,.5);
+}
+body.theme-hollywood .cd-num { color: #e5c158; }
+body.theme-hollywood .timeline::before { background: linear-gradient(180deg, #c90016, #e5c158); }
+body.theme-hollywood .timeline-dot { background: #c90016; border-color: #e5c158; color: #f6eed9; }
+body.theme-hollywood .timeline-time { color: #e5c158; letter-spacing: .16em; }
+body.theme-hollywood .timeline-title { font-family: 'Bodoni Moda', serif; font-size: 22px; }
+body.theme-hollywood .gallery-grid {
+  background: #000;
+  padding: 18px 12px;
+  border: 1px solid #2c2b28;
+  gap: 20px;
+}
+body.theme-hollywood .gallery-item { border: 0; border-radius: 0; overflow: visible; }
+body.theme-hollywood .gallery-item img { border-radius: 0; }
+body.theme-hollywood .gallery-item::before,
+body.theme-hollywood .gallery-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, #0b0b0b 0 5px, #e5c158 5px 9px);
+  opacity: .8;
+}
+body.theme-hollywood .gallery-item::before { top: -8px; }
+body.theme-hollywood .gallery-item::after { bottom: -8px; }
+body.theme-hollywood .info-card h4 { color: #e5c158; }
+body.theme-hollywood .iban-box { border-style: solid; border-color: rgba(229,193,88,.5); }
+body.theme-hollywood .rsvp-form { position: relative; padding-top: 46px; }
+body.theme-hollywood .rsvp-form::before {
+  content: 'VIP PREMIERE · ADMIT ONE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: #c90016;
+  color: #f6eed9;
+  font: 700 9px/1.5 'Montserrat', sans-serif;
+  letter-spacing: .3em;
+  text-align: center;
+  border-radius: 1px 1px 0 0;
+}
+body.theme-hollywood .btn-primary { background: #c90016; border-color: #c90016; color: #f6eed9; }
+body.theme-hollywood .btn-outline { border-color: #e5c158; color: #e5c158; background: transparent; }
+body.theme-hollywood .btn-outline:hover { background: #e5c158; border-color: #e5c158; color: #0b0b0b; }
+body.theme-hollywood .divider-ornament { color: #e5c158; }
+body.theme-hollywood .invite-footer { border-top: 1px solid rgba(229,193,88,.25); }
+body.theme-hollywood .invite-footer h3 { color: #e5c158; text-transform: uppercase; letter-spacing: .12em; font-family: 'Bodoni Moda', serif; }
+
+/* ==========================================================================
+   19 · GAMER: PLAYSTATION & CO-OP
+   HUD, rejilla synthwave, neones cian/magenta y sistema de misiones.
+   ========================================================================== */
+body.theme-gamer {
+  --bg-page: #090b10;
+  --bg-card: #0e1320;
+  --bg-alt: #0b0f19;
+  --text-main: #e9f6ff;
+  --text-muted: #8fa3bd;
+  --accent: #00f0ff;
+  --accent-light: #122236;
+  --gold: #ff0055;
+  --border-col: #1d2b44;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-card: 4px;
+  --hero-overlay: linear-gradient(180deg, rgba(9,11,16,.04) 0%, rgba(9,11,16,.32) 58%, rgba(9,11,16,.58) 100%);
+  background-color: #090b10;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255,0,85,.1), transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(0,240,255,.06), transparent 40%);
+}
+body.theme-gamer .invite-shell { box-shadow: 0 0 0 1px rgba(0,240,255,.18), 0 30px 90px rgba(0,0,0,.75); }
+body.theme-gamer .hero {
+  background-color: #0b0716;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px),
+    radial-gradient(circle at 50% 30%, rgba(255,0,85,.4), transparent 42%),
+    radial-gradient(circle at 50% 34%, rgba(255,120,40,.18), transparent 32%),
+    linear-gradient(180deg, #1a0b2e 0%, #0d0a1e 55%, #090b10 100%);
+  color: #eafcff;
+}
+body.theme-gamer .hero::before {
+  content: '';
+  position: absolute;
+  left: -40%;
+  right: -40%;
+  bottom: -2%;
+  height: 48%;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,240,255,.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,.55) 1px, transparent 1px);
+  background-size: 38px 38px;
+  transform: perspective(340px) rotateX(52deg);
+  transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+  opacity: .8;
+}
+body.theme-gamer .hero::after { background: var(--hero-overlay); }
+body.theme-gamer .hero .eyebrow { color: #00f0ff; letter-spacing: .22em; }
+body.theme-gamer .hero .eyebrow::before {
+  content: '△ ○ × □ · CO-OP MODE: PLAYER 1 & PLAYER 2 — PRESS START';
+  display: block;
+  margin: 0 auto 12px;
+  font-size: 7.5px;
+  letter-spacing: .18em;
+  line-height: 1.9;
+  color: #00f0ff;
+}
+body.theme-gamer .hero-names {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  font-size: clamp(30px, 9vw, 54px);
+  color: #ffffff;
+  text-shadow:
+    0 0 16px rgba(0,240,255,.55),
+    0 0 38px rgba(255,0,85,.35);
+}
+body.theme-gamer .hero-amp { color: #ff0055; font-style: normal; font-size: .46em; }
+body.theme-gamer .hero-date-pill {
+  border-color: rgba(0,240,255,.6);
+  color: #d6fbff;
+  background: rgba(0,240,255,.08);
+  box-shadow: 0 0 18px rgba(0,240,255,.18);
+}
+body.theme-gamer .template-ornament { color: #00f0ff; }
+body.theme-gamer .section { position: relative; border-bottom: 1px solid rgba(0,240,255,.14); }
+body.theme-gamer .section-alt { background-color: #0b0f19; }
+body.theme-gamer .section > .eyebrow { color: #00f0ff; letter-spacing: .32em; }
+body.theme-gamer .section-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: clamp(22px, 6vw, 32px);
+}
+body.theme-gamer .section-title::after {
+  content: '';
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, #00f0ff, #ff0055);
+  box-shadow: 0 0 14px rgba(0,240,255,.6);
+}
+body.theme-gamer .cd-box,
+body.theme-gamer .timeline-card,
+body.theme-gamer .info-card,
+body.theme-gamer .iban-box {
+  background: linear-gradient(160deg, #101a2c, #0b111c);
+  border: 1px solid rgba(0,240,255,.35);
+  box-shadow: inset 0 0 22px rgba(0,240,255,.07), 0 10px 26px rgba(0,0,0,.4);
+  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+body.theme-gamer .cd-num { color: #00f0ff; text-shadow: 0 0 16px rgba(0,240,255,.5); }
+body.theme-gamer #sec-itinerary .eyebrow::before {
+  content: 'MAIN QUESTS';
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: .3em;
+  color: #ff0055;
+}
+body.theme-gamer .timeline::before { background: linear-gradient(180deg, rgba(0,240,255,.7), rgba(255,0,85,.7)); }
+body.theme-gamer .timeline-dot {
+  background: #0b111c;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  box-shadow: 0 0 14px rgba(0,240,255,.35);
+}
+body.theme-gamer .timeline-time { color: #00f0ff; letter-spacing: .18em; }
+body.theme-gamer .timeline-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: .04em;
+}
+body.theme-gamer .gallery-item {
+  border: 1px solid rgba(0,240,255,.4);
+  box-shadow: 0 0 18px rgba(0,240,255,.18);
+}
+body.theme-gamer #sec-story {
+  background-image: linear-gradient(180deg, rgba(0,240,255,.07), transparent 60%);
+}
+body.theme-gamer #sec-story .section-title::before {
+  content: '✦ TROFEO DE PLATINO DESBLOQUEADO: ¡NOS CASAMOS!';
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: .16em;
+  line-height: 1.8;
+  color: #ffd54a;
+}
+body.theme-gamer .info-card h4 { color: #00f0ff; text-transform: uppercase; font-size: 15px; letter-spacing: .06em; }
+body.theme-gamer .iban-box { border-style: solid; border-color: rgba(0,240,255,.35); }
+body.theme-gamer .rsvp-form {
+  position: relative;
+  padding-top: 46px;
+  background: linear-gradient(160deg, #101a2c, #0b111c);
+  border: 1px solid rgba(0,240,255,.35);
+  box-shadow: inset 0 0 22px rgba(0,240,255,.07);
+  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+body.theme-gamer .rsvp-form::before {
+  content: '¿ACEPTAS LA PARTIDA COOPERATIVA? [ READY PLAYER ]';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: linear-gradient(90deg, rgba(0,240,255,.16), rgba(255,0,85,.16));
+  color: #eafcff;
+  font: 700 8px/1.7 'Montserrat', sans-serif;
+  letter-spacing: .14em;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,240,255,.3);
+}
+body.theme-gamer .btn-primary {
+  background: linear-gradient(135deg, #00f0ff, #0088ff);
+  border-color: transparent;
+  color: #04121c;
+  box-shadow: 0 0 22px rgba(0,240,255,.35);
+}
+body.theme-gamer .btn-outline { border-color: #00f0ff; color: #00f0ff; background: transparent; }
+body.theme-gamer .btn-outline:hover { background: #00f0ff; border-color: #00f0ff; color: #04121c; }
+body.theme-gamer .divider-ornament { color: #ff0055; }
+body.theme-gamer .invite-footer { border-top: 1px solid rgba(0,240,255,.2); }
+body.theme-gamer .invite-footer h3 { color: #00f0ff; text-transform: uppercase; letter-spacing: .14em; font-size: 22px; }
+
+/* ==========================================================================
+   09 · GALAXIA LEJANA · mejora del opening crawl
+   ========================================================================== */
+body.theme-starwars .hero .eyebrow::before {
+  content: 'HACE MUCHO TIEMPO, EN UNA GALAXIA MUY, MUY LEJANA...';
+  display: block;
+  margin: 0 auto 14px;
+  max-width: 280px;
+  font-size: 8px;
+  letter-spacing: .26em;
+  line-height: 1.9;
+  color: #4bd5ee;
+  opacity: .95;
+}
+body.theme-starwars #sec-story .section-text {
+  transform: perspective(900px) rotateX(7deg);
+  transform-origin: 50% 0;
+  letter-spacing: .05em;
+  line-height: 2;
+  color: #ffe81f;
+  text-shadow: 0 0 18px rgba(255,232,31,.3);
+}
+body.theme-starwars #sec-story .section-text::first-letter {
+  color: #ffe81f;
+  text-shadow: 0 0 22px rgba(255,232,31,.5);
+}
+
+/* ==========================================================================
+   07 · GÓTICO & ROCK · lema grabado
+   ========================================================================== */
+body.theme-gotico .hero .eyebrow::after {
+  content: '† TILL DEATH DO US PART †';
+  display: block;
+  margin-top: 12px;
+  font-size: 8px;
+  letter-spacing: .4em;
+  color: #b9b2a6;
+  opacity: .8;
+}
+
+/* ==========================================================================
+   AJUSTES DE LAS NUEVAS PLANTILLAS EN MÓVIL
+   ========================================================================== */
+@media (max-width: 420px) {
+  body.theme-ibiza .hero-content { padding: 18px 12px 10px; }
+  body.theme-ibiza .hero-names { font-size: clamp(38px, 11vw, 46px); }
+  body.theme-bridgerton .hero { padding-top: 44px; }
+  body.theme-bridgerton .hero-names { font-size: clamp(48px, 15vw, 64px); }
+  body.theme-amalfi .hero-names { font-size: clamp(34px, 9.6vw, 44px); }
+  body.theme-bodega .hero-names { font-size: clamp(26px, 8vw, 34px); }
+  body.theme-viajeros .hero-names { font-size: clamp(22px, 6.6vw, 30px); }
+  body.theme-viajeros .hero-content::before { width: 60px; height: 60px; top: -72px; }
+  body.theme-festival .hero-names { font-size: clamp(36px, 11.5vw, 48px); }
+  body.theme-harrypotter .hero-names { font-size: clamp(24px, 6.8vw, 30px); }
+  body.theme-lotr .hero-names { font-size: clamp(22px, 6.4vw, 30px); }
+  body.theme-hollywood .hero-names { font-size: clamp(26px, 8vw, 36px); }
+  body.theme-gamer .hero-names { font-size: clamp(26px, 8.4vw, 34px); }
+  body.theme-bridgerton .hero .eyebrow::before,
+  body.theme-harrypotter .hero .eyebrow::before,
+  body.theme-lotr .hero .eyebrow::before { letter-spacing: .16em; }
+  body.theme-harrypotter .rsvp-form::before { content: 'HOGWARTS EXPRESS · ANDÉN 9¾'; }
+  body.theme-festival .rsvp-form::before,
+  body.theme-viajeros .rsvp-form::before,
+  body.theme-harrypotter .rsvp-form::before,
+  body.theme-hollywood .rsvp-form::before,
+  body.theme-gamer .rsvp-form::before { font-size: 7.5px; letter-spacing: .1em; line-height: 1.7; }
+  body.theme-viajeros .timeline-card { grid-template-columns: 62px 1fr; }
+  body.theme-viajeros .timeline-title { font-size: 14px; }
+  body.theme-lotr .info-card { padding: 34px 18px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-template] .gallery-item img,
+  body[data-template] .timeline-card,
+  body[data-template] .info-card { transition: none; }
+  body[data-template] .gallery-item:hover img { transform: none; }
+}
+
+/* ==========================================================================
+   RESPONSIVE · 360 / 390 / 768
+   ========================================================================== */
+@media (min-width: 768px) {
+  body.theme-starwars { background-attachment: fixed; }
+}
+@media (max-width: 420px) {
+  body[data-template] .section { padding: 48px 20px; }
+  body[data-template] .section > .eyebrow { letter-spacing: .22em; gap: 8px; }
+  body[data-template] .section > .eyebrow::before,
+  body[data-template] .section > .eyebrow::after { width: 14px; }
+  body.theme-editorial .hero-names { font-size: clamp(40px, 12vw, 58px); letter-spacing: -.02em; }
+  body.theme-editorial .section { padding: 52px 20px; }
+  body.theme-flores .hero-names { font-size: clamp(46px, 15vw, 68px); }
+  body.theme-terracota .hero-arch-frame { padding: 26px 12px 22px; }
+  body.theme-terracota .info-card { padding: 28px 16px 22px; border-radius: 64px 64px 16px 16px; }
+  body.theme-elegante .section { padding: 50px 20px; }
+  body.theme-elegante .section > .eyebrow { letter-spacing: .26em; }
+  body.theme-elegante .section-title { letter-spacing: .1em; }
+  body.theme-starwars .hero-names { letter-spacing: .08em; }
+  body.theme-starwars .section > .eyebrow { letter-spacing: .26em; }
+  body.theme-starwars .section-title { letter-spacing: .1em; }
+  body.theme-gotico .hero-names { font-size: clamp(30px, 8.4vw, 40px); }
+  .countdown-grid { gap: 7px; }
+  .cd-box { padding: 12px 4px; }
+  .cd-num { font-size: 24px; }
+}
+@media (max-width: 480px) {
+  #rsvp-form > .form-row { grid-template-columns: 1fr; margin-bottom: 15px; }
+  #rsvp-form > .form-row .form-group { margin-bottom: 0; }
+  #rsvp-form > .form-row .form-group + .form-group { margin-top: 12px; }
+  .rsvp-form { padding: 22px 18px; }
+  .iban-number { font-size: 14px; letter-spacing: 1px; word-break: break-word; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wax-seal { animation: none !important; }
+  .hero-photo-bg { transition: none !important; }
+}
+

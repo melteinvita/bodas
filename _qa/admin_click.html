@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QA admin</title>
+<style>html,body{margin:0;background:#111;color:#eee;font:12px/1.5 Consolas,monospace}pre{padding:12px;white-space:pre-wrap}iframe{position:fixed;left:-9999px;top:0;border:0;width:1280px;height:900px}</style>
+</head>
+<body>
+<pre id="report">midiendo…</pre>
+<script>
+(function () {
+  var out = [];
+  var report = document.getElementById('report');
+  function log(s) { out.push(s); report.textContent = out.join('\n'); }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  var f = document.createElement('iframe');
+  f.src = '../admin.html';
+  f.onload = async function () {
+    var doc = f.contentDocument, win = f.contentWindow;
+    win.addEventListener('error', function (e) { log('JS ERROR: ' + e.message); });
+    await sleep(1500);
+    var cards = doc.querySelectorAll('#templates-grid .tpl-card');
+    log('admin cards=' + cards.length);
+    var target = null;
+    cards.forEach(function (c) { if (/19 .*Gamer/.test(c.textContent)) target = c; });
+    if (!target) { log('GAMER CARD MISSING'); return; }
+    log('before selected=' + (doc.querySelector('#templates-grid .tpl-card.selected') ? doc.querySelector('#templates-grid .tpl-card.selected').textContent.trim().slice(0, 30) : '-'));
+    target.click();
+    await sleep(1400);
+    var sel = doc.querySelector('#templates-grid .tpl-card.selected');
+    log('after selected=' + (sel ? sel.textContent.trim().slice(0, 40) : '-') + ' | pressed=' + (sel ? sel.getAttribute('aria-pressed') : '-'));
+    var env = doc.getElementById('envelopeStyle');
+    log('envelopeStyle=' + (env ? env.value : 'MISSING'));
+    var pf = doc.getElementById('preview-iframe');
+    log('preview src=' + (pf ? pf.getAttribute('src') : 'MISSING'));
+    try {
+      var pd = pf.contentDocument;
+      await sleep(600);
+      log('preview body=' + (pd.body ? pd.body.className : 'MISSING'));
+      var pov = pd.getElementById('envelope-overlay');
+      log('preview env=' + (pov ? pov.className : 'MISSING'));
+      log('preview theme sections=' + (pd.querySelectorAll('body[data-template] section').length));
+    } catch (e) { log('preview read error ' + e.message); }
+    log('DONE');
+  };
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>

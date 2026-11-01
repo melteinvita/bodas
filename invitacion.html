@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f3e8">
+  <title>Invitación de Boda</title>
+  <meta name="description" content="Invitación de boda digital con confirmación de asistencia, cuenta atrás, mapa e itinerario.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nuestra boda · Invitación digital">
+  <meta property="og:description" content="Nos casamos y queremos celebrarlo contigo. Consulta todos los detalles y confirma tu asistencia.">
+  <meta property="og:image" content="https://melteinvita.es/img/og-default.jpg">
+  <meta property="og:url" content="https://melteinvita.es/invitacion.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/invitacion.css">
+</head>
+<body class="theme-sobre preload">
+
+  <!-- CAPA 1: SOBRE INTERACTIVO 3D CON SELLO DE LACRE -->
+  <div id="envelope-overlay" class="envelope-overlay env-marfil">
+    <p class="env-top-hint" data-i18n="hint">Tienes una invitación especial · Toca el sello para abrir</p>
+    <div id="envelope-stage" class="envelope-stage">
+      <div class="envelope-box">
+        <div class="envelope-letter">
+          <small id="env-eyebrow">¡NOS CASAMOS!</small>
+          <h3 id="env-names">Alejandro &amp; Martina</h3>
+          <p id="env-date-short">12 · 06 · 2027</p>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap"></div>
+        <button type="button" id="wax-seal" class="wax-seal" aria-label="Abrir la invitación">
+          <span id="seal-initials">A&amp;M</span>
+          <small data-i18n="open">Abrir</small>
+        </button>
+      </div>
+    </div>
+    <button type="button" id="env-skip" class="env-skip-btn" data-i18n="skip">Saltar introducción ↗</button>
+  </div>
+
+  <!-- PANTALLA DE ESTADO (404, sin conexión o reintento) -->
+  <div id="invite-status" class="invite-status" hidden>
+    <div class="invite-status-card">
+      <p class="eyebrow" data-i18n="statusEyebrow">INVITACIÓN</p>
+      <h1 id="invite-status-title" data-i18n="statusTitle">No encontramos esta invitación</h1>
+      <p id="invite-status-text" data-i18n="statusText">Comprueba el enlace que te han enviado o vuelve a intentarlo.</p>
+      <button type="button" class="btn-primary" id="invite-retry" data-i18n="retry">Volver a intentar</button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DE MÚSICA -->
+  <button type="button" id="music-toggle" class="music-toggle" title="Activar/Pausar música" aria-label="Activar o pausar la música" style="display:none;">♫</button>
+  <audio id="bg-music" loop preload="none" src="audio/ambiente.mp3"></audio>
+
+  <!-- CONTENEDOR PRINCIPAL DE LA INVITACIÓN -->
+  <main class="invite-shell" id="invite-shell">
+
+    <!-- PORTADA / HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-photo-bg" id="hero-bg"></div>
+      <div class="hero-content hero-arch-frame">
+        <div class="template-ornament" id="hero-ornament"></div>
+        <div class="editorial-big-date" id="editorial-date">12 · 06 · 27</div>
+        <p class="eyebrow" id="eyebrow">¡NOS CASAMOS!</p>
+        <h1 class="hero-names">
+          <span id="n1">Alejandro</span>
+          <i class="hero-amp">&amp;</i>
+          <span id="n2">Martina</span>
+        </h1>
+        <div class="hero-date-pill" id="hero-date-pill">12 DE JUNIO DE 2027</div>
+      </div>
+    </section>
+
+    <!-- BIENVENIDA + CUENTA ATRÁS + CALENDARIO -->
+    <section class="section">
+      <p class="eyebrow" data-i18n="saveDate">RESERVA LA FECHA</p>
+      <h2 class="section-title" id="date-formatted">12 · JUNIO · 2027</h2>
+      <p class="section-text" id="message">Después de compartir tantos momentos inolvidables, queremos celebrar nuestro amor rodeados de las personas que más queremos.</p>
+
+      <div class="countdown-grid" id="countdown-grid">
+        <div class="cd-box"><span class="cd-num" id="cd-days">120</span><span class="cd-label" data-i18n="days">Días</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-hours">14</span><span class="cd-label" data-i18n="hours">Horas</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-mins">35</span><span class="cd-label" data-i18n="mins">Min</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-secs">20</span><span class="cd-label" data-i18n="secs">Seg</span></div>
+      </div>
+
+      <a id="calendar-btn" class="btn-outline" target="_blank" rel="noopener noreferrer" data-i18n="addCal">📅 Añadir a Google Calendar</a>
+      <div class="divider-ornament">✦ ❧ ✦</div>
+    </section>
+
+    <!-- NUESTRA HISTORIA (Ocultable) -->
+    <section class="section section-alt" id="sec-story">
+      <p class="eyebrow" data-i18n="howBegan">CÓMO EMPEZÓ TODO</p>
+      <h2 class="section-title" id="story-title">Nuestra Historia</h2>
+      <p class="section-text" id="story-text"></p>
+    </section>
+
+    <!-- LUGAR PRINCIPAL E ITINERARIO -->
+    <section class="section" id="sec-location">
+      <p class="eyebrow" data-i18n="whereWhen">DÓNDE Y CUÁNDO</p>
+      <h2 class="section-title" id="venue">Finca Los Olivos</h2>
+      <p class="section-text"><strong id="time">12:30 h</strong> · <span id="address">Elche, Alicante</span></p>
+      <a id="map-btn" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="openMaps">📍 Abrir en Google Maps</a>
+
+      <!-- Línea de tiempo de eventos -->
+      <div id="sec-itinerary" style="margin-top:38px;">
+        <p class="eyebrow" data-i18n="program">PROGRAMA DEL GRAN DÍA</p>
+        <div class="timeline" id="timeline-list"></div>
+      </div>
+    </section>
+
+    <!-- GALERÍA DE FOTOS (Ocultable) -->
+    <section class="section section-alt" id="sec-gallery">
+      <p class="eyebrow" data-i18n="moments">NUESTROS MOMENTOS</p>
+      <h2 class="section-title" data-i18n="gallery">Galería</h2>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- DETALLES ÚTILES: VESTIMENTA Y TRANSPORTE (Ocultable) -->
+    <section class="section" id="sec-details">
+      <p class="eyebrow" data-i18n="practical">INFORMACIÓN PRÁCTICA</p>
+      <h2 class="section-title" data-i18n="detailsTitle">Detalles del Evento</h2>
+      <div class="info-cards">
+        <div class="info-card" id="card-dress">
+          <h4 data-i18n="dressTitle">👔 Código de Vestimenta</h4>
+          <p id="dress-code"></p>
+        </div>
+        <div class="info-card" id="card-transport">
+          <h4 data-i18n="busTitle">🚌 Transporte y Alojamiento</h4>
+          <p id="transport-info"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE REGALOS / IBAN (Ocultable) -->
+    <section class="section section-alt" id="sec-gifts">
+      <p class="eyebrow" data-i18n="giftEyebrow">LISTA DE BODAS</p>
+      <h2 class="section-title" data-i18n="giftTitle">Un Detalle Especial</h2>
+      <p class="section-text" id="gift-message"></p>
+      <div class="iban-box" id="iban-box">
+        <span class="iban-number" id="iban-text">ES91 2100 0418 4502 0005 1332</span>
+        <button type="button" class="btn-outline" id="copy-iban-btn" style="margin-top:4px;padding:8px 16px;font-size:11px;" data-i18n="copyIban">📋 Copiar Número de Cuenta</button>
+      </div>
+    </section>
+
+    <!-- CONFIRMACIÓN DE ASISTENCIA (RSVP) -->
+    <section class="section" id="sec-rsvp">
+      <p class="eyebrow" data-i18n="rsvpEyebrow">CONFIRMA TU ASISTENCIA</p>
+      <h2 class="section-title" data-i18n="rsvpTitle">¿Nos acompañas?</h2>
+      <p class="section-text"><span data-i18n="rsvpIntro">Por favor, confírmanos tu asistencia antes del</span> <strong id="rsvp-deadline">15 de mayo de 2027</strong>.</p>
+
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <div class="form-group">
+          <label for="rsvp-name" data-i18n="labelName">Nombre y Apellidos *</label>
+          <input type="text" id="rsvp-name" name="name" required maxlength="160" autocomplete="name" placeholder="Ej. Laura Gómez y Carlos Ruiz" data-i18n-placeholder="phName">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rsvp-attending" data-i18n="labelAttend">¿Asistirás? *</label>
+            <select id="rsvp-attending" name="attending">
+              <option value="Sí" data-i18n-option="attYes">¡Sí, allí estaré!</option>
+              <option value="No" data-i18n-option="attNo">No podré asistir</option>
+            </select>
+          </div>
+          <div class="form-group" id="rsvp-guests-group">
+            <label for="rsvp-guests" data-i18n="labelGuests">Nº de Personas</label>
+            <select id="rsvp-guests" name="guests">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="rsvp-companions-group">
+          <div class="companions-head">
+            <span data-i18n="labelCompanions">Acompañantes</span>
+            <small data-i18n="companionsHint">Indica el nombre y el menú de cada persona (sin contarte a ti).</small>
+          </div>
+          <div id="rsvp-companions" class="companions-list"></div>
+        </div>
+
+        <div class="form-row" id="rsvp-menu-group">
+          <div class="form-group">
+            <label for="rsvp-menu" data-i18n="labelMenu">Preferencia de Menú</label>
+            <select id="rsvp-menu" name="menu">
+              <option value="Estándar" data-i18n-option="menuStandard">Menú Estándar</option>
+              <option value="Vegetariano" data-i18n-option="menuVeg">Vegetariano</option>
+              <option value="Vegano" data-i18n-option="menuVegan">Vegano</option>
+              <option value="Infantil" data-i18n-option="menuKids">Menú Infantil</option>
+              <option value="Sin gluten" data-i18n-option="menuGluten">Sin gluten</option>
+              <option value="Otro" data-i18n-option="menuOther">Otro (lo indico en alergias)</option>
+            </select>
+          </div>
+          <div class="form-group" id="rsvp-bus-group">
+            <label for="rsvp-bus" data-i18n="labelBus">¿Usarás el Autobús?</label>
+            <select id="rsvp-bus" name="bus">
+              <option value="No" data-i18n-option="busNo">No, iré en mi coche</option>
+              <option value="Sí" data-i18n-option="busYes">Sí, reservadme plaza</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" id="rsvp-allergies-group">
+          <label for="rsvp-allergies" data-i18n="labelAllergies">Alergias o Intolerancias Alimentarias</label>
+          <input type="text" id="rsvp-allergies" name="allergies" maxlength="300" placeholder="Ej. Sin gluten, alergia a frutos secos..." data-i18n-placeholder="phAllergies">
+        </div>
+
+        <div class="form-group" id="rsvp-song-group">
+          <label for="rsvp-song" data-i18n="labelSong">🎵 ¿Qué canción no puede faltar en la fiesta?</label>
+          <input type="text" id="rsvp-song" name="song" maxlength="160" placeholder="Ej. Mi Gran Noche - Raphael" data-i18n-placeholder="phSong">
+        </div>
+
+        <div class="form-group consent-group">
+          <label class="consent-label" for="rsvp-consent">
+            <input type="checkbox" id="rsvp-consent" name="consent" required>
+            <span data-i18n="consent">He leído la política de privacidad y acepto el uso de mis datos para gestionar la asistencia y el catering, incluidos los datos de alergias o intolerancias que indique.</span>
+          </label>
+          <p class="privacy-note">
+            <a href="privacidad.html" target="_blank" rel="noopener" data-i18n="privacyLink">Política de privacidad</a>
+            <span aria-hidden="true">·</span>
+            <a href="aviso-legal.html" target="_blank" rel="noopener" data-i18n="legalLink">Aviso legal</a>
+          </p>
+        </div>
+
+        <!-- Campo trampa para bots: si se rellena, no se envía -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="rsvp-website">Website</label>
+          <input type="text" id="rsvp-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn-primary" id="rsvp-submit" style="width:100%;" data-i18n="submitBtn">Enviar Confirmación ✓</button>
+      </form>
+
+      <div class="rsvp-error" id="rsvp-error" hidden role="alert">
+        <strong data-i18n="errorTitle">No hemos podido registrar tu confirmación.</strong>
+        <p id="rsvp-error-msg" data-i18n="errorText">Revisa tu conexión e inténtalo de nuevo. Tus datos siguen rellenados.</p>
+        <button type="button" class="btn-primary" id="rsvp-retry" data-i18n="retrySend">Reintentar envío</button>
+      </div>
+
+      <div class="rsvp-success" id="rsvp-success" role="status">
+        <strong data-i18n="successTitle">¡Muchas gracias!</strong>
+        <span id="rsvp-success-text" data-i18n="successText">Tu confirmación se ha registrado correctamente.</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="invite-footer">
+      <h3 id="footer-names">Alejandro &amp; Martina</h3>
+      <p id="footer-date">12 · 06 · 2027</p>
+      <div style="margin-top:16px;">
+        <button type="button" id="share-wa-btn" class="btn-outline" style="font-size:11px;padding:9px 18px;" data-i18n="shareWa">💬 Compartir por WhatsApp</button>
+      </div>
+      <p class="footer-legal">
+        <a href="aviso-legal.html" data-i18n="legalLink">Aviso legal</a>
+        <span aria-hidden="true">·</span>
+        <a href="privacidad.html" data-i18n="privacyLink">Privacidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="cookies.html" data-i18n="cookiesLink">Cookies</a>
+      </p>
+    </footer>
+
+  </main>
+
+  <noscript>
+    <div class="noscript-warning">Activa JavaScript para ver la invitación y confirmar tu asistencia.</div>
+  </noscript>
+
+  <script src="js/config.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/plantillas.js"></script>
+  <script src="js/invite.js"></script>
+  <script src="js/nube.js"></script>
+  <script src="js/idiomas.js"></script>
+  <script src="js/cookies.js"></script>
+</body>
+</html>

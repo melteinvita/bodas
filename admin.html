@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Panel privado · MelTeInvita</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="admin">
+
+  <!-- BARRA SUPERIOR DE OPERACIONES -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">
+        <strong>MelTeInvita</strong>
+        <small>Panel privado · 19 plantillas + sobre 3D + RSVP</small>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button type="button" class="btn btn-secondary" id="btn-reset">↺ Restaurar demo</button>
+      <button type="button" class="btn btn-secondary" id="btn-export-json">⬇ Exportar boda (.json)</button>
+      <a href="invitacion.html?preview=1" target="_blank" class="btn btn-gold" id="btn-open-invite">↗ Ver invitación</a>
+      <button type="button" class="btn btn-primary" id="btn-save">💾 Guardar cambios</button>
+    </div>
+  </header>
+
+  <!-- BARRA DE PUBLICACIÓN / SESIÓN -->
+  <section class="cloudbar" aria-label="Publicación online">
+    <div class="cloudbar-main">
+      <div class="cloud-field">
+        <label for="cloud-slug">Identificador de la boda (URL)</label>
+        <input type="text" id="cloud-slug" value="alejandro-y-martina" maxlength="64" spellcheck="false" autocomplete="off">
+      </div>
+      <button type="button" class="btn btn-secondary" id="btn-cloud-load">↧ Cargar de la nube</button>
+      <button type="button" class="btn btn-gold" id="btn-cloud-publish">☁ Publicar online</button>
+      <button type="button" class="btn btn-secondary" id="btn-cloud-login">🔐 Entrar</button>
+      <button type="button" class="btn btn-secondary" id="btn-cloud-logout" hidden>Salir</button>
+      <span class="cloud-auth" id="cloud-auth-status">Sesión no iniciada</span>
+    </div>
+    <div class="cloud-progress" id="cloud-progress" role="status" aria-live="polite"></div>
+    <div class="cloud-links" id="cloud-links"></div>
+  </section>
+
+  <!-- ESPACIO DE TRABAJO -->
+  <main class="workspace">
+
+    <!-- COLUMNA IZQUIERDA: FORMULARIOS POR PESTAÑAS -->
+    <section>
+      <nav class="tabs-nav" aria-label="Secciones del panel" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="tab-diseno">1. Diseño y sobre</button>
+        <button type="button" class="tab-btn" data-tab="tab-pareja">2. Pareja y textos</button>
+        <button type="button" class="tab-btn" data-tab="tab-itinerario">3. Lugar e itinerario</button>
+        <button type="button" class="tab-btn" data-tab="tab-fotos">4. Fotos y detalles</button>
+        <button type="button" class="tab-btn" data-tab="tab-rsvp">5. Invitados (RSVP)</button>
+      </nav>
+
+      <div class="panel-card">
+
+        <!-- PESTAÑA 1: DISEÑO, PLANTILLAS Y SOBRE 3D -->
+        <div class="tab-pane active" id="tab-diseno">
+          <h2 class="pane-title">Elige una de las 19 plantillas</h2>
+          <p class="pane-subtitle">Cada plantilla cambia la tipografía, la paleta, el marco y las ilustraciones manteniendo los datos de la boda.</p>
+
+          <div class="templates-grid" id="templates-grid"></div>
+
+          <hr class="rule">
+
+          <h2 class="pane-title">Apertura animada, música e idioma</h2>
+          <p class="pane-subtitle">El sobre se abre una sola vez por visita. Si el invitado ya lo abrió, entra directamente a la invitación.</p>
+
+          <div class="form-grid-2">
+            <label class="toggle-item">
+              <input type="checkbox" id="useEnvelope" checked>
+              <span>Activar sobre con sello al entrar</span>
+            </label>
+            <label class="toggle-item">
+              <input type="checkbox" id="musicEnabled" checked>
+              <span>Activar música al abrir</span>
+            </label>
+          </div>
+
+          <div class="form-grid-2" style="margin-top:16px;">
+            <div class="field">
+              <label for="envelopeStyle">Color del sobre y sello</label>
+              <select id="envelopeStyle">
+                <option value="marfil">Marfil clásico y sello de oro</option>
+                <option value="verde">Verde bosque y sello de oro</option>
+                <option value="burdeos">Burdeos imperial y crema</option>
+                <option value="noche">Azul noche y sello de plata</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="defaultLanguage">Idioma inicial</label>
+              <select id="defaultLanguage">
+                <option value="es">Castellano</option>
+                <option value="val">Valencià</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- PESTAÑA 2: PAREJA, TEXTOS Y SECCIONES VISIBLES -->
+        <div class="tab-pane" id="tab-pareja">
+          <h2 class="pane-title">Datos de la pareja y textos</h2>
+          <p class="pane-subtitle">Personaliza nombres, fecha, hora y el tono del mensaje de bienvenida.</p>
+
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="n1">Nombre 1</label>
+              <input type="text" id="n1" value="Alejandro" maxlength="60">
+            </div>
+            <div class="field">
+              <label for="n2">Nombre 2</label>
+              <input type="text" id="n2" value="Martina" maxlength="60">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="date">Fecha de la boda</label>
+              <input type="date" id="date" value="2027-06-12">
+            </div>
+            <div class="field">
+              <label for="time">Hora principal</label>
+              <input type="time" id="time" value="12:30">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="endTime">Hora de fin (calendario)</label>
+              <input type="time" id="endTime" value="23:30">
+            </div>
+            <div class="field">
+              <label for="maxGuests">Plazas máximas por invitado</label>
+              <input type="number" id="maxGuests" min="1" max="10" step="1" value="4">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="eyebrow">Frase superior de portada</label>
+            <input type="text" id="eyebrow" value="¡NOS CASAMOS!" maxlength="80">
+          </div>
+
+          <div class="field">
+            <label for="message">Mensaje de bienvenida</label>
+            <textarea id="message" maxlength="600"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="storyTitle">Título de la historia</label>
+            <input type="text" id="storyTitle" value="Nuestra Historia" maxlength="100">
+          </div>
+
+          <div class="field">
+            <label for="storyText">Texto de la historia</label>
+            <textarea id="storyText" maxlength="1500"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="contactPhone">WhatsApp de los novios para incidencias (opcional)</label>
+            <input type="tel" id="contactPhone" placeholder="Ej. 34600123456" maxlength="20">
+            <small class="field-help">Solo se muestra si falla el envío del RSVP. No es el número comercial.</small>
+          </div>
+
+          <h3 class="subhead">Secciones visibles en la invitación</h3>
+          <div class="toggle-list">
+            <label class="toggle-item"><input type="checkbox" id="sec_story" checked> Nuestra historia</label>
+            <label class="toggle-item"><input type="checkbox" id="sec_itinerary" checked> Programa / itinerario</label>
+            <label class="toggle-item"><input type="checkbox" id="sec_gallery" checked> Galería de fotos</label>
+            <label class="toggle-item"><input type="checkbox" id="sec_details" checked> Vestimenta y bus</label>
+            <label class="toggle-item"><input type="checkbox" id="sec_gifts" checked> Regalos / IBAN</label>
+            <label class="toggle-item"><input type="checkbox" id="sec_rsvp" checked> Formulario RSVP</label>
+          </div>
+        </div>
+
+        <!-- PESTAÑA 3: UBICACIÓN E ITINERARIO DEL DÍA -->
+        <div class="tab-pane" id="tab-itinerario">
+          <h2 class="pane-title">Ubicación y programa del día</h2>
+          <p class="pane-subtitle">Configura el lugar de celebración y añade o edita los momentos del día.</p>
+
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="venue">Nombre de la finca / lugar</label>
+              <input type="text" id="venue" value="Finca Los Olivos" maxlength="120">
+            </div>
+            <div class="field">
+              <label for="address">Ciudad / dirección</label>
+              <input type="text" id="address" value="Elche, Alicante" maxlength="160">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="map">Enlace de Google Maps</label>
+            <input type="url" id="map" placeholder="https://maps.google.com/...">
+          </div>
+
+          <hr class="rule">
+
+          <div class="row-between">
+            <div>
+              <h3 class="subhead" style="margin:0;">Horarios del itinerario</h3>
+              <small class="field-help">Añade ceremonia, cóctel, banquete, fiesta...</small>
+            </div>
+            <button type="button" class="btn btn-secondary" id="btn-add-event">+ Añadir evento</button>
+          </div>
+
+          <div id="events-container"></div>
+        </div>
+
+        <!-- PESTAÑA 4: FOTOGRAFÍAS, VESTIMENTA Y REGALOS -->
+        <div class="tab-pane" id="tab-fotos">
+          <h2 class="pane-title">Fotografías y detalles prácticos</h2>
+          <p class="pane-subtitle">Las fotos se comprimen y, si has iniciado sesión, se suben a Supabase Storage. Nunca se guardan en base64 dentro del JSON publicado.</p>
+
+          <div class="field">
+            <label for="heroPhotoInput">Subir fotografía de portada</label>
+            <input type="file" id="heroPhotoInput" accept="image/jpeg,image/png,image/webp">
+            <div class="photo-preview" id="hero-photo-preview"></div>
+            <button type="button" class="btn btn-secondary" id="btn-clear-hero" style="margin-top:8px;font-size:11px;padding:6px 12px;">Usar foto por defecto de la plantilla</button>
+          </div>
+
+          <div class="field">
+            <label for="galleryInput">Subir fotografías para la galería (puedes elegir varias)</label>
+            <input type="file" id="galleryInput" accept="image/jpeg,image/png,image/webp" multiple>
+            <div class="photo-preview" id="gallery-preview"></div>
+            <button type="button" class="btn btn-secondary" id="btn-clear-gallery" style="margin-top:8px;font-size:11px;padding:6px 12px;">Vaciar galería</button>
+          </div>
+
+          <hr class="rule">
+
+          <div class="field">
+            <label for="dressCode">Código de vestimenta</label>
+            <input type="text" id="dressCode" maxlength="200">
+          </div>
+
+          <div class="field">
+            <label for="transportInfo">Información de autobuses / transporte / hoteles</label>
+            <textarea id="transportInfo" maxlength="800"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="giftMessage">Mensaje para la lista de bodas / regalos</label>
+            <textarea id="giftMessage" maxlength="500"></textarea>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="iban">Número de cuenta (IBAN) o Bizum</label>
+              <input type="text" id="iban" maxlength="60">
+            </div>
+            <div class="field">
+              <label for="rsvpDeadline">Fecha límite para confirmar</label>
+              <input type="text" id="rsvpDeadline" maxlength="80" placeholder="Ej. 15 de mayo de 2027">
+            </div>
+          </div>
+        </div>
+
+        <!-- PESTAÑA 5: GESTIÓN DE INVITADOS Y EXPORTACIÓN CSV -->
+        <div class="tab-pane" id="tab-rsvp">
+          <div class="row-between">
+            <div>
+              <h2 class="pane-title">Confirmaciones de invitados (RSVP)</h2>
+              <p class="pane-subtitle" style="margin-bottom:0;">Las respuestas se guardan en Supabase y se cachean en este navegador para que puedas consultarlas sin conexión.</p>
+            </div>
+            <div class="row-actions">
+              <button type="button" class="btn btn-secondary" id="btn-refresh-rsvp">↻ Actualizar</button>
+              <button type="button" class="btn btn-primary" id="btn-export-csv">📊 Descargar CSV</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box"><strong id="stat-yes">0</strong><small>Personas confirmadas</small></div>
+            <div class="stat-box"><strong id="stat-no">0</strong><small>No asistirán</small></div>
+            <div class="stat-box"><strong id="stat-bus">0</strong><small>Plazas de autobús</small></div>
+            <div class="stat-box"><strong id="stat-allergies">0</strong><small>Con alergias</small></div>
+          </div>
+
+          <div class="filter-bar">
+            <input type="search" id="rsvp-search" placeholder="🔍 Buscar invitado, alergia o canción...">
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table class="rsvp-table">
+              <thead>
+                <tr>
+                  <th>Invitado</th>
+                  <th>Asiste</th>
+                  <th>Personas</th>
+                  <th>Menú</th>
+                  <th>Bus</th>
+                  <th>Alergias</th>
+                  <th>Canción</th>
+                  <th>Acompañantes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="rsvp-tbody"></tbody>
+            </table>
+          </div>
+          <p class="empty-state" id="rsvp-empty" hidden>Todavía no hay confirmaciones. Cuando un invitado envíe el formulario aparecerá aquí.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COLUMNA DERECHA: VISTA PREVIA MÓVIL EN TIEMPO REAL -->
+    <aside class="preview-column">
+      <div class="preview-toolbar">
+        <button type="button" class="btn btn-secondary" id="btn-replay-envelope">✉️ Probar apertura</button>
+        <button type="button" class="btn btn-secondary" id="btn-copy-wa">💬 Copiar texto WhatsApp</button>
+      </div>
+      <div class="phone-mockup">
+        <iframe id="preview-iframe" src="invitacion.html?preview=1" title="Vista previa de la invitación"></iframe>
+      </div>
+      <p class="status-toast" id="status-toast">Vista previa sincronizada en tiempo real.</p>
+    </aside>
+
+  </main>
+
+  <!-- MODAL DE ACCESO A SUPABASE -->
+  <div class="modal" id="auth-modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <h2 id="auth-title">Acceso privado</h2>
+      <p>Entra con el usuario administrador de Supabase. La contraseña ya no está en el código.</p>
+      <form id="auth-form">
+        <div class="field">
+          <label for="auth-email">Email</label>
+          <input type="email" id="auth-email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="auth-password">Contraseña</label>
+          <input type="password" id="auth-password" autocomplete="current-password" required>
+        </div>
+        <p class="auth-error" id="auth-error" role="alert"></p>
+        <div class="row-actions">
+          <button type="submit" class="btn btn-primary" id="auth-submit">Entrar</button>
+          <button type="button" class="btn btn-secondary" id="auth-cancel">Cancelar</button>
+        </div>
+      </form>
+      <p class="field-help" style="margin-top:14px;">Crea el usuario una sola vez en Supabase → Authentication → Users y desactiva el registro público.</p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/plantillas.js"></script>
+  <script src="js/nube.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/cookies.js"></script>
+</body>
+</html>

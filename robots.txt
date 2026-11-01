@@ -1,0 +1,11 @@
+# MelTeInvita · invitaciones de boda
+# Sustituye el dominio por el tuyo antes de publicar.
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /novios.html
+Disallow: /invitacion.html
+Disallow: /encargo-tratamiento.html
+
+Sitemap: https://melteinvita.es/sitemap.xml

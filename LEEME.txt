@@ -1,0 +1,50 @@
+MelTeInvita · INVITACIONES DE BODA 2.0
+========================================
+
+QUÉ INCLUYE
+- Catálogo comercial con 19 diseños y reserva por WhatsApp (39 €).
+- Invitación con sobre animado, música, multiidioma y RSVP.
+- Panel privado para configurar y publicar cada boda.
+- Portal privado para los novios con confirmaciones, QR y CSV.
+- Supabase preparado (RLS, RPC y Storage) y Worker opcional de Open Graph.
+- Páginas legales en formato plantilla.
+
+ABRIR EN LOCAL
+1) Instala Python 3 si no lo tienes.
+2) Abre una terminal en esta carpeta y ejecuta:
+   python -m http.server 8123 --bind 127.0.0.1
+3) Entra en:
+   http://127.0.0.1:8123/catalogo.html
+   http://127.0.0.1:8123/admin.html
+   http://127.0.0.1:8123/invitacion.html?demo=sobre
+   http://127.0.0.1:8123/novios.html
+
+CONFIGURAR
+- Edita js/config.js: email, web, WhatsApp, Supabase y Stripe (opcional).
+- Ejecuta supabase/schema.sql en el SQL Editor de Supabase.
+- Crea un usuario en Authentication → Users y autorízalo en la tabla administradores.
+- Desactiva el registro público de usuarios.
+
+PUBLICAR
+- Sube el contenido de esta carpeta a Cloudflare Pages, Netlify o cualquier hosting estático.
+- El archivo _headers aplica las cabeceras de seguridad.
+- Actualiza WEBSITE_URL y sitemap.xml con tu dominio real.
+
+ANTES DE VENDER
+- Rellena los marcadores [NOMBRE], [NIF], [DIRECCIÓN], [EMAIL DE CONTACTO], etc.
+- Revisa las páginas legales con un profesional.
+- No publiques testimonios que no sean reales.
+- Sustituye las fotos de muestra por fotos con derechos.
+
+SEGURIDAD
+- No hay contraseñas en el código.
+- La clave de Supabase incluida es pública (publishable). Nunca pongas la service_role.
+- Los invitados no pueden leer las confirmaciones: solo insertarlas mediante RPC.
+- El portal de novios usa un token aleatorio privado.
+
+DOCUMENTACIÓN COMPLETA
+- Consulta README.md.
+
+CONTACTO
+- WhatsApp: +34 682 38 96 53
+- Email: hola@melteinvita.es

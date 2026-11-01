@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QA overflow</title>
+<style>html,body{margin:0;background:#111;color:#eee;font:12px/1.5 Consolas,monospace}pre{padding:12px;white-space:pre-wrap}iframe{position:fixed;left:-9999px;top:0;border:0}</style>
+</head>
+<body>
+<pre id="report">midiendo…</pre>
+<script>
+(function () {
+  var ids = ['olivo','editorial','flores','sobre','terracota','noche','gotico','elegante','starwars','ibiza','bridgerton','amalfi','bodega','viajeros','festival','harrypotter','lotr','hollywood','gamer'];
+  var widths = [360, 390, 768, 1024, 1440];
+  var out = [];
+  var report = document.getElementById('report');
+
+  function measure(id, w) {
+    return new Promise(function (resolve) {
+      var f = document.createElement('iframe');
+      f.width = w;
+      f.height = 820;
+      f.src = '../invitacion.html?demo=' + id + '&preview=1&lang=es';
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        try {
+          var doc = f.contentDocument, win = f.contentWindow;
+          var st = doc.createElement('style');
+          st.textContent = '#envelope-overlay,#invite-status,.music-toggle,.lang-switcher{display:none!important}html{scroll-behavior:auto!important}';
+          doc.head.appendChild(st);
+          setTimeout(function () {
+            try {
+              var vw = doc.documentElement.clientWidth;
+              var sw = Math.max(doc.documentElement.scrollWidth, doc.body.scrollWidth);
+              var worstR = 0, worstL = 0, worstEl = '';
+              var nodes = doc.querySelectorAll('body *');
+              for (var i = 0; i < nodes.length; i++) {
+                var n = nodes[i];
+                if (n.closest('#envelope-overlay') || n.closest('.hp-field') || n.closest('.music-toggle') || n.closest('.lang-switcher')) continue;
+                var cs = win.getComputedStyle(n);
+                if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+                var r = n.getBoundingClientRect();
+                if (!r.width || !r.height) continue;
+                if (r.right > vw + 1 && r.right > worstR) { worstR = r.right; worstEl = (n.id ? '#' + n.id : n.className && typeof n.className === 'string' ? '.' + n.className.split(' ')[0] : n.tagName); }
+                if (r.left < -1 && r.left < worstL) { worstL = r.left; worstEl = (n.id ? '#' + n.id : n.className && typeof n.className === 'string' ? '.' + n.className.split(' ')[0] : n.tagName); }
+              }
+              var extra = Math.max(sw - vw, Math.round(worstR - vw), Math.round(-worstL));
+              out.push((extra > 1 ? 'FAIL ' : 'ok   ') + id.padEnd(12) + ' ' + String(w).padStart(4) + 'px  scrollW=' + sw + ' clientW=' + vw + ' maxRight=' + Math.round(worstR) + ' minLeft=' + Math.round(worstL) + (extra > 1 ? '  <' + worstEl + '>' : ''));
+            } catch (e) { out.push('ERR  ' + id + ' ' + w + ' ' + e.message); }
+            report.textContent = out.join('\n');
+            f.remove();
+            resolve();
+          }, 500);
+        } catch (e) { out.push('ERR  ' + id + ' ' + w + ' ' + e.message); resolve(); }
+      }
+      f.onload = function () { setTimeout(finish, 400); };
+      setTimeout(finish, 2500);
+      document.body.appendChild(f);
+    });
+  }
+
+  (async function () {
+    for (var i = 0; i < ids.length; i++) {
+      var list = (ids[i] === 'olivo' || i > 8) ? widths : [360, 390];
+      for (var j = 0; j < list.length; j++) await measure(ids[i], list[j]);
+    }
+    report.textContent = out.join('\n') + '\nDONE ' + out.length;
+    document.title = 'DONE';
+  })();
+})();
+</script>
+</body>
+</html>

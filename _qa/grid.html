@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QA grid</title>
+<style>
+  :root { color-scheme: light; }
+  html, body { margin: 0; background: #20242a; font-family: Segoe UI, sans-serif; }
+  #wrap { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; align-items: flex-start; }
+  .cell { background: #11151a; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+  .cap { color: #d7e2ea; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; display: flex; justify-content: space-between; }
+  .cap b { color: #7fe3ff; font-weight: 600; }
+  iframe { display: block; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var w = parseInt(q.get('w') || '390', 10);
+  var h = parseInt(q.get('h') || '780', 10);
+  var target = q.get('target') || 'hero';
+  var ids = q.get('ids') ? q.get('ids').split(',')
+    : (q.get('set') === 'all'
+      ? ['olivo','editorial','flores','sobre','terracota','noche','gotico','elegante','starwars','ibiza','bridgerton','amalfi','bodega','viajeros','festival','harrypotter','lotr','hollywood','gamer']
+      : ['ibiza','bridgerton','amalfi','bodega','viajeros','festival','harrypotter','lotr','hollywood','gamer']);
+  var wrap = document.getElementById('wrap');
+
+  ids.forEach(function (id) {
+    var cell = document.createElement('div');
+    cell.className = 'cell';
+    var cap = document.createElement('div');
+    cap.className = 'cap';
+    cap.innerHTML = '<b>' + id + '</b><span>' + target + ' · ' + w + 'px</span>';
+    var frame = document.createElement('iframe');
+    frame.width = w;
+    frame.height = h;
+    frame.loading = 'eager';
+    frame.src = '../invitacion.html?demo=' + id + '&preview=1&lang=es';
+    frame.addEventListener('load', function () {
+      try {
+        var doc = frame.contentDocument;
+        var win = frame.contentWindow;
+        var st = doc.createElement('style');
+        st.textContent = (q.get('env') === '1')
+          ? '#envelope-overlay{opacity:1!important;transition:none!important}.music-toggle,.lang-switcher{display:none!important}html{scroll-behavior:auto!important}'
+          : '#envelope-overlay,#invite-status,.music-toggle,.lang-switcher{display:none!important}#invite-shell{min-height:0!important}html{scroll-behavior:auto!important}';
+        doc.head.appendChild(st);
+        var go = function () {
+          var y = 0;
+          if (target === 'footer') y = doc.documentElement.scrollHeight;
+          else if (target !== 'hero') {
+            var elx = doc.getElementById('sec-' + target) || doc.getElementById(target);
+            if (elx) y = elx.getBoundingClientRect().top + win.scrollY - 8;
+          }
+          win.scrollTo(0, y);
+        };
+        if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function () { setTimeout(go, 250); });
+        else setTimeout(go, 700);
+        setTimeout(go, 1400);
+      } catch (e) {}
+    });
+    cell.appendChild(cap);
+    cell.appendChild(frame);
+    wrap.appendChild(cell);
+  });
+})();
+</script>
+</body>
+</html>
