@@ -727,3 +727,25 @@ html.is-thumb .hp-empty span { display: none; }
   body.theme-viajeros .hero-photo { height: calc(100% - 112px); }
 }
 /* <<< BATCH5 */
+
+/* Costura portada → interior: color real del borde inferior de cada portada (medido) */
+body.theme-olivo { --seam: #f5f1e5; }
+body.theme-editorial { --seam: #f4f2ee; }
+body.theme-flores { --seam: #f7e8e6; }
+body.theme-sobre { --seam: #efe6d3; }
+body.theme-terracota { --seam: #e6b38e; }
+body.theme-noche { --seam: #1b1816; }
+body.theme-gotico { --seam: #060607; }
+body.theme-elegante { --seam: #10171d; }
+body.theme-starwars { --seam: #03050c; }
+body.theme-ibiza { --seam: #fbf7ef; }
+body.theme-bridgerton { --seam: #f3eee1; }
+body.theme-amalfi { --seam: #1035a9; }
+body.theme-bodega { --seam: #240a0f; }
+body.theme-viajeros { --seam: #ece4cf; }
+body.theme-festival { --seam: #1c0d33; }
+body.theme-harrypotter { --seam: #070a1a; }
+body.theme-lotr { --seam: #0b170f; }
+body.theme-hollywood { --seam: #060505; }
+body.theme-gamer { --seam: #3d364a; }
+body[class*="theme-"] .hero + .section { box-shadow: inset 0 70px 60px -60px var(--seam, transparent); }
