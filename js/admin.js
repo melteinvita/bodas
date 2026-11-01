@@ -300,7 +300,32 @@
         var img = document.createElement('img');
         img.src = heroUrl;
         img.alt = 'Foto de portada actual';
-        hero.appendChild(img);
+        var wrap = document.createElement('div');
+        wrap.className = 'focus-picker';
+        wrap.title = 'Haz clic donde estén las caras para que la portada las mantenga siempre visibles';
+        wrap.appendChild(img);
+        var fm = String(state.heroPhotoFocus || '').match(/^(\d{1,3}(?:\.\d+)?)% (\d{1,3}(?:\.\d+)?)%$/);
+        var fx = fm ? parseFloat(fm[1]) : 50, fy = fm ? parseFloat(fm[2]) : 30;
+        var dot = document.createElement('i');
+        dot.className = 'focus-dot';
+        dot.style.left = fx + '%';
+        dot.style.top = fy + '%';
+        wrap.appendChild(dot);
+        wrap.addEventListener('click', function (ev) {
+          var r = wrap.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          var x = Math.max(0, Math.min(100, Math.round((ev.clientX - r.left) / r.width * 100)));
+          var y = Math.max(0, Math.min(100, Math.round((ev.clientY - r.top) / r.height * 100)));
+          state.heroPhotoFocus = x + '% ' + y + '%';
+          dot.style.left = x + '%';
+          dot.style.top = y + '%';
+          syncAndPreview(false);
+        });
+        hero.appendChild(wrap);
+        var hint = document.createElement('p');
+        hint.className = 'focus-hint';
+        hint.textContent = 'Toca la foto donde estén las caras: la portada las mantendrá centradas en cualquier pantalla.';
+        hero.appendChild(hint);
       }
     }
 
@@ -378,6 +403,7 @@
         if (err) { showToast('⚠️ ' + err.message); return; }
         savePhotoLocally(dataUrl, 'portada').then(function (url) {
           state.heroPhoto = url;
+          state.heroPhotoFocus = '';
           renderPhotoPreviews();
           syncAndPreview(false);
           if (!/^data:/.test(url)) showToast('✓ Foto de portada optimizada y subida.');
@@ -390,6 +416,7 @@
   if (el('btn-clear-hero')) {
     el('btn-clear-hero').addEventListener('click', function () {
       state.heroPhoto = '';
+      state.heroPhotoFocus = '';
       if (el('heroPhotoInput')) el('heroPhotoInput').value = '';
       renderPhotoPreviews();
       syncAndPreview(false);

@@ -245,3 +245,9 @@ img { max-width: 100%; }
   .event-row .btn-del { width: 100%; }
   .cloud-auth { margin-left: 0; }
 }
+
+/* Selector de foco de la foto de portada */
+.photo-preview .focus-picker { position: relative; width: 180px; max-width: 100%; cursor: crosshair; line-height: 0; }
+.photo-preview .focus-picker img { width: 100%; height: auto; max-height: 260px; object-fit: contain; }
+.focus-dot { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.35); background: rgba(212,175,55,.35); pointer-events: none; }
+.focus-hint { flex-basis: 100%; margin: 4px 0 0; font-size: 11.5px; color: var(--adm-muted, #6b7280); }

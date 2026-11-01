@@ -400,9 +400,9 @@
     Array.prototype.forEach.call(fig.querySelectorAll('.hp-deco'), function (n) { n.setAttribute('data-mono', i1 + '&' + i2); });
 
     var src = safePhoto(d.heroPhoto);
-    var focus = /^\d{1,3}(\.\d+)?% \d{1,3}(\.\d+)?%$/.test(String(d.heroPhotoFocus || ''))
-      ? d.heroPhotoFocus : '50% 30%';
-    img.style.objectPosition = focus;
+    var hasFocus = /^\d{1,3}(\.\d+)?% \d{1,3}(\.\d+)?%$/.test(String(d.heroPhotoFocus || ''));
+    /* Sin foco elegido, cada plantilla usa su encuadre propio (css/portadas.css). */
+    img.style.objectPosition = hasFocus ? d.heroPhotoFocus : '';
     if (src) {
       if (img.getAttribute('src') !== src) img.setAttribute('src', src);
       img.alt = t('heroPhotoAlt', 'Fotografía de ' + (d.n1 || '') + ' y ' + (d.n2 || ''));
