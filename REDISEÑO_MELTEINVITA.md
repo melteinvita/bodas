@@ -1,7 +1,7 @@
 # REDISEÑO MELTEINVITA · Registro de trabajo
 
 Rama: `redesign/melteinvita-premium-19-templates`
-Estado: **Fase 1 completada (integración fotográfica en las 19 portadas).** Las fases 2–4 están pendientes (ver §6).
+Estado: Fase 1 (foto en 19 portadas, versión con marcos) hecha y **en revisión**. Fase 1b: nueva dirección artística de portadas de página completa, aprobada solo a medias: Bridgerton, Ibiza, Hollywood y El Señor de los Anillos (v2). El resto de plantillas sigue con los marcos de la v1 hasta aprobar la v2.
 
 ## 1. Auditoría técnica (verificada en el código actual)
 
