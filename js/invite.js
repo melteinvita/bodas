@@ -12,6 +12,8 @@
   var CFG = window.APP_CONFIG || {};
   var params = new URLSearchParams(window.location.search);
   var slug = (params.get('boda') || '').trim().toLowerCase() || CFG.DEFAULT_SLUG || 'alejandro-y-martina';
+  var isThumb = params.has('thumb');
+  if (isThumb) document.documentElement.classList.add('is-thumb');
   var isPreview = params.has('preview');
   var isDemo = params.has('demo') || (!params.get('boda') && !isPreview);
   var isRemote = !!params.get('boda') && !isPreview && !isDemo;
@@ -99,7 +101,7 @@
       var demoTpl = params.get('demo');
       if (demoTpl && window.WEDDING_TEMPLATES && window.WEDDING_TEMPLATES[demoTpl]) {
         demo.template = demoTpl;
-        demo.useEnvelope = true;
+        demo.useEnvelope = !isThumb;
         demo.envelopeStyle = window.WEDDING_TEMPLATES[demoTpl].defaultSealColor || 'marfil';
       }
       return demo;

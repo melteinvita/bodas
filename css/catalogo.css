@@ -483,3 +483,10 @@ code { font-size: .86em; background: rgba(78,99,71,.08); padding: 1px 5px; borde
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Miniatura viva de la portada (iframe escalado) */
+.tpl-preview.is-live { height: auto; aspect-ratio: 390 / 700; border-radius: 14px; background-color: #14161a; box-shadow: 0 10px 30px rgba(20,24,30,.18); }
+.tpl-preview.is-live::before, .tpl-preview.is-live::after { display: none; }
+.tpl-preview .tpl-live { position: absolute; left: 0; top: 0; width: 390px; height: 700px; border: 0; background: transparent; transform-origin: 0 0; transform: scale(var(--live-scale, .6)); pointer-events: none; opacity: 0; transition: opacity .5s ease; z-index: 2; }
+.tpl-preview.is-loaded .tpl-live { opacity: 1; }
+.tpl-preview.is-live.is-loaded .tpl-preview-num, .tpl-preview.is-live.is-loaded .tpl-preview-mark { opacity: 0; }

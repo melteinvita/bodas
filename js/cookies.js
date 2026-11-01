@@ -85,6 +85,7 @@
 
   function init() {
     if (!document.body) return;
+    if (/[?&]thumb(=|&|$)/.test(window.location.search)) return;
     build();
   }
 

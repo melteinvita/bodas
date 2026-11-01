@@ -68,6 +68,43 @@
   /* ------------------------------------------------------------------
      TARJETAS DEL CATÁLOGO
      ------------------------------------------------------------------ */
+  /* Miniatura real de la portada: iframe local escalado, cargado al acercarse a la pantalla. */
+  var LIVE_W = 390, LIVE_H = 700;
+  var liveObserver = null;
+  function scaleLive(box) {
+    var w = box.clientWidth || LIVE_W;
+    box.style.setProperty('--live-scale', String(w / LIVE_W));
+  }
+  function loadLive(box) {
+    if (box.getAttribute('data-live') === '1') return;
+    box.setAttribute('data-live', '1');
+    var f = document.createElement('iframe');
+    f.className = 'tpl-live';
+    f.tabIndex = -1;
+    f.setAttribute('aria-hidden', 'true');
+    f.setAttribute('title', '');
+    f.setAttribute('sandbox', 'allow-same-origin allow-scripts');
+    f.addEventListener('load', function () { box.classList.add('is-loaded'); });
+    f.src = 'invitacion.html?demo=' + encodeURIComponent(box.getAttribute('data-key')) + '&thumb=1&lang=' + uiLang();
+    box.appendChild(f);
+  }
+  function attachLivePreview(box, key) {
+    box.classList.add('is-live');
+    box.setAttribute('data-key', key);
+    if (!('IntersectionObserver' in window)) return;
+    if (!liveObserver) {
+      liveObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { scaleLive(en.target); loadLive(en.target); liveObserver.unobserve(en.target); }
+        });
+      }, { rootMargin: '200px 0px' });
+      window.addEventListener('resize', function () {
+        document.querySelectorAll('.tpl-preview.is-live').forEach(scaleLive);
+      });
+    }
+    liveObserver.observe(box);
+  }
+
   function renderCards() {
     var grid = el('catalog-grid');
     if (!grid || !window.WEDDING_TEMPLATES) return;
@@ -114,6 +151,7 @@
       previewMark.textContent = 'A & M';
       preview.appendChild(previewNum);
       preview.appendChild(previewMark);
+      attachLivePreview(preview, key);
 
       var swatches = document.createElement('div');
       swatches.className = 'tpl-swatches';
