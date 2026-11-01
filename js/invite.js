@@ -395,6 +395,7 @@
     var i1 = String(d.n1 || 'A').trim().charAt(0).toUpperCase() || 'A';
     var i2 = String(d.n2 || 'M').trim().charAt(0).toUpperCase() || 'M';
     setText('hero-photo-mono', i1 + '&' + i2);
+    Array.prototype.forEach.call(fig.querySelectorAll('.hp-deco'), function (n) { n.setAttribute('data-mono', i1 + '&' + i2); });
 
     var src = safePhoto(d.heroPhoto);
     var focus = /^\d{1,3}(\.\d+)?% \d{1,3}(\.\d+)?%$/.test(String(d.heroPhotoFocus || ''))

@@ -22,59 +22,54 @@ Estado: Fase 1 (foto en 19 portadas, versión con marcos) hecha y **en revisión
 | Archivo | Cambio |
 |---|---|
 | `invitacion.html` | Nuevo `figure#hero-photo` dentro de `.hero-content` y enlace a `css/portadas.css`. |
-| `js/invite.js` | `renderHeroPhoto(d)`: pinta `heroPhoto` en el marco, alterna `.is-empty`, `object-position` configurable (`heroPhotoFocus`, opcional, por defecto `50% 30%`). El fondo de portada vuelve a ser el arte propio de cada plantilla; ya no lo sustituye la foto. |
-| `css/portadas.css` (nuevo) | Sistema común `.hero-photo/.hp-frame/.hp-img/.hp-empty/.hp-deco` + 19 tratamientos. Solo CSS; sin dependencias ni recursos externos. |
+| `js/invite.js` | `renderHeroPhoto(d)`: pinta `heroPhoto`, alterna `.is-empty` y admite `heroPhotoFocus` (opcional, `"x% y%"`, por defecto `50% 30%`). El fondo de portada ya no lo sustituye la foto. |
+| `css/portadas.css` | Andamiaje común (`.hero-photo`, `.hp-frame`, `.hp-img`, `.hp-empty`, `.hp-deco`) + una composición por plantilla. Solo CSS, sin recursos externos (CSP: `img-src 'self' data:`). |
 
-Contratos preservados: IDs DOM existentes, `heroPhoto`, `UPDATE_INVITE`, `body.theme-<id>`, `?demo=<id>`, sobre, RSVP, idiomas, música. Todo texto dinámico entra por `textContent` / `safeUrl`.
+**Principio (v2):** la foto no va en un recuadro. Ocupa la portada y se funde con el fondo mediante máscaras y degradados; cada plantilla añade sus propias capas (papel, ola, cortinaje, billete, velas, arco de luz…) y la tipografía se apoya en la zona de transición, nunca sobre los rostros.
 
-Estado sin foto: marco temático con monograma (inicial de cada novio). Nunca se muestra una foto ficticia.
-Fotos vertical / horizontal / cuadrada: `object-fit: cover` sin deformar. Si un rostro queda cortado, `heroPhotoFocus` (p. ej. `"50% 20%"`) ajusta el encuadre; **aún no hay control en el panel** para ello.
+Contratos preservados: IDs DOM, `heroPhoto`, `UPDATE_INVITE`, `body.theme-<id>`, `?demo=<id>`, sobre, RSVP, idiomas, música. Todo texto dinámico entra por `textContent` / `safeUrl`.
+Sin foto: cada portada muestra su composición con el monograma (inicial de cada novio). Nunca una foto ficticia.
 
-## 4. Dirección artística de la foto por plantilla
+## 4. Composición por plantilla
 
-| # | Plantilla | Tratamiento |
+| # | Plantilla | Composición |
 |---|---|---|
-| 01 | Olivo | Papel marfil con filete dorado y dos ramas de olivo SVG |
-| 02 | Editorial | Fotografía en B/N de revista, sombra dura, etiqueta «Nº 01» |
-| 03 | Flores | Óvalo con aro de papel y flores de cinco pétalos |
-| 04 | Sobre | Tarjeta fotográfica de papelería con cinta, ligera rotación y relieve |
-| 05 | Terracota | Arco de cerámica con anillo terracota y repisa de barro |
-| 06 | Noche | Retrato con viñeta cálida, doble filete dorado y destellos |
-| 07 | Gótico | Ventana ojival en gris con contorno plateado y sello carmesí |
-| 08 | Alta Etiqueta | Marco de gala champán con rombos y filigrana |
-| 09 | Galaxia | Panel holográfico con esquinas biseladas, escaneo y etiqueta |
-| 10 | Ibiza | Forma orgánica, palmas y sol |
-| 11 | Bridgerton | Camafeo oval con marco dorado cónico y flores azules |
-| 12 | Amalfi | Marco de mayólica cobalto/limón con limones |
-| 13 | Bodega | Etiqueta de vino «Gran Reserva» con sello de cobre |
-| 14 | Viajeros | Carné de viajero guilloché con sello de aduana |
-| 15 | Festival | Entrada VIP con muescas de ticket y degradado de atardecer |
-| 16 | Harry Potter | Fotografía encantada sobre pergamino con cinta |
-| 17 | Señor de los Anillos | Aro dorado con hojas de mallorn |
-| 18 | Hollywood | Fotograma de película con perforaciones y estrella |
-| 19 | Gamer | Pantalla de selección de personaje: HUD, barra y «READY» |
+| 01 | Olivo | Foto a sangre fundida en papel de finca; ramas de olivo finas sobre el borde |
+| 02 | Editorial | Portada de revista: foto desplazada a la derecha, fecha vertical, titular grande escalonado |
+| 03 | Flores | Foto con bordes de acuarela difuminados; flores en las esquinas |
+| 04 | Sobre | Borde de papel rasgado y lacre con iniciales |
+| 05 | Terracota | Foto sobre arcos concéntricos de barro y arena |
+| 06 | Noche | Guirnalda de luces cálidas y tipografía dorada en cursiva |
+| 07 | Gótico | Foto desaturada, arbotantes finos y rosa carmesí |
+| 08 | Alta Etiqueta | Filigrana de esquina y monograma de gala |
+| 09 | Galaxia | Horizonte de planeta con luz de borde y estrellas |
+| 10 | Ibiza | Foto con borde de ola, luz de verano y titular escalonado |
+| 11 | Bridgerton | Papelería de sociedad: cabecera, foto con bordes de papel, nomeolvides |
+| 12 | Amalfi | Foto sobre banda de mayólica; limones en la esquina |
+| 13 | Bodega | Foto fundida en burdeos, rótulo vertical «Gran Reserva», sello de cobre |
+| 14 | Viajeros | Foto + billete de embarque (perforación, muescas, código de barras) y sello de aduana |
+| 15 | Festival | Hora dorada: sol, palmeras y guirnalda de luces |
+| 16 | Magia | Noche estrellada, velas flotantes y castillo en silueta (original) |
+| 17 | Señor de los Anillos | Arco de luz con inscripción decorativa y bruma verde |
+| 18 | Hollywood | Foto casi a pantalla completa, cortinaje de teatro y focos suaves |
+| 19 | Gamer | Luz cian/magenta en los bordes, rejilla suave y tres corazones pixelados |
 
 Todas son interpretaciones originales: sin logotipos, escudos, personajes ni recursos protegidos.
 
 ## 5. Pruebas realizadas (Chrome headless + Playwright)
 
-- 19 plantillas × foto vertical a 390 px, 768 px y 1440 px: 0 desbordamiento, 0 errores de consola.
-- 19 plantillas × foto cuadrada a 360 px: 0 desbordamiento.
-- 19 plantillas × foto horizontal y × sin foto a 390 px: revisión visual; rostros visibles, estado vacío correcto.
-- `catalogo.html`, `admin.html`, `novios.html`, `invitacion.html`: sin errores de consola.
-- La foto se inyecta por el mismo canal que el panel (`UPDATE_INVITE` con data URL).
-- Las fotos de prueba proceden de las imágenes de referencia y **no se incluyen** en el repositorio.
+19 plantillas × {360 px foto cuadrada, 390 px vertical, 390 px horizontal, 390 px sin foto, 768 px, 1440 px}: 0 desbordamiento y 0 errores de consola en las 114 combinaciones. `catalogo.html`, `admin.html`, `novios.html` e `invitacion.html`: sin errores. La foto se inyecta por el mismo canal que el panel (`UPDATE_INVITE`). Las fotos de prueba son recortes de las imágenes de referencia y no están en el repositorio.
 
-## 6. Pendiente (no hecho)
+## 6. Pendiente
 
-1. Catálogo premium (`catalogo.html`, `js/catalogo.js`, `css/catalogo.css`): tarjetas con identidad por plantilla.
-2. Rediseño de secciones interiores (historia, cuenta atrás, itinerario, ubicación, galería, RSVP, cierre) por plantilla.
-3. Sobres y lacres por plantilla; revisión del itinerario como pieza temática.
-4. Control de encuadre (`heroPhotoFocus`) en el panel y prueba con subida real a Supabase.
-5. Composición específica de escritorio (hoy la invitación es una columna centrada, como antes).
-6. Prueba con navegadores reales (Safari iOS) y fotos de cámara reales.
-7. Comparativas antes/después de las interiores.
+1. Catálogo premium (`catalogo.html`, `js/catalogo.js`, `css/catalogo.css`).
+2. Rediseño de secciones interiores por plantilla (historia, cuenta atrás, itinerario, ubicación, galería, RSVP, cierre).
+3. Sobres y lacres por plantilla.
+4. Diferenciar más las portadas oscuras (06, 07, 08, 09, 16, 18, 19 comparten estructura «foto + fundido + texto»).
+5. Control de encuadre (`heroPhotoFocus`) en el panel; prueba con subida real a Supabase y fotos de cámara reales.
+6. Composición propia de escritorio (hoy columna central).
+7. Prueba en Safari iOS.
 
 ## 7. Despliegue
 
-Sin build. Subir los archivos modificados (`invitacion.html`, `js/invite.js`, `css/portadas.css`). Tras desplegar, vaciar caché de `/css/*` y `/js/*` (max-age 3600).
+Sin build. Subir `invitacion.html`, `js/invite.js` y `css/portadas.css`. Tras desplegar, vaciar caché de `/css/*` y `/js/*` (max-age 3600).
