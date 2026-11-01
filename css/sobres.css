@@ -1,0 +1,60 @@
+/* Sobres y lacres por plantilla. El color de lacre elegido en el panel sigue mandando: el aspecto completo se aplica con el color por defecto de cada plantilla; la forma del sello se aplica siempre. */
+body.theme-olivo .envelope-overlay.env-verde { background: radial-gradient(circle at center,#f3efe1 0%,#d5dcc2 100%); --env-body: #eef0e2; --env-flap: #dde4cb; --env-side: #e6ead6; --env-text: #3c4a34; --seal-bg: radial-gradient(circle at 35% 30%,#8ba07c,#566b4b 65%,#34452c); --seal-border: #b9c8a2; --seal-text: #f7f3e4; }
+body.theme-olivo .wax-seal { border-radius:50% 50% 50% 8%; }
+body.theme-editorial .envelope-overlay.env-marfil { background: linear-gradient(160deg,#f4f2ee,#dedbd4); --env-body: #fbfaf7; --env-flap: #efede8; --env-side: #f2f0eb; --env-text: #141414; --seal-bg: #151515; --seal-border: #ffffff; --seal-text: #ffffff; }
+body.theme-editorial .wax-seal { border-radius:2px; }
+body.theme-flores .envelope-overlay.env-burdeos { background: radial-gradient(circle at center,#fcf0f0 0%,#efcfd3 100%); --env-body: #fcf2f1; --env-flap: #f5dcdc; --env-side: #f8e6e5; --env-text: #6a3a45; --seal-bg: radial-gradient(circle at 35% 30%,#e8a0ae,#c4627a 65%,#8f3a50); --seal-border: #f3c3cc; --seal-text: #fff7f7; }
+body.theme-flores .wax-seal { border-radius:50%;clip-path:polygon(50% 0,62% 8%,78% 6%,84% 20%,98% 28%,92% 43%,100% 58%,88% 68%,86% 84%,70% 86%,58% 98%,46% 90%,30% 94%,22% 80%,8% 74%,12% 58%,2% 44%,14% 32%,16% 16%,32% 14%); }
+body.theme-sobre .envelope-overlay.env-marfil { background: radial-gradient(circle at center,#efe6d3 0%,#d3c19d 100%); --env-body: #e9ddc3; --env-flap: #dccdaa; --env-side: #e3d6b9; --env-text: #4a3a22; --seal-bg: radial-gradient(circle at 35% 30%,#d9b95f,#a97f2b 65%,#7a5716); --seal-border: #c9a84f; --seal-text: #fff6dc; }
+body.theme-sobre .wax-seal { border-radius:50%; }
+body.theme-terracota .envelope-overlay.env-burdeos { background: radial-gradient(circle at 50% 100%,#f0d6c2 0%,#d98f63 100%); --env-body: #f4e1d2; --env-flap: #e8b793; --env-side: #eecbae; --env-text: #5a2f1c; --seal-bg: radial-gradient(circle at 35% 30%,#cf6d43,#9c3f20 65%,#6a2610); --seal-border: #e9b08f; --seal-text: #fbe9db; }
+body.theme-terracota .wax-seal { border-radius:50% 50% 8px 8px; }
+body.theme-noche .envelope-overlay.env-noche { background: radial-gradient(circle at 50% 0%,#1a2742 0%,#080d19 100%); --env-body: #182332; --env-flap: #223148; --env-side: #131d2b; --env-text: #e8eef5; --seal-bg: radial-gradient(circle at 35% 30%,#f1d98a,#c4973a 65%,#8a6417); --seal-border: #e3c066; --seal-text: #1b1405; }
+body.theme-noche .wax-seal { border-radius:50%; }
+body.theme-gotico .envelope-overlay.env-burdeos { background: radial-gradient(circle at 50% 120%,#3a0b12 0%,#060607 70%); --env-body: #141416; --env-flap: #1e1e21; --env-side: #101012; --env-text: #ece8e1; --seal-bg: radial-gradient(circle at 35% 30%,#d0343f,#8a121b 65%,#3c070b); --seal-border: #4a4a4e; --seal-text: #fbeaea; }
+body.theme-gotico .wax-seal { border-radius:50% 50% 50% 50%/60% 60% 40% 40%; }
+body.theme-elegante .envelope-overlay.env-marfil { background: linear-gradient(180deg,#10171d,#222f39); --env-body: #1a242c; --env-flap: #25333d; --env-side: #151e25; --env-text: #efe5cf; --seal-bg: radial-gradient(circle at 35% 30%,#ead7a0,#b59a5c 65%,#7b6330); --seal-border: #d8c28a; --seal-text: #241c0a; }
+body.theme-elegante .wax-seal { border-radius:50%; }
+body.theme-starwars .envelope-overlay.env-noche { background: radial-gradient(circle at 50% 100%,#12214d 0%,#03050c 70%); --env-body: #0e1630; --env-flap: #17234c; --env-side: #0a1128; --env-text: #e8efff; --seal-bg: radial-gradient(circle at 35% 30%,#fff27a,#ffe81f 55%,#b9a500); --seal-border: #7fb2ff; --seal-text: #05070f; }
+body.theme-starwars .wax-seal { border-radius:50%;box-shadow:0 0 0 3px rgba(127,178,255,.55),0 0 24px rgba(80,140,255,.6); }
+body.theme-ibiza .envelope-overlay.env-marfil { background: radial-gradient(circle at 50% 0%,#fffaf1 0%,#f1dfc7 100%); --env-body: #fffaf2; --env-flap: #f4e7d4; --env-side: #f9eedd; --env-text: #1c4a5a; --seal-bg: radial-gradient(circle at 35% 30%,#58b4c4,#2a8496 65%,#175765); --seal-border: #ffffff; --seal-text: #f2fdff; }
+body.theme-ibiza .wax-seal { border-radius:50%; }
+body.theme-bridgerton .envelope-overlay.env-marfil { background: radial-gradient(circle at center,#f5f0e3 0%,#c9d3d0 100%); --env-body: #f8f4ea; --env-flap: #e5e8e0; --env-side: #eef0e8; --env-text: #3b4a57; --seal-bg: radial-gradient(circle at 35% 30%,#a9bfd2,#6f8ca6 65%,#486782); --seal-border: #e6d9a8; --seal-text: #f9fcff; }
+body.theme-bridgerton .wax-seal { border-radius:50%; }
+body.theme-amalfi .envelope-overlay.env-verde { background: linear-gradient(160deg,#1a45c4,#0b2478); --env-body: #f8f2e4; --env-flap: #ebe1c8; --env-side: #f1e8d2; --env-text: #14307a; --seal-bg: radial-gradient(circle at 35% 30%,#fbe27a,#e2b81f 65%,#a9830a); --seal-border: #fff2b0; --seal-text: #14307a; }
+body.theme-amalfi .wax-seal { border-radius:50% 50% 50% 50%/55% 55% 45% 45%; }
+body.theme-bodega .envelope-overlay.env-burdeos { background: radial-gradient(circle at 50% 100%,#4a1420 0%,#1a070b 75%); --env-body: #2f1219; --env-flap: #3d1b24; --env-side: #25100f; --env-text: #f0dfd0; --seal-bg: radial-gradient(circle at 35% 30%,#a4283d,#6e1424 65%,#3a0811); --seal-border: #d4af37; --seal-text: #f6e7c9; }
+body.theme-bodega .wax-seal { border-radius:50%; }
+body.theme-viajeros .envelope-overlay.env-noche { background: linear-gradient(180deg,#0f1b2b,#223954); --env-body: #f7f2e3; --env-flap: #e9e0c8; --env-side: #f1e9d2; --env-text: #162436; --seal-bg: radial-gradient(circle at 35% 30%,#d2323c,#a31c26 65%,#6a0f17); --seal-border: #f6e8d0; --seal-text: #fff3e6; }
+body.theme-viajeros .wax-seal { border-radius:50%;border-style:dashed; }
+body.theme-festival .envelope-overlay.env-noche { background: linear-gradient(160deg,#1c0d33,#8a2f74); --env-body: #2a1450; --env-flap: #3e1f72; --env-side: #200f40; --env-text: #fbe6c8; --seal-bg: radial-gradient(circle at 35% 30%,#ffb066,#ff7a3d 55%,#e0457b); --seal-border: #ffd9a8; --seal-text: #2a0f3d; }
+body.theme-festival .wax-seal { border-radius:50%; }
+body.theme-harrypotter .envelope-overlay.env-burdeos { background: radial-gradient(circle at 50% 0%,#2b1d4a 0%,#080a1a 80%); --env-body: #efe3c6; --env-flap: #e0d0a6; --env-side: #e8dab8; --env-text: #3a2a14; --seal-bg: radial-gradient(circle at 35% 30%,#b02a2a,#7e1414 65%,#450808); --seal-border: #d4af37; --seal-text: #f8e8c0; }
+body.theme-harrypotter .wax-seal { border-radius:50% 46% 52% 48%; }
+body.theme-lotr .envelope-overlay.env-verde { background: radial-gradient(circle at 50% 100%,#2a3a21 0%,#0a140c 75%); --env-body: #eadfb9; --env-flap: #d8ca98; --env-side: #e2d4a8; --env-text: #2c3a1f; --seal-bg: radial-gradient(circle at 35% 30%,#ecd078,#bf9a2b 65%,#85650f); --seal-border: #f3e29a; --seal-text: #2c2208; }
+body.theme-lotr .wax-seal { border-radius:50%; }
+body.theme-hollywood .envelope-overlay.env-burdeos { background: radial-gradient(circle at 50% 0%,#4a0a14 0%,#120305 80%); --env-body: #140f0f; --env-flap: #1f1717; --env-side: #0e0a0a; --env-text: #f1dfae; --seal-bg: radial-gradient(circle at 35% 30%,#f4de8a,#cba235 65%,#8a6a14); --seal-border: #fff2b8; --seal-text: #2a1c02; }
+body.theme-hollywood .wax-seal { border-radius: 50%; box-shadow: 0 0 0 3px #7a1220, 0 8px 20px rgba(0,0,0,.5); }
+body.theme-gamer .envelope-overlay.env-noche { background: linear-gradient(160deg,#090b18,#2f1068); --env-body: #141838; --env-flap: #1e2552; --env-side: #0e1230; --env-text: #eaf2ff; --seal-bg: linear-gradient(135deg,#00e6ff,#ff4f8b); --seal-border: #ffffff; --seal-text: #090b18; }
+body.theme-gamer .wax-seal { border-radius:6px; }
+
+/* Texto de ayuda y botón «Saltar»: contraste explícito según el fondo de cada sobre */
+body.theme-noche .envelope-overlay .env-top-hint, body.theme-noche .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-gotico .envelope-overlay .env-top-hint, body.theme-gotico .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-elegante .envelope-overlay .env-top-hint, body.theme-elegante .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-starwars .envelope-overlay .env-top-hint, body.theme-starwars .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-amalfi .envelope-overlay .env-top-hint, body.theme-amalfi .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-bodega .envelope-overlay .env-top-hint, body.theme-bodega .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-viajeros .envelope-overlay .env-top-hint, body.theme-viajeros .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-festival .envelope-overlay .env-top-hint, body.theme-festival .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-harrypotter .envelope-overlay .env-top-hint, body.theme-harrypotter .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-lotr .envelope-overlay .env-top-hint, body.theme-lotr .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-hollywood .envelope-overlay .env-top-hint, body.theme-hollywood .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-gamer .envelope-overlay .env-top-hint, body.theme-gamer .envelope-overlay .env-skip-btn { color: #f3ead8; opacity: .9; }
+body.theme-olivo .envelope-overlay .env-top-hint, body.theme-olivo .envelope-overlay .env-skip-btn { color: #3c4a34; opacity: .9; }
+body.theme-editorial .envelope-overlay .env-top-hint, body.theme-editorial .envelope-overlay .env-skip-btn { color: #141414; opacity: .9; }
+body.theme-flores .envelope-overlay .env-top-hint, body.theme-flores .envelope-overlay .env-skip-btn { color: #6a3a45; opacity: .9; }
+body.theme-sobre .envelope-overlay .env-top-hint, body.theme-sobre .envelope-overlay .env-skip-btn { color: #4a3a22; opacity: .9; }
+body.theme-terracota .envelope-overlay .env-top-hint, body.theme-terracota .envelope-overlay .env-skip-btn { color: #4a2414; opacity: .9; }
+body.theme-ibiza .envelope-overlay .env-top-hint, body.theme-ibiza .envelope-overlay .env-skip-btn { color: #1c4a5a; opacity: .9; }
+body.theme-bridgerton .envelope-overlay .env-top-hint, body.theme-bridgerton .envelope-overlay .env-skip-btn { color: #3b4a57; opacity: .9; }
