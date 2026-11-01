@@ -339,12 +339,14 @@
     var heroOrnament = el('hero-ornament');
     if (heroOrnament) heroOrnament.innerHTML = ORNAMENTS_SVG[tpl] || ORNAMENTS_SVG.olivo;
 
-    var heroPhoto = safePhoto(d.heroPhoto);
-    if (!heroPhoto && CSS_HERO_THEMES.indexOf(tpl) === -1) {
-      heroPhoto = DEFAULT_HERO_BY_THEME[tpl] || DEFAULT_HERO_BY_THEME.olivo;
-    }
+    /* Fondo de portada: arte propio de la plantilla (01-09) o CSS puro (10-19).
+       La foto de los novios ya no sustituye al fondo: se integra en el marco
+       temático de #hero-photo (css/portadas.css). */
     var heroBg = el('hero-bg');
-    if (heroBg) heroBg.style.backgroundImage = heroPhoto ? window.cssImageUrl(heroPhoto) : '';
+    var bgArt = CSS_HERO_THEMES.indexOf(tpl) === -1
+      ? (DEFAULT_HERO_BY_THEME[tpl] || DEFAULT_HERO_BY_THEME.olivo) : '';
+    if (heroBg) heroBg.style.backgroundImage = bgArt ? window.cssImageUrl(bgArt) : '';
+    renderHeroPhoto(d);
 
     updateDateDisplay(d);
     updateCountdown(d.date, d.time);
@@ -379,6 +381,37 @@
     updateShareButton(d);
 
     document.dispatchEvent(new CustomEvent('wedding:rendered', { detail: { data: d, lang: currentLang } }));
+  }
+
+  /* Foto de portada integrada en el marco de cada plantilla.
+     - Reutiliza d.heroPhoto (misma subida del panel; sin sistema duplicado).
+     - Sin foto: estado vacío elegante con el monograma, nunca una foto ficticia.
+     - Encuadre: object-fit: cover + object-position (d.heroPhotoFocus opcional,
+       "x% y%"; por defecto 50% 30% para no cortar rostros). */
+  function renderHeroPhoto(d) {
+    var fig = el('hero-photo');
+    var img = el('hero-photo-img');
+    if (!fig || !img) return;
+    var i1 = String(d.n1 || 'A').trim().charAt(0).toUpperCase() || 'A';
+    var i2 = String(d.n2 || 'M').trim().charAt(0).toUpperCase() || 'M';
+    setText('hero-photo-mono', i1 + '&' + i2);
+
+    var src = safePhoto(d.heroPhoto);
+    var focus = /^\d{1,3}(\.\d+)?% \d{1,3}(\.\d+)?%$/.test(String(d.heroPhotoFocus || ''))
+      ? d.heroPhotoFocus : '50% 30%';
+    img.style.objectPosition = focus;
+    if (src) {
+      if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+      img.alt = t('heroPhotoAlt', 'Fotografía de ' + (d.n1 || '') + ' y ' + (d.n2 || ''));
+      img.hidden = false;
+      img.onerror = function () { img.hidden = true; fig.classList.add('is-empty'); };
+      fig.classList.remove('is-empty');
+    } else {
+      img.removeAttribute('src');
+      img.alt = '';
+      img.hidden = true;
+      fig.classList.add('is-empty');
+    }
   }
 
   function setHidden(id, hidden) {
