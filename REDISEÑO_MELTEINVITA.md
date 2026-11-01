@@ -83,3 +83,11 @@ Sin build. Subir `invitacion.html`, `js/invite.js` y `css/portadas.css`. Tras de
 - Gamer: dos barras de luz cian/magenta, foto en dos temperaturas, un nombre bajo cada barra.
 - Hollywood: sin cambios (referencia aprobada).
 Trampa: para posicionar en absoluto los hijos de .hero-content hay que usar `.hero-content > .clase` (la regla base `> :not(.hero-photo)` fuerza position:relative).
+
+## Fase 3 · escritorio, catálogo, panel, interiores y sobres
+- **Escritorio (≥900px)**, bloque BATCH5 de `css/portadas.css`: la portada sale de la columna de 580px (`width:100vw`) y se divide: texto a la izquierda (44%) y foto a la derecha (56%) fundida con el fondo de cada plantilla. Los decorativos `.hp-d*` se ocultan; Gótico, Alta Etiqueta, Galaxia, Magia, Gamer y Viajeros tienen ajustes propios. Por debajo de 900px no cambia nada. Los interiores siguen en columna.
+- **Catálogo**: cada tarjeta carga una miniatura viva de la portada (`invitacion.html?demo=<id>&thumb=1`) en un iframe escalado y diferido. `?thumb` oculta sobre, idioma, música y cookies, y sustituye el monograma por una pareja ilustrada (SVG propio) como foto de ejemplo.
+- **Panel**: en la pestaña de fotos, tocar la miniatura de portada fija `heroPhotoFocus` ("x% y%"). Sin foco elegido, cada plantilla usa su encuadre propio.
+- **Interiores**: costura portada→interior (`--seam` por plantilla, medido del borde inferior real de cada portada; `box-shadow` inset en `.hero + .section`, sin pseudo-elementos para no pisar el filete existente).
+- **Sobres** (`css/sobres.css`): fondo, papel, solapa y lacre propios por plantilla. El aspecto completo se aplica cuando el color de lacre es el predeterminado de la plantilla; si el cliente elige otro color en el panel, se respeta su color y solo se mantiene la forma del sello.
+- Trampa: en `.hero-content` no usar `position:absolute` en escritorio (pasa a ser el bloque contenedor de la foto y la encoge).

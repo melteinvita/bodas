@@ -725,6 +725,12 @@ html.is-thumb .hp-empty span { display: none; }
   body.theme-viajeros .hero-names { color: #f2ead8; }
   body.theme-viajeros .hero-date-pill { color: rgba(242,234,216,.85); }
   body.theme-viajeros .hero-photo { height: calc(100% - 112px); }
+  /* Conservar el movimiento pedido: velas flotantes (Magia) y anillo giratorio (Señor de los Anillos) */
+  body.theme-harrypotter .hp-d2, body.theme-harrypotter .hp-d3 { display: block; }
+  body.theme-harrypotter .hp-d2 { top: 6%; height: 76%; }
+  body.theme-lotr .hp-d1, body.theme-lotr .hp-d2, body.theme-lotr .hp-d3 { display: block; }
+  body.theme-gotico { --rosette-x: -240px; }
+  body.theme-gotico .hero { background-position: -250px 128%; background-size: 640px 640px; }
 }
 /* <<< BATCH5 */
 
