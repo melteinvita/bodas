@@ -73,3 +73,13 @@ Todas son interpretaciones originales: sin logotipos, escudos, personajes ni rec
 ## 7. Despliegue
 
 Sin build. Subir `invitacion.html`, `js/invite.js` y `css/portadas.css`. Tras desplegar, vaciar caché de `/css/*` y `/js/*` (max-age 3600).
+
+## Portadas oscuras · estructuras propias (BATCH3/BATCH4 en css/portadas.css)
+- Noche: invertida (nombres arriba + guirnalda; foto emerge desde abajo con foco cálido).
+- Gótico: corte diagonal, rosetón gigante de fondo, nombres en columna lateral.
+- Alta Etiqueta: óvalo/arco muy suave con espacio negativo, filetes dobles de oro, nombres en una línea entre dos rayas, monograma arriba.
+- Galaxia: nombres en perspectiva arriba, pareja sobre el horizonte del planeta, fecha bajo el horizonte.
+- Magia: pareja arriba entre bruma, nombres flotando a media altura, castillo y velas abajo.
+- Gamer: dos barras de luz cian/magenta, foto en dos temperaturas, un nombre bajo cada barra.
+- Hollywood: sin cambios (referencia aprobada).
+Trampa: para posicionar en absoluto los hijos de .hero-content hay que usar `.hero-content > .clase` (la regla base `> :not(.hero-photo)` fuerza position:relative).

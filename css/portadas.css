@@ -609,3 +609,59 @@ body.theme-gotico .hero-amp { font-size: .5em; letter-spacing: 0; }
 body.theme-gotico .hero .eyebrow::after { content: none; }
 body.theme-gotico .hero-content > .hero-date-pill { position: absolute; right: 20px; bottom: 44px; padding: 8px 0 0; font-size: 9px; letter-spacing: .3em; text-align: right; }
 /* <<< BATCH3 */
+
+/* >>> BATCH4 · estructuras propias: Alta Etiqueta, Galaxia, Magia, Gamer */
+/* ALTA ETIQUETA · simetría de alta costura: arco de foto muy suave, mucho espacio negativo, filetes de oro y nombres en una línea entre dos rayas */
+body.theme-elegante .hero { background: #10171d; }
+body.theme-elegante .hero-content { padding: 0 26px 52px; }
+body.theme-elegante .hero-photo { top: 9%; height: 60%; }
+body.theme-elegante .hp-frame { -webkit-mask-image: radial-gradient(ellipse 54% 62% at 50% 58%, #000 52%, transparent 100%), linear-gradient(to bottom, #000 0, #000 70%, transparent 100%); mask-image: radial-gradient(ellipse 54% 62% at 50% 58%, #000 52%, transparent 100%), linear-gradient(to bottom, #000 0, #000 70%, transparent 100%); -webkit-mask-composite: source-in; mask-composite: intersect; }
+body.theme-elegante .hp-img { object-position: 50% 26%; filter: saturate(.9) contrast(1.04) brightness(.98) sepia(.1); }
+body.theme-elegante .hero::before { background: radial-gradient(ellipse 70% 36% at 50% 34%, rgba(233,217,180,.16), transparent 70%), linear-gradient(180deg, transparent 0, rgba(194,166,117,.55) 18%, rgba(194,166,117,.55) 82%, transparent 100%) 16px 0 / 1px 100% no-repeat, linear-gradient(180deg, transparent 0, rgba(194,166,117,.55) 18%, rgba(194,166,117,.55) 82%, transparent 100%) calc(100% - 16px) 0 / 1px 100% no-repeat, linear-gradient(180deg, transparent 0, rgba(194,166,117,.3) 18%, rgba(194,166,117,.3) 82%, transparent 100%) 22px 0 / 1px 100% no-repeat, linear-gradient(180deg, transparent 0, rgba(194,166,117,.3) 18%, rgba(194,166,117,.3) 82%, transparent 100%) calc(100% - 22px) 0 / 1px 100% no-repeat; }
+body.theme-elegante .hero::after { background: linear-gradient(0deg, #10171d 0, rgba(16,23,29,.94) 26%, transparent 46%); }
+body.theme-elegante .hp-d1, body.theme-elegante .hp-d2 { display: none; }
+body.theme-elegante .hp-d3 { top: -52px; width: 54px; height: 54px; margin-left: -27px; }
+body.theme-elegante .hp-d3::before { font-size: 17px; }
+body.theme-elegante .hero .eyebrow { margin-top: 0; letter-spacing: .5em; font-size: 9px; }
+body.theme-elegante .hero-names { white-space: nowrap; font-size: clamp(25px, 7.6vw, 36px); letter-spacing: .02em; margin: 10px -12px 14px; padding: 16px 0 14px; border-top: 1px solid rgba(194,166,117,.7); border-bottom: 1px solid rgba(194,166,117,.7); box-shadow: 0 -4px 0 -3px rgba(194,166,117,.4), 0 4px 0 -3px rgba(194,166,117,.4); }
+body.theme-elegante .hero-names span, body.theme-elegante .hero-amp { display: inline; }
+body.theme-elegante .hero-amp { margin: 0 .3em; font-size: .62em; }
+body.theme-elegante .hero-date-pill { border: 0; padding: 0; }
+
+/* GALAXIA · nombres en perspectiva (letrero que se aleja) arriba; pareja flotando sobre el horizonte del planeta; fecha bajo el horizonte */
+body.theme-starwars .hero { justify-content: flex-start; }
+body.theme-starwars .hero-content { padding: 112px 24px 0; }
+body.theme-starwars .hero-photo { top: 31%; height: 50%; }
+body.theme-starwars .hp-frame { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 66%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 66%, transparent 100%); }
+body.theme-starwars .hero::before { top: 79%; }
+body.theme-starwars .hero::after { background: linear-gradient(180deg, rgba(40,90,220,.2), transparent 26%), linear-gradient(0deg, #03050c 0, transparent 18%); }
+body.theme-starwars .hp-d1 { top: calc(100% + 2px); }
+body.theme-starwars .hp-d2 { top: calc(100% + 18px); }
+body.theme-starwars .hero .eyebrow { margin-top: 0; font-size: 10px; }
+body.theme-starwars .hero-names { transform: perspective(240px) rotateX(46deg); transform-origin: 50% 100%; margin: 6px 0 0; font-size: clamp(30px, 9.4vw, 44px); }
+body.theme-starwars .hero-content > .hero-date-pill { position: absolute; left: 0; right: 0; bottom: 38px; text-align: center; }
+
+/* MAGIA · pareja arriba entre bruma, nombres flotando sobre la niebla a media altura, castillo y velas como capas de profundidad abajo */
+body.theme-harrypotter .hero { justify-content: flex-start; }
+body.theme-harrypotter .hero-content { padding: calc(min(100svh, 900px) * .5) 24px 0; }
+body.theme-harrypotter .hero-photo { top: 0; height: 56%; }
+body.theme-harrypotter .hp-frame { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%); }
+body.theme-harrypotter .hero::before { background: radial-gradient(ellipse 110% 7% at 30% 52%, rgba(215,205,255,.3), transparent 70%), radial-gradient(ellipse 100% 6% at 78% 57%, rgba(215,205,255,.24), transparent 70%), radial-gradient(ellipse 70% 20% at 50% 82%, rgba(255,190,100,.18), transparent 70%), linear-gradient(0deg, #0a0d1e 0, rgba(10,13,30,.4) 24%, transparent 40%); }
+body.theme-harrypotter .hp-d1 { top: calc(100% / 0.56 - 108px); height: 108px; }
+body.theme-harrypotter .hp-d3 { height: 46%; }
+body.theme-harrypotter .hero .eyebrow { margin-top: 0; }
+body.theme-harrypotter .hero-names { margin: 2px 0 12px; }
+body.theme-harrypotter .hero-content > .hero-date-pill { position: absolute; left: 24px; right: 24px; bottom: 128px; text-align: center; }
+
+/* GAMER · el dúo: dos barras de luz verticales (cian / magenta), foto en dos temperaturas y nombres a izquierda y derecha, cada uno bajo su barra */
+body.theme-gamer .hero-content { padding: 0 34px 44px; }
+body.theme-gamer .hp-frame::after { background: linear-gradient(90deg, rgba(0,230,255,.5), transparent 46%, transparent 54%, rgba(255,60,150,.5)); }
+body.theme-gamer .hero::after { background: linear-gradient(90deg, rgba(126,240,255,.95), rgba(126,240,255,.95)) 14px 0 / 3px 100% no-repeat, linear-gradient(90deg, rgba(255,79,139,.95), rgba(255,79,139,.95)) calc(100% - 14px) 0 / 3px 100% no-repeat, linear-gradient(90deg, rgba(126,240,255,.28), transparent) 0 0 / 90px 100% no-repeat, linear-gradient(270deg, rgba(255,79,139,.28), transparent) 100% 0 / 90px 100% no-repeat, linear-gradient(0deg, #090b18 0, rgba(9,11,24,.8) 16%, transparent 40%); }
+body.theme-gamer .hp-d1 { top: calc(100% - 30px); }
+body.theme-gamer .hp-d2 { top: 62px; }
+body.theme-gamer .hero .eyebrow { margin-top: 56px; margin-bottom: 14px; }
+body.theme-gamer .hero-names { display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; gap: 6px; font-size: clamp(15px, 5vw, 24px); letter-spacing: .02em; margin: 0 0 14px; }
+body.theme-gamer .hero-names #n1 { text-align: left; color: #7ef0ff; text-shadow: 0 0 16px rgba(126,240,255,.6); }
+body.theme-gamer .hero-names #n2 { text-align: right; color: #ff6fa3; text-shadow: 0 0 16px rgba(255,79,139,.6); }
+body.theme-gamer .hero-amp { font-size: .8em; }
+/* <<< BATCH4 */
