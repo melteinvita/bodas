@@ -96,3 +96,12 @@ Trampa: para posicionar en absoluto los hijos de .hero-content hay que usar `.he
 - Sin WebKit disponible en el entorno de pruebas, se revisó el CSS a mano: todas las máscaras llevan `-webkit-mask-image`; las de varias capas con intersección llevan `-webkit-mask-composite`; `clip-path` con prefijo; `background-clip:text` con `-webkit-`.
 - Fallbacks añadidos: `100vh` antes de `100svh` (Safari < 15.4), `overflow-x:hidden` antes de `clip` (Safari < 16) y relleno proporcional para la miniatura del catálogo si no hay `aspect-ratio`.
 - Pendiente de comprobar en un Safari real (Mac/iPad o servicio en la nube): foto de cámara grande, animación de velas (SMIL en imagen de fondo) y altura de portada con la barra del navegador.
+
+## Interiores por familias (css/interiores.css)
+Cada familia comparte estructura (cuenta atrás, itinerario, galería, tarjetas); cada plantilla conserva sus colores y tipografías mediante variables (`--accent`, `--bg-card`, `--border-col`…).
+- **Piloto oscuro**: Noche (bombillas, itinerario centrado, polaroids con pinza), Gótico (arcos apuntados y ventanales), Gamer (arcade retro).
+- **Botánica** (olivo, flores, terracota): cuenta atrás en guijarros, hojas como marcadores, galería en arcos y óvalos, tarjetas de esquinas orgánicas, ramita bajo cada título.
+- **Viaje y verano** (ibiza, amalfi, festival, bodega, viajeros): cuenta atrás como billete con muescas, ruta discontinua con chapas, horas en etiqueta, galería de postales con sello, tarjetas tipo etiqueta de equipaje.
+- **Elegancia clásica** (elegante, editorial, bridgerton, sobre): maquetación de revista: cuenta atrás con filetes, itinerario numerado a dos columnas, galería asimétrica, bloques con regla superior.
+- **Cine y fantasía** (starwars, harrypotter, lotr, hollywood): medallones, capítulos en números romanos, esquinas de marco, galería en pantalla ancha con letterbox.
+- **Gamer** (segunda pasada): `MelPixel` (fuente pixel 5×7 propia generada con fontTools, `fonts/files/melpixel-400-normal.woff`; solo mayúsculas, cifras y signos básicos, sin acentos: úsese solo en etiquetas), «PLAYER 1 / PLAYER 2» sobre cada nombre, «PRESS START», estrellas pixel, scanlines, niveles `LVL 01…`, barra LOVE, etiquetas P1/P2 en la galería.
