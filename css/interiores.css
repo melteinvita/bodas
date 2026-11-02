@@ -51,3 +51,23 @@ body.theme-gamer .gallery-item:nth-child(even) { border-color: #ff4f8b; box-shad
 body.theme-gamer .gallery-item:first-child { box-shadow: 7px 7px 0 rgba(255,79,139,.55); }
 body.theme-gamer .btn-primary { border-radius: 0; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
 body.theme-gotico .timeline-card::before, body.theme-gotico .info-card::before, body.theme-gotico .cd-box::before { display: none; }
+
+/* ---------- GAMER · arcade retro suave (segunda pasada) ---------- */
+body.theme-gamer #sec-story .section-title::before { content: '♥ PLAYER 1 + PLAYER 2 ♥'; font: 16px/1.4 'MelPixel', monospace; letter-spacing: 0; color: #ffd54a; text-shadow: 2px 2px 0 rgba(255,79,139,.6); }
+body.theme-gamer #sec-itinerary .eyebrow::before { content: 'WORLD 1-1'; font: 16px/1 'MelPixel', monospace; letter-spacing: 0; color: #ff6fa3; text-shadow: 2px 2px 0 rgba(0,0,0,.5); margin-bottom: 10px; }
+body.theme-gamer .rsvp-form::before { content: '♥ 1UP · ¿JUGAMOS JUNTOS? ♥'; font-size: 10px; letter-spacing: .12em; }
+body.theme-gamer .section-title::after { height: 10px; width: 78px; background: repeating-linear-gradient(90deg, #7ef0ff 0 8px, transparent 8px 10px, #ff4f8b 10px 18px, transparent 18px 20px); box-shadow: none; }
+body.theme-gamer .countdown-grid .cd-num { font: 30px/1 'MelPixel', monospace; letter-spacing: 0; text-shadow: 2px 2px 0 rgba(255,79,139,.75); padding: 6px 0 4px; }
+body.theme-gamer .countdown-grid { row-gap: 14px; }
+body.theme-gamer .countdown-grid::after { content: 'LOVE ♥'; grid-column: 1 / -1; display: block; height: 22px; margin-top: 2px; padding: 0 8px 0 0; text-align: right; font: 14px/22px 'MelPixel', monospace; color: #ffd54a; border: 3px solid #fff; background: repeating-linear-gradient(90deg, #ff4f8b 0 10px, transparent 10px 13px) 0 0 / 62% 100% no-repeat; text-shadow: 2px 2px 0 #090b18; box-shadow: 4px 4px 0 rgba(126,240,255,.45); }
+body.theme-gamer .timeline { counter-reset: lvl; }
+body.theme-gamer .timeline-item { counter-increment: lvl; }
+body.theme-gamer .timeline-time::before { content: 'LVL ' counter(lvl, decimal-leading-zero); display: block; margin-bottom: 6px; font: 14px/1 'MelPixel', monospace; letter-spacing: 0; color: #ff6fa3; }
+body.theme-gamer .gallery-item { position: relative; }
+body.theme-gamer .gallery-item::after { content: 'P1'; position: absolute; left: 0; bottom: 0; padding: 5px 8px 4px; font: 14px/1 'MelPixel', monospace; background: #7ef0ff; color: #090b18; }
+body.theme-gamer .gallery-item:nth-child(even)::after { content: 'P2'; background: #ff4f8b; left: auto; right: 0; }
+body.theme-gamer .btn-primary { clip-path: none; border-radius: 0; box-shadow: 4px 4px 0 #ff4f8b; }
+body.theme-gamer .btn-primary:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 #ff4f8b; }
+body.theme-gamer .btn-outline { border-radius: 0; box-shadow: 3px 3px 0 rgba(255,79,139,.55); }
+body.theme-gamer .invite-footer::before { content: '♥ 1UP · 2UP ♥'; display: block; margin-bottom: 14px; font: 20px/1 'MelPixel', monospace; color: #7ef0ff; text-shadow: 3px 3px 0 #ff4f8b; }
+body.theme-gamer .divider-ornament { font-family: 'MelPixel', monospace; letter-spacing: .2em; }
