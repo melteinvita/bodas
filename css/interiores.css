@@ -1,0 +1,53 @@
+/* =====================================================================
+   INTERIORES · estructura propia por plantilla
+   Cambia la forma de la cuenta atrás, la línea de tiempo, la galería y
+   las tarjetas (no solo el color). Solo CSS: el marcado no se toca.
+   ===================================================================== */
+
+/* ---------- NOCHE · luces de verbena ---------- */
+body.theme-noche .countdown-grid { position: relative; gap: 12px; padding-top: 20px; max-width: 360px; }
+body.theme-noche .countdown-grid::before { content: ''; position: absolute; left: 4%; right: 4%; top: 0; height: 26px; border-top: 1px solid rgba(212,175,55,.45); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+body.theme-noche .countdown-grid .cd-box { aspect-ratio: 1; padding: 0; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 40%, rgba(255,210,130,.26), rgba(255,190,90,.07) 62%, transparent 74%); border: 1px solid rgba(212,175,55,.4); box-shadow: 0 0 24px rgba(255,190,90,.2), inset 0 0 14px rgba(255,200,110,.12); }
+body.theme-noche .cd-num { font-size: 24px; }
+body.theme-noche .cd-label { margin-top: 2px; }
+body.theme-noche .timeline { max-width: 340px; }
+body.theme-noche .timeline::before { left: 50%; width: 0; background: none; border-left: 1px dashed rgba(212,175,55,.45); }
+body.theme-noche .timeline-item { flex-direction: column; align-items: center; text-align: center; gap: 10px; padding-bottom: 30px; }
+body.theme-noche .timeline-dot { border: 0; background: radial-gradient(circle, rgba(255,214,140,.5), rgba(255,190,90,.12) 60%, transparent 72%); box-shadow: 0 0 22px rgba(255,190,90,.5); }
+body.theme-noche .timeline-card { background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 4px 10px; text-align: center; }
+body.theme-noche .gallery-grid { gap: 22px 16px; padding-top: 10px; }
+body.theme-noche .gallery-item { overflow: visible; position: relative; border: 8px solid #f3e8cc; border-bottom-width: 24px; border-radius: 2px; box-shadow: 0 10px 24px rgba(0,0,0,.5); background: #f3e8cc; transform: rotate(-2deg); }
+body.theme-noche .gallery-item:nth-child(even) { transform: rotate(2.2deg); }
+body.theme-noche .gallery-item:nth-child(3n) { transform: rotate(-1deg); }
+body.theme-noche .gallery-item::before { content: ''; position: absolute; top: -20px; left: 50%; width: 10px; height: 22px; margin-left: -5px; border-radius: 2px; background: linear-gradient(#e3c066, #9a7a22); box-shadow: 0 2px 4px rgba(0,0,0,.4); z-index: 2; }
+body.theme-noche .gallery-item img { border-radius: 0; }
+
+/* ---------- GÓTICO · vidrieras y arcos apuntados ---------- */
+body.theme-gotico .section-title::after { content: ''; display: block; width: 46px; height: 22px; margin: 12px auto 0; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 22'%3E%3Cpath d='M3 21 V12 C3 6 23 6 23 1 C23 6 43 6 43 12 V21' fill='none' stroke='%239e1b24' stroke-width='1.4'/%3E%3Ccircle cx='23' cy='13' r='2.2' fill='%239e1b24'/%3E%3C/svg%3E"); }
+body.theme-gotico .countdown-grid { gap: 8px; max-width: 360px; }
+body.theme-gotico .countdown-grid .cd-box { border: 0; border-radius: 0; padding: 22px 4px 12px; clip-path: polygon(50% 0, 100% 24%, 100% 100%, 0 100%, 0 24%); background: linear-gradient(180deg, #2b2b30, #0f0f11); border-bottom: 2px solid #9e1b24; }
+body.theme-gotico .timeline::before { left: 20px; background: linear-gradient(180deg, transparent, #9e1b24 12%, #9e1b24 88%, transparent); width: 1px; }
+body.theme-gotico .timeline-dot { width: 40px; height: 52px; border: 0; border-radius: 0; clip-path: polygon(50% 0, 100% 26%, 100% 100%, 0 100%, 0 26%); background: linear-gradient(180deg, #34343a, #131316); color: #e8e4dc; align-items: flex-end; padding-bottom: 8px; font-size: 16px; }
+body.theme-gotico .timeline-card, body.theme-gotico .info-card, body.theme-gotico .iban-box { box-shadow: none; outline: 0; }
+body.theme-gotico .timeline-card { background: transparent; border: 0; border-left: 2px solid #9e1b24; border-radius: 0; padding: 4px 0 4px 16px; }
+body.theme-gotico .timeline-time { letter-spacing: .3em; color: #b6252f; }
+body.theme-gotico .gallery-grid { gap: 14px; }
+body.theme-gotico .gallery-item { border: 1px solid rgba(207,203,196,.5); border-radius: 999px 999px 3px 3px; box-shadow: 0 0 0 4px #060607, 0 0 0 5px rgba(207,203,196,.25), 0 12px 26px rgba(0,0,0,.6); aspect-ratio: 3 / 4; }
+body.theme-gotico .gallery-item:first-child { aspect-ratio: 3 / 3.4; width: 62%; margin: 0 auto; grid-column: span 2; }
+body.theme-gotico .info-cards { gap: 0; }
+body.theme-gotico .info-card { background: transparent; border: 0; border-top: 1px solid rgba(207,203,196,.28); border-radius: 0; text-align: center; padding: 22px 12px; }
+body.theme-gotico .info-card:last-child { border-bottom: 1px solid rgba(207,203,196,.28); }
+body.theme-gotico .info-card h4 { font-family: 'Cinzel', serif; letter-spacing: .14em; text-transform: uppercase; font-size: 15px; }
+body.theme-gotico .rsvp-form input, body.theme-gotico .rsvp-form select, body.theme-gotico .rsvp-form textarea { background: transparent; border: 0; border-bottom: 1px solid rgba(207,203,196,.4); border-radius: 0; }
+
+/* ---------- GAMER · marcos de neón con esquina cortada ---------- */
+body.theme-gamer .countdown-grid .cd-box, body.theme-gamer .timeline-card, body.theme-gamer .info-card, body.theme-gamer .iban-box { border: 2px solid transparent; border-radius: 0; background: linear-gradient(#0f1330, #0f1330) padding-box, linear-gradient(135deg, #7ef0ff, #ff4f8b) border-box; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); box-shadow: none; }
+body.theme-gamer .timeline::before { left: 21px; width: 3px; background: linear-gradient(180deg, #7ef0ff, #ff4f8b); }
+body.theme-gamer .timeline-dot { border-radius: 0; border: 0; width: 44px; height: 44px; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); background: linear-gradient(135deg, #7ef0ff, #ff4f8b); color: #090b18; }
+body.theme-gamer .timeline-item:nth-child(even) .timeline-card { background: linear-gradient(#0f1330, #0f1330) padding-box, linear-gradient(135deg, #ff4f8b, #7ef0ff) border-box; }
+body.theme-gamer .gallery-grid { gap: 18px 16px; }
+body.theme-gamer .gallery-item { border: 3px solid #7ef0ff; border-radius: 3px; box-shadow: 7px 7px 0 rgba(255,79,139,.55); }
+body.theme-gamer .gallery-item:nth-child(even) { border-color: #ff4f8b; box-shadow: -7px 7px 0 rgba(126,240,255,.5); }
+body.theme-gamer .gallery-item:first-child { box-shadow: 7px 7px 0 rgba(255,79,139,.55); }
+body.theme-gamer .btn-primary { border-radius: 0; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+body.theme-gotico .timeline-card::before, body.theme-gotico .info-card::before, body.theme-gotico .cd-box::before { display: none; }
