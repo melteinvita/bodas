@@ -72,7 +72,7 @@
      parte de la composición. El texto va por encima (z-index 3).
    ===================================================================== */
 body.theme-olivo .hero, body.theme-editorial .hero, body.theme-flores .hero, body.theme-sobre .hero, body.theme-terracota .hero, body.theme-noche .hero, body.theme-gotico .hero, body.theme-elegante .hero, body.theme-starwars .hero, body.theme-ibiza .hero, body.theme-bridgerton .hero, body.theme-amalfi .hero, body.theme-bodega .hero, body.theme-viajeros .hero, body.theme-festival .hero, body.theme-harrypotter .hero, body.theme-lotr .hero, body.theme-hollywood .hero, body.theme-gamer .hero {
-  min-height: min(100svh, 900px); padding: 0; justify-content: flex-end;
+  min-height: min(100vh, 900px); min-height: min(100svh, 900px); padding: 0; justify-content: flex-end;
 }
 body.theme-olivo .hero-content, body.theme-editorial .hero-content, body.theme-flores .hero-content, body.theme-sobre .hero-content, body.theme-terracota .hero-content, body.theme-noche .hero-content, body.theme-gotico .hero-content, body.theme-elegante .hero-content, body.theme-starwars .hero-content, body.theme-ibiza .hero-content, body.theme-bridgerton .hero-content, body.theme-amalfi .hero-content, body.theme-bodega .hero-content, body.theme-viajeros .hero-content, body.theme-festival .hero-content, body.theme-harrypotter .hero-content, body.theme-lotr .hero-content, body.theme-hollywood .hero-content, body.theme-gamer .hero-content {
   position: static; z-index: auto; max-width: 460px; padding: 0 28px 46px; border: 0; border-radius: 0; background: none; box-shadow: none;
@@ -643,7 +643,7 @@ body.theme-starwars .hero-content > .hero-date-pill { position: absolute; left: 
 
 /* MAGIA · pareja arriba entre bruma, nombres flotando sobre la niebla a media altura, castillo y velas como capas de profundidad abajo */
 body.theme-harrypotter .hero { justify-content: flex-start; }
-body.theme-harrypotter .hero-content { padding: calc(min(100svh, 900px) * .5) 24px 0; }
+body.theme-harrypotter .hero-content { padding: calc(min(100vh, 900px) * .5) 24px 0; padding: calc(min(100svh, 900px) * .5) 24px 0; }
 body.theme-harrypotter .hero-photo { top: 0; height: 56%; }
 body.theme-harrypotter .hp-frame { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%); }
 body.theme-harrypotter .hero::before { background: radial-gradient(ellipse 110% 7% at 30% 52%, rgba(215,205,255,.3), transparent 70%), radial-gradient(ellipse 100% 6% at 78% 57%, rgba(215,205,255,.24), transparent 70%), radial-gradient(ellipse 70% 20% at 50% 82%, rgba(255,190,100,.18), transparent 70%), linear-gradient(0deg, #0a0d1e 0, rgba(10,13,30,.4) 24%, transparent 40%); }
@@ -675,9 +675,9 @@ html.is-thumb .hp-empty span { display: none; }
 
 /* >>> BATCH5 · escritorio (≥900px): composición dividida — texto a la izquierda, foto a la derecha fundida con el fondo de cada plantilla */
 @media (min-width: 900px) {
-  html, body { overflow-x: clip; }
+  html, body { overflow-x: hidden; overflow-x: clip; }
   body[class*="theme-"] .invite-shell { overflow: visible; }
-  body[class*="theme-"] .hero { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); min-height: min(100svh, 860px); justify-content: center; align-items: flex-start; }
+  body[class*="theme-"] .hero { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); min-height: min(100vh, 860px); min-height: min(100svh, 860px); justify-content: center; align-items: flex-start; }
   body[class*="theme-"] .hero-content { position: static; width: 44%; box-sizing: border-box; max-width: none; margin: 0; padding: 0 2vw 0 max(6vw, 56px); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
   body[class*="theme-"] .hero-photo { top: 0; bottom: auto; left: auto; right: 0; width: 56%; height: 100%; clip-path: none; -webkit-clip-path: none; }
   body[class*="theme-"] .hp-frame { -webkit-mask-image: linear-gradient(to left, #000 0, #000 58%, transparent 100%); mask-image: linear-gradient(to left, #000 0, #000 58%, transparent 100%); -webkit-mask-composite: source-over; mask-composite: add; }

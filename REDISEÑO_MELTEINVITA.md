@@ -91,3 +91,8 @@ Trampa: para posicionar en absoluto los hijos de .hero-content hay que usar `.he
 - **Interiores**: costura portada→interior (`--seam` por plantilla, medido del borde inferior real de cada portada; `box-shadow` inset en `.hero + .section`, sin pseudo-elementos para no pisar el filete existente).
 - **Sobres** (`css/sobres.css`): fondo, papel, solapa y lacre propios por plantilla. El aspecto completo se aplica cuando el color de lacre es el predeterminado de la plantilla; si el cliente elige otro color en el panel, se respeta su color y solo se mantiene la forma del sello.
 - Trampa: en `.hero-content` no usar `position:absolute` en escritorio (pasa a ser el bloque contenedor de la foto y la encoge).
+
+## Compatibilidad Safari / iOS (revisión sin dispositivo)
+- Sin WebKit disponible en el entorno de pruebas, se revisó el CSS a mano: todas las máscaras llevan `-webkit-mask-image`; las de varias capas con intersección llevan `-webkit-mask-composite`; `clip-path` con prefijo; `background-clip:text` con `-webkit-`.
+- Fallbacks añadidos: `100vh` antes de `100svh` (Safari < 15.4), `overflow-x:hidden` antes de `clip` (Safari < 16) y relleno proporcional para la miniatura del catálogo si no hay `aspect-ratio`.
+- Pendiente de comprobar en un Safari real (Mac/iPad o servicio en la nube): foto de cámara grande, animación de velas (SMIL en imagen de fondo) y altura de portada con la barra del navegador.
