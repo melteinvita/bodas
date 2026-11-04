@@ -253,7 +253,7 @@ window.templateKeys = function (selected) {
 
 window.DEFAULT_WEDDING_DATA = {
   id: 'alejandro-y-martina',
-  template: 'sobre',
+  template: 'classic',
   useEnvelope: true,
   envelopeStyle: 'marfil', // marfil | verde | burdeos | noche
   musicEnabled: true,
