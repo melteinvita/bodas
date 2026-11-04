@@ -112,6 +112,9 @@
         demo.template = demoTpl;
         demo.useEnvelope = true;
         demo.envelopeStyle = window.WEDDING_TEMPLATES[demoTpl].defaultSealColor || 'marfil';
+        /* Las plantillas v3 muestran su tratamiento fotográfico también en la demo */
+        if (window.WEDDING_TEMPLATES[demoTpl].demoHero) demo.heroPhoto = window.WEDDING_TEMPLATES[demoTpl].demoHero;
+        if (window.WEDDING_TEMPLATES[demoTpl].demoGallery) demo.galleryPhotos = window.WEDDING_TEMPLATES[demoTpl].demoGallery.slice();
       }
       return demo;
     }

@@ -49,7 +49,10 @@ window.WEDDING_TEMPLATES = {
     desc: 'Nombres a gran escala, fotografía integrada y filetes en champagne. Una invitación de revista de moda, cálida y personal.',
     colors: ['#CDB892', '#FAF8F4', '#1F1E1C'],
     defaultEnvelope: false,
-    defaultSealColor: 'marfil'
+    defaultSealColor: 'marfil',
+    /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
+    demoHero: 'img/demo/timeless-hero.jpg',
+    demoGallery: ['img/demo/timeless-1.jpg', 'img/demo/timeless-2.jpg', 'img/demo/timeless-3.jpg']
   },
   'french-romance': {
     id: 'french-romance',
@@ -58,7 +61,10 @@ window.WEDDING_TEMPLATES = {
     desc: 'Marcos ornamentales finísimos, rosa antiguo y dorado envejecido. La papelería de un château en la Provenza.',
     colors: ['#C9A09A', '#FBF7EF', '#5C4E49'],
     defaultEnvelope: true,
-    defaultSealColor: 'marfil'
+    defaultSealColor: 'marfil',
+    /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
+    demoHero: 'img/demo/french-romance-hero.jpg',
+    demoGallery: ['img/demo/french-romance-1.jpg', 'img/demo/french-romance-2.jpg', 'img/demo/french-romance-3.jpg']
   },
   'black-tie': {
     id: 'black-tie',
@@ -67,7 +73,10 @@ window.WEDDING_TEMPLATES = {
     desc: 'Negro profundo, marfil y filetes geométricos en champagne. Para una boda de etiqueta que empieza al caer la noche.',
     colors: ['#C9B27C', '#0E0E0F', '#F4EFE6'],
     defaultEnvelope: true,
-    defaultSealColor: 'noche'
+    defaultSealColor: 'noche',
+    /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
+    demoHero: 'img/demo/black-tie-hero.jpg',
+    demoGallery: ['img/demo/black-tie-1.jpg', 'img/demo/black-tie-2.jpg', 'img/demo/black-tie-3.jpg']
   },
   garden: {
     id: 'garden',
@@ -76,7 +85,10 @@ window.WEDDING_TEMPLATES = {
     desc: 'Follaje a la acuarela en verde bosque y salvia, con toques de rosa nude. Una boda al aire libre en un jardín privado.',
     colors: ['#5E7260', '#FAF7F0', '#DDB9AE'],
     defaultEnvelope: true,
-    defaultSealColor: 'verde'
+    defaultSealColor: 'verde',
+    /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
+    demoHero: 'img/demo/garden-hero.jpg',
+    demoGallery: ['img/demo/garden-1.jpg', 'img/demo/garden-2.jpg', 'img/demo/garden-3.jpg']
   },
 
   /* ---------------------------------------------------------------
