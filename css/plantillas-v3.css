@@ -138,6 +138,9 @@ body:is(.theme-timeless, .theme-french-romance, .theme-black-tie, .theme-garden)
   body:is(.theme-timeless, .theme-french-romance, .theme-black-tie, .theme-garden) .hero-names[data-len="xl"] { font-size: calc(var(--names-size, 44px) * .7); }
 }
 
+/* Líneas de presentación equilibradas: sin palabras sueltas al final */
+body:is(.theme-timeless, .theme-french-romance, .theme-black-tie, .theme-garden) .hero-kicker { text-wrap: balance; }
+
 
 /* ==========================================================================
    05 · TIMELESS EDITORIAL
@@ -352,6 +355,8 @@ body.theme-timeless .hero-footnote {
 @media (min-width: 700px) {
   body.theme-timeless .hero { padding: 84px 56px 72px; }
   body.theme-timeless .hero-names { margin-top: 40px; }
+  /* En pantallas grandes el panel es cuadrado: los datos quedan en la primera vista */
+  body.theme-timeless .hero-photo-bg { aspect-ratio: 1 / 1; }
   body.theme-timeless .hero-date-pill,
   body.theme-timeless .hero .eyebrow { font-size: 11px; }
 }

@@ -1,0 +1,18 @@
+Fuentes de css/plantillas-v3.css
+================================
+css/plantillas-v3.css es un archivo GENERADO: no se edita a mano.
+
+  base.css       reglas comunes a las cuatro plantillas (@T@ = selector de los 4 temas)
+  timeless.css   05 Timeless Editorial
+  french.css     06 French Romance
+  blacktie.css   07 Black Tie
+  garden.css     08 Garden Wedding
+  build.py       une los fragmentos y genera los SVG (marcos, ramas, follaje)
+                 como data URI (permitido por la CSP: img-src 'self' data:)
+
+Para regenerar tras editar un fragmento:
+
+  python3 tools/plantillas-v3/build.py
+
+Los ornamentos del hero (ORNAMENTS_SVG en js/invite.js) salen de orn.json,
+que genera el mismo script. Esta carpeta no se publica (ver .assetsignore).

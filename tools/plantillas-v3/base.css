@@ -1,0 +1,142 @@
+/* ==========================================================================
+   MELTEINVITA · PLANTILLAS v3
+   --------------------------------------------------------------------------
+   05 timeless · 06 french-romance · 07 black-tie · 08 garden
+
+   - Se carga DESPUÉS de invitacion.css y plantillas-v2.css y solo actúa sobre
+     estos cuatro temas (body.theme-timeless, .theme-french-romance,
+     .theme-black-tie, .theme-garden). Las 23 plantillas anteriores no se ven
+     afectadas.
+   - Sin recursos externos: tipografías locales (fonts/fonts.css) e
+     ilustraciones SVG incrustadas como data URI (CSP: img-src 'self' data:).
+   - Diseño pensado primero para móvil; ajustes a partir de 700 px.
+   - Sin emojis ni símbolos Unicode como adorno (body.clean-type).
+   - Generado con una herramienta interna; las ilustraciones son vectoriales.
+   ========================================================================== */
+
+/* ==========================================================================
+   BASE COMÚN A LAS CUATRO PLANTILLAS
+   ========================================================================== */
+@T@ {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@T@ .invite-shell { max-width: 600px; box-shadow: none; }
+@media (min-width: 700px) {
+  @T@ .invite-shell {
+    max-width: 680px;
+    box-shadow: 0 0 0 1px var(--border-col), 0 30px 80px -40px rgba(20, 20, 18, .4);
+  }
+}
+@T@ .hero::after { display: none; }
+@T@ .hero { min-height: 100vh; min-height: 100svh; overflow: hidden; }
+@T@ .hero-photo-bg { display: none; }
+@T@ .template-ornament { opacity: 1; }
+@T@ .hero-names { overflow-wrap: anywhere; hyphens: none; }
+@T@ .editorial-big-date { display: none; }
+
+@T@ .section { border-bottom: 0; }
+@T@ .section-title { overflow-wrap: break-word; text-wrap: balance; }
+@T@ .section-text { text-wrap: pretty; }
+@T@ .section > .eyebrow::before,
+@T@ .section > .eyebrow::after { display: none; }
+@T@ .section > .eyebrow { display: block; }
+@T@ .section > .divider-ornament { display: none; }
+
+/* Sin elevaciones ni zooms al pasar el ratón */
+@T@ .timeline-card:hover,
+@T@ .info-card:hover { transform: none; }
+@T@ .gallery-item:hover img { transform: none; }
+@T@ .btn-primary:hover { box-shadow: none; transform: none; }
+@T@ .btn-primary,
+@T@ .btn-outline { border-radius: 0; margin-top: 18px; }
+@T@ .btn-primary:disabled { opacity: .6; }
+
+/* Iconos del itinerario: trazo fino, sin emojis */
+@T@ .timeline-dot { font-size: 0; }
+@T@ .timeline-dot svg { width: 22px; height: 22px; stroke-width: 1.1; }
+
+/* Campos de formulario: 16 px mínimo para que iOS no haga zoom */
+@T@ .form-group input,
+@T@ .form-group select,
+@T@ .companion-row input,
+@T@ .companion-row select {
+  font-size: 16px;
+  min-height: 46px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+@T@ .form-group select,
+@T@ .companion-row select {
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+  padding-right: 34px;
+}
+@T@ .rsvp-form input:focus-visible,
+@T@ .rsvp-form select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@T@ .btn-primary:focus-visible,
+@T@ .btn-outline:focus-visible,
+@T@ .music-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@T@ .rsvp-error,
+@T@ .rsvp-success,
+@T@ .invite-status-card { border-radius: 0; }
+
+/* Casilla de privacidad: cuadrado fino con marca dibujada en SVG */
+@T@ .consent-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  margin: 3px 0 0;
+  padding: 0;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  cursor: pointer;
+}
+@T@ .consent-label input[type="checkbox"]:checked {
+  background-color: var(--accent);
+  background-image: @tick_light@;
+}
+
+/* Botón de música: barras de sonido dibujadas con CSS (sin glifos) */
+@T@ .music-toggle {
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
+  backdrop-filter: none;
+  transition: background .25s ease, color .25s ease;
+}
+@T@ .music-toggle:hover { transform: none; }
+@T@ .music-toggle::before {
+  content: '';
+  width: 16px;
+  height: 14px;
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 2px 6px no-repeat,
+    linear-gradient(currentColor, currentColor) 5px 100% / 2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) 10px 100% / 2px 9px no-repeat,
+    linear-gradient(currentColor, currentColor) 15px 100% / 2px 4px no-repeat;
+  opacity: .55;
+}
+@T@ .music-toggle.playing::before { opacity: 1; }
+
+/* Campo trampa del RSVP: siempre fuera de pantalla */
+@T@ .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Nombres largos: reducir la escala antes de que se rompan */
+@media (max-width: 480px) {
+  @T@ .hero-names[data-len="l"] { font-size: calc(var(--names-size, 44px) * .86); }
+  @T@ .hero-names[data-len="xl"] { font-size: calc(var(--names-size, 44px) * .7); }
+}
+
+/* Líneas de presentación equilibradas: sin palabras sueltas al final */
+@T@ .hero-kicker { text-wrap: balance; }

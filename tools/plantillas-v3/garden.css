@@ -1,0 +1,416 @@
+
+/* ==========================================================================
+   08 · GARDEN WEDDING
+   Verde bosque suave · Salvia · Marfil · Beige natural · Rosa nude
+   Fraunces (nombres y títulos) + Cormorant Garamond cursiva (textos) + DM Sans
+   Follaje a la acuarela dibujado en SVG (hojas translúcidas con velo difuminado)
+   ========================================================================== */
+body.theme-garden {
+  --bg-page: #FAF7F0;
+  --bg-card: #FAF7F0;
+  --bg-alt: #F0EADB;
+  --text-main: #44503F;
+  --text-muted: #5E6A58;
+  --accent: #5E7260;
+  --accent-light: #E4EAD9;
+  --gold: #A9B49B;
+  --border-col: #E0DAC8;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-script: 'Cormorant Garamond', Georgia, serif;
+  --radius-card: 2px;
+  --forest: #5E7260;
+  --deep: #4C6150;
+  --sage: #A9B49B;
+  --nude: #DDB9AE;
+  --nude-ink: #8A5F52;
+  --paper: #FFFDF8;
+  --ga-strip: @ga_strip@;
+  --ga-corner: @ga_corner@;
+  --ga-sprig-small: @ga_sprig_small@;
+  background: #EFE9DA;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-variant-numeric: lining-nums;
+}
+
+/* --- Portada: guirnaldas de follaje arriba y abajo --- */
+body.theme-garden .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(128px, 30vw, 200px) 30px clamp(128px, 30vw, 200px);
+  background: var(--bg-page);
+  color: var(--text-main);
+}
+body.theme-garden .hero-content { display: contents; }
+body.theme-garden .hero::before,
+body.theme-garden .hero::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  background: var(--ga-strip) no-repeat center / 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+body.theme-garden .hero::before { top: 0; inset: 0 0 auto 0; }
+body.theme-garden .hero::after { top: auto; bottom: 0; inset: auto 0 0 0; transform: rotate(180deg); }
+body.theme-garden .hero > * { position: relative; z-index: 1; }
+body.theme-garden .template-ornament,
+body.theme-garden .hero .eyebrow { display: none; }
+body.theme-garden .hero-kicker {
+  display: block;
+  max-width: 18em;
+  margin: 0 0 4px;
+  font: italic 500 21px/1.45 var(--font-script);
+  color: var(--text-muted);
+}
+body.theme-garden .hero-script {
+  display: block;
+  margin: 4px 0 8px;
+  font: italic 600 30px/1.2 var(--font-script);
+  color: var(--nude-ink);
+}
+body.theme-garden .hero-names {
+  --names-size: clamp(44px, 13.4vw, 78px);
+  width: 100%;
+  margin: 0;
+  font: italic 400 var(--names-size)/1.06 var(--font-heading);
+  letter-spacing: -.012em;
+  color: var(--text-main);
+}
+body.theme-garden .hero-amp {
+  margin: .04em 0 .06em;
+  font: italic 400 .56em/1 var(--font-heading);
+  letter-spacing: 0;
+  color: #B88E80;
+  opacity: 1;
+}
+body.theme-garden .hero-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 34px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+  font: 500 12.5px/1.4 var(--font-body);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--deep);
+}
+body.theme-garden .hero-date-pill::before,
+body.theme-garden .hero-date-pill::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nude);
+}
+body.theme-garden .hero-details { display: block; margin-top: 20px; }
+body.theme-garden .hero-details span { display: block; }
+body.theme-garden .hero-details #hero-time {
+  font: 500 12.5px/1.8 var(--font-body);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+body.theme-garden .hero-details #hero-venue { font: italic 400 clamp(21px, 6vw, 26px)/1.3 var(--font-heading); color: var(--text-main); }
+body.theme-garden .hero-details #hero-address { font: 400 13px/1.7 var(--font-body); letter-spacing: .12em; color: var(--text-muted); }
+body.theme-garden .hero-footnote {
+  display: block;
+  margin: 26px 0 0;
+  font: italic 500 21px/1.5 var(--font-script);
+  color: var(--nude-ink);
+}
+/* Foto: óvalo con hoja en una esquina */
+body.theme-garden.has-hero-photo .hero-photo-bg {
+  display: block;
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  width: 58%;
+  max-width: 250px;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  flex: none;
+  order: -1;
+  margin: 0 auto 36px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  outline: 1px solid rgba(94, 114, 96, .4);
+  outline-offset: 9px;
+  transition: none;
+}
+body.theme-garden.has-hero-photo .hero-photo-bg::after {
+  content: '';
+  position: absolute;
+  top: -26px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: var(--ga-corner) no-repeat center / contain;
+}
+@media (min-width: 481px) {
+  body.theme-garden .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .9); }
+  body.theme-garden .hero-names[data-len="xl"] { font-size: calc(var(--names-size) * .7); }
+}
+
+/* --- Secciones: ramito en cada cabecera, marfil y beige alternos --- */
+body.theme-garden .section {
+  position: relative;
+  padding: 84px 28px 84px;
+  background: var(--bg-page);
+  text-align: center;
+}
+body.theme-garden .section-alt { background: var(--bg-alt); }
+body.theme-garden .section::before {
+  content: '';
+  display: block;
+  width: 150px;
+  height: 41px;
+  margin: 0 auto 12px;
+  background: @ga_sprig@ no-repeat center / contain;
+}
+body.theme-garden .section:nth-of-type(even)::before { transform: scaleX(-1); }
+body.theme-garden .section .eyebrow {
+  display: block;
+  margin: 0 0 10px;
+  font: 500 11px/1.5 var(--font-body);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--nude-ink);
+}
+body.theme-garden .section-title {
+  margin: 0 0 20px;
+  font: italic 400 clamp(32px, 9.4vw, 44px)/1.15 var(--font-heading);
+  letter-spacing: -.005em;
+  color: var(--text-main);
+}
+body.theme-garden .section-text {
+  max-width: 29em;
+  margin: 0 auto;
+  font: 400 16px/1.85 var(--font-body);
+  color: var(--text-muted);
+}
+body.theme-garden #message,
+body.theme-garden #story-text,
+body.theme-garden #gift-message {
+  font: italic 500 22px/1.6 var(--font-script);
+  color: var(--text-main);
+}
+body.theme-garden .section-text strong { font-weight: 500; color: var(--text-main); }
+
+body.theme-garden .countdown-grid { max-width: 400px; gap: 10px; margin: 34px auto 28px; }
+body.theme-garden .cd-box,
+body.theme-garden .section:not(.section-alt) .cd-box {
+  padding: 16px 4px 14px;
+  background: var(--paper);
+  border: 1px solid rgba(94, 114, 96, .28);
+  border-radius: 3px;
+}
+body.theme-garden .cd-num { font: 400 32px/1.1 var(--font-heading); color: var(--forest); }
+body.theme-garden .cd-label { margin-top: 6px; font: 500 9.5px/1 var(--font-body); letter-spacing: .2em; color: var(--text-muted); }
+
+body.theme-garden .btn-primary,
+body.theme-garden .btn-outline {
+  padding: 16px 28px;
+  border-radius: 2px;
+  font: 500 11.5px/1.2 var(--font-body);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+body.theme-garden .btn-primary { background: var(--forest); border: 1px solid var(--forest); color: #FAF7F0; }
+body.theme-garden .btn-primary:hover { background: var(--deep); border-color: var(--deep); opacity: 1; }
+body.theme-garden .btn-outline { background: transparent; border: 1px solid var(--forest); color: var(--deep); }
+body.theme-garden .btn-outline:hover { background: var(--forest); color: #FAF7F0; }
+
+/* --- Itinerario: pila centrada con ramitos entre actividades --- */
+body.theme-garden #sec-itinerary { margin-top: 70px !important; }
+body.theme-garden .timeline { max-width: 340px; margin: 30px auto 0; text-align: center; }
+body.theme-garden .timeline::before { display: none; }
+body.theme-garden .timeline-item {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 64px;
+}
+body.theme-garden .timeline-item:last-child { padding-bottom: 0; }
+body.theme-garden .timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  width: 104px;
+  height: 30px;
+  margin-left: -52px;
+  background: var(--ga-sprig-small) no-repeat center / contain;
+}
+body.theme-garden .timeline-dot {
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--forest);
+}
+body.theme-garden .timeline-dot svg { width: 30px; height: 30px; stroke-width: 1; }
+body.theme-garden .timeline-card { padding: 0; background: none; border: 0; text-align: center; }
+body.theme-garden .timeline-time { font: 500 12px/1.4 var(--font-body); letter-spacing: .24em; color: var(--nude-ink); }
+body.theme-garden .timeline-title { margin: 6px 0 4px; font: italic 400 25px/1.2 var(--font-heading); color: var(--text-main); }
+body.theme-garden .timeline-place { font: italic 500 20px/1.4 var(--font-script); color: var(--text-muted); }
+
+/* --- Galería: fotos con una hoja asomando en la esquina --- */
+body.theme-garden .gallery-grid { gap: 24px 20px; margin-top: 40px; }
+body.theme-garden .gallery-item {
+  position: relative;
+  overflow: visible;
+  border: 0;
+  border-radius: 2px;
+  background: var(--bg-alt);
+}
+body.theme-garden .gallery-item img { border-radius: 2px; }
+body.theme-garden .gallery-item::after {
+  content: '';
+  position: absolute;
+  top: -22px;
+  right: -14px;
+  width: 78px;
+  height: 78px;
+  background: var(--ga-corner) no-repeat center / contain;
+  pointer-events: none;
+  z-index: 2;
+}
+body.theme-garden .gallery-item:nth-child(even)::after { right: auto; left: -14px; transform: scaleX(-1); }
+
+/* --- Detalles y regalos --- */
+body.theme-garden .info-cards { gap: 18px; margin-top: 36px; }
+body.theme-garden .info-card {
+  padding: 28px 24px 32px;
+  background: var(--paper);
+  border: 1px solid rgba(94, 114, 96, .22);
+  border-radius: 3px;
+  text-align: center;
+}
+body.theme-garden .info-card::before {
+  content: '';
+  display: block;
+  width: 84px;
+  height: 24px;
+  margin: 0 auto 10px;
+  background: var(--ga-sprig-small) no-repeat center / contain;
+}
+body.theme-garden .info-card h4 {
+  margin: 0 0 10px;
+  font: italic 600 26px/1.25 var(--font-script);
+  color: var(--forest);
+}
+body.theme-garden .info-card p { margin: 0 auto; max-width: 24em; font: 400 15.5px/1.8 var(--font-body); color: var(--text-muted); }
+body.theme-garden .iban-box {
+  margin-top: 28px;
+  padding: 26px 20px;
+  background: var(--paper);
+  border: 1px solid rgba(94, 114, 96, .3);
+  border-radius: 3px;
+}
+body.theme-garden .iban-number { margin-bottom: 14px; font: 500 clamp(14px, 4vw, 16px)/1.5 var(--font-body); letter-spacing: .1em; color: var(--deep); }
+body.theme-garden #copy-iban-btn { margin-top: 0 !important; padding: 12px 20px !important; font-size: 10.5px !important; }
+
+/* --- RSVP --- */
+body.theme-garden .rsvp-form {
+  max-width: 440px;
+  margin-top: 34px;
+  padding: 32px 24px 28px;
+  background: var(--paper);
+  border: 1px solid rgba(94, 114, 96, .28);
+  border-radius: 3px;
+}
+body.theme-garden .form-group label,
+body.theme-garden .companions-head {
+  font: 500 11px/1.5 var(--font-body);
+  letter-spacing: .16em;
+  color: var(--forest);
+}
+body.theme-garden .companions-head small { font: 400 13px/1.5 var(--font-body); letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+body.theme-garden .form-group input,
+body.theme-garden .form-group select,
+body.theme-garden .companion-row input,
+body.theme-garden .companion-row select {
+  padding: 12px 13px;
+  background-color: #FFFEFB;
+  border: 1px solid rgba(94, 114, 96, .35);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-main);
+}
+body.theme-garden .form-group select,
+body.theme-garden .companion-row select { background-image: @arrow_ga@; }
+body.theme-garden .form-group input:focus,
+body.theme-garden .form-group select:focus { border-color: var(--forest); outline: none; }
+body.theme-garden .form-group input::placeholder { color: #7C8576; }
+body.theme-garden .consent-label { font: 400 13.5px/1.6 var(--font-body) !important; }
+body.theme-garden .privacy-note { font-size: 12.5px; }
+body.theme-garden .rsvp-form .btn-primary { width: 100%; margin-top: 8px; padding: 18px 20px; }
+body.theme-garden .rsvp-success {
+  background: #EAF0E2;
+  border: 1px solid rgba(94, 114, 96, .35);
+  color: var(--deep);
+  font: italic 500 21px/1.55 var(--font-script);
+}
+body.theme-garden .rsvp-error { font-family: var(--font-body); font-size: 14px; }
+
+/* --- Pie con guirnalda --- */
+body.theme-garden .invite-footer {
+  position: relative;
+  padding: 72px 24px clamp(118px, 28vw, 190px);
+  background: #E9E1D0;
+  font: 500 12px/1.5 var(--font-body);
+  letter-spacing: .28em;
+  color: var(--nude-ink);
+}
+body.theme-garden .invite-footer > * { position: relative; z-index: 1; }
+body.theme-garden .invite-footer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  background: var(--ga-strip) no-repeat center / 100% 100%;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+body.theme-garden .invite-footer h3 {
+  font: italic 400 clamp(30px, 8.4vw, 42px)/1.15 var(--font-heading);
+  letter-spacing: -.005em;
+  color: var(--text-main);
+}
+body.theme-garden #share-wa-btn { padding: 12px 22px !important; font-size: 10.5px !important; background: #FAF7F0; }
+body.theme-garden .footer-legal { font: 400 13px/1.6 var(--font-body); letter-spacing: .03em; }
+body.theme-garden .footer-legal a { color: var(--text-muted); }
+body.theme-garden .music-toggle { background: var(--paper); color: var(--deep); border: 1px solid var(--forest); }
+body.theme-garden .music-toggle.playing { background: var(--forest); color: #FAF7F0; border-color: var(--forest); }
+
+/* Sobre */
+body.theme-garden .envelope-overlay.env-verde {
+  background: radial-gradient(circle at center, #6E826F 0%, #3E4E41 100%);
+  --env-body: #F7F3E7;
+  --env-flap: #EDE7D4;
+  --env-side: #F2EDDD;
+  --env-text: #44503F;
+  --seal-bg: radial-gradient(circle at 35% 30%, #EBCFC5, #CFA89B 65%, #A47E71 100%);
+  --seal-border: #DDB9AE;
+  --seal-text: #FFFDF8;
+}
+body.theme-garden .env-top-hint,
+body.theme-garden .env-skip-btn { color: #F0EBDD; }
