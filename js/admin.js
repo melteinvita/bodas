@@ -40,7 +40,7 @@
     if (!grid || !window.WEDDING_TEMPLATES) return;
     grid.textContent = '';
 
-    Object.keys(window.WEDDING_TEMPLATES).forEach(function (key) {
+    (window.templateKeys ? window.templateKeys(state.template) : Object.keys(window.WEDDING_TEMPLATES)).forEach(function (key) {
       var tpl = window.WEDDING_TEMPLATES[key];
       var card = document.createElement('button');
       card.type = 'button';

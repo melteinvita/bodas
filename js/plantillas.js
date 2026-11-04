@@ -2,8 +2,56 @@
    CATÁLOGO DE PLANTILLAS Y DATOS INICIALES
    ===================================================================== */
 window.WEDDING_TEMPLATES = {
+  /* ---------------------------------------------------------------
+     COLECCIÓN ACTUAL · las cuatro plantillas comerciales de MelTeInvita
+     --------------------------------------------------------------- */
+  classic: {
+    id: 'classic',
+    name: '01 · Classic Elegance',
+    badge: 'Clásica y Atemporal',
+    desc: 'Marfil, filetes en dorado champagne y nombres en versales. La papelería de gran gala que nunca pasa de moda.',
+    colors: ['#C6AE83', '#F8F5EF', '#393630'],
+    defaultEnvelope: false,
+    defaultSealColor: 'marfil'
+  },
+  romantic: {
+    id: 'romantic',
+    name: '02 · Romantic Bloom',
+    badge: 'Romántica y Delicada',
+    desc: 'Rosa empolvado, verde salvia y ramas florales dibujadas a línea. Papelería artesanal para una boda de jardín.',
+    colors: ['#D8B8B1', '#FAF6F0', '#74645B'],
+    defaultEnvelope: true,
+    defaultSealColor: 'marfil'
+  },
+  minimal: {
+    id: 'minimal',
+    name: '03 · Modern Minimal',
+    badge: 'Contemporánea y Editorial',
+    desc: 'Mucho blanco, tipografía de revista y composición asimétrica. Una invitación de estudio de branding.',
+    colors: ['#DED5C8', '#F9F8F5', '#282725'],
+    defaultEnvelope: false,
+    defaultSealColor: 'marfil'
+  },
+  mediterranean: {
+    id: 'mediterranean',
+    name: '04 · Mediterranean Organic',
+    badge: 'Natural y Luminosa',
+    desc: 'Verde oliva, arena y terracota suave. Papel artesanal para una boda entre olivos, viñedos o jardines.',
+    colors: ['#777C5B', '#F7F4ED', '#BC8F79'],
+    defaultEnvelope: true,
+    defaultSealColor: 'verde'
+  },
+
+  /* ---------------------------------------------------------------
+     COLECCIÓN ANTERIOR (legacy)
+     Siguen renderizando para las bodas ya publicadas con estos
+     identificadores, pero no se ofrecen en el catálogo ni en el
+     selector del panel (se muestran con ?legacy=1 o si la boda ya
+     usa una de ellas).
+     --------------------------------------------------------------- */
   olivo: {
     id: 'olivo',
+    legacy: true,
     name: '01 · Olivo Mediterráneo',
     badge: 'Fincas y Exterior',
     desc: 'Verde oliva, marfil, ramas botánicas y tipografía clásica.',
@@ -13,6 +61,7 @@ window.WEDDING_TEMPLATES = {
   },
   editorial: {
     id: 'editorial',
+    legacy: true,
     name: '02 · Editorial Minimalista',
     badge: 'Lujo Urbano',
     desc: 'Blanco roto y negro, diseño de revista, asimetría y gran formato.',
@@ -22,6 +71,7 @@ window.WEDDING_TEMPLATES = {
   },
   flores: {
     id: 'flores',
+    legacy: true,
     name: '03 · Flores Románticas',
     badge: 'Romántica y Suave',
     desc: 'Rosa empolvado, verde salvia, pétalos sutiles y marcos florales.',
@@ -31,6 +81,7 @@ window.WEDDING_TEMPLATES = {
   },
   sobre: {
     id: 'sobre',
+    legacy: true,
     name: '04 · Sobre Premium',
     badge: 'Producto Estrella ★',
     desc: 'Apertura animada con sobre y sello de lacre con iniciales.',
@@ -40,6 +91,7 @@ window.WEDDING_TEMPLATES = {
   },
   terracota: {
     id: 'terracota',
+    legacy: true,
     name: '05 · Terracota Natural',
     badge: 'Rústica y Boho',
     desc: 'Tonos tierra, terracota, arena y arcos orgánicos cálidos.',
@@ -49,6 +101,7 @@ window.WEDDING_TEMPLATES = {
   },
   noche: {
     id: 'noche',
+    legacy: true,
     name: '06 · Noche Elegante',
     badge: 'Nocturna y Oro',
     desc: 'Azul noche, negro y dorado brillante con destellos luminosos.',
@@ -58,6 +111,7 @@ window.WEDDING_TEMPLATES = {
   },
   gotico: {
     id: 'gotico',
+    legacy: true,
     name: '07 · Gótico & Rock',
     badge: 'Alternativa y Oscura',
     desc: 'Negro obsidiana, carmesí y plata envejecida. Till death do us part.',
@@ -67,6 +121,7 @@ window.WEDDING_TEMPLATES = {
   },
   elegante: {
     id: 'elegante',
+    legacy: true,
     name: '08 · Alta Etiqueta',
     badge: 'Clásica y Palaciega',
     desc: 'Azul imperial, blanco seda y champán. Papelería fina de gran gala.',
@@ -76,6 +131,7 @@ window.WEDDING_TEMPLATES = {
   },
   starwars: {
     id: 'starwars',
+    legacy: true,
     name: '09 · Galaxia Lejana',
     badge: 'Épica y Cinematográfica',
     desc: 'Cielo estrellado, paneles holográficos y oro galáctico. Una boda legendaria.',
@@ -85,6 +141,7 @@ window.WEDDING_TEMPLATES = {
   },
   ibiza: {
     id: 'ibiza',
+    legacy: true,
     name: '10 · Ibiza & Formentera',
     badge: 'Beach Club y Playa',
     desc: 'Estilo Beso Beach, blanco ibicenco, azul turquesa de cala y textura de lino.',
@@ -94,6 +151,7 @@ window.WEDDING_TEMPLATES = {
   },
   bridgerton: {
     id: 'bridgerton',
+    legacy: true,
     name: '11 · Los Bridgerton',
     badge: 'Lady Whistledown',
     desc: 'Azul Bridgerton, estética Regencia inglesa, porcelana y panfleto real.',
@@ -103,6 +161,7 @@ window.WEDDING_TEMPLATES = {
   },
   amalfi: {
     id: 'amalfi',
+    legacy: true,
     name: '12 · Positano & Amalfi',
     badge: 'Cerámica Italiana',
     desc: 'Azul cobalto, amarillo limón de Sorrento, blanco y cenefas de mayólica.',
@@ -112,6 +171,7 @@ window.WEDDING_TEMPLATES = {
   },
   bodega: {
     id: 'bodega',
+    legacy: true,
     name: '13 · Bodega Gran Reserva',
     badge: 'La Rioja y Viñedos',
     desc: 'Vino tinto burdeos, etiqueta de crianza, malla dorada y cobre envejecido.',
@@ -121,6 +181,7 @@ window.WEDDING_TEMPLATES = {
   },
   viajeros: {
     id: 'viajeros',
+    legacy: true,
     name: '14 · Pasaporte & Boarding Pass',
     badge: 'Viajeros First Class',
     desc: 'Pasaporte oficial, sellos de aduana, panel de vuelos y tarjeta de embarque.',
@@ -130,6 +191,7 @@ window.WEDDING_TEMPLATES = {
   },
   festival: {
     id: 'festival',
+    legacy: true,
     name: '15 · Coachella & Tomorrowland',
     badge: 'WedFest VIP ★',
     desc: 'Cartel Line-up de festival, estética Coachella, horarios de escenarios y pase VIP.',
@@ -139,6 +201,7 @@ window.WEDDING_TEMPLATES = {
   },
   harrypotter: {
     id: 'harrypotter',
+    legacy: true,
     name: '16 · Harry Potter & Hogwarts',
     badge: 'Carta de Hogwarts',
     desc: 'Pergamino mágico, lacre de Hogwarts, Mapa del Merodeador y billete Andén 9¾.',
@@ -148,6 +211,7 @@ window.WEDDING_TEMPLATES = {
   },
   lotr: {
     id: 'lotr',
+    legacy: true,
     name: '17 · El Señor de los Anillos',
     badge: 'Tierra Media y Rivendel',
     desc: 'Verde Lothlórien, oro del Anillo Único, arcos élficos de Rivendel y La Comarca.',
@@ -157,6 +221,7 @@ window.WEDDING_TEMPLATES = {
   },
   hollywood: {
     id: 'hollywood',
+    legacy: true,
     name: '18 · Premios Oscar & Hollywood',
     badge: 'Alfombra Roja y Cine',
     desc: 'Dorado estatuilla Oscar, rojo terciopelo Dolby Theatre, póster de estreno y VIP Pass.',
@@ -166,6 +231,7 @@ window.WEDDING_TEMPLATES = {
   },
   gamer: {
     id: 'gamer',
+    legacy: true,
     name: '19 · Gamer: PlayStation & Co-Op',
     badge: 'Player 1 & Player 2',
     desc: 'Interfaz PlayStation, estética Cyberpunk neón, trofeo de platino y modo cooperativo.',
@@ -173,6 +239,16 @@ window.WEDDING_TEMPLATES = {
     defaultEnvelope: false,
     defaultSealColor: 'noche'
   }
+};
+
+/* Claves de plantilla visibles en catálogo y panel.
+   Las plantillas legacy solo aparecen con ?legacy=1 o si es la seleccionada. */
+window.templateKeys = function (selected) {
+  var showAll = /(?:^|[?&])legacy=1(?:&|$)/.test(window.location.search);
+  return Object.keys(window.WEDDING_TEMPLATES).filter(function (key) {
+    var tpl = window.WEDDING_TEMPLATES[key];
+    return !tpl.legacy || showAll || key === selected;
+  });
 };
 
 window.DEFAULT_WEDDING_DATA = {

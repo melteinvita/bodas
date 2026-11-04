@@ -95,7 +95,10 @@
       copied: '✓ ¡Cuenta copiada!',
       copyFail: 'No se pudo copiar',
       offlineTitle: 'No podemos cargar la invitación',
-      offlineText: 'Revisa tu conexión y vuelve a intentarlo. Si el problema continúa, avisa a los novios.'
+      offlineText: 'Revisa tu conexión y vuelve a intentarlo. Si el problema continúa, avisa a los novios.',
+      heroKicker: 'Junto a nuestras familias, os invitamos con alegría a',
+      heroScript: 'la boda de',
+      heroFootnote: 'Celebración a continuación'
     },
 
     val: {
@@ -177,7 +180,10 @@
       copied: '✓ Compte copiat!',
       copyFail: "No s'ha pogut copiar",
       offlineTitle: 'No podem carregar la invitació',
-      offlineText: 'Revisa la teua connexió i torna-ho a intentar. Si el problema continua, avisa els nuvis.'
+      offlineText: 'Revisa la teua connexió i torna-ho a intentar. Si el problema continua, avisa els nuvis.',
+      heroKicker: 'Amb les nostres famílies, us convidem amb alegria a',
+      heroScript: 'el casament de',
+      heroFootnote: 'Celebració a continuació'
     },
 
     en: {
@@ -259,7 +265,10 @@
       copied: '✓ Account copied!',
       copyFail: "Couldn't copy",
       offlineTitle: "We can't load the invitation",
-      offlineText: 'Check your connection and try again. If the problem continues, let the couple know.'
+      offlineText: 'Check your connection and try again. If the problem continues, let the couple know.',
+      heroKicker: 'Together with our families we joyfully invite you to',
+      heroScript: 'the wedding of',
+      heroFootnote: 'Celebration to follow'
     }
   };
 
@@ -271,6 +280,26 @@
      PLANTILLAS: NOMBRE, ETIQUETA Y DESCRIPCIÓN EN LOS TRES IDIOMAS
      ------------------------------------------------------------------ */
   var TEMPLATES = {
+    classic: {
+      es: { name: '01 · Classic Elegance', badge: 'Clásica y Atemporal', desc: 'Marfil, filetes en dorado champagne y nombres en versales. La papelería de gran gala que nunca pasa de moda.' },
+      val: { name: '01 · Classic Elegance', badge: 'Clàssica i Atemporal', desc: 'Marfil, filets en daurat xampany i noms en versals. La papereria de gran gala que mai passa de moda.' },
+      en: { name: '01 · Classic Elegance', badge: 'Classic & Timeless', desc: 'Ivory, champagne-gold rules and capital-letter names. The black-tie stationery that never goes out of style.' }
+    },
+    romantic: {
+      es: { name: '02 · Romantic Bloom', badge: 'Romántica y Delicada', desc: 'Rosa empolvado, verde salvia y ramas florales dibujadas a línea. Papelería artesanal para una boda de jardín.' },
+      val: { name: '02 · Romantic Bloom', badge: 'Romàntica i Delicada', desc: 'Rosa empolvorat, verd sàlvia i branques florals dibuixades a línia. Papereria artesanal per a un casament de jardí.' },
+      en: { name: '02 · Romantic Bloom', badge: 'Romantic & Delicate', desc: 'Dusty rose, sage green and line-drawn floral sprigs. Handcrafted stationery for a garden wedding.' }
+    },
+    minimal: {
+      es: { name: '03 · Modern Minimal', badge: 'Contemporánea y Editorial', desc: 'Mucho blanco, tipografía de revista y composición asimétrica. Una invitación de estudio de branding.' },
+      val: { name: '03 · Modern Minimal', badge: 'Contemporània i Editorial', desc: 'Molt de blanc, tipografia de revista i composició asimètrica. Una invitació d\'estudi de branding.' },
+      en: { name: '03 · Modern Minimal', badge: 'Contemporary & Editorial', desc: 'Generous white space, magazine typography and asymmetric layout. An invitation from a branding studio.' }
+    },
+    mediterranean: {
+      es: { name: '04 · Mediterranean Organic', badge: 'Natural y Luminosa', desc: 'Verde oliva, arena y terracota suave. Papel artesanal para una boda entre olivos, viñedos o jardines.' },
+      val: { name: '04 · Mediterranean Organic', badge: 'Natural i Lluminosa', desc: 'Verd oliva, sorra i terracota suau. Paper artesanal per a un casament entre oliveres, vinyes o jardins.' },
+      en: { name: '04 · Mediterranean Organic', badge: 'Natural & Luminous', desc: 'Olive green, sand and soft terracotta. Handmade paper for a wedding among olive trees, vineyards or gardens.' }
+    },
     olivo: {
       es: { name: '01 · Olivo Mediterráneo', badge: 'Fincas y Exterior', desc: 'Verde oliva, marfil y ramas botánicas. Papel orgánico y tipografía clásica.' },
       val: { name: '01 · Olivera Mediterrània', badge: 'Fincas i Exterior', desc: 'Verd oliva, marfil i branques botàniques. Paper orgànic i tipografia clàssica.' },
@@ -386,10 +415,19 @@
     }
   }
 
+  /* Las plantillas actuales (body.clean-type) no usan emojis ni símbolos
+     como decoración: se retiran de los textos de la interfaz. */
+  var DECOR = /[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\uFE0F\u200D]/gu;
+  function cleanDecor(value) {
+    if (typeof value !== 'string') return value;
+    if (!document.body || !document.body.classList.contains('clean-type')) return value;
+    return value.replace(DECOR, '').replace(/\s{2,}/g, ' ').trim();
+  }
+
   function t(key) {
     var dict = DICT[current] || DICT.es;
-    if (Object.prototype.hasOwnProperty.call(dict, key)) return dict[key];
-    if (Object.prototype.hasOwnProperty.call(DICT.es, key)) return DICT.es[key];
+    if (Object.prototype.hasOwnProperty.call(dict, key)) return cleanDecor(dict[key]);
+    if (Object.prototype.hasOwnProperty.call(DICT.es, key)) return cleanDecor(DICT.es[key]);
     return '';
   }
 

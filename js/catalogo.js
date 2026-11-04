@@ -1,7 +1,7 @@
 /* =====================================================================
    CATÁLOGO COMERCIAL
    ---------------------------------------------------------------------
-   - Pinta las 19 plantillas desde js/plantillas.js.
+   - Pinta las plantillas del catálogo desde js/plantillas.js (las legacy se ocultan).
    - Abre cada demo en un iframe local (sin servicios de terceros).
    - Compone el mensaje de WhatsApp con los datos del formulario.
    - Usa el enlace de Stripe solo si está configurado y es https.
@@ -73,7 +73,7 @@
     if (!grid || !window.WEDDING_TEMPLATES) return;
     grid.textContent = '';
 
-    Object.keys(window.WEDDING_TEMPLATES).forEach(function (key) {
+    (window.templateKeys ? window.templateKeys() : Object.keys(window.WEDDING_TEMPLATES)).forEach(function (key) {
       var tpl = window.WEDDING_TEMPLATES[key];
 
       var card = document.createElement('article');
