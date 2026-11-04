@@ -3,7 +3,7 @@
    ===================================================================== */
 window.WEDDING_TEMPLATES = {
   /* ---------------------------------------------------------------
-     COLECCIÓN ACTUAL · las cuatro plantillas comerciales de MelTeInvita
+     COLECCIÓN ACTUAL · las ocho plantillas comerciales de MelTeInvita
      --------------------------------------------------------------- */
   classic: {
     id: 'classic',
@@ -38,6 +38,43 @@ window.WEDDING_TEMPLATES = {
     badge: 'Natural y Luminosa',
     desc: 'Verde oliva, arena y terracota suave. Papel artesanal para una boda entre olivos, viñedos o jardines.',
     colors: ['#777C5B', '#F7F4ED', '#BC8F79'],
+    defaultEnvelope: true,
+    defaultSealColor: 'verde'
+  },
+
+  timeless: {
+    id: 'timeless',
+    name: '05 · Timeless Editorial',
+    badge: 'Editorial y Sofisticada',
+    desc: 'Nombres a gran escala, fotografía integrada y filetes en champagne. Una invitación de revista de moda, cálida y personal.',
+    colors: ['#CDB892', '#FAF8F4', '#1F1E1C'],
+    defaultEnvelope: false,
+    defaultSealColor: 'marfil'
+  },
+  'french-romance': {
+    id: 'french-romance',
+    name: '06 · French Romance',
+    badge: 'Romántica y Francesa',
+    desc: 'Marcos ornamentales finísimos, rosa antiguo y dorado envejecido. La papelería de un château en la Provenza.',
+    colors: ['#C9A09A', '#FBF7EF', '#5C4E49'],
+    defaultEnvelope: true,
+    defaultSealColor: 'marfil'
+  },
+  'black-tie': {
+    id: 'black-tie',
+    name: '07 · Black Tie',
+    badge: 'Nocturna y de Gala',
+    desc: 'Negro profundo, marfil y filetes geométricos en champagne. Para una boda de etiqueta que empieza al caer la noche.',
+    colors: ['#C9B27C', '#0E0E0F', '#F4EFE6'],
+    defaultEnvelope: true,
+    defaultSealColor: 'noche'
+  },
+  garden: {
+    id: 'garden',
+    name: '08 · Garden Wedding',
+    badge: 'Jardín y Naturaleza',
+    desc: 'Follaje a la acuarela en verde bosque y salvia, con toques de rosa nude. Una boda al aire libre en un jardín privado.',
+    colors: ['#5E7260', '#FAF7F0', '#DDB9AE'],
     defaultEnvelope: true,
     defaultSealColor: 'verde'
   },

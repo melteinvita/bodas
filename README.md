@@ -1,7 +1,7 @@
 # MelTeInvita · Invitaciones de boda digitales (2.0)
 
 Versión corregida y ampliada del proyecto de invitaciones. Incluye catálogo comercial,
-cuatro plantillas comerciales (más las diecinueve anteriores, conservadas como «legacy»), sobre animado, RSVP conectado a Supabase, portal privado para los novios,
+ocho plantillas comerciales (más las diecinueve anteriores, conservadas como «legacy»), sobre animado, RSVP conectado a Supabase, portal privado para los novios,
 panel de administración, multiidioma (castellano, valencià e inglés), páginas legales y
 todos los recursos alojados en local.
 

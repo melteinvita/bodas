@@ -300,6 +300,26 @@
       val: { name: '04 · Mediterranean Organic', badge: 'Natural i Lluminosa', desc: 'Verd oliva, sorra i terracota suau. Paper artesanal per a un casament entre oliveres, vinyes o jardins.' },
       en: { name: '04 · Mediterranean Organic', badge: 'Natural & Luminous', desc: 'Olive green, sand and soft terracotta. Handmade paper for a wedding among olive trees, vineyards or gardens.' }
     },
+    timeless: {
+      es: { name: '05 · Timeless Editorial', badge: 'Editorial y Sofisticada', desc: 'Nombres a gran escala, fotografía integrada y filetes en champagne. Una invitación de revista de moda, cálida y personal.' },
+      val: { name: '05 · Timeless Editorial', badge: 'Editorial i Sofisticada', desc: 'Noms a gran escala, fotografia integrada i filets en xampany. Una invitació de revista de moda, càlida i personal.' },
+      en: { name: '05 · Timeless Editorial', badge: 'Editorial & Sophisticated', desc: 'Oversized names, integrated photography and champagne rules. A fashion-magazine invitation that stays warm and personal.' }
+    },
+    'french-romance': {
+      es: { name: '06 · French Romance', badge: 'Romántica y Francesa', desc: 'Marcos ornamentales finísimos, rosa antiguo y dorado envejecido. La papelería de un château en la Provenza.' },
+      val: { name: '06 · French Romance', badge: 'Romàntica i Francesa', desc: 'Marcs ornamentals finíssims, rosa antic i daurat envellit. La papereria d\'un château a la Provença.' },
+      en: { name: '06 · French Romance', badge: 'Romantic & French', desc: 'Hairline ornamental frames, antique rose and aged gold. The stationery of a Provençal château.' }
+    },
+    'black-tie': {
+      es: { name: '07 · Black Tie', badge: 'Nocturna y de Gala', desc: 'Negro profundo, marfil y filetes geométricos en champagne. Para una boda de etiqueta que empieza al caer la noche.' },
+      val: { name: '07 · Black Tie', badge: 'Nocturna i de Gala', desc: 'Negre profund, marfil i filets geomètrics en xampany. Per a un casament d\'etiqueta que comença en caure la nit.' },
+      en: { name: '07 · Black Tie', badge: 'Evening & Formal', desc: 'Deep black, ivory and geometric champagne rules. For a formal wedding that begins as night falls.' }
+    },
+    garden: {
+      es: { name: '08 · Garden Wedding', badge: 'Jardín y Naturaleza', desc: 'Follaje a la acuarela en verde bosque y salvia, con toques de rosa nude. Una boda al aire libre en un jardín privado.' },
+      val: { name: '08 · Garden Wedding', badge: 'Jardí i Natura', desc: 'Fullatge a l\'aquarel·la en verd bosc i sàlvia, amb tocs de rosa nude. Un casament a l\'aire lliure en un jardí privat.' },
+      en: { name: '08 · Garden Wedding', badge: 'Garden & Nature', desc: 'Watercolour foliage in forest green and sage with touches of nude rose. An outdoor wedding in a private garden.' }
+    },
     olivo: {
       es: { name: '01 · Olivo Mediterráneo', badge: 'Fincas y Exterior', desc: 'Verde oliva, marfil y ramas botánicas. Papel orgánico y tipografía clásica.' },
       val: { name: '01 · Olivera Mediterrània', badge: 'Fincas i Exterior', desc: 'Verd oliva, marfil i branques botàniques. Paper orgànic i tipografia clàssica.' },
