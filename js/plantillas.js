@@ -59,7 +59,7 @@ window.WEDDING_TEMPLATES = {
     name: '06 · French Romance',
     badge: 'Romántica y Francesa',
     desc: 'Marcos ornamentales finísimos, rosa antiguo y dorado envejecido. La papelería de un château en la Provenza.',
-    colors: ['#C9A09A', '#FBF7EF', '#5C4E49'],
+    colors: ['#D8B9B4', '#F8F4EC', '#62564F'],
     defaultEnvelope: true,
     defaultSealColor: 'marfil',
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
@@ -71,7 +71,7 @@ window.WEDDING_TEMPLATES = {
     name: '07 · Black Tie',
     badge: 'Nocturna y de Gala',
     desc: 'Negro profundo, marfil y filetes geométricos en champagne. Para una boda de etiqueta que empieza al caer la noche.',
-    colors: ['#C9B27C', '#0E0E0F', '#F4EFE6'],
+    colors: ['#C4A66A', '#101012', '#F3EFE6'],
     defaultEnvelope: true,
     defaultSealColor: 'noche',
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */

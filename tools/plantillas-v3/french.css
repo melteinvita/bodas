@@ -1,111 +1,207 @@
 
 /* ==========================================================================
-   06 · FRENCH ROMANCE
-   Marfil · Rosa antiguo · Beige empolvado · Salvia suave · Dorado envejecido
-   Cormorant Garamond (todo el texto) + Great Vibes (solo "la boda de" y "&")
+   06 · FRENCH ROMANCE  (rediseño)
+   Papelería nupcial de château: papel de algodón marfil, acuarelas de rosas,
+   doble filete dorado envejecido, caligrafía solo en los nombres.
+
+   Paleta   marfil #F8F4EC · blanco papel #FFFCF7 · rosa antiguo #D8B9B4
+            rosa empolvado #E9D8D3 · salvia #A4AA91 · oliva #777C63
+            dorado envejecido #B39A70 · tinta #62564F
+   Tipos    Cinzel (titulares y rotulación) · Great Vibes (nombres)
+            Cormorant Garamond (texto informativo)
    ========================================================================== */
 body.theme-french-romance {
-  --bg-page: #FBF7EF;
-  --bg-card: #FBF7EF;
-  --bg-alt: #F3EADD;
-  --text-main: #5C4E49;
-  --text-muted: #6E5F59;
-  --accent: #8E5F5A;
-  --accent-light: #F1E4DD;
-  --gold: #B59A62;
-  --border-col: #E6DACB;
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  /* paleta */
+  --ivory: #F8F4EC;
+  --paper: #FFFCF7;
+  --rose: #D8B9B4;
+  --powder: #E9D8D3;
+  --powder-soft: #F3E8E3;
+  --beige: #EFE6D8;
+  --sage: #A4AA91;
+  --olive: #777C63;
+  --gold: #B39A70;
+  --ink: #62564F;
+  /* tintas legibles derivadas (contraste AA sobre marfil) */
+  --rose-ink: #8A5C56;
+  --gold-ink: #7A6538;
+  --muted: #6B5E56;
+  --gold-line: rgba(179, 154, 112, .78);
+  --gold-soft: rgba(179, 154, 112, .42);
+
+  --bg-page: var(--ivory);
+  --bg-card: var(--ivory);
+  --bg-alt: var(--powder-soft);
+  --text-main: var(--ink);
+  --text-muted: var(--muted);
+  --accent: var(--rose-ink);
+  --accent-light: var(--powder-soft);
+  --gold-c: var(--gold);
+  --border-col: rgba(179, 154, 112, .35);
+  --radius-card: 0;
+  --font-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
   --font-script: 'Great Vibes', cursive;
-  --radius-card: 0;
-  --rose: #C9A09A;
-  --rose-ink: #8E5F5A;
-  --sage: #AEB59B;
-  --sage-ink: #6B7660;
-  --gold-ink: #7E6A3E;
-  --paper: #FFFCF6;
-  --beige: #EADFD2;
-  background: var(--beige);
-  color: var(--text-main);
+
+  /* ilustraciones (cada data URI aparece una sola vez) */
+  --u-c-tl: @fr_c_tl@;
+  --u-c-tr: @fr_c_tr@;
+  --u-c-bl: @fr_c_bl@;
+  --u-c-br: @fr_c_br@;
+  --u-sprig: @fr_sprig_bottom@;
+  --u-band: @fr_band@;
+  --u-d-laurel: @fr_div_laurel@;
+  --u-d-rose: @fr_div_rose@;
+  --u-d-scroll: @fr_div_scroll@;
+  --u-d-berries: @fr_div_berries@;
+  --u-d-wild: @fr_div_wild@;
+  --u-fl-title: @fr_fl_title@;
+  --u-fl-script: @fr_fl_script@;
+  --u-fl-dots: @fr_fl_dots@;
+  --u-cl0: @fr_cluster0@;
+  --u-cl1: @fr_cluster1@;
+  --u-side: @fr_side@;
+  --u-side-r: @fr_side_r@;
+  --u-m-tl: @fr_mini_tl@;
+  --u-m-tr: @fr_mini_tr@;
+  --u-m-bl: @fr_mini_bl@;
+  --u-m-br: @fr_mini_br@;
+  --u-arch: @fr_arch@;
+  --u-paper: @fr_paper@;
+  --u-fibers: @fr_fibers@;
+  --u-i-dress: @fr_i_dress@;
+  --u-i-bus: @fr_i_bus@;
+  --u-i-gift: @fr_i_gift@;
+  --u-i-pin: @fr_i_pin@;
+  --u-i-check: @fr_i_check@;
+  --u-i-alert: @fr_i_alert@;
+
+  --cs: clamp(112px, 36vw, 190px);     /* tamaño de las esquinas de la portada */
+
+  background: var(--u-fibers), var(--u-paper), #E9DFD0;
+  color: var(--ink);
   font-family: var(--font-body);
-  font-size: 19px;
+  font-size: 20px;
   font-variant-numeric: lining-nums;
   font-feature-settings: 'lnum' 1;
 }
+body.theme-french-romance .invite-shell { background: var(--ivory); }
+body.theme-french-romance ::selection { background: var(--powder); color: var(--ink); }
 
-/* --- Portada: tarjeta impresa con marco fino y florones de esquina --- */
+/* ==========================================================================
+   PORTADA · tarjeta impresa sobre papel de algodón
+   ========================================================================== */
 body.theme-french-romance .hero {
-  background: var(--beige);
-  padding: 18px 14px;
-  align-items: stretch;
+  padding: 16px 12px 22px;
   justify-content: center;
-  color: var(--text-main);
+  align-items: center;
+  background: var(--u-fibers), var(--u-paper),
+    radial-gradient(120% 70% at 50% 0%, #F4EADF 0%, #E9DDCD 62%, #E3D5C3 100%);
+  color: var(--ink);
 }
+/* hoja trasera rosa empolvado asomando bajo la tarjeta */
+body.theme-french-romance .hero::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 20px; right: 20px; bottom: 14px; top: 28px;
+  background: var(--powder);
+  transform: rotate(-1.1deg);
+  box-shadow: 0 18px 30px -22px rgba(98, 86, 79, .45);
+  opacity: .85;
+}
+body.theme-french-romance .hero::after { display: none; }
+
 body.theme-french-romance .hero-content {
   position: relative;
-  max-width: none;
-  min-height: calc(100vh - 36px);
-  min-height: calc(100svh - 36px);
+  z-index: 3;
+  width: 100%;
+  max-width: 600px;
+  min-height: calc(100vh - 38px);
+  min-height: calc(100svh - 38px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 84px 30px 76px;
-  background: var(--paper);
-  box-shadow: 0 20px 44px -28px rgba(92, 78, 73, .5);
+  padding: calc(var(--cs) * .62 + 14px) 30px calc(var(--cs) * .8 + 12px);
+  background: var(--u-fibers), var(--u-paper), var(--paper);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .9) inset,
+    0 0 0 1px rgba(179, 154, 112, .22),
+    0 26px 46px -28px rgba(98, 86, 79, .6),
+    0 3px 8px rgba(98, 86, 79, .08);
 }
-body.theme-french-romance.has-hero-photo .hero-content { min-height: 0; padding-top: 64px; padding-bottom: 64px; }
+/* doble filete dorado interior */
 body.theme-french-romance .hero-content::before {
   content: '';
   position: absolute;
-  inset: 13px;
-  border: 1px solid rgba(181, 154, 98, .8);
+  inset: 12px;
+  border: 1px solid var(--gold-line);
+  box-shadow: inset 0 0 0 5px var(--paper), inset 0 0 0 6px rgba(179, 154, 112, .45);
   pointer-events: none;
 }
+/* esquinas florales y guirnalda inferior */
 body.theme-french-romance .hero-content::after {
   content: '';
   position: absolute;
-  inset: 13px;
+  inset: 12px;
   pointer-events: none;
   background:
-    @fr_c_tl@ 0 0 / 66px 66px no-repeat,
-    @fr_c_tr@ 100% 0 / 66px 66px no-repeat,
-    @fr_c_bl@ 0 100% / 66px 66px no-repeat,
-    @fr_c_br@ 100% 100% / 66px 66px no-repeat;
+    var(--u-c-tl) 0 0 / var(--cs) var(--cs) no-repeat,
+    var(--u-c-tr) 100% 0 / var(--cs) var(--cs) no-repeat,
+    var(--u-c-bl) 0 100% / var(--cs) var(--cs) no-repeat,
+    var(--u-c-br) 100% 100% / var(--cs) var(--cs) no-repeat,
+    var(--u-sprig) 50% 100% / calc(var(--cs) * .95) calc(var(--cs) * .21) no-repeat;
 }
+body.theme-french-romance .hero-content > * { position: relative; z-index: 1; }
 body.theme-french-romance .hero .eyebrow { display: none; }
-body.theme-french-romance .template-ornament { margin: 0 0 20px; }
-body.theme-french-romance .template-ornament svg { width: 188px; height: 26px; }
+
+/* emblema central */
+body.theme-french-romance .template-ornament {
+  margin: 0 0 6px;
+  line-height: 0;
+}
+body.theme-french-romance .template-ornament svg {
+  width: clamp(150px, 46vw, 196px);
+  height: auto;
+  stroke: none;
+  fill: none;
+}
 body.theme-french-romance .hero-kicker {
   display: block;
-  max-width: 17em;
-  margin: 0 0 6px;
-  font: italic 500 19px/1.5 var(--font-body);
+  max-width: 15.5em;
+  margin: 2px 0 12px;
+  font: italic 400 20px/1.45 var(--font-body);
   color: var(--rose-ink);
 }
 body.theme-french-romance .hero-script {
   display: block;
-  margin: 6px 0 12px;
-  font: 400 40px/1.1 var(--font-script);
-  color: var(--rose-ink);
+  margin: 0 0 4px;
+  font: 600 12.5px/1.4 var(--font-display);
+  letter-spacing: .46em;
+  text-indent: .46em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
 }
 body.theme-french-romance .hero-names {
-  --names-size: clamp(26px, 8.2vw, 40px);
+  --names-size: clamp(54px, 16.4vw, 74px);
   width: 100%;
-  margin: 0;
-  font: 500 var(--names-size)/1.16 var(--font-heading);
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--text-main);
+  margin: 2px 0 0;
+  font: 400 var(--names-size)/.98 var(--font-script);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
 }
-body.theme-french-romance .hero-names span { padding-left: .15em; }
+body.theme-french-romance .hero-names span { display: block; padding: 0 .04em; }
 body.theme-french-romance .hero-amp {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin: 8px 0 10px;
-  font: 400 46px/1 var(--font-script);
+  gap: 16px;
+  margin: 4px 0 2px;
+  font: 400 calc(var(--names-size) * .6)/1 var(--font-script);
   letter-spacing: 0;
   text-transform: none;
   color: var(--gold-ink);
@@ -114,322 +210,866 @@ body.theme-french-romance .hero-amp {
 body.theme-french-romance .hero-amp::before,
 body.theme-french-romance .hero-amp::after {
   content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
+  width: 38px;
+  height: 7px;
+  background:
+    linear-gradient(var(--gold), var(--gold)) 0 50% / 100% 1px no-repeat;
+  position: relative;
 }
 body.theme-french-romance .hero-date-pill {
-  margin: 34px 0 0;
-  padding: 11px 22px;
+  position: relative;
+  margin: 28px 0 0;
+  padding: 13px 20px;
   border: 0;
-  border-top: 1px solid rgba(181, 154, 98, .75);
-  border-bottom: 1px solid rgba(181, 154, 98, .75);
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
   border-radius: 0;
   background: none;
   backdrop-filter: none;
-  font: 600 16px/1.4 var(--font-body);
-  letter-spacing: .24em;
+  font: 600 14.5px/1.4 var(--font-display);
+  letter-spacing: .2em;
+  text-indent: .2em;
   text-transform: uppercase;
-  color: var(--text-main);
+  color: var(--ink);
 }
+body.theme-french-romance .hero-date-pill::before,
+body.theme-french-romance .hero-date-pill::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 5px; height: 5px;
+  margin-top: -3px;
+  border: 1px solid var(--gold);
+  background: var(--paper);
+  transform: rotate(45deg);
+}
+body.theme-french-romance .hero-date-pill::before { left: -7px; }
+body.theme-french-romance .hero-date-pill::after { right: -7px; }
 body.theme-french-romance .hero-details { display: block; margin-top: 22px; }
-body.theme-french-romance .hero-details span {
-  display: block;
-  font: italic 500 21px/1.5 var(--font-body);
-  color: var(--text-main);
-}
+body.theme-french-romance .hero-details span { display: block; }
 body.theme-french-romance .hero-details #hero-time {
-  font: 700 14px/1.6 var(--font-body);
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-style: normal;
+  font: 600 12.5px/1.6 var(--font-display);
+  letter-spacing: .28em;
+  text-indent: .28em;
   color: var(--gold-ink);
+}
+body.theme-french-romance .hero-details #hero-venue {
+  margin-top: 4px;
+  font: 600 17px/1.4 var(--font-display);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+body.theme-french-romance .hero-details #hero-address {
+  font: italic 400 20px/1.5 var(--font-body);
+  color: var(--muted);
 }
 body.theme-french-romance .hero-footnote {
   display: block;
-  margin: 26px 0 0;
-  font: italic 500 19px/1.5 var(--font-body);
+  margin: 18px 0 0;
+  font: italic 400 19px/1.5 var(--font-body);
   color: var(--rose-ink);
 }
-/* Foto: grabado enmarcado sobre la tarjeta */
+body.theme-french-romance .hero-date-stack { display: none; }
+
+/* Fotografía: ventana en arco con doble filete, tras la tarjeta */
+body.theme-french-romance.has-hero-photo .hero { justify-content: flex-start; padding-top: 28px; }
 body.theme-french-romance.has-hero-photo .hero-photo-bg {
   display: block;
   position: relative;
   inset: auto;
-  z-index: 1;
-  width: 100%;
-  height: 34vh;
-  height: 34svh;
-  min-height: 210px;
+  z-index: 2;
   flex: none;
-  order: -1;
-  margin: 0 0 14px;
-  border: 8px solid var(--paper);
+  width: min(76%, 300px);
+  aspect-ratio: 4 / 5;
+  height: auto;
+  margin: 12px auto 0;
+  border: 7px solid var(--paper);
+  border-radius: 999px 999px 4px 4px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 0 0 1px rgba(181, 154, 98, .75), 0 16px 30px -22px rgba(92, 78, 73, .55);
+  outline: 1px solid var(--gold-line);
+  outline-offset: 6px;
+  box-shadow: 0 0 0 1px var(--gold-soft), 0 26px 34px -24px rgba(98, 86, 79, .65);
   transition: none;
 }
+body.theme-french-romance.has-hero-photo .hero-content {
+  min-height: 0;
+  margin-top: -78px;
+  padding-top: calc(var(--cs) * .62 + 14px);
+}
 @media (min-width: 481px) {
-  body.theme-french-romance .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .9); }
+  body.theme-french-romance .hero-names { --names-size: clamp(64px, 11vw, 84px); }
+  body.theme-french-romance .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .88); }
   body.theme-french-romance .hero-names[data-len="xl"] { font-size: calc(var(--names-size) * .72); }
 }
+@media (max-width: 480px) {
+  body.theme-french-romance .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .88); }
+  body.theme-french-romance .hero-names[data-len="xl"] { font-size: calc(var(--names-size) * .72); }
+}
+@media (min-width: 700px) {
+  body.theme-french-romance .hero { padding: 26px 24px 32px; }
+  body.theme-french-romance .hero-content { padding-left: 64px; padding-right: 64px; }
+  body.theme-french-romance .hero-kicker { font-size: 22px; }
+}
 
-/* --- Secciones: papel marfil / beige, cinta botánica en cada junta --- */
+/* ==========================================================================
+   SECCIONES · fondos alternos, separador propio y remate de título
+   ========================================================================== */
 body.theme-french-romance .section {
   position: relative;
-  padding: 88px 28px 80px;
-  background: var(--bg-page);
+  padding: 96px 28px 86px;
+  background: var(--u-paper), var(--ivory);
   text-align: center;
+  overflow-x: clip;
 }
-body.theme-french-romance .section-alt { background: var(--bg-alt); }
+body.theme-french-romance .section > * { position: relative; z-index: 1; }
+body.theme-french-romance .section-alt { background: var(--u-paper), var(--powder-soft); }
+
+/* separador superior: distinto en cada sección */
 body.theme-french-romance .section::before {
   content: '';
   position: absolute;
-  top: -14px;
+  z-index: 3;
+  top: -22px;
   left: 50%;
-  width: 220px;
-  height: 28px;
-  margin-left: -110px;
-  background: @fr_band@ no-repeat center / contain;
-  z-index: 2;
+  width: 260px;
+  height: 44px;
+  margin-left: -130px;
+  background: var(--u-d-laurel) no-repeat center / contain;
   pointer-events: none;
 }
+body.theme-french-romance .hero + .section::before { width: 320px; height: 46px; margin-left: -160px; top: -26px; background-image: var(--u-band); }
+body.theme-french-romance #sec-story::before { background-image: var(--u-d-scroll); }
+body.theme-french-romance #sec-location::before { background-image: var(--u-d-laurel); }
+body.theme-french-romance #sec-gallery::before { background-image: var(--u-d-berries); }
+body.theme-french-romance #sec-details::before { background-image: var(--u-d-wild); }
+body.theme-french-romance #sec-gifts::before { background-image: var(--u-d-rose); }
+body.theme-french-romance #sec-rsvp::before { width: 320px; height: 46px; margin-left: -160px; top: -26px; background-image: var(--u-band); }
+
+/* fondos por sección (marfil · rosa empolvado · blanco papel · beige) */
+body.theme-french-romance #sec-story {
+  background: var(--u-paper),
+    radial-gradient(90% 40% at 100% 0%, rgba(216, 185, 180, .28), transparent 70%), var(--powder-soft);
+}
+body.theme-french-romance #sec-location { background: var(--u-paper), var(--paper); }
+body.theme-french-romance #sec-gallery { background: var(--u-fibers), var(--u-paper), var(--beige); }
+body.theme-french-romance #sec-details {
+  background: var(--u-paper),
+    radial-gradient(80% 30% at 0% 100%, rgba(164, 170, 145, .18), transparent 70%), var(--ivory);
+}
+body.theme-french-romance #sec-gifts {
+  background: var(--u-paper), linear-gradient(180deg, #F0E2DC 0%, var(--powder-soft) 100%);
+}
+body.theme-french-romance #sec-rsvp {
+  background: var(--u-paper),
+    radial-gradient(90% 32% at 50% 0%, rgba(233, 216, 211, .6), transparent 75%), var(--paper);
+}
+
+/* racimos florales que asoman de las esquinas */
+body.theme-french-romance .hero + .section::after,
+body.theme-french-romance #sec-story::after,
+body.theme-french-romance #sec-details::after,
+body.theme-french-romance #sec-gifts::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  bottom: -6px;
+  width: clamp(110px, 34vw, 170px);
+  aspect-ratio: 1;
+  background: no-repeat center / contain;
+  opacity: .92;
+  pointer-events: none;
+}
+body.theme-french-romance .hero + .section::after { right: -12px; background-image: var(--u-cl1); }
+body.theme-french-romance #sec-story::after { left: -14px; background-image: var(--u-cl0); }
+body.theme-french-romance #sec-details::after { right: -14px; background-image: var(--u-cl1); }
+body.theme-french-romance #sec-gifts::after { left: -14px; background-image: var(--u-cl0); }
+
 body.theme-french-romance .section .eyebrow {
   display: block;
-  margin: 0 0 12px;
-  font: 700 13px/1.4 var(--font-body);
-  letter-spacing: .3em;
+  margin: 0 0 14px;
+  font: 700 13px/1.5 var(--font-display);
+  letter-spacing: .34em;
+  text-indent: .34em;
   text-transform: uppercase;
   color: var(--rose-ink);
 }
 body.theme-french-romance .section-title {
   margin: 0;
-  font: 500 clamp(31px, 8.8vw, 42px)/1.15 var(--font-heading);
-  letter-spacing: .02em;
-  color: var(--text-main);
+  font: 400 clamp(25px, 7.4vw, 34px)/1.22 var(--font-display);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 body.theme-french-romance .section-title::after {
   content: '';
   display: block;
-  width: 124px;
-  height: 14px;
-  margin: 18px auto 24px;
-  background: @fr_fleuron@ no-repeat center / contain;
+  width: 150px;
+  height: 21px;
+  margin: 20px auto 26px;
+  background: var(--u-fl-title) no-repeat center / contain;
 }
+body.theme-french-romance #sec-story .section-title::after,
+body.theme-french-romance #sec-gifts .section-title::after { background-image: var(--u-fl-script); }
+body.theme-french-romance #sec-gallery .section-title::after,
+body.theme-french-romance #sec-rsvp .section-title::after { background-image: var(--u-fl-dots); }
+
 body.theme-french-romance .section-text {
-  max-width: 30em;
+  max-width: 28em;
   margin: 0 auto;
-  font: 500 20px/1.72 var(--font-body);
-  color: var(--text-muted);
+  font: 600 21px/1.62 var(--font-body);
+  color: var(--muted);
 }
 body.theme-french-romance .section-text strong {
-  font-weight: 700;
-  letter-spacing: .12em;
-  color: var(--text-main);
+  font: 600 15px/1.4 var(--font-display);
+  letter-spacing: .16em;
+  color: var(--ink);
 }
-body.theme-french-romance #rsvp-deadline { letter-spacing: 0; color: var(--rose-ink); }
+body.theme-french-romance #rsvp-deadline { letter-spacing: .04em; font-size: 16px; color: var(--rose-ink); }
 
-body.theme-french-romance .countdown-grid { max-width: 400px; gap: 10px; margin: 34px auto 28px; }
+/* Bienvenida */
+body.theme-french-romance .hero + .section #message { font-style: italic; font-weight: 500; }
+
+/* Cuenta atrás: ventanas en arco */
+body.theme-french-romance .countdown-grid { max-width: 410px; gap: 10px; margin: 38px auto 30px; }
 body.theme-french-romance .cd-box,
 body.theme-french-romance .section:not(.section-alt) .cd-box {
-  padding: 16px 4px 14px;
+  padding: 20px 2px 14px;
   background: var(--paper);
-  border: 1px solid rgba(181, 154, 98, .6);
-  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px rgba(181, 154, 98, .28);
+  border: 1px solid var(--gold-line);
+  border-radius: 999px 999px 0 0;
+  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px rgba(179, 154, 112, .35),
+    0 14px 22px -18px rgba(98, 86, 79, .5);
 }
-body.theme-french-romance .cd-num { font: 600 34px/1.1 var(--font-heading); color: var(--rose-ink); }
-body.theme-french-romance .cd-label { margin-top: 6px; font: 700 12px/1 var(--font-body); letter-spacing: .2em; color: var(--text-muted); }
+body.theme-french-romance .cd-num { font: 600 33px/1.1 var(--font-body); color: var(--rose-ink); }
+body.theme-french-romance .cd-label { margin-top: 6px; font: 600 10.5px/1 var(--font-display); letter-spacing: .2em; text-indent: .2em; color: var(--muted); }
 
+/* Botones */
 body.theme-french-romance .btn-primary,
 body.theme-french-romance .btn-outline {
-  padding: 16px 30px;
-  font: 700 13px/1.2 var(--font-body);
+  display: inline-block;
+  padding: 17px 30px;
+  font: 600 12.5px/1.3 var(--font-display);
   letter-spacing: .22em;
   text-transform: uppercase;
+  text-decoration: none;
 }
-body.theme-french-romance .btn-primary { background: var(--accent); border: 1px solid var(--accent); color: #FFFCF6; }
-body.theme-french-romance .btn-primary:hover { background: #74504B; opacity: 1; }
-body.theme-french-romance .btn-outline { background: transparent; border: 1px solid var(--gold-ink); color: var(--text-main); }
-body.theme-french-romance .btn-outline:hover { background: var(--gold-ink); color: #FFFCF6; }
+body.theme-french-romance .btn-primary {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: var(--paper);
+  outline: 1px solid var(--gold-line);
+  outline-offset: 4px;
+}
+body.theme-french-romance .btn-primary:hover { background: var(--olive); border-color: var(--olive); opacity: 1; }
+body.theme-french-romance .btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold-ink);
+  color: var(--ink);
+  outline: 1px solid rgba(179, 154, 112, .4);
+  outline-offset: 4px;
+}
+body.theme-french-romance .btn-outline:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+body.theme-french-romance .btn-primary:focus-visible,
+body.theme-french-romance .btn-outline:focus-visible { outline: 2px solid var(--rose-ink); outline-offset: 5px; }
 
-/* --- Itinerario: hora | rail con icono | actividad --- */
-body.theme-french-romance #sec-itinerary { margin-top: 70px !important; }
-body.theme-french-romance .timeline { position: relative; max-width: 380px; margin: 30px auto 0; text-align: left; }
+/* ==========================================================================
+   HISTORIA · composición asimétrica con retrato enmarcado
+   ========================================================================== */
+body.theme-french-romance #sec-story { padding-bottom: 120px; }
+body.theme-french-romance .story-photo {
+  position: relative;
+  width: min(62%, 248px);
+  margin: 6px auto 64px;
+  transform: translateX(-9%) rotate(-1.3deg);
+}
+body.theme-french-romance .story-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5.2;
+  height: auto;
+  object-fit: cover;
+  padding: 8px;
+  background: var(--paper);
+  border: 1px solid var(--gold-line);
+  border-radius: 999px 999px 3px 3px;
+  box-shadow: 0 24px 34px -24px rgba(98, 86, 79, .7);
+  position: relative;
+  z-index: 2;
+}
+/* marco dorado desplazado (segunda tarjeta) */
+body.theme-french-romance .story-photo::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 14px -16px -16px 16px;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px 999px 3px 3px;
+}
+/* ramo que se cuela en la esquina inferior derecha */
+body.theme-french-romance .story-photo::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  right: -64px;
+  bottom: -40px;
+  width: 128px;
+  height: 128px;
+  background: var(--u-cl1) no-repeat center / contain;
+}
+body.theme-french-romance #sec-story .eyebrow { margin-top: 6px; }
+body.theme-french-romance #story-title { text-wrap: balance; }
+body.theme-french-romance #story-text {
+  max-width: 25em;
+  text-align: left;
+  font-size: 21px;
+  line-height: 1.66;
+  color: var(--ink);
+}
+body.theme-french-romance #story-text::first-letter {
+  float: left;
+  margin: 4px 14px 0 2px;
+  font: 400 60px/.84 var(--font-script);
+  color: var(--rose-ink);
+}
+@media (min-width: 700px) {
+  body.theme-french-romance .story-photo { width: 260px; transform: translateX(-60px) rotate(-1.3deg); }
+}
+
+/* ==========================================================================
+   DÓNDE Y CUÁNDO · lugar + itinerario como tarjeta de papelería
+   ========================================================================== */
+body.theme-french-romance #sec-location > .eyebrow::before {
+  content: '';
+  display: block;
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 12px;
+  background: var(--u-i-pin) no-repeat center / contain;
+}
+body.theme-french-romance #sec-location .section-title { font-size: clamp(24px, 7vw, 31px); }
+body.theme-french-romance #sec-location .section-text { color: var(--ink); }
+
+body.theme-french-romance #sec-itinerary {
+  position: relative;
+  max-width: 420px;
+  margin: 64px auto 0 !important;
+  padding: 58px 22px 40px;
+  background: var(--u-paper), var(--ivory);
+  border: 1px solid var(--gold-line);
+  box-shadow: inset 0 0 0 6px var(--ivory), inset 0 0 0 7px rgba(179, 154, 112, .4),
+    0 26px 36px -28px rgba(98, 86, 79, .55);
+}
+body.theme-french-romance #sec-itinerary::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  background:
+    var(--u-m-tl) 0 0 / 34px 34px no-repeat,
+    var(--u-m-tr) 100% 0 / 34px 34px no-repeat,
+    var(--u-m-bl) 0 100% / 34px 34px no-repeat,
+    var(--u-m-br) 100% 100% / 34px 34px no-repeat;
+}
+body.theme-french-romance #sec-itinerary::after {
+  content: '';
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: 148px;
+  height: 56px;
+  margin-left: -74px;
+  background: var(--u-arch) no-repeat center / contain;
+  transform: scaleY(-1);
+  pointer-events: none;
+}
+body.theme-french-romance #sec-itinerary > .eyebrow { margin-bottom: 26px; letter-spacing: .26em; text-indent: .26em; }
+@media (max-width: 400px) {
+  body.theme-french-romance #sec-itinerary { padding: 58px 14px 38px; }
+  body.theme-french-romance .timeline { --tw: 64px; }
+  body.theme-french-romance .timeline-item { column-gap: 10px; }
+  body.theme-french-romance .timeline-time { font-size: 12.5px; letter-spacing: .04em; }
+  body.theme-french-romance .timeline-dot { width: 42px; height: 42px; }
+  body.theme-french-romance .timeline-item { grid-template-columns: var(--tw) 42px minmax(0, 1fr); }
+  body.theme-french-romance .timeline::before { left: calc(var(--tw) + 10px + 21px); }
+  body.theme-french-romance .timeline-item:not(:last-child)::after { left: calc(var(--tw) + 10px + 17px); }
+}
+body.theme-french-romance .timeline { --tw: 76px; position: relative; max-width: 360px; margin: 0 auto; text-align: left; }
 body.theme-french-romance .timeline::before {
-  left: 111px;
-  top: 12px;
-  bottom: 12px;
-  background: rgba(181, 154, 98, .55);
+  left: calc(var(--tw) + 12px + 23px);
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: linear-gradient(var(--gold) 55%, transparent 0) 0 0 / 1px 7px repeat-y;
+  opacity: .85;
 }
 body.theme-french-romance .timeline-item {
   display: grid;
-  grid-template-columns: 78px 44px minmax(0, 1fr);
+  grid-template-columns: var(--tw) 46px minmax(0, 1fr);
   grid-template-rows: min-content 1fr;
   column-gap: 12px;
-  row-gap: 0;
   align-items: start;
-  padding-bottom: 28px;
+  padding-bottom: 38px;
 }
 body.theme-french-romance .timeline-item:last-child { padding-bottom: 0; }
+body.theme-french-romance .timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--tw) + 12px + 19px);
+  bottom: 13px;
+  width: 5px; height: 5px;
+  border: 1px solid var(--gold);
+  background: var(--ivory);
+  transform: rotate(45deg);
+}
 body.theme-french-romance .timeline-dot {
   grid-column: 2;
   grid-row: 1 / span 2;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   background: var(--paper);
   border: 1px solid var(--gold);
   color: var(--gold-ink);
+  box-shadow: 0 0 0 4px var(--ivory), 0 0 0 5px rgba(179, 154, 112, .45);
 }
-body.theme-french-romance .timeline-dot svg { width: 22px; height: 22px; stroke-width: 1; }
+body.theme-french-romance .timeline-dot svg { width: 23px; height: 23px; stroke-width: 1.05; }
 body.theme-french-romance .timeline-card { display: contents; }
 body.theme-french-romance .timeline-time {
   grid-column: 1;
   grid-row: 1;
-  padding-top: 11px;
+  padding-top: 13px;
   text-align: right;
-  font: 700 14px/1.3 var(--font-body);
-  letter-spacing: .12em;
+  font: 600 13.5px/1.3 var(--font-display);
+  letter-spacing: .08em;
   color: var(--rose-ink);
 }
 body.theme-french-romance .timeline-title {
   grid-column: 3;
   grid-row: 1;
   margin: 0;
-  padding-top: 5px;
-  font: 500 23px/1.2 var(--font-heading);
-  color: var(--text-main);
+  padding-top: 8px;
+  font: 700 22px/1.2 var(--font-body);
+  color: var(--ink);
 }
 body.theme-french-romance .timeline-place {
   grid-column: 3;
   grid-row: 2;
-  margin-top: 2px;
-  font: italic 500 18px/1.4 var(--font-body);
-  color: var(--text-muted);
+  margin-top: 3px;
+  font: italic 400 19px/1.35 var(--font-body);
+  color: var(--muted);
 }
 
-/* --- Galería: grabados enmarcados --- */
-body.theme-french-romance .gallery-grid { gap: 18px; margin-top: 34px; }
+/* ==========================================================================
+   GALERÍA · composición editorial asimétrica
+   ========================================================================== */
+body.theme-french-romance .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px 18px;
+  max-width: 520px;
+  margin: 36px auto 0;
+  padding: 0 4px;
+}
 body.theme-french-romance .gallery-item {
+  position: relative;
+  aspect-ratio: auto;
+  overflow: visible;
   padding: 8px;
   background: var(--paper);
-  border: 1px solid rgba(181, 154, 98, .55);
-  box-shadow: 0 16px 30px -24px rgba(92, 78, 73, .6);
-}
-body.theme-french-romance .gallery-item img { border-radius: 0; }
-
-/* --- Detalles y regalos: cartulinas con doble filete --- */
-body.theme-french-romance .info-cards { gap: 18px; margin-top: 34px; }
-body.theme-french-romance .info-card,
-body.theme-french-romance .iban-box,
-body.theme-french-romance .rsvp-form {
-  background: var(--paper);
-  border: 1px solid rgba(181, 154, 98, .6);
+  border: 1px solid var(--gold-soft);
   border-radius: 0;
-  box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(181, 154, 98, .3);
+  box-shadow: 0 0 0 5px var(--paper), 0 0 0 6px rgba(179, 154, 112, .38), 0 22px 30px -22px rgba(98, 86, 79, .65);
 }
-body.theme-french-romance .info-card { padding: 34px 24px 32px; text-align: center; }
+body.theme-french-romance .gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0;
+}
+/* ritmo de 3: horizontal ancha · vertical · vertical escalonada */
+body.theme-french-romance .gallery-item:nth-child(3n+1) { grid-column: 1 / -1; aspect-ratio: auto; margin: 0 6px; }
+body.theme-french-romance .gallery-item:nth-child(3n+1) img { aspect-ratio: 3 / 2; }
+body.theme-french-romance .gallery-item:nth-child(3n+2) { transform: rotate(-1.1deg); margin: 6px 0 0 6px; }
+body.theme-french-romance .gallery-item:nth-child(3n+3) { transform: rotate(1deg); margin: 38px 6px 0 0; }
+body.theme-french-romance .gallery-item:nth-child(3n+3) img { aspect-ratio: 3 / 4; }
+body.theme-french-romance .gallery-item:nth-child(3n+1):not(:first-child) { margin-top: 18px; }
+/* ornamentos solo en el primer grupo */
+body.theme-french-romance .gallery-item:nth-child(1)::before,
+body.theme-french-romance .gallery-item:nth-child(3)::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  background: no-repeat center / contain;
+}
+body.theme-french-romance .gallery-item:nth-child(1)::before {
+  left: -34px; top: -42px;
+  width: 124px; height: 124px;
+  background-image: var(--u-cl0);
+  transform: scaleY(-1);
+}
+body.theme-french-romance .gallery-item:nth-child(3)::before {
+  right: -26px; bottom: -34px;
+  width: 96px; height: 96px;
+  background-image: var(--u-cl1);
+}
+@media (min-width: 700px) {
+  body.theme-french-romance .gallery-grid { gap: 32px 28px; max-width: 560px; }
+}
+
+/* ==========================================================================
+   DETALLES · cartulinas con doble filete e iconos
+   ========================================================================== */
+body.theme-french-romance .info-cards {
+  display: grid;
+  gap: 26px;
+  max-width: 440px;
+  margin: 38px auto 0;
+}
+body.theme-french-romance .info-card {
+  position: relative;
+  padding: 82px 28px 38px;
+  background: var(--u-paper), var(--paper);
+  border: 1px solid var(--gold-line);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(179, 154, 112, .4),
+    0 24px 34px -26px rgba(98, 86, 79, .6);
+  text-align: center;
+}
+body.theme-french-romance .info-card::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  background: no-repeat center / contain;
+}
+body.theme-french-romance #card-dress::before { background-image: var(--u-i-dress); }
+body.theme-french-romance #card-transport::before { background-image: var(--u-i-bus); }
+body.theme-french-romance .info-card::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  background:
+    var(--u-m-tl) 0 0 / 30px 30px no-repeat,
+    var(--u-m-tr) 100% 0 / 30px 30px no-repeat,
+    var(--u-m-bl) 0 100% / 30px 30px no-repeat,
+    var(--u-m-br) 100% 100% / 30px 30px no-repeat;
+}
 body.theme-french-romance .info-card h4 {
-  margin: 0 0 12px;
-  font: 700 14px/1.5 var(--font-body);
-  letter-spacing: .22em;
+  margin: 0 0 14px;
+  font: 600 13.5px/1.6 var(--font-display);
+  letter-spacing: .24em;
+  text-indent: .24em;
   text-transform: uppercase;
   color: var(--rose-ink);
 }
-body.theme-french-romance .info-card p { margin: 0 auto; max-width: 24em; font: 500 20px/1.6 var(--font-body); color: var(--text-main); }
-body.theme-french-romance .iban-box { margin-top: 28px; padding: 28px 22px; border-style: solid; }
-body.theme-french-romance .iban-number {
-  margin-bottom: 14px;
-  font: 700 19px/1.5 var(--font-body);
-  letter-spacing: .06em;
-  color: var(--text-main);
+body.theme-french-romance .info-card p { margin: 0 auto; max-width: 21em; font: 600 21px/1.55 var(--font-body); color: var(--ink); }
+@media (min-width: 700px) {
+  body.theme-french-romance .info-cards { grid-template-columns: 1fr 1fr; max-width: 580px; align-items: stretch; }
+  body.theme-french-romance .info-card:nth-child(2) { margin-top: 26px; }
 }
-body.theme-french-romance #copy-iban-btn { margin-top: 4px !important; padding: 12px 20px !important; font-size: 12px !important; }
 
-/* --- RSVP: tarjeta de respuesta --- */
-body.theme-french-romance .rsvp-form { max-width: 440px; margin-top: 34px; padding: 36px 26px 30px; }
+/* ==========================================================================
+   REGALOS
+   ========================================================================== */
+body.theme-french-romance .iban-box {
+  position: relative;
+  max-width: 420px;
+  margin: 34px auto 0;
+  padding: 84px 24px 34px;
+  background: var(--u-paper), var(--paper);
+  border: 1px solid var(--gold-line);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(179, 154, 112, .4),
+    0 24px 34px -26px rgba(98, 86, 79, .6);
+}
+body.theme-french-romance .iban-box::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  background: var(--u-i-gift) no-repeat center / contain;
+}
+body.theme-french-romance .iban-box::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  background:
+    var(--u-m-tl) 0 0 / 30px 30px no-repeat,
+    var(--u-m-tr) 100% 0 / 30px 30px no-repeat,
+    var(--u-m-bl) 0 100% / 30px 30px no-repeat,
+    var(--u-m-br) 100% 100% / 30px 30px no-repeat;
+}
+body.theme-french-romance .iban-number {
+  display: block;
+  margin-bottom: 18px;
+  font: 600 16.5px/1.6 var(--font-display);
+  letter-spacing: .08em;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+body.theme-french-romance #copy-iban-btn { margin-top: 4px !important; padding: 13px 20px !important; font-size: 11.5px !important; }
+body.theme-french-romance #gift-message { max-width: 24em; }
+
+/* ==========================================================================
+   RSVP · la última tarjeta de la invitación
+   ========================================================================== */
+body.theme-french-romance .rsvp-form {
+  position: relative;
+  max-width: 460px;
+  margin: 52px auto 0;
+  padding: 50px 26px 46px;
+  background: var(--u-paper), var(--paper);
+  border: 1px solid var(--gold-line);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(179, 154, 112, .4),
+    0 30px 44px -30px rgba(98, 86, 79, .6);
+}
+body.theme-french-romance .rsvp-form::before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: -26px;
+  left: 50%;
+  width: 190px;
+  height: 44px;
+  margin-left: -95px;
+  background:
+    var(--u-sprig) center / 190px 42px no-repeat,
+    linear-gradient(var(--paper), var(--paper)) center / 62px 14px no-repeat;
+  pointer-events: none;
+}
+body.theme-french-romance .rsvp-form::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  background:
+    var(--u-m-tl) 0 0 / 30px 30px no-repeat,
+    var(--u-m-tr) 100% 0 / 30px 30px no-repeat,
+    var(--u-m-bl) 0 100% / 30px 30px no-repeat,
+    var(--u-m-br) 100% 100% / 30px 30px no-repeat;
+}
+body.theme-french-romance .rsvp-form > * { position: relative; z-index: 1; }
+body.theme-french-romance .form-group { margin-bottom: 18px; }
 body.theme-french-romance .form-group label,
 body.theme-french-romance .companions-head {
-  font: 700 13px/1.4 var(--font-body);
-  letter-spacing: .15em;
+  margin-bottom: 7px;
+  font: 700 13.5px/1.4 var(--font-body);
+  letter-spacing: .16em;
+  text-transform: uppercase;
   color: var(--rose-ink);
 }
-body.theme-french-romance .companions-head small { font: italic 500 16px/1.4 var(--font-body); letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+body.theme-french-romance .companions-head small {
+  display: block;
+  margin-top: 3px;
+  font: italic 400 17px/1.4 var(--font-body);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
 body.theme-french-romance .form-group input,
 body.theme-french-romance .form-group select,
 body.theme-french-romance .companion-row input,
 body.theme-french-romance .companion-row select {
-  padding: 10px 2px;
-  background-color: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(181, 154, 98, .8);
-  font-family: var(--font-body);
-  font-size: 19px;
-  color: var(--text-main);
+  padding: 11px 14px;
+  background-color: #FFFEFB;
+  border: 1px solid rgba(179, 154, 112, .7);
+  border-radius: 0;
+  box-shadow: inset 0 1px 2px rgba(98, 86, 79, .07);
+  font: 600 19px/1.3 var(--font-body);
+  color: var(--ink);
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 body.theme-french-romance .form-group select,
 body.theme-french-romance .companion-row select { background-image: @arrow_fr@; }
 body.theme-french-romance .form-group input:focus,
-body.theme-french-romance .form-group select:focus { border-bottom-color: var(--rose-ink); outline: none; }
-body.theme-french-romance .form-group input::placeholder { color: #8C7D76; font-style: italic; }
-body.theme-french-romance .consent-label { font: 500 16px/1.5 var(--font-body) !important; }
-body.theme-french-romance .privacy-note { font-size: 15px; }
-body.theme-french-romance .rsvp-form .btn-primary { width: 100%; margin-top: 8px; padding: 18px 20px; }
-body.theme-french-romance .rsvp-success { background: var(--paper); border: 1px solid rgba(181, 154, 98, .7); color: var(--text-main); font: 500 20px/1.55 var(--font-body); }
-body.theme-french-romance .rsvp-error { font-family: var(--font-body); font-size: 17px; }
+body.theme-french-romance .form-group select:focus,
+body.theme-french-romance .companion-row input:focus,
+body.theme-french-romance .companion-row select:focus {
+  border-color: var(--rose-ink);
+  box-shadow: 0 0 0 3px rgba(216, 185, 180, .5);
+  outline: none;
+}
+body.theme-french-romance .form-group input::placeholder,
+body.theme-french-romance .companion-row input::placeholder { color: #85766E; font-style: italic; font-weight: 400; }
+body.theme-french-romance .consent-label { font: 500 16.5px/1.5 var(--font-body) !important; letter-spacing: 0; text-transform: none; color: var(--muted); }
+body.theme-french-romance .privacy-note { font-size: 15.5px; color: var(--muted); }
+body.theme-french-romance .privacy-note a { color: var(--gold-ink); }
+body.theme-french-romance .rsvp-form .btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 19px 20px;
+  outline-offset: 4px;
+}
+body.theme-french-romance .rsvp-form .btn-primary:focus-visible { outline: 2px solid var(--rose-ink); outline-offset: 5px; }
 
-/* --- Pie --- */
+/* Estados: éxito y error con el mismo lenguaje de papelería */
+body.theme-french-romance .rsvp-success,
+body.theme-french-romance .rsvp-error {
+  position: relative;
+  max-width: 460px;
+  margin: 52px auto 0;
+  padding: 88px 28px 38px;
+  border-radius: 0;
+  text-align: center;
+}
+body.theme-french-romance .rsvp-success::before,
+body.theme-french-romance .rsvp-error::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  background: no-repeat center / contain;
+}
+body.theme-french-romance .rsvp-success {
+  background: var(--u-paper), var(--paper);
+  border: 1px solid var(--gold-line);
+  box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(179, 154, 112, .4), 0 30px 44px -30px rgba(98, 86, 79, .6);
+  color: var(--ink);
+  font: 600 21px/1.55 var(--font-body);
+}
+body.theme-french-romance .rsvp-success::before { background-image: var(--u-i-check); }
+body.theme-french-romance .rsvp-success strong {
+  display: block;
+  margin-bottom: 8px;
+  font: 400 40px/1.15 var(--font-script);
+  color: var(--rose-ink);
+}
+body.theme-french-romance .rsvp-error {
+  background: #FBF1EE;
+  border: 1px solid #D9B1AA;
+  box-shadow: inset 0 0 0 5px #FBF1EE, inset 0 0 0 6px rgba(169, 122, 116, .35);
+  color: #6E3B35;
+}
+body.theme-french-romance .rsvp-error::before { background-image: var(--u-i-alert); }
+body.theme-french-romance .rsvp-error strong {
+  display: block;
+  margin-bottom: 8px;
+  font: 600 14px/1.6 var(--font-display);
+  letter-spacing: .12em;
+  color: #6E3B35;
+}
+body.theme-french-romance .rsvp-error p { margin: 0 0 14px; font: 600 19px/1.5 var(--font-body); color: #6E3B35; }
+body.theme-french-romance .rsvp-error .btn-primary { background: #7A4640; border-color: #7A4640; outline-color: rgba(169, 122, 116, .6); }
+
+/* ==========================================================================
+   PIE · cierre romántico
+   ========================================================================== */
 body.theme-french-romance .invite-footer {
   position: relative;
-  padding: 86px 24px 54px;
-  background: var(--beige);
-  font: 700 14px/1.5 var(--font-body);
-  letter-spacing: .24em;
+  padding: 98px 24px 150px;
+  background: var(--u-fibers), var(--u-paper), linear-gradient(180deg, #EBDAD4 0%, var(--powder) 100%);
+  font: 600 14px/1.5 var(--font-display);
+  letter-spacing: .26em;
   color: var(--gold-ink);
+  overflow: hidden;
 }
 body.theme-french-romance .invite-footer::before {
   content: '';
   position: absolute;
-  top: 28px;
+  top: -22px;
   left: 50%;
-  width: 200px;
-  height: 26px;
-  margin-left: -100px;
-  background: @fr_band@ no-repeat center / contain;
+  width: 320px;
+  height: 46px;
+  margin-left: -160px;
+  background: var(--u-band) no-repeat center / contain;
+  pointer-events: none;
 }
+body.theme-french-romance .invite-footer::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 150px;
+  background:
+    var(--u-cl0) -10px 100% / 138px 138px no-repeat,
+    var(--u-cl1) calc(100% + 10px) 100% / 138px 138px no-repeat;
+  pointer-events: none;
+}
+body.theme-french-romance .invite-footer > * { position: relative; z-index: 1; }
 body.theme-french-romance .invite-footer h3 {
-  font: 500 clamp(22px, 6.2vw, 30px)/1.4 var(--font-heading);
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--text-main);
+  margin: 0 0 6px;
+  font: 400 clamp(46px, 14vw, 64px)/1.05 var(--font-script);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  overflow-wrap: anywhere;
 }
-body.theme-french-romance #share-wa-btn { padding: 12px 22px !important; font-size: 12px !important; }
-body.theme-french-romance .footer-legal { font: 500 16px/1.5 var(--font-body); letter-spacing: .03em; }
-body.theme-french-romance .footer-legal a { color: var(--text-muted); }
-body.theme-french-romance .music-toggle { background: var(--paper); color: var(--text-main); border: 1px solid var(--gold); }
-body.theme-french-romance .music-toggle.playing { background: var(--accent); color: #FFFCF6; border-color: var(--accent); }
+body.theme-french-romance .invite-footer h3::before {
+  content: '';
+  display: block;
+  width: 168px;
+  height: 36px;
+  margin: 0 auto 14px;
+  background: var(--u-sprig) no-repeat center / contain;
+}
+body.theme-french-romance #footer-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px 0 0;
+}
+body.theme-french-romance #footer-date::before,
+body.theme-french-romance #footer-date::after {
+  content: '';
+  width: 38px;
+  height: 1px;
+  background: var(--gold);
+}
+body.theme-french-romance #share-wa-btn { padding: 13px 22px !important; font-size: 11.5px !important; }
+body.theme-french-romance .footer-legal { margin-top: 26px; font: 600 16px/1.5 var(--font-body); letter-spacing: .03em; }
+body.theme-french-romance .footer-legal a { color: var(--muted); }
 
-/* Sobre */
+/* Controles flotantes y pantalla de estado */
+body.theme-french-romance .music-toggle { background: var(--paper); color: var(--ink); border: 1px solid var(--gold); }
+body.theme-french-romance .music-toggle.playing { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+body.theme-french-romance .invite-status-card { background: var(--paper); border: 1px solid var(--gold-line); }
+body.theme-french-romance .invite-status-card h1 { font-family: var(--font-display); font-weight: 400; letter-spacing: .06em; }
+
+/* ==========================================================================
+   SOBRE (se mantiene la mecánica; solo se afina la paleta)
+   ========================================================================== */
 body.theme-french-romance .envelope-overlay.env-marfil {
-  background: radial-gradient(circle at center, #F5EAE0 0%, #E3D0C2 100%);
-  --env-body: #FBF3EA;
-  --env-flap: #F0E1D3;
-  --env-side: #F5E9DC;
-  --env-text: #5C4E49;
+  background: radial-gradient(circle at center, #F6ECE4 0%, #E6D3C6 100%);
+  --env-body: #FCF5EC;
+  --env-flap: #F1E3D6;
+  --env-side: #F7EBDF;
+  --env-text: #62564F;
   --seal-bg: radial-gradient(circle at 35% 30%, #D8B3AC, #B27F78 65%, #8A5750 100%);
   --seal-border: #C9A09A;
   --seal-text: #FFF7F0;
 }
 body.theme-french-romance .envelope-overlay.env-marfil .env-top-hint {
-  font: 600 13px/1.6 var(--font-body);
-  letter-spacing: .2em;
-  color: #5C4E49;
+  font: 600 13px/1.6 var(--font-display);
+  letter-spacing: .16em;
+  color: #62564F;
   opacity: 1;
 }
 body.theme-french-romance .envelope-overlay.env-marfil .env-skip-btn {
-  font: 600 12px/1 var(--font-body);
+  font: 600 12px/1 var(--font-display);
   letter-spacing: .2em;
-  color: #5C4E49;
-  border-color: rgba(92, 78, 73, .5);
+  color: #62564F;
+  border-color: rgba(98, 86, 79, .5);
   opacity: 1;
+}
+
+/* Movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  body.theme-french-romance * { transition: none !important; }
 }

@@ -5,6 +5,10 @@ Los SVG (marcos, ramas, follaje) se generan aquí y se incrustan como data URI
 import math, random, os, re, sys, json
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import french_art as FA
+import blacktie_art as BA
+JS_INVITE = os.path.normpath(os.path.join(HERE, '..', '..', 'js', 'invite.js'))
 OUT = os.path.normpath(os.path.join(HERE, '..', '..', 'css', 'plantillas-v3.css'))
 
 T = 'body:is(.theme-timeless, .theme-french-romance, .theme-black-tie, .theme-garden)'
@@ -85,34 +89,6 @@ def fr_fleuron():
             f"<path d='M47,8 c3.5,-6 9,-6 12,0 c-3,6 -8.5,6 -12,0z' stroke='{s}' stroke-width='.9' fill='{s}' fill-opacity='.3'/>"
             f"<path d='M73,8 c-3.5,-6 -9,-6 -12,0 c3,6 8.5,6 12,0z' stroke='{s}' stroke-width='.9' fill='{s}' fill-opacity='.3'/>"
             f"<circle cx='60' cy='8' r='1.5' fill='{c}' stroke='none'/></svg>")
-
-
-# ---------------------------------------------------------------- BLACK TIE
-GOLD_BT = '#C9B27C'
-
-
-def bt_corner(fx=False, fy=False, inner_only=False):
-    c = GOLD_BT
-    body = ("<path d='M.5,30 V9 L9,.5 H30'/>"
-            "<path d='M6.5,30 V11.6 L11.6,6.5 H30' stroke-opacity='.4'/>")
-    sx = -1 if fx else 1
-    sy = -1 if fy else 1
-    tx = 30 if fx else 0
-    ty = 30 if fy else 0
-    return (f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='none' stroke='{c}' stroke-width='1' "
-            f"stroke-linecap='square'><g transform='matrix({sx} 0 0 {sy} {tx} {ty})'>{body}</g></svg>")
-
-
-def bt_divider(color='currentColor'):
-    return (f"<svg viewBox='0 0 160 12' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='{color}' stroke-width='.9'>"
-            "<path d='M0,6 H62 M98,6 H160'/><path d='M80,1 L85,6 L80,11 L75,6Z'/>"
-            "<path d='M69,6 H71 M89,6 H91' stroke-linecap='round'/></svg>")
-
-
-def bt_diamond_small():
-    c = GOLD_BT
-    return (f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='{c}' stroke-width='1'>"
-            f"<path d='M5,.8 L9.2,5 L5,9.2 L.8,5Z'/></svg>")
 
 
 # ---------------------------------------------------------------- GARDEN
@@ -258,27 +234,46 @@ def tick(color):
 
 TOKENS = {
     'T': T,
-    'fr_c_tl': uri(fr_corner(False, False)), 'fr_c_tr': uri(fr_corner(True, False)),
-    'fr_c_bl': uri(fr_corner(False, True)), 'fr_c_br': uri(fr_corner(True, True)),
-    'fr_fleuron': uri(fr_fleuron()),
-    'fr_band': uri(sprig_line(260, 9, '#7E8A6C', GOLD_FR)),
-    'bt_c_tl': uri(bt_corner(False, False)), 'bt_c_tr': uri(bt_corner(True, False)),
-    'bt_c_bl': uri(bt_corner(False, True)), 'bt_c_br': uri(bt_corner(True, True)),
-    'bt_diamond': uri(bt_diamond_small()),
-    'bt_divider': uri(bt_divider('#C9B27C')),
+    'fr_c_tl': uri(FA.hero_corner(False, False)), 'fr_c_tr': uri(FA.hero_corner(True, False)),
+    'fr_c_bl': uri(FA.hero_corner(False, True)), 'fr_c_br': uri(FA.hero_corner(True, True)),
+    'fr_sprig_bottom': uri(FA.sprig_bottom()),
+    'fr_div_laurel': uri(FA.div_laurel()), 'fr_div_rose': uri(FA.div_rose()), 'fr_div_scroll': uri(FA.div_scroll()),
+    'fr_div_berries': uri(FA.div_berries()), 'fr_div_wild': uri(FA.div_wild()), 'fr_band': uri(FA.div_band()),
+    'fr_fl_title': uri(FA.fleuron_title()), 'fr_fl_script': uri(FA.fleuron_script()), 'fr_fl_dots': uri(FA.fleuron_dots()),
+    'fr_cluster0': uri(FA.cluster(False, 0)), 'fr_cluster1': uri(FA.cluster(True, 1)),
+    'fr_side': uri(FA.sprig_side(False)), 'fr_side_r': uri(FA.sprig_side(True)),
+    'fr_mini_tl': uri(FA.mini_corner(False, False)), 'fr_mini_tr': uri(FA.mini_corner(True, False)),
+    'fr_mini_bl': uri(FA.mini_corner(False, True)), 'fr_mini_br': uri(FA.mini_corner(True, True)),
+    'fr_arch': uri(FA.arch_ornament()),
+    'fr_i_dress': uri(FA.icon_dress()), 'fr_i_bus': uri(FA.icon_bus()), 'fr_i_gift': uri(FA.icon_gift()),
+    'fr_i_pin': uri(FA.icon_pin()), 'fr_i_mail': uri(FA.icon_mail()),
+    'fr_i_check': uri(FA.icon_check_rose()), 'fr_i_alert': uri(FA.icon_alert()),
+    'fr_paper': uri(FA.paper()), 'fr_fibers': uri(FA.paper_fibers()),
+    'bt_c_tl': uri(BA.corner(BA.GOLD, False, False)), 'bt_c_tr': uri(BA.corner(BA.GOLD, True, False)),
+    'bt_c_bl': uri(BA.corner(BA.GOLD, False, True)), 'bt_c_br': uri(BA.corner(BA.GOLD, True, True)),
+    'bt_badge': uri(BA.badge()), 'bt_fan': uri(BA.fan()), 'bt_keyline': uri(BA.keyline()),
+    'bt_d_diamond': uri(BA.div_diamond()), 'bt_d_steps': uri(BA.div_steps()),
+    'bt_d_triple': uri(BA.div_triple()), 'bt_d_zig': uri(BA.div_zig()),
+    'bt_i_pin': uri(BA.icon_pin()), 'bt_i_bowtie': uri(BA.icon_bowtie()), 'bt_i_bus': uri(BA.icon_bus()),
+    'bt_i_gift': uri(BA.icon_gift()), 'bt_i_check': uri(BA.icon_check(BA.GOLD)), 'bt_i_alert': uri(BA.icon_alert('#E0A89E')),
+    'bt_i_pin_ink': uri(BA.icon_pin(BA.GOLD_INK)), 'bt_i_bus_ink': uri(BA.icon_bus(BA.GOLD_INK)),
+    'bt_diamond': uri(BA.diamond(BA.GOLD)), 'bt_diamond_ink': uri(BA.diamond(BA.GOLD_INK)),
+    'bt_seal': uri(BA.seal_mark()),
+    'bt_grain_d': uri(BA.grain(True)), 'bt_grain_l': uri(BA.grain(False)),
+    'bt_arrow_l': uri(BA.arrow('#F3EFE6')),
     'ga_strip': uri(garden_strip(7)),
     'ga_sprig': uri(garden_sprig(3)),
     'ga_sprig_small': uri(garden_sprig(5, 120, 34)),
     'ga_corner': uri(garden_corner(11)),
     'arrow_carbon': arrow('#1F1E1C'), 'arrow_fr': arrow('#7A6A5E'),
-    'arrow_bt': arrow('#1B1C1E'), 'arrow_ga': arrow('#44503F'),
+    'arrow_ga': arrow('#44503F'),
     'tick_light': tick('#FFFEFC'),
 }
 
 # SVG inline para js/invite.js (ORNAMENTS_SVG)
 JS_ORN = {
-    'french-romance': raw(sprig_line(200, 8, '#7E8A6C', GOLD_FR)),
-    'black-tie': raw(bt_divider()),
+    'french-romance': raw(FA.crest()),
+    'black-tie': raw(BA.badge()),
     'garden': raw(garden_sprig(3, 160, 44)),
 }
 
@@ -301,6 +296,16 @@ def main():
     open(OUT, 'w', encoding='utf-8').write(css)
     # orn.json: SVG de los ornamentos del hero (ya incrustados en js/invite.js)
     json.dump(JS_ORN, open(os.path.join(HERE, 'orn.json'), 'w'))
+    # Sincroniza los ornamentos del hero (French Romance y Black Tie) en js/invite.js
+    js = open(JS_INVITE, encoding='utf-8').read()
+    new_js = js
+    for key in ('french-romance', 'black-tie'):
+        pat = re.compile(r"(ORNAMENTS_SVG\['" + key + r"'\] = )\"(?:[^\"\\]|\\.)*\";")
+        new_js, n = pat.subn(lambda m: m.group(1) + json.dumps(JS_ORN[key]) + ';', new_js)
+        if n != 1:
+            print('NO SE ENCONTRO ORNAMENTS_SVG[' + key + '] en invite.js'); sys.exit(1)
+    if new_js != js:
+        open(JS_INVITE, 'w', encoding='utf-8').write(new_js)
     print('OK', OUT, len(css), 'bytes')
 
 

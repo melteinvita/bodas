@@ -5,7 +5,10 @@ css/plantillas-v3.css es un archivo GENERADO: no se edita a mano.
   base.css       reglas comunes a las cuatro plantillas (@T@ = selector de los 4 temas)
   timeless.css   05 Timeless Editorial
   french.css     06 French Romance
-  blacktie.css   07 Black Tie
+  french_art.py  ilustraciones SVG de French Romance (rosas de acuarela, esquinas,
+                 emblema, separadores, iconos, papel). build.py las incrusta y
+                 también sincroniza ORNAMENTS_SVG['french-romance'] en js/invite.js
+  blacktie.css   07 Black Tie · The Grand Evening (arte en blacktie_art.py)
   garden.css     08 Garden Wedding
   build.py       une los fragmentos y genera los SVG (marcos, ramas, follaje)
                  como data URI (permitido por la CSP: img-src 'self' data:)
