@@ -12,17 +12,20 @@ import math, random
 from garden_art import r1, bez, stem, svg as _unused  # noqa: F401  (geometría común)
 
 # paleta (ver brief): el verde identifica; las flores aportan romanticismo
-FOREST = '#405744'
-DEEP = '#314735'
-SAGE = '#A7B49C'
+FOREST = '#405B45'
+DEEP = '#344A38'
+SAGE = '#A5B59A'
 IVORY = '#FAF7F0'
 WHITE = '#FFFDF9'
-PEONY = '#E8B9BC'      # rosa peonía
-DUSTY = '#D49A9B'      # rosa empolvado
-ANTIQUE = '#BD8585'    # rosa antiguo
+PEONY = '#E9B6B5'      # rosa peonía
+DUSTY = '#D99B9C'      # rosa empolvado
+ANTIQUE = '#BC777E'    # rosa antiguo
 SOFT = '#F1D8D5'       # rosa suave
-CREAM = '#EADCC5'      # crema floral
-BUTTER = '#E8D99E'     # amarillo mantequilla
+CREAM = '#F1E2C7'      # crema floral
+BUTTER = '#E9D9A8'     # amarillo mantequilla
+CORAL = '#D98E7F'     # coral suave
+MAUVE = '#B99AB5'
+LAV = '#A99DBD'
 EUC = '#9DB1A3'
 OLIVE = '#7C8F74'
 LEAFS = [FOREST, DEEP, OLIVE, '#5C7560', SAGE]
@@ -189,12 +192,12 @@ def garland_top(seed=4, w=480, h=330):
     o += eucalyptus([(-10, 60), (40, 120), (110, 150), (170, 118)], rnd, 7, 32, 15)
     o += foliage([(480, 150), (440, 230), (452, 300), (418, 340)], rnd, 8, 42, 22, cols=[OLIVE, FOREST, SAGE])
     # flores traseras
-    o += fl('hyd', 335, 54, 50, 0, SOFT, .95) + fl('hyd', 60, 128, 34, 0, CREAM, .95)
+    o += fl('hyd', 335, 54, 50, 0, LAV, .95) + fl('hyd', 60, 128, 34, 0, MAUVE, .95)
     # peonías y rosas
     o += fl('peony', 412, 86, 78, 12, PEONY) + fl('peony', 118, 40, 56, 200, SOFT)
     o += fl('rose', 346, 152, 54, 30, DUSTY) + fl('rose', 46, 54, 52, 0, PEONY)
-    o += fl('ran', 452, 200, 38, 0, CREAM) + fl('ran', 28, 150, 34, 0, WHITE)
-    o += fl('rose', 262, 22, 30, 80, SOFT) + fl('peony', 410, 238, 34, 40, SOFT, .96)
+    o += fl('ran', 452, 200, 38, 0, CORAL) + fl('ran', 28, 150, 34, 0, WHITE)
+    o += fl('rose', 262, 22, 30, 80, CORAL) + fl('peony', 410, 238, 34, 40, SOFT, .96)
     # flores medianas y pequeñas por delante
     o += fl('cher', 292, 98, 22, 12, SOFT) + fl('cher', 98, 128, 18, 30, WHITE) + fl('dai', 198, 36, 15, 0, WHITE)
     o += fl('dai', 376, 232, 17, 0, WHITE) + fl('jas', 214, 14, 14, 20, WHITE) + fl('jas', 22, 218, 15, 0, WHITE)
@@ -212,10 +215,10 @@ def garland_bottom(seed=9, w=480, h=330):
     o += eucalyptus([(0, 330), (100, 290), (190, 300), (260, 336)], rnd, 8, 34, 16)
     o += foliage([(300, 350), (340, 318), (380, 322), (430, 346)], rnd, 7, 30, 16, ratio=.3)
     o += foliage([(-10, 250), (28, 190), (20, 100), (50, 40)], rnd, 8, 36, 20, cols=[FOREST, DEEP, OLIVE])
-    o += fl('hyd', 112, 232, 48, 0, SOFT, .95) + fl('hyd', 420, 232, 32, 0, CREAM, .95)
+    o += fl('hyd', 112, 232, 48, 0, LAV, .95) + fl('hyd', 420, 232, 32, 0, MAUVE, .95)
     o += fl('peony', 74, 262, 80, 100, PEONY) + fl('peony', 404, 290, 52, 20, SOFT)
-    o += fl('rose', 160, 296, 50, 10, DUSTY) + fl('rose', 40, 150, 44, 60, SOFT) + fl('rose', 340, 316, 40, 80, PEONY)
-    o += fl('ran', 20, 306, 38, 0, CREAM) + fl('ran', 246, 322, 28, 0, WHITE) + fl('ran', 462, 214, 30, 0, WHITE)
+    o += fl('rose', 160, 296, 50, 10, DUSTY) + fl('rose', 40, 150, 44, 60, SOFT) + fl('rose', 340, 316, 40, 80, CORAL)
+    o += fl('ran', 20, 306, 38, 0, CORAL) + fl('ran', 246, 322, 28, 0, WHITE) + fl('ran', 462, 214, 30, 0, WHITE)
     o += fl('cher', 140, 178, 20, 20, SOFT) + fl('cher', 216, 268, 16, 0, WHITE) + fl('dai', 24, 212, 17, 0, WHITE)
     o += fl('dai', 290, 290, 15, 0, WHITE) + fl('jas', 196, 214, 14, 10, WHITE) + fl('jas', 380, 250, 14, 40, WHITE)
     o += fl('bud', 90, 120, 18, -80, ANTIQUE) + fl('bud', 244, 244, 14, -40, DUSTY) + fl('bud', 454, 160, 14, 200, ANTIQUE)
@@ -245,8 +248,8 @@ def hydrangea_cluster(seed=33, w=320, h=240):
     o += foliage([(-10, 232), (80, 160), (170, 130), (250, 150)], rnd, 12, 46, 24)
     o += foliage([(330, 240), (250, 180), (200, 120), (140, 90)], rnd, 12, 44, 22, cols=[OLIVE, FOREST, SAGE])
     o += eucalyptus([(150, 250), (170, 190), (150, 120), (190, 50)], rnd, 8, 36, 16)
-    o += fl('hyd', 120, 140, 60, 0, SOFT) + fl('hyd', 214, 116, 52, 0, PEONY, .95) + fl('hyd', 168, 176, 44, 0, CREAM)
-    o += fl('rose', 64, 190, 34, 10, DUSTY) + fl('ran', 262, 182, 30, 0, WHITE) + fl('cher', 166, 66, 18, 0, WHITE)
+    o += fl('hyd', 120, 140, 60, 0, LAV) + fl('hyd', 214, 116, 52, 0, MAUVE, .95) + fl('hyd', 168, 176, 44, 0, CREAM)
+    o += fl('rose', 64, 190, 34, 10, DUSTY) + fl('ran', 262, 182, 30, 0, CORAL) + fl('cher', 166, 66, 18, 0, WHITE)
     o += fl('dai', 42, 128, 14, 0, WHITE) + fl('jas', 284, 120, 14, 20, WHITE) + fl('bud', 100, 76, 14, -50, ANTIQUE) + fl('bud', 236, 60, 14, -20, DUSTY)
     return svg(w, h, o, (-30, -30, 350, 270))
 
@@ -288,16 +291,16 @@ def footer_bouquet(seed=61, w=760, h=380):
     o += eucalyptus([(380, 400), (460, 300), (510, 190), (490, 90)], rnd, 10, 42, 18)
     o += foliage([(380, 400), (340, 300), (380, 200), (380, 120)], rnd, 9, 38, 20, cols=[FOREST, DEEP, OLIVE])
     # flores traseras
-    o += fl('hyd', 250, 190, 62, 0, SOFT, .96) + fl('hyd', 510, 190, 62, 0, CREAM, .96) + fl('hyd', 380, 130, 54, 0, PEONY, .95)
+    o += fl('hyd', 250, 190, 62, 0, LAV, .96) + fl('hyd', 510, 190, 62, 0, MAUVE, .96) + fl('hyd', 380, 130, 54, 0, PEONY, .95)
     # centro
     o += fl('peony', 380, 232, 88, 10, PEONY) + fl('peony', 270, 262, 66, 80, SOFT) + fl('peony', 494, 262, 66, 150, SOFT)
     o += fl('rose', 336, 160, 48, 0, DUSTY) + fl('rose', 428, 164, 46, 30, ANTIQUE) + fl('rose', 190, 280, 46, 20, PEONY) + fl('rose', 572, 282, 46, 50, DUSTY)
-    o += fl('ran', 300, 330, 40, 0, CREAM) + fl('ran', 462, 332, 40, 0, WHITE) + fl('ran', 150, 214, 34, 0, WHITE) + fl('ran', 612, 214, 34, 0, CREAM)
+    o += fl('ran', 300, 330, 40, 0, CORAL) + fl('ran', 462, 332, 40, 0, WHITE) + fl('ran', 150, 214, 34, 0, WHITE) + fl('ran', 612, 214, 34, 0, CREAM)
     o += fl('cher', 232, 110, 22, 0, WHITE) + fl('cher', 534, 108, 22, 20, SOFT) + fl('dai', 380, 62, 18, 0, WHITE) + fl('dai', 110, 262, 17, 0, WHITE)
     o += fl('dai', 650, 266, 17, 0, WHITE) + fl('jas', 320, 88, 16, 0, WHITE) + fl('jas', 450, 92, 16, 30, WHITE) + fl('jas', 80, 190, 15, 0, WHITE) + fl('jas', 680, 190, 15, 0, WHITE)
     o += fl('bud', 200, 160, 18, -70, ANTIQUE) + fl('bud', 560, 152, 18, -110, DUSTY) + fl('bud', 380, 24, 16, -90, ANTIQUE)
     o += berries(rnd, 300, 250, 10, 34, PEONY) + berries(rnd, 470, 244, 10, 34)
-    return svg(w, h, o)
+    return svg(w, h, o, (-50, 0, w + 100, h))
 
 
 def corner_bloom(seed=12, w=170, h=170):
@@ -310,10 +313,11 @@ def corner_bloom(seed=12, w=170, h=170):
     return svg(w, h, o)
 
 
-def mini(kind, seed=3, w=60, h=60):
+def mini(kind, seed=3, w=60, h=60, color=None):
     """Flor aislada con dos hojas (motivo del itinerario)."""
     rnd = random.Random(seed)
     col = {'rose': PEONY, 'peony': SOFT, 'ran': CREAM, 'cher': SOFT, 'dai': WHITE, 'jas': WHITE, 'hyd': PEONY}[kind]
+    col = color or col
     o = lf(30, 40, 150, 22, .34, FOREST) + lf(30, 40, 30, 22, .34, OLIVE) + lf(30, 40, 90, 18, .34, DEEP)
     o += fl(kind, 30, 30, 20 if kind in ('rose', 'peony', 'ran', 'hyd') else 15, rnd.uniform(0, 40), col)
     return svg(w, h, o)
@@ -334,3 +338,78 @@ def ornament(w=150, h=44):
     rnd = random.Random(5)
     o = blossom_stem([(4, h * .7), (w * .3, h * .1), (w * .62, h * .95), (w - 4, h * .4)], rnd, 6, 1.1, ('cher', 'dai', 'jas'))
     return svg(w, h, o)
+
+
+# ------------------------------------------------------------------ V4: composiciones nuevas
+def vine_branch(seed=71, w=190, h=440):
+    """Rama vertical asimétrica de rosas pequeñas, capullos y hojas (historia)."""
+    rnd = random.Random(seed)
+    p = [(150, 450), (60, 340), (170, 190), (80, -10)]
+    o = foliage(p, rnd, 11, 34, 18, ratio=.32, sides=(1, -1))
+    o += foliage([(190, 300), (150, 240), (150, 170), (120, 120)], rnd, 5, 24, 14, cols=[OLIVE, SAGE])
+    for t, kind, r, col in ((.12, 'rose', 25, DUSTY), (.28, 'bud', 13, ANTIQUE), (.4, 'rose', 31, PEONY), (.56, 'ran', 22, CORAL),
+                            (.68, 'bud', 12, MAUVE), (.8, 'rose', 22, SOFT), (.93, 'cher', 14, WHITE)):
+        x, y, a = bez(p, t)
+        dx = 14 if rnd.random() > .5 else -14
+        o += fl(kind, x + dx, y, r, rnd.uniform(0, 60) if kind != 'bud' else a, col)
+    o += fl('dai', 40, 250, 11, 0, WHITE) + fl('jas', 148, 120, 11, 20, WHITE) + berries(rnd, 120, 230, 5, 16, PEONY)
+    return svg(w, h, o, (-10, -10, w + 20, h + 20))
+
+
+def side_branch(seed=81, w=230, h=130):
+    """Rama lateral ligera con una rosa destacada (cuenta atrás); se refleja con CSS."""
+    rnd = random.Random(seed)
+    p = [(-10, 100), (60, 120), (130, 40), (240, 60)]
+    o = foliage(p, rnd, 8, 26, 14, ratio=.3)
+    o += fl('rose', 150, 56, 34, 20, PEONY) + fl('bud', 70, 88, 13, 190, ANTIQUE) + fl('cher', 206, 52, 13, 0, SOFT) + fl('dai', 104, 44, 11, 0, WHITE)
+    return svg(w, h, o, (-14, -14, w + 28, h + 28))
+
+
+def ceremony_bouquet(seed=91, w=150, h=150):
+    """Ramito blanco y crema (ceremonia): peonía, rosa blanca y jazmín."""
+    rnd = random.Random(seed)
+    o = foliage([(75, 156), (60, 110), (80, 60), (75, 20)], rnd, 7, 30, 16, ratio=.3)
+    o += eucalyptus([(75, 156), (120, 110), (130, 60), (118, 22)], rnd, 6, 28, 13)
+    o += fl('peony', 75, 82, 44, 20, WHITE) + fl('rose', 108, 112, 24, 0, CREAM) + fl('rose', 44, 114, 22, 40, SOFT)
+    o += fl('jas', 52, 40, 11, 0, WHITE) + fl('jas', 110, 50, 11, 20, WHITE) + fl('bud', 90, 26, 10, -30, CREAM)
+    return svg(w, h, o, (-8, -8, w + 16, h + 16))
+
+
+def party_bouquet(seed=92, w=150, h=150):
+    """Ramito vivo (celebración): ranúnculos coral, hortensia malva y cerezo."""
+    rnd = random.Random(seed)
+    o = foliage([(75, 156), (90, 110), (70, 60), (80, 20)], rnd, 7, 30, 16, ratio=.3, cols=[OLIVE, FOREST, SAGE])
+    o += fl('hyd', 98, 70, 38, 0, MAUVE) + fl('ran', 54, 92, 34, 0, CORAL) + fl('ran', 84, 120, 24, 20, PEONY)
+    o += fl('cher', 42, 48, 14, 0, SOFT) + fl('dai', 118, 118, 11, 0, WHITE) + fl('bud', 70, 22, 11, -20, DUSTY)
+    return svg(w, h, o, (-8, -8, w + 16, h + 16))
+
+
+def bud_branch(seed=93, w=170, h=120):
+    """Rama con capullos y flores pequeñas (tarjeta de detalles)."""
+    rnd = random.Random(seed)
+    p = [(-8, 110), (50, 100), (100, 40), (180, 30)]
+    o = foliage(p, rnd, 7, 22, 12, ratio=.3)
+    for t, k, r, c in ((.3, 'bud', 12, ANTIQUE), (.5, 'bud', 13, MAUVE), (.68, 'cher', 12, SOFT), (.85, 'bud', 11, CORAL), (.98, 'dai', 9, WHITE)):
+        x, y, a = bez(p, t)
+        o += fl(k, x, y - 8, r, a if k == 'bud' else 0, c)
+    return svg(w, h, o, (-12, -12, w + 24, h + 24))
+
+
+def rose_corner(seed=94, w=200, h=200):
+    """Esquina de formulario: rosa inglesa grande con capullo y follaje (arriba-izquierda)."""
+    rnd = random.Random(seed)
+    o = foliage([(-10, 206), (30, 130), (90, 70), (206, 20)], rnd, 9, 34, 17)
+    o += foliage([(8, 206), (14, 130), (40, 60), (96, -6)], rnd, 7, 28, 14, cols=[OLIVE, FOREST, SAGE])
+    o += fl('rose', 58, 66, 52, 10, DUSTY) + fl('rose', 120, 34, 26, 40, PEONY) + fl('ran', 30, 138, 22, 0, CORAL)
+    o += fl('cher', 92, 110, 14, 0, SOFT) + fl('bud', 158, 24, 12, -20, ANTIQUE) + fl('dai', 24, 28, 11, 0, WHITE)
+    return svg(w, h, o, (-4, -4, w + 8, h + 8))
+
+
+def peony_corner(seed=95, w=200, h=200):
+    """Esquina de formulario: peonía grande con hortensia y hojas (abajo-derecha, sin girar)."""
+    rnd = random.Random(seed)
+    o = foliage([(206, -10), (170, 70), (110, 130), (-6, 180)], rnd, 9, 34, 17, cols=[OLIVE, FOREST, SAGE])
+    o += foliage([(190, -10), (186, 70), (160, 140), (104, 206)], rnd, 7, 28, 14)
+    o += fl('hyd', 120, 128, 32, 0, LAV) + fl('peony', 142, 82, 52, 30, PEONY) + fl('peony', 80, 150, 28, 0, SOFT)
+    o += fl('ran', 170, 150, 20, 0, CREAM) + fl('jas', 96, 70, 12, 0, WHITE) + fl('bud', 40, 164, 12, 200, DUSTY)
+    return svg(w, h, o, (-4, -4, w + 8, h + 8))
