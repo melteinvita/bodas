@@ -21,16 +21,21 @@
    ========================================================================== */
 body.theme-garden {
   --forest: #405744;
-  --deep: #293F32;
+  --deep: #314735;
   --sage: #A7B49C;
   --pale: #DCE3D4;
   --pale-soft: #E8EDE1;
-  --ivory: #FAF8F1;
-  --paper: #FFFDF8;
-  --stone: #E9E3D6;
-  --blush: #D8B9AD;
-  --rose: #B98779;
-  --rose-ink: #8F5D51;
+  --ivory: #FAF7F0;
+  --paper: #FFFDF9;
+  --stone: #F3EADB;
+  --cream: #EADCC5;
+  --butter: #E8D99E;
+  --peony: #E8B9BC;
+  --dusty: #D49A9B;
+  --soft-pink: #F1D8D5;
+  --blush: #E8B9BC;
+  --rose: #BD8585;
+  --rose-ink: #8C5557;
 
   --bg-page: var(--ivory);
   --bg-card: var(--paper);
@@ -64,6 +69,16 @@ body.theme-garden {
   --u-jasmine: @ga_s_jasmine@;
   --u-fern: @ga_s_fern@;
   --u-euc: @ga_s_euc@;
+  --u-hyd: @ga_hyd@;
+  --u-white: @ga_white@;
+  --u-wild: @ga_wild@;
+  --u-m-rose: @ga_m_rose@;
+  --u-m-peony: @ga_m_peony@;
+  --u-m-ran: @ga_m_ran@;
+  --u-m-cher: @ga_m_cher@;
+  --u-m-dai: @ga_m_dai@;
+  --u-m-jas: @ga_m_jas@;
+  --u-m-hyd: @ga_m_hyd@;
   --u-corner: @ga_corner@;
   --u-seal: @ga_seal@;
   --u-i-pin: @ga_i_pin@;
@@ -129,16 +144,16 @@ body.theme-garden .hero::after {
 }
 body.theme-garden .hero::before {
   top: 0; right: 0; bottom: auto; left: auto;
-  width: min(86vw, 330px);
-  aspect-ratio: 360 / 330;
+  width: min(117vw, 495px);
+  aspect-ratio: 540 / 370;
   background-image: var(--u-top);
   background-size: 100% 100%;
   background-position: right top;
 }
 body.theme-garden .hero::after {
   top: auto; right: auto; bottom: 0; left: 0;
-  width: min(78vw, 300px);
-  aspect-ratio: 360 / 260;
+  width: min(113vw, 484px);
+  aspect-ratio: 540 / 370;
   background-image: var(--u-bottom);
   background-size: 100% 100%;
   background-position: left bottom;
@@ -263,9 +278,17 @@ body.theme-garden.has-hero-photo .hero::before { z-index: 3; }
 
 /* ---- escritorio: texto a la izquierda, fotografía a pantalla completa por la derecha ---- */
 @media (min-width: 1000px) {
-  body.theme-garden .hero { --ns: clamp(56px, 6.2vw, 98px); padding: 120px 0 170px; }
-  body.theme-garden .hero::before { width: 520px; }
-  body.theme-garden .hero::after { width: 340px; }
+  body.theme-garden .hero { --ns: clamp(56px, 6.2vw, 98px); padding: 130px 0 300px; }
+  body.theme-garden .hero::before {
+    top: 0; right: 0; left: 0;
+    width: auto; height: 560px; aspect-ratio: auto;
+    background: var(--u-top) right top / min(61vw, 880px) auto no-repeat;
+  }
+  body.theme-garden .hero::after {
+    left: 0; right: 0;
+    width: auto; height: 470px; aspect-ratio: auto;
+    background: var(--u-bottom) left bottom / min(42vw, 630px) auto no-repeat, var(--u-hyd) right bottom / min(32vw, 480px) auto no-repeat;
+  }
   body.theme-garden .hero-kicker { font-size: 25px; }
   body.theme-garden .hero-names { max-width: 940px; padding: 0 56px; }
   body.theme-garden .hero-date-pill { font-size: 14px; }
@@ -274,7 +297,7 @@ body.theme-garden.has-hero-photo .hero::before { z-index: 3; }
   body.theme-garden.has-hero-photo .hero {
     align-items: flex-start;
     justify-content: center;
-    padding: 110px 0 250px max(64px, calc((100vw - 1240px) / 2));
+    padding: 110px 0 330px max(64px, calc((100vw - 1240px) / 2));
     text-align: left;
   }
   body.theme-garden.has-hero-photo .hero > *,
@@ -290,6 +313,10 @@ body.theme-garden.has-hero-photo .hero::before { z-index: 3; }
     box-shadow: none;
     outline: 0;
     clip-path: none;
+  }
+  /* sin fotografía el nombre queda centrado: el ramo superior se recoge para no tocarlo */
+  body.theme-garden:not(.has-hero-photo) .hero::before {
+    background: var(--u-top) right top / min(34vw, 520px) auto no-repeat, var(--u-white) left top / min(21vw, 320px) auto no-repeat;
   }
   /* el helecho de abajo y el follaje superior abrazan la fotografía */
   body.theme-garden.has-hero-photo .hero-names { max-width: min(760px, 56vw); padding: 0; text-align: left; z-index: 4; }
@@ -390,10 +417,9 @@ body.theme-garden .hero + .section {
 body.theme-garden .hero + .section::before {
   content: '';
   display: block;
-  width: 170px; height: 34px;
-  margin: -64px auto 34px;
+  width: 210px; height: 70px;
+  margin: -74px auto 24px;
   background: var(--u-olive) center / contain no-repeat;
-  filter: brightness(1.7) saturate(.7);
 }
 body.theme-garden .hero + .section .eyebrow { color: var(--blush); }
 body.theme-garden .hero + .section .section-title { color: var(--ivory); }
@@ -451,16 +477,14 @@ body.theme-garden .hero + .section .btn-outline:hover { color: var(--deep); back
 /* ==========================================================================
    HISTORIA · página de revista de bodas
    ========================================================================== */
-body.theme-garden #sec-story { text-align: left; padding: 96px var(--pad-x) 230px; background: var(--u-grain), var(--ivory); }
+body.theme-garden #sec-story { text-align: left; padding: 96px var(--pad-x) 390px; background: var(--u-grain), var(--ivory); }
 body.theme-garden #sec-story::after {
   content: '';
   position: absolute;
   z-index: 0;
-  right: -34px; bottom: -150px;
-  width: 190px; height: 400px;
-  background: var(--u-spray) right top / 190px auto no-repeat;
-  transform: rotate(180deg) scaleX(-1);
-  opacity: .9;
+  right: -34px; bottom: -64px;
+  width: 300px; height: 440px;
+  background: var(--u-spray) center / 100% 100% no-repeat;
   pointer-events: none;
 }
 body.theme-garden #sec-story .story-photo {
@@ -536,7 +560,7 @@ body.theme-garden #sec-itinerary > .eyebrow {
 body.theme-garden #sec-itinerary > .eyebrow::after {
   content: '';
   display: block;
-  width: 170px; height: 40px;
+  width: 220px; height: 73px;
   margin: 10px auto 0;
   background: var(--u-jasmine) no-repeat center / contain;
 }
@@ -654,16 +678,23 @@ body.theme-garden .gallery-item:nth-child(6n+4) { grid-column: 1 / 11; }
 body.theme-garden .gallery-item:nth-child(6n+4)::before { inset: 28px -14px -14px auto; }
 body.theme-garden .gallery-item:nth-child(6n+5) { grid-column: 4 / -1; }
 body.theme-garden .gallery-item:nth-child(6n+6) { grid-column: 1 / 8; }
-/* una única rama que cruza la primera fotografía */
-body.theme-garden .gallery-item:nth-child(1)::after {
+/* detalles ilustrados entre fotografías (nunca sobre ellas) */
+body.theme-garden .gallery-item:nth-child(2)::after,
+body.theme-garden .gallery-item:nth-child(3)::after {
   content: '';
   position: absolute;
   z-index: 3;
-  left: -34px; bottom: -22px;
-  width: 190px; height: 40px;
-  background: var(--u-fern) no-repeat center / contain;
-  transform: rotate(-14deg);
   pointer-events: none;
+}
+body.theme-garden .gallery-item:nth-child(2)::after {
+  left: calc(100% - 14px); top: -14px;
+  width: 150px; height: 116px;
+  background: var(--u-hyd) center / 100% 100% no-repeat;
+}
+body.theme-garden .gallery-item:nth-child(3)::after {
+  right: calc(100% - 10px); bottom: -18px;
+  width: 150px; height: 122px;
+  background: var(--u-euc) center / 100% 100% no-repeat;
 }
 
 /* ==========================================================================
@@ -696,7 +727,7 @@ body.theme-garden .info-card p { margin: 0; max-width: none; font: 400 16.5px/1.
 /* Dress code: página independiente con panel de salvia y rama */
 body.theme-garden #card-dress {
   margin: 0 calc(var(--pad-x) * -1);
-  padding: 62px var(--pad-x) 56px;
+  padding: 62px var(--pad-x) 200px;
   background: var(--forest);
   overflow: hidden;
 }
@@ -710,11 +741,10 @@ body.theme-garden #card-dress::before {
 body.theme-garden #card-dress::after {
   content: '';
   position: absolute;
-  right: -52px; bottom: -40px;
-  width: 130px; height: 340px;
-  background: var(--u-spray) right bottom / 100% 100% no-repeat;
-  opacity: .3;
-  filter: brightness(1.7) saturate(.6);
+  right: -30px; bottom: -34px;
+  width: 290px; height: 235px;
+  background: var(--u-euc) right bottom / 100% 100% no-repeat;
+  opacity: .85;
   pointer-events: none;
 }
 body.theme-garden #card-dress > * { position: relative; z-index: 1; }
@@ -811,8 +841,8 @@ body.theme-garden .rsvp-form::after {
   content: '';
   position: absolute;
   z-index: 0;
-  top: -34px; left: -18px;
-  width: 104px; height: 104px;
+  top: -52px; left: -30px;
+  width: 150px; height: 150px;
   background: var(--u-corner) no-repeat left top / contain;
   pointer-events: none;
 }
@@ -900,7 +930,7 @@ body.theme-garden .rsvp-error .btn-primary { margin-top: 6px; background-color: 
 body.theme-garden .invite-footer {
   position: relative;
   overflow: hidden;
-  padding: 90px var(--pad-x) 230px;
+  padding: 90px var(--pad-x) 290px;
   background: var(--deep);
   border: 0;
   color: var(--pale);
@@ -923,11 +953,10 @@ body.theme-garden .invite-footer::after {
   position: absolute;
   z-index: 0;
   left: 50%; bottom: -2px;
-  width: min(100%, 720px);
+  width: min(130%, 900px);
   aspect-ratio: 2 / 1;
   transform: translateX(-50%);
   background: var(--u-footer) center bottom / 100% auto no-repeat;
-  filter: brightness(1.5) saturate(.9);
   pointer-events: none;
 }
 body.theme-garden .invite-footer > * { position: relative; z-index: 1; }
@@ -1082,6 +1111,112 @@ body.theme-garden.bt-motion .story-photo.bt-in img { clip-path: inset(-20px); tr
 body.theme-garden.bt-motion .countdown-grid.bt-r { transform: none; }
 body.theme-garden.bt-motion .timeline-item.bt-r { transform: translateX(-12px); }
 body.theme-garden.bt-motion .timeline-item.bt-in { transform: none; }
+
+/* ---- un motivo floral distinto por evento ---- */
+body.theme-garden .timeline-item { position: relative; padding-right: 54px; }
+body.theme-garden .timeline-item::before {
+  content: '';
+  position: absolute;
+  top: -8px; right: -8px;
+  width: 58px; height: 58px;
+  background: var(--u-m-rose) center / contain no-repeat;
+  pointer-events: none;
+}
+body.theme-garden .timeline-item:nth-child(7n+2)::before { background-image: var(--u-m-cher); }
+body.theme-garden .timeline-item:nth-child(7n+3)::before { background-image: var(--u-m-peony); }
+body.theme-garden .timeline-item:nth-child(7n+4)::before { background-image: var(--u-m-dai); }
+body.theme-garden .timeline-item:nth-child(7n+5)::before { background-image: var(--u-m-ran); }
+body.theme-garden .timeline-item:nth-child(7n+6)::before { background-image: var(--u-m-jas); }
+body.theme-garden .timeline-item:nth-child(7n+7)::before { background-image: var(--u-m-hyd); }
+
+/* ---- cuenta atrás entre flores pequeñas ---- */
+body.theme-garden .countdown-grid { position: relative; }
+body.theme-garden .countdown-grid::before,
+body.theme-garden .countdown-grid::after {
+  content: '';
+  position: absolute;
+  width: 54px; height: 54px;
+  background: var(--u-m-rose) center / contain no-repeat;
+  pointer-events: none;
+}
+body.theme-garden .countdown-grid::before { left: -14px; top: -28px; }
+body.theme-garden .countdown-grid::after { right: -14px; bottom: -28px; background-image: var(--u-m-dai); }
+body.theme-garden .hero + .section::after {
+  content: '';
+  display: block;
+  width: 300px; height: 100px;
+  margin: 40px auto -56px;
+  background: var(--u-wild) center / contain no-repeat;
+  transform: scaleY(-1);
+}
+
+
+/* ---- RSVP: tarjeta rodeada de ramos ---- */
+body.theme-garden #sec-rsvp { padding-top: 176px; padding-bottom: 210px; }
+body.theme-garden #sec-rsvp::before,
+body.theme-garden #sec-rsvp::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+body.theme-garden #sec-rsvp::before {
+  top: 22px; right: -44px;
+  width: 260px; height: 201px;
+  background: var(--u-hyd) center / 100% 100% no-repeat;
+  transform: scaleY(-1);
+}
+body.theme-garden #sec-rsvp::after {
+  bottom: -26px; left: -40px;
+  width: 300px; height: 243px;
+  background: var(--u-euc) center / 100% 100% no-repeat;
+}
+body.theme-garden #sec-rsvp > * { position: relative; z-index: 1; }
+
+/* ---- tarjetas de detalles con esquina floral ---- */
+body.theme-garden .info-card:not(#card-dress) { position: relative; }
+body.theme-garden .info-card:not(#card-dress)::after {
+  content: '';
+  position: absolute;
+  top: -12px; right: -10px;
+  width: 92px; height: 92px;
+  background: var(--u-corner) center / contain no-repeat;
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+body.theme-garden .info-card:not(#card-dress) { padding-right: 74px; }
+
+/* ---- regalos: ramillete discreto ---- */
+body.theme-garden #sec-gifts::before {
+  content: '';
+  display: block;
+  width: 190px; height: 58px;
+  margin: 0 auto 18px;
+  background: var(--u-m-cher) left center / 50px no-repeat, var(--u-m-rose) center / 58px no-repeat, var(--u-m-dai) right center / 50px no-repeat;
+}
+
+
+@media (min-width: 1000px) {
+  body.theme-garden .hero + .section::before { width: 380px; height: 127px; margin: -86px auto 20px; }
+  body.theme-garden .hero + .section::after { width: 460px; height: 153px; margin: 50px auto -80px; }
+  body.theme-garden .countdown-grid::before, body.theme-garden .countdown-grid::after { width: 82px; height: 82px; }
+  body.theme-garden .countdown-grid::before { left: -34px; top: -42px; }
+  body.theme-garden .countdown-grid::after { right: -34px; bottom: -42px; }
+  body.theme-garden #sec-story::after { right: 2vw; bottom: -90px; width: 480px; height: 704px; }
+  body.theme-garden #sec-story { padding-bottom: 260px; }
+  body.theme-garden #sec-itinerary > .eyebrow::after { width: 340px; height: 113px; }
+  body.theme-garden .timeline-item::before { width: 84px; height: 84px; top: -16px; }
+  body.theme-garden .timeline-item { padding-right: 86px; }
+  body.theme-garden .gallery-item:nth-child(2)::after { width: 280px; height: 217px; left: calc(100% - 40px); top: -60px; }
+  body.theme-garden .gallery-item:nth-child(3)::after { width: 270px; height: 220px; right: calc(100% - 30px); bottom: -40px; }
+  body.theme-garden #sec-rsvp::before { width: 420px; height: 325px; right: 2vw; top: 40px; }
+  body.theme-garden #sec-rsvp::after { width: 460px; height: 373px; left: 1vw; }
+  body.theme-garden #sec-rsvp { padding-top: 150px; padding-bottom: 240px; }
+  body.theme-garden #sec-gifts::before { width: 260px; height: 80px; background-size: 70px, 80px, 70px; }
+  body.theme-garden .invite-footer { padding-bottom: 420px; }
+  body.theme-garden .invite-footer::after { width: min(54%, 820px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body.theme-garden * { transition: none !important; animation: none !important; }
   body.theme-garden.bt-motion .bt-r { opacity: 1; transform: none; }

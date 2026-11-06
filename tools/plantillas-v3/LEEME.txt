@@ -21,3 +21,9 @@ Para regenerar tras editar un fragmento:
 
 Los ornamentos del hero (ORNAMENTS_SVG en js/invite.js) salen de orn.json,
 que genera el mismo script. Esta carpeta no se publica (ver .assetsignore).
+
+garden_bloom.py  (08 · Garden Wedding — The Blooming Garden)
+  Flores acuarela por capas de pétalos (peonía, rosa, ranúnculo, hortensia, cerezo, margarita, jazmín)
+  definidas una vez por SVG y reutilizadas con <use>. Genera guirnaldas del hero, ramo de historia,
+  hortensias, flores blancas, franja silvestre, ramo del pie, esquina de tarjeta y motivos por evento.
+  Los tokens ga_* de build.py apuntan aquí; garden_art.py conserva iconos, sello y grano.

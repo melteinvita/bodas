@@ -83,7 +83,7 @@ window.WEDDING_TEMPLATES = {
     name: '08 · Garden Wedding',
     badge: 'Jardín y Naturaleza',
     desc: 'Follaje a la acuarela en verde bosque y salvia, con toques de rosa nude. Una boda al aire libre en un jardín privado.',
-    colors: ['#405744', '#FAF8F1', '#D8B9AD'],
+    colors: ['#405744', '#FAF7F0', '#E8B9BC'],
     defaultEnvelope: true,
     defaultSealColor: 'verde',
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */

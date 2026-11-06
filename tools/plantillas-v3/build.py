@@ -9,6 +9,7 @@ sys.path.insert(0, HERE)
 import french_art as FA
 import blacktie_art as BA
 import garden_art as GA
+import garden_bloom as GB
 JS_INVITE = os.path.normpath(os.path.join(HERE, '..', '..', 'js', 'invite.js'))
 OUT = os.path.normpath(os.path.join(HERE, '..', '..', 'css', 'plantillas-v3.css'))
 
@@ -132,10 +133,13 @@ TOKENS = {
     'bt_seal': uri(BA.seal_mark()),
     'bt_grain_d': uri(BA.grain(True)), 'bt_grain_l': uri(BA.grain(False)),
     'bt_arrow_l': uri(BA.arrow('#F3EFE6')),
-    'ga_top': uri(GA.hero_top()), 'ga_bottom': uri(GA.hero_bottom()), 'ga_spray': uri(GA.spray_left()),
-    'ga_footer': uri(GA.footer_big()), 'ga_liner': uri(GA.envelope_liner()),
-    'ga_s_olive': uri(GA.sprig_olive()), 'ga_s_jasmine': uri(GA.sprig_jasmine()),
-    'ga_s_fern': uri(GA.sprig_fern()), 'ga_s_euc': uri(GA.sprig_euc()), 'ga_corner': uri(GA.corner_leaf()),
+    'ga_top': uri(GB.garland_top()), 'ga_bottom': uri(GB.garland_bottom()), 'ga_spray': uri(GB.story_spray()),
+    'ga_hyd': uri(GB.hydrangea_cluster()), 'ga_white': uri(GB.white_branch()), 'ga_wild': uri(GB.wild_band()),
+    'ga_m_rose': uri(GB.mini('rose')), 'ga_m_peony': uri(GB.mini('peony')), 'ga_m_ran': uri(GB.mini('ran')),
+    'ga_m_cher': uri(GB.mini('cher')), 'ga_m_dai': uri(GB.mini('dai')), 'ga_m_jas': uri(GB.mini('jas')), 'ga_m_hyd': uri(GB.mini('hyd')),
+    'ga_footer': uri(GB.footer_bouquet()), 'ga_liner': uri(GB.envelope_liner()),
+    'ga_s_olive': uri(GB.wild_band()), 'ga_s_jasmine': uri(GB.wild_band(7)),
+    'ga_s_fern': uri(GB.hydrangea_cluster()), 'ga_s_euc': uri(GB.white_branch()), 'ga_corner': uri(GB.corner_bloom()),
     'ga_seal': uri(GA.seal_mark()),
     'ga_i_pin': uri(GA.icon_pin()), 'ga_i_dress': uri(GA.icon_dress()), 'ga_i_gift': uri(GA.icon_gift()),
     'ga_i_bus': uri(GA.icon_bus()), 'ga_i_glass': uri(GA.icon_glass()),
@@ -151,7 +155,7 @@ TOKENS = {
 JS_ORN = {
     'french-romance': raw(FA.crest()),
     'black-tie': raw(BA.badge()),
-    'garden': raw(GA.sprig_jasmine(5, 150, 38)),
+    'garden': raw(GB.ornament()),
 }
 
 
