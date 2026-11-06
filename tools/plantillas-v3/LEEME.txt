@@ -9,7 +9,9 @@ css/plantillas-v3.css es un archivo GENERADO: no se edita a mano.
                  emblema, separadores, iconos, papel). build.py las incrusta y
                  también sincroniza ORNAMENTS_SVG['french-romance'] en js/invite.js
   blacktie.css   07 Black Tie · The Grand Evening (arte en blacktie_art.py)
-  garden.css     08 Garden Wedding
+  garden.css     08 Garden Wedding · The Secret Garden
+  garden_art.py  ilustraciones botánicas SVG de Garden (olivo, eucalipto, helecho,
+                 jazmín, rosas). Sincroniza ORNAMENTS_SVG['garden'] en js/invite.js
   build.py       une los fragmentos y genera los SVG (marcos, ramas, follaje)
                  como data URI (permitido por la CSP: img-src 'self' data:)
 
