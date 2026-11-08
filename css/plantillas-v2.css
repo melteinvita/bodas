@@ -1108,13 +1108,18 @@ body.theme-minimal .envelope-overlay.env-marfil {
    Identificador de la plantilla: "mediterranean"  ->  body.theme-mediterranean
    Todas las reglas de este bloque son exclusivas de esa clase.
 
-   Ilustraciones (img/plantillas/mediterranean-organic/):
-     villa-hero.webp      portada (PNG con transparencia real, sin fondo propio)
-     guirnalda-olivo.webp separador de la portada      (fondo integrado #FEFCF7)
-     limon-rama.webp      transición bajo la portada   (fondo integrado #FEFCF7)
-     placa-fecha.webp     placa azulejo, reservada para la Fase 2
-   Las piezas con fondo integrado se apoyan sobre --mo-paper (#FEFCF7), el
-   color medido en el propio PNG: no se simula transparencia.
+   Ilustraciones (img/plantillas/mediterranean-organic/), recortes de las acuarelas
+   originales (los PNG de img/img/plantillas/mediterranean-organic/), sin redibujar:
+     villa-portada.webp     villa vertical: arco, puerta azul, buganvilla, olivo, mar
+     ramo-anemona.webp      ramo de hortensia y anémona (arriba, izquierda)
+     ramo-limones.webp      rama de limonero (arriba, derecha)
+     ramo-hortensias.webp   ramo blanco y azul con olivo (abajo, izquierda)
+     lavanda-limon.webp     lavanda y limón (abajo, derecha)
+     separador-olivo.webp   guirnalda de olivo y azahar bajo los nombres
+     limon-rama.webp        transición bajo la portada (fondo integrado #FEFCF7)
+     placa-fecha.webp       placa azulejo, reservada para la Fase 2
+   Las piezas de la portada se funden con el papel por multiplicación (su fondo es
+   blanco puro tras ajustar niveles); limon-rama se apoya sobre --mo-paper.
 
    FASE 1 · tokens, base editorial, portada y transición.
    FASE 2 · pendiente: los componentes del final de este bloque (cuenta atrás,
@@ -1235,17 +1240,29 @@ body.theme-mediterranean .btn-outline { background: transparent; border: 1px sol
 body.theme-mediterranean .btn-outline:hover { background: var(--mo-cobalt); color: #fff; }
 
 /* --------------------------------------------------------------------------
-   PORTADA · LA VILLA MEDITERRÁNEA
-   Móvil: texto superior, ilustración a sangre, nombres, separador, fecha.
-   Los textos nunca se apoyan sobre la ilustración.
+   PORTADA · LA VILLA MEDITERRÁNEA  (Luxury Wedding Edition)
+   Composición por capas con las acuarelas originales del proyecto:
+     .hero::before            ramos que entran por la parte superior
+     .hero-content::before    villa (protagonista, proporción original)
+     .hero::after             ramos que entran por la parte inferior
+   Todas las capas usan mix-blend-mode: multiply sobre el papel: el blanco de
+   cada hoja de acuarela se funde con el marfil y los pigmentos se transparentan
+   como en un papel real. Los textos nunca se apoyan sobre la ilustración.
    -------------------------------------------------------------------------- */
+body.theme-mediterranean {
+  /* Grano de papel de algodón: ruido fractal cálido y muy tenue */
+  --mo-grain: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='240'%20height='240'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='.85'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20values='0%200%200%200%20.55%200%200%200%200%20.5%200%200%200%200%20.42%200%200%200%20.55%20-.14'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+}
 body.theme-mediterranean .hero {
-  justify-content: center;
-  padding: clamp(58px, 8svh, 76px) 0 clamp(34px, 6svh, 64px);
+  isolation: isolate;
+  min-height: 0;
+  justify-content: flex-start;
+  padding: 0 0 clamp(34px, 6svh, 64px);
   background: var(--mo-paper);
   color: var(--mo-ink);
 }
 body.theme-mediterranean .hero-content {
+  z-index: auto;               /* sin contexto de apilamiento: la mezcla llega al papel */
   max-width: 640px;
   min-height: 0;
   margin: 0;
@@ -1257,6 +1274,50 @@ body.theme-mediterranean .hero-content {
   background: none;
   border-radius: 0;
   text-align: center;
+}
+body.theme-mediterranean .hero-content > *:not(.template-ornament) { position: relative; z-index: 2; }
+
+/* Papel: grano, velo de cielo arriba a la derecha y un resplandor de limón abajo */
+body.theme-mediterranean:not(.has-hero-photo) .hero {
+  padding: clamp(186px, 50vw, 236px) 0 clamp(120px, 36vw, 180px);
+  background:
+    var(--mo-grain),
+    radial-gradient(90% 30% at 100% 16%, rgba(185, 215, 232, .55), transparent 70%),
+    radial-gradient(80% 26% at 0% 70%, rgba(233, 198, 79, .13), transparent 72%),
+    var(--mo-paper);
+  /* Marco de papelería: anillo de papel y filete azul fino; las flores lo rompen */
+  box-shadow: inset 0 0 0 9px var(--mo-paper), inset 0 0 0 10px var(--mo-line);
+}
+
+/* Capas de ramos (arriba y abajo) */
+body.theme-mediterranean:not(.has-hero-photo) .hero::before,
+body.theme-mediterranean:not(.has-hero-photo) .hero::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background-repeat: no-repeat;
+}
+body.theme-mediterranean:not(.has-hero-photo) .hero::before {
+  background-image:
+    url('../img/plantillas/mediterranean-organic/ramo-anemona.webp'),
+    url('../img/plantillas/mediterranean-organic/ramo-limones.webp');
+  background-position:
+    left clamp(-90px, -14vw, -40px) top clamp(54px, 14vw, 76px),
+    right clamp(-80px, -12vw, -36px) top clamp(56px, 15vw, 80px);
+  background-size: clamp(150px, 40vw, 260px) auto, clamp(160px, 44vw, 280px) auto;
+}
+body.theme-mediterranean:not(.has-hero-photo) .hero::after {
+  background-image:
+    url('../img/plantillas/mediterranean-organic/ramo-hortensias.webp'),
+    url('../img/plantillas/mediterranean-organic/lavanda-limon.webp');
+  background-position:
+    left clamp(-80px, -13vw, -36px) bottom clamp(-30px, -6vw, -12px),
+    right clamp(-6px, -1vw, 0px) bottom clamp(-40px, -8vw, -14px);
+  background-size: clamp(190px, 50vw, 320px) auto, clamp(70px, 20vw, 120px) auto;
 }
 
 /* 1 · Texto editorial superior + detalle ornamental azul */
@@ -1278,31 +1339,35 @@ body.theme-mediterranean .hero-kicker::after {
   background: var(--mo-orn) center / contain no-repeat;
 }
 
-/* 2 · Ilustración principal (PNG original con transparencia real, proporción 3:2 intacta) */
-body.theme-mediterranean .hero-content::before {
+/* 2 · La villa: acuarela vertical original (1100 × 1173), sin deformar */
+body.theme-mediterranean:not(.has-hero-photo) .hero-content::before {
   content: '';
   order: 2;
   display: block;
+  position: relative;
+  z-index: 1;
   width: calc(100% + 48px);
-  margin: 12px -24px 6px;
-  aspect-ratio: 3 / 2;
-  background: url('../img/plantillas/mediterranean-organic/villa-hero.webp') center / contain no-repeat;
+  margin: 10px -24px 0;
+  aspect-ratio: 1100 / 1173;
+  background: url('../img/plantillas/mediterranean-organic/villa-portada.webp') center / contain no-repeat;
+  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
-/* 3 · Etiqueta, nombres, separador, fecha y datos */
+/* 3 · Etiqueta manuscrita, nombres, separador, fecha y datos */
 body.theme-mediterranean .hero .eyebrow {
   order: 3;
-  margin: 16px 0 6px;
-  font: 600 11px/1.5 var(--mo-sans);
-  letter-spacing: .32em;
-  color: var(--mo-cobalt);
+  margin: 4px 0 0;
+  font: 400 clamp(30px, 8.6vw, 38px)/1.1 'Great Vibes', var(--mo-serif);
+  letter-spacing: .01em;
+  text-transform: lowercase;   /* la manuscrita solo se lee bien en minúsculas */
+  color: var(--mo-sea);
 }
 body.theme-mediterranean .hero-names {
   --names-size: clamp(54px, 17vw, 88px);
   order: 4;
   width: 100%;
-  margin: 0;
+  margin: 2px 0 0;
   font: 400 var(--names-size)/.98 var(--mo-serif);
   letter-spacing: -.012em;
   color: var(--mo-deep);
@@ -1312,8 +1377,8 @@ body.theme-mediterranean .hero-amp {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin: .06em 0 .04em;
-  font: italic 400 .56em/1 var(--mo-serif);
+  margin: .02em 0 -.04em;
+  font: 400 .8em/1 'Great Vibes', var(--mo-serif);
   letter-spacing: 0;
   color: var(--mo-sea);
   opacity: 1;
@@ -1327,20 +1392,24 @@ body.theme-mediterranean .hero-amp::after {
 body.theme-mediterranean .hero-amp::before { background: linear-gradient(to left, var(--mo-line), transparent); }
 body.theme-mediterranean .hero-amp::after { background: linear-gradient(to right, var(--mo-line), transparent); }
 
-body.theme-mediterranean .template-ornament { order: 5; margin: 12px 0 0; opacity: 1; line-height: 0; }
+body.theme-mediterranean .template-ornament { order: 5; margin: 10px 0 0; opacity: 1; line-height: 0; }
 body.theme-mediterranean .template-ornament svg { display: none; }
 body.theme-mediterranean .template-ornament::before {
   content: '';
   display: block;
-  width: min(150px, 42vw);
-  aspect-ratio: 388 / 180;
-  background: url('../img/plantillas/mediterranean-organic/guirnalda-olivo.webp') center / contain no-repeat;
+  width: min(210px, 56vw);
+  aspect-ratio: 361 / 156;
+  background: url('../img/plantillas/mediterranean-organic/separador-olivo.webp') center / contain no-repeat;
+  mix-blend-mode: multiply;
 }
 
 body.theme-mediterranean .hero-date-pill {
   order: 6;
-  display: block;
-  margin: 6px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 8px 0 0;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -1350,6 +1419,14 @@ body.theme-mediterranean .hero-date-pill {
   text-transform: uppercase;
   color: var(--mo-deep);
 }
+body.theme-mediterranean .hero-date-pill::before,
+body.theme-mediterranean .hero-date-pill::after {
+  content: '';
+  flex: 0 0 clamp(22px, 7vw, 44px);
+  height: 1px;
+}
+body.theme-mediterranean .hero-date-pill::before { background: linear-gradient(to left, var(--mo-cobalt), transparent); }
+body.theme-mediterranean .hero-date-pill::after { background: linear-gradient(to right, var(--mo-cobalt), transparent); }
 body.theme-mediterranean .hero-details { order: 7; display: block; margin: 14px 0 0; }
 body.theme-mediterranean .hero-details span { display: block; }
 body.theme-mediterranean .hero-details #hero-time {
@@ -1368,6 +1445,7 @@ body.theme-mediterranean .hero-details #hero-address {
 }
 
 /* Si la pareja sube su propia foto de portada, se conserva el comportamiento anterior */
+body.theme-mediterranean.has-hero-photo .hero { padding-top: clamp(58px, 8svh, 76px); justify-content: center; }
 body.theme-mediterranean.has-hero-photo .hero-photo-bg {
   width: calc(100% - 48px);
   max-width: 440px;
@@ -1375,7 +1453,6 @@ body.theme-mediterranean.has-hero-photo .hero-photo-bg {
   margin: 0 auto 22px;
   border-radius: 999px 999px 4px 4px;
 }
-body.theme-mediterranean.has-hero-photo .hero-content::before { display: none; }
 
 /* --------------------------------------------------------------------------
    TRANSICIÓN BAJO LA PORTADA
@@ -1401,48 +1478,63 @@ body.theme-mediterranean #hero + .section::before {
    -------------------------------------------------------------------------- */
 @media (max-width: 380px) {
   body.theme-mediterranean .hero-content { padding: 0 18px; }
-  body.theme-mediterranean .hero-content::before { width: calc(100% + 36px); margin-left: -18px; margin-right: -18px; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content::before { width: calc(100% + 36px); margin-left: -18px; margin-right: -18px; }
   body.theme-mediterranean .hero-names { --names-size: clamp(48px, 16.5vw, 60px); }
-  body.theme-mediterranean .hero-date-pill { font-size: 11.5px; letter-spacing: .22em; }
+  body.theme-mediterranean .hero-date-pill { font-size: 11.5px; letter-spacing: .22em; gap: 10px; }
   body.theme-mediterranean { --mo-gutter: 22px; --mo-section-y: 64px; }
 }
 @media (min-width: 700px) {
   body.theme-mediterranean { --mo-section-y: 92px; }
   body.theme-mediterranean .hero-content { max-width: 720px; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content::before { width: 100%; margin: 14px 0 0; }
   body.theme-mediterranean .hero-names { --names-size: clamp(72px, 11vw, 96px); }
-  body.theme-mediterranean .hero-kicker { font-size: 25px; }
-  body.theme-mediterranean .hero-content::before { margin-top: 18px; margin-bottom: 14px; }
-  body.theme-mediterranean .template-ornament::before { width: 170px; }
+  body.theme-mediterranean .hero-kicker { max-width: 16em; font-size: 25px; }
+  body.theme-mediterranean .template-ornament::before { width: 230px; }
   body.theme-mediterranean .hero-date-pill { font-size: 13.5px; }
   body.theme-mediterranean .hero-details #hero-venue { font-size: 28px; }
   body.theme-mediterranean .hero-details #hero-address { font-size: 15px; }
   body.theme-mediterranean #hero + .section::before { height: 112px; background-size: auto 88px, calc(50% - 72px) 1px, calc(50% - 72px) 1px; }
 }
-/* Escritorio: la villa gana presencia a la izquierda y los textos se ordenan a su derecha */
+/* Escritorio: la villa ocupa la mitad derecha a gran tamaño; los textos se ordenan a su izquierda
+   y los ramos entran desde los bordes sin tocar el bloque de texto. */
 @media (min-width: 960px) {
-  body.theme-mediterranean:not(.has-hero-photo) .hero { padding: clamp(36px, 7svh, 76px) 48px; }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-content {
-    max-width: 1400px;
+  body.theme-mediterranean:not(.has-hero-photo) .hero {
+    min-height: clamp(720px, 100svh, 1000px);
     padding: 0;
+    justify-content: center;
+    box-shadow: inset 0 0 0 14px var(--mo-paper), inset 0 0 0 15px var(--mo-line);
+  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content {
+    max-width: 1500px;
+    padding: 84px clamp(48px, 4.6vw, 88px) 60px;
     display: grid;
-    grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
-    column-gap: clamp(32px, 4.5vw, 84px);
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    column-gap: clamp(36px, 3.4vw, 72px);
     align-content: center;
     align-items: center;
     justify-items: center;
   }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-content > * { grid-column: 2; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content > * { grid-column: 1; }
   body.theme-mediterranean:not(.has-hero-photo) .hero-content::before {
-    grid-column: 1;
-    grid-row: 1 / span 8;
+    grid-column: 2;
+    grid-row: 1 / span 9;
     order: 0;
     width: 100%;
     margin: 0;
+  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero::before {
+    background-position: left -128px top 22px, left 41% top -26px;
+    background-size: clamp(240px, 21vw, 340px) auto, clamp(190px, 16vw, 270px) auto;
+  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero::after {
+    background-position: left -112px bottom -34px, right -26px bottom -52px;
+    background-size: clamp(230px, 20vw, 340px) auto, clamp(90px, 8vw, 130px) auto;
   }
   body.theme-mediterranean .hero-names { --names-size: clamp(66px, 6.4vw, 104px); }
   body.theme-mediterranean .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .86); }
   body.theme-mediterranean .hero-names[data-len="xl"] { font-size: calc(var(--names-size) * .7); }
   body.theme-mediterranean .hero-kicker { max-width: 15em; font-size: 26px; }
+  body.theme-mediterranean .hero .eyebrow { font-size: 42px; }
 }
 @media (prefers-reduced-motion: reduce) {
   body.theme-mediterranean * { transition: none !important; animation: none !important; }
