@@ -296,9 +296,9 @@
       en: { name: '03 · Modern Minimal', badge: 'Contemporary & Editorial', desc: 'Generous white space, magazine typography and asymmetric layout. An invitation from a branding studio.' }
     },
     mediterranean: {
-      es: { name: '04 · Mediterranean Organic', badge: 'Natural y Luminosa', desc: 'Verde oliva, arena y terracota suave. Papel artesanal para una boda entre olivos, viñedos o jardines.' },
-      val: { name: '04 · Mediterranean Organic', badge: 'Natural i Lluminosa', desc: 'Verd oliva, sorra i terracota suau. Paper artesanal per a un casament entre oliveres, vinyes o jardins.' },
-      en: { name: '04 · Mediterranean Organic', badge: 'Natural & Luminous', desc: 'Olive green, sand and soft terracotta. Handmade paper for a wedding among olive trees, vineyards or gardens.' }
+      es: { name: '04 · Mediterranean Organic', badge: 'Luminosa y Marinera', desc: 'Una invitación luminosa inspirada en las villas mediterráneas, el azul del mar, la arquitectura blanca, los olivos y la cerámica artesanal.' },
+      val: { name: '04 · Mediterranean Organic', badge: 'Lluminosa i Marinera', desc: 'Una invitació lluminosa inspirada en les viles mediterrànies, el blau de la mar, l\'arquitectura blanca, les oliveres i la ceràmica artesanal.' },
+      en: { name: '04 · Mediterranean Organic', badge: 'Luminous & Seaside', desc: 'A luminous invitation inspired by Mediterranean villas, the blue of the sea, white architecture, olive trees and handcrafted ceramics.' }
     },
     timeless: {
       es: { name: '05 · Timeless Editorial', badge: 'Editorial y Sofisticada', desc: 'Nombres a gran escala, fotografía integrada y filetes en champagne. Una invitación de revista de moda, cálida y personal.' },

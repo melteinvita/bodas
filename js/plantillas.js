@@ -36,8 +36,8 @@ window.WEDDING_TEMPLATES = {
     id: 'mediterranean',
     name: '04 · Mediterranean Organic',
     badge: 'Natural y Luminosa',
-    desc: 'Verde oliva, arena y terracota suave. Papel artesanal para una boda entre olivos, viñedos o jardines.',
-    colors: ['#777C5B', '#F7F4ED', '#BC8F79'],
+    desc: 'Una invitación luminosa inspirada en las villas mediterráneas, el azul del mar, la arquitectura blanca, los olivos y la cerámica artesanal.',
+    colors: ['#315F91', '#FAF8F1', '#B9D7E8'],
     defaultEnvelope: true,
     defaultSealColor: 'verde'
   },

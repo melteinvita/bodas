@@ -1099,202 +1099,413 @@ body.theme-minimal .envelope-overlay.env-marfil {
 }
 
 /* ==========================================================================
-   04 · MEDITERRANEAN ORGANIC
-   Verde oliva · Arena · Marfil · Terracota suave · Marrón natural
-   Fraunces (nombres y títulos) + DM Sans (información)
+   04 · MEDITERRANEAN ORGANIC  ·  A Wedding by the Blue Sea
+   --------------------------------------------------------------------------
+   Villa blanca junto al mar: marfil y blanco cálido dominan, los azules dan
+   la personalidad, y verdes, limón y buganvilla son solo acentos.
+   Cormorant Garamond (nombres y títulos) + DM Sans (información).
+
+   Identificador de la plantilla: "mediterranean"  ->  body.theme-mediterranean
+   Todas las reglas de este bloque son exclusivas de esa clase.
+
+   Ilustraciones (img/plantillas/mediterranean-organic/):
+     villa-hero.webp      portada (PNG con transparencia real, sin fondo propio)
+     guirnalda-olivo.webp separador de la portada      (fondo integrado #FEFCF7)
+     limon-rama.webp      transición bajo la portada   (fondo integrado #FEFCF7)
+     placa-fecha.webp     placa azulejo, reservada para la Fase 2
+   Las piezas con fondo integrado se apoyan sobre --mo-paper (#FEFCF7), el
+   color medido en el propio PNG: no se simula transparencia.
+
+   FASE 1 · tokens, base editorial, portada y transición.
+   FASE 2 · pendiente: los componentes del final de este bloque (cuenta atrás,
+            itinerario, galería, detalles, regalos, RSVP, pie y sobre) siguen
+            con su maquetación anterior, solo recoloreada con estos tokens.
    ========================================================================== */
 body.theme-mediterranean {
-  --bg-page: #F7F4ED;
-  --bg-card: #F7F4ED;
-  --bg-alt: #EFE8DA;
-  --text-main: #655C4E;
-  --text-muted: #6E6556;
-  --accent: #5F6648;
-  --accent-light: #E2DFCB;
-  --gold: #BC8F79;
-  --border-col: #E2D9C7;
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-script: 'Fraunces', serif;
+  /* Paleta */
+  --mo-ivory: #FAF8F1;
+  --mo-paper: #FEFCF7;
+  --mo-white: #FFFFFF;
+  --mo-sea: #4D91BC;
+  --mo-deep: #174C78;
+  --mo-cobalt: #315F91;
+  --mo-sky: #B9D7E8;
+  --mo-sky-soft: #EDF4F8;
+  --mo-olive: #78866A;
+  --mo-sage: #A5B59A;
+  --mo-lemon: #E9C64F;
+  --mo-terra: #C58E70;
+  --mo-bougain: #C97891;
+  --mo-ink: #24425A;
+  --mo-ink-soft: #4F6578;
+  --mo-line: rgba(49, 95, 145, .30);
+
+  /* Tipografía */
+  --mo-serif: 'Cormorant Garamond', 'Fraunces', Georgia, serif;
+  --mo-sans: 'DM Sans', system-ui, sans-serif;
+
+  /* Ritmo y anchos: las bandas ocupan todo el ancho, el contenido se queda en la medida */
+  --mo-measure: 640px;
+  --mo-gutter: 28px;
+  --mo-section-y: 76px;
+
+  /* Separador ornamental azul (línea fina + rombo de azulejo) */
+  --mo-orn: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20132%2014'%20fill='none'%3E%3Cpath%20d='M2%207H52M80%207H130'%20stroke='%23315F91'%20stroke-opacity='.55'%20stroke-width='1'%20stroke-linecap='round'/%3E%3Cpath%20d='M66%201.5L71.5%207%2066%2012.5%2060.5%207Z'%20stroke='%23315F91'%20stroke-width='1'%20stroke-linejoin='round'/%3E%3Ccircle%20cx='66'%20cy='7'%20r='1.5'%20fill='%234D91BC'/%3E%3Ccircle%20cx='56'%20cy='7'%20r='1'%20fill='%23315F91'%20fill-opacity='.6'/%3E%3Ccircle%20cx='76'%20cy='7'%20r='1'%20fill='%23315F91'%20fill-opacity='.6'/%3E%3C/svg%3E");
+
+  /* Variables que lee el resto de la invitación */
+  --bg-page: var(--mo-ivory);
+  --bg-card: var(--mo-ivory);
+  --bg-alt: var(--mo-sky-soft);
+  --text-main: var(--mo-ink);
+  --text-muted: var(--mo-ink-soft);
+  --accent: var(--mo-cobalt);
+  --accent-light: var(--mo-sky);
+  --gold: var(--mo-terra);
+  --border-col: #DCE5EA;
+  --font-heading: var(--mo-serif);
+  --font-body: var(--mo-sans);
+  --font-script: var(--mo-serif);
   --radius-card: 0;
-  --olive: #777C5B;
-  --olive-deep: #5F6648;
-  --sand: #E8DFD0;
-  --terra: #BC8F79;
-  --terra-ink: #8C5F4A;
-  background: #E3DAC8;
+
+  /* Alias de las reglas de sección anteriores (se retiran en la Fase 2) */
+  --olive: var(--mo-olive);
+  --olive-deep: var(--mo-cobalt);
+  --sand: var(--mo-sky-soft);
+  --terra: var(--mo-terra);
+  --terra-ink: #94593F;
+
+  background: var(--mo-ivory);
   color: var(--text-main);
-  font-family: var(--font-body);
+  font-family: var(--mo-sans);
+  font-variant-numeric: lining-nums;
 }
 
-/* --- Portada: puerta arqueada de papel sobre verde oliva --- */
-body.theme-mediterranean .hero {
-  background: var(--olive);
-  padding: 18px 14px 0;
-  align-items: stretch;
-  justify-content: flex-end;
-  color: var(--text-main);
-}
-body.theme-mediterranean .hero-content {
-  position: relative;
+/* --------------------------------------------------------------------------
+   BASE EDITORIAL
+   -------------------------------------------------------------------------- */
+body.theme-mediterranean .invite-shell {
   max-width: none;
-  min-height: calc(100vh - 18px);
-  min-height: calc(100svh - 18px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 168px 24px 84px;
-  background: #F7F4ED;
-  border-radius: 999px 999px 0 0;
+  background: var(--mo-ivory);
+  box-shadow: none;
 }
-body.theme-mediterranean.has-hero-photo .hero-content { min-height: 0; padding-top: 150px; }
-body.theme-mediterranean .hero-content::before {
-  content: '';
-  position: absolute;
-  top: 34px;
-  right: 4%;
-  width: min(86%, 330px);
-  aspect-ratio: 286 / 166;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-24 -6 286 166' fill='none'%3E%3Cpath d='M236,6 C190,40 120,70 24,118' fill='none' stroke='%23655C4E' stroke-width='1.1' stroke-linecap='round'/%3E%3Cg transform='translate(225.8 13.2) rotate(179.8)'%3E%3Cpath d='M0,0 C5.5,-4.4 15.4,-4.4 22,0 C15.4,4.4 5.5,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M2.6,0 L18.9,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(214.8 20.4) rotate(113.8)'%3E%3Cpath d='M0,0 C5.7,-4.4 15.9,-4.4 22.7,0 C15.9,4.4 5.7,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M2.7,0 L19.5,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(203.1 27.5) rotate(183.4)'%3E%3Cpath d='M0,0 C5.8,-4.4 16.3,-4.4 23.3,0 C16.3,4.4 5.8,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M2.8,0 L20.1,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(190.6 34.7) rotate(116.8)'%3E%3Cpath d='M0,0 C6,-4.4 16.8,-4.4 24,0 C16.8,4.4 6,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M2.9,0 L20.6,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(177.4 41.9) rotate(185.8)'%3E%3Cpath d='M0,0 C6.2,-4.4 17.3,-4.4 24.7,0 C17.3,4.4 6.2,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3,0 L21.2,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(163.5 49.2) rotate(118.7)'%3E%3Cpath d='M0,0 C6.3,-4.4 17.7,-4.4 25.3,0 C17.7,4.4 6.3,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3,0 L21.8,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(148.8 56.8) rotate(187.3)'%3E%3Cpath d='M0,0 C6.5,-4.4 18.2,-4.4 26,0 C18.2,4.4 6.5,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.1,0 L22.4,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(133.3 64.5) rotate(119.7)'%3E%3Cpath d='M0,0 C6.7,-4.4 18.7,-4.4 26.7,0 C18.7,4.4 6.7,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.2,0 L22.9,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(117 72.5) rotate(188)'%3E%3Cpath d='M0,0 C6.8,-4.4 19.1,-4.4 27.3,0 C19.1,4.4 6.8,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.3,0 L23.5,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(100 80.8) rotate(120.1)'%3E%3Cpath d='M0,0 C7,-4.4 19.6,-4.4 28,0 C19.6,4.4 7,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.4,0 L24.1,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(82.2 89.4) rotate(188.1)'%3E%3Cpath d='M0,0 C7.2,-4.4 20.1,-4.4 28.7,0 C20.1,4.4 7.2,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.4,0 L24.7,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(63.6 98.5) rotate(120)'%3E%3Cpath d='M0,0 C7.3,-4.4 20.5,-4.4 29.3,0 C20.5,4.4 7.3,4.4 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.5,0 L25.2,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(44.2 108) rotate(187.7)'%3E%3Cpath d='M0,0 C7.5,-4.4 21,-4.4 30,0 C21,4.4 7.5,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M3.6,0 L25.8,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(24 118) rotate(153.4)'%3E%3Cpath d='M0,0 C8.2,-4.4 23.1,-4.4 33,0 C23.1,4.4 8.2,4.4 0,0Z' fill='%23777C5B' fill-opacity='0.9' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M4,0 L28.4,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cpath d='M202.1,28.1 L197.6,20.3' stroke='%23655C4E' stroke-width='.7'/%3E%3Cellipse cx='197.6' cy='23.3' rx='3.4' ry='5' transform='rotate(159.6 197.6 23.3)' fill='%236B5560'/%3E%3Cellipse cx='196.6' cy='21.7' rx='0.9' ry='1.4' fill='%23ffffff' fill-opacity='.28'/%3E%3Cpath d='M159.1,51.5 L163.2,59.5' stroke='%23655C4E' stroke-width='.7'/%3E%3Cellipse cx='163.2' cy='62.5' rx='3.4' ry='5' transform='rotate(-17.1 163.2 62.5)' fill='%235F6648'/%3E%3Cellipse cx='162.2' cy='60.9' rx='0.9' ry='1.4' fill='%23ffffff' fill-opacity='.28'/%3E%3Cpath d='M103.4,79.1 L99.5,71' stroke='%23655C4E' stroke-width='.7'/%3E%3Cellipse cx='99.5' cy='74' rx='3.4' ry='5' transform='rotate(164.1 99.5 74)' fill='%236B5560'/%3E%3Cellipse cx='98.5' cy='72.4' rx='0.9' ry='1.4' fill='%23ffffff' fill-opacity='.28'/%3E%3C/svg%3E") no-repeat center / contain;
-  pointer-events: none;
+body.theme-mediterranean .section {
+  padding: var(--mo-section-y) max(var(--mo-gutter), calc((100% - var(--mo-measure)) / 2));
+  background: var(--mo-ivory);
 }
-body.theme-mediterranean .hero .eyebrow {
-  order: 1;
-  margin: 0 0 16px;
-  font: 600 11px/1.5 var(--font-body);
-  letter-spacing: .3em;
-  color: var(--terra-ink);
-}
-body.theme-mediterranean .hero-names {
-  --names-size: 58px;
-  order: 2;
-  width: 100%;
-  margin: 0;
-  font: 400 var(--names-size)/1 var(--font-heading);
-  font-size: clamp(44px, 14vw, 74px);
-  letter-spacing: -.015em;
-  color: var(--text-main);
-}
-body.theme-mediterranean .hero-amp {
-  margin: 4px 0;
-  font: italic 300 .5em/1 var(--font-heading);
-  letter-spacing: 0;
-  color: var(--terra-ink);
-  opacity: 1;
-}
-body.theme-mediterranean .template-ornament { order: 3; margin: 24px 0 10px; }
-body.theme-mediterranean .template-ornament svg { width: min(210px, 56vw); height: auto; stroke: none; }
-body.theme-mediterranean .hero-date-pill {
-  order: 4;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  backdrop-filter: none;
-  font: 600 12px/1.6 var(--font-body);
-  letter-spacing: .28em;
-  color: var(--olive-deep);
-}
-body.theme-mediterranean .hero-details { order: 5; display: block; margin-top: 14px; }
-body.theme-mediterranean .hero-details span { display: block; font: italic 400 18px/1.6 var(--font-heading); color: var(--text-muted); }
-body.theme-mediterranean .hero-details #hero-time { font: 500 12px/1.9 var(--font-body); font-style: normal; letter-spacing: .2em; color: var(--terra-ink); }
-body.theme-mediterranean.has-hero-photo .hero-photo-bg { border-radius: 999px 999px 0 0; height: 46svh; margin: 0 0 -1px; }
-body.theme-mediterranean.has-hero-photo .hero-content { border-radius: 0; padding-top: 48px; }
-body.theme-mediterranean.has-hero-photo .hero-content::before { display: none; }
-
-/* --- Secciones --- */
-body.theme-mediterranean .section { padding: 68px 28px 76px; background: var(--bg-page); }
-body.theme-mediterranean .section-alt { background: var(--bg-alt); }
+body.theme-mediterranean .section-alt { background: var(--mo-sky-soft); }
 body.theme-mediterranean .eyebrow {
-  margin-bottom: 12px;
-  font: 600 11px/1.5 var(--font-body);
-  letter-spacing: .28em;
-  color: var(--terra-ink);
+  margin: 0 0 14px;
+  font: 600 11px/1.5 var(--mo-sans);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--mo-cobalt);
 }
 body.theme-mediterranean .section-title {
   margin: 0;
-  font: 400 clamp(31px, 8.6vw, 40px)/1.15 var(--font-heading);
-  color: var(--text-main);
+  font: 400 clamp(35px, 9.6vw, 50px)/1.08 var(--mo-serif);
+  letter-spacing: -.005em;
+  color: var(--mo-deep);
 }
 body.theme-mediterranean .section-title::after {
   content: '';
   display: block;
-  width: 96px;
-  height: 34px;
-  margin: 14px auto 14px;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 26' fill='none'%3E%3Cpath d='M4,14 C24,6 44,22 64,10' fill='none' stroke='%23655C4E' stroke-width='1.1' stroke-linecap='round'/%3E%3Cg transform='translate(14 11.8) rotate(29.9)'%3E%3Cpath d='M0,0 C1.2,-1 3.4,-1 4.9,0 C3.4,1 1.2,1 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.6,0 L4.2,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(24 12.1) rotate(-27.7)'%3E%3Cpath d='M0,0 C1.3,-1 3.7,-1 5.2,0 C3.7,1 1.3,1 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.6,0 L4.5,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(34 13.5) rotate(42.5)'%3E%3Cpath d='M0,0 C1.4,-1 3.9,-1 5.6,0 C3.9,1 1.4,1 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.7,0 L4.8,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(44 14.6) rotate(-31.5)'%3E%3Cpath d='M0,0 C1.5,-1 4.2,-1 5.9,0 C4.2,1 1.5,1 0,0Z' fill='%23A3A884' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.7,0 L5.1,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(54 13.9) rotate(22.4)'%3E%3Cpath d='M0,0 C1.6,-1 4.4,-1 6.3,0 C4.4,1 1.6,1 0,0Z' fill='%23777C5B' fill-opacity='0.88' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.8,0 L5.4,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3Cg transform='translate(64 10) rotate(-31)'%3E%3Cpath d='M0,0 C1.7,-1 4.9,-1 6.9,0 C4.9,1 1.7,1 0,0Z' fill='%23777C5B' fill-opacity='0.9' stroke='%235F6648' stroke-width='0.4' stroke-linejoin='round'/%3E%3Cpath d='M0.8,0 L6,0' stroke='%235F6648' stroke-width='.35' stroke-opacity='.7' fill='none'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  width: 132px;
+  height: 14px;
+  margin: 18px auto 20px;
+  background: var(--mo-orn) center / contain no-repeat;
 }
 body.theme-mediterranean .section-text {
-  max-width: 32em;
-  font: 400 15.5px/1.85 var(--font-body);
-  color: var(--text-muted);
+  max-width: 34em;
+  margin-left: auto;
+  margin-right: auto;
+  font: 400 16px/1.85 var(--mo-sans);
+  color: var(--mo-ink-soft);
+  text-wrap: pretty;
 }
+body.theme-mediterranean .btn-primary,
+body.theme-mediterranean .btn-outline {
+  padding: 15px 30px;
+  font: 600 11px/1.2 var(--mo-sans);
+  letter-spacing: .22em;
+  border-radius: 2px;
+}
+body.theme-mediterranean .btn-primary { background: var(--mo-cobalt); border: 1px solid var(--mo-cobalt); color: #fff; }
+body.theme-mediterranean .btn-primary:hover { background: var(--mo-deep); border-color: var(--mo-deep); opacity: 1; }
+body.theme-mediterranean .btn-outline { background: transparent; border: 1px solid var(--mo-cobalt); color: var(--mo-cobalt); }
+body.theme-mediterranean .btn-outline:hover { background: var(--mo-cobalt); color: #fff; }
+
+/* --------------------------------------------------------------------------
+   PORTADA · LA VILLA MEDITERRÁNEA
+   Móvil: texto superior, ilustración a sangre, nombres, separador, fecha.
+   Los textos nunca se apoyan sobre la ilustración.
+   -------------------------------------------------------------------------- */
+body.theme-mediterranean .hero {
+  justify-content: center;
+  padding: clamp(58px, 8svh, 76px) 0 clamp(34px, 6svh, 64px);
+  background: var(--mo-paper);
+  color: var(--mo-ink);
+}
+body.theme-mediterranean .hero-content {
+  max-width: 640px;
+  min-height: 0;
+  margin: 0;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  background: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+/* 1 · Texto editorial superior + detalle ornamental azul */
+body.theme-mediterranean .hero-kicker {
+  display: block;
+  order: 1;
+  max-width: 19em;
+  margin: 0;
+  font: italic 400 clamp(19px, 5.3vw, 23px)/1.32 var(--mo-serif);
+  color: var(--mo-cobalt);
+  text-wrap: balance;
+}
+body.theme-mediterranean .hero-kicker::after {
+  content: '';
+  display: block;
+  width: 132px;
+  height: 14px;
+  margin: 14px auto 0;
+  background: var(--mo-orn) center / contain no-repeat;
+}
+
+/* 2 · Ilustración principal (PNG original con transparencia real, proporción 3:2 intacta) */
+body.theme-mediterranean .hero-content::before {
+  content: '';
+  order: 2;
+  display: block;
+  width: calc(100% + 48px);
+  margin: 12px -24px 6px;
+  aspect-ratio: 3 / 2;
+  background: url('../img/plantillas/mediterranean-organic/villa-hero.webp') center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* 3 · Etiqueta, nombres, separador, fecha y datos */
+body.theme-mediterranean .hero .eyebrow {
+  order: 3;
+  margin: 16px 0 6px;
+  font: 600 11px/1.5 var(--mo-sans);
+  letter-spacing: .32em;
+  color: var(--mo-cobalt);
+}
+body.theme-mediterranean .hero-names {
+  --names-size: clamp(54px, 17vw, 88px);
+  order: 4;
+  width: 100%;
+  margin: 0;
+  font: 400 var(--names-size)/.98 var(--mo-serif);
+  letter-spacing: -.012em;
+  color: var(--mo-deep);
+}
+body.theme-mediterranean .hero-amp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: .06em 0 .04em;
+  font: italic 400 .56em/1 var(--mo-serif);
+  letter-spacing: 0;
+  color: var(--mo-sea);
+  opacity: 1;
+}
+body.theme-mediterranean .hero-amp::before,
+body.theme-mediterranean .hero-amp::after {
+  content: '';
+  width: clamp(28px, 9vw, 52px);
+  height: 1px;
+}
+body.theme-mediterranean .hero-amp::before { background: linear-gradient(to left, var(--mo-line), transparent); }
+body.theme-mediterranean .hero-amp::after { background: linear-gradient(to right, var(--mo-line), transparent); }
+
+body.theme-mediterranean .template-ornament { order: 5; margin: 12px 0 0; opacity: 1; line-height: 0; }
+body.theme-mediterranean .template-ornament svg { display: none; }
+body.theme-mediterranean .template-ornament::before {
+  content: '';
+  display: block;
+  width: min(150px, 42vw);
+  aspect-ratio: 388 / 180;
+  background: url('../img/plantillas/mediterranean-organic/guirnalda-olivo.webp') center / contain no-repeat;
+}
+
+body.theme-mediterranean .hero-date-pill {
+  order: 6;
+  display: block;
+  margin: 6px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  font: 600 12.5px/1.7 var(--mo-sans);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--mo-deep);
+}
+body.theme-mediterranean .hero-details { order: 7; display: block; margin: 14px 0 0; }
+body.theme-mediterranean .hero-details span { display: block; }
+body.theme-mediterranean .hero-details #hero-time {
+  font: 600 11.5px/2 var(--mo-sans);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mo-cobalt);
+}
+body.theme-mediterranean .hero-details #hero-venue {
+  font: italic 400 clamp(22px, 6vw, 26px)/1.3 var(--mo-serif);
+  color: var(--mo-ink);
+}
+body.theme-mediterranean .hero-details #hero-address {
+  font: 400 14px/1.65 var(--mo-sans);
+  color: var(--mo-ink-soft);
+}
+
+/* Si la pareja sube su propia foto de portada, se conserva el comportamiento anterior */
+body.theme-mediterranean.has-hero-photo .hero-photo-bg {
+  width: calc(100% - 48px);
+  max-width: 440px;
+  height: 46svh;
+  margin: 0 auto 22px;
+  border-radius: 999px 999px 4px 4px;
+}
+body.theme-mediterranean.has-hero-photo .hero-content::before { display: none; }
+
+/* --------------------------------------------------------------------------
+   TRANSICIÓN BAJO LA PORTADA
+   Rama de limonero entre dos filetes azules, sobre el mismo papel cálido.
+   -------------------------------------------------------------------------- */
+body.theme-mediterranean #hero + .section {
+  padding-top: 10px;
+  background: var(--mo-paper);
+}
+body.theme-mediterranean #hero + .section::before {
+  content: '';
+  display: block;
+  height: 100px;
+  margin: 0 0 38px;
+  background:
+    url('../img/plantillas/mediterranean-organic/limon-rama.webp') center / auto 78px no-repeat,
+    linear-gradient(to right, transparent, var(--mo-line)) left center / calc(50% - 64px) 1px no-repeat,
+    linear-gradient(to left, transparent, var(--mo-line)) right center / calc(50% - 64px) 1px no-repeat;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE (exclusivo de Mediterranean Organic)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  body.theme-mediterranean .hero-content { padding: 0 18px; }
+  body.theme-mediterranean .hero-content::before { width: calc(100% + 36px); margin-left: -18px; margin-right: -18px; }
+  body.theme-mediterranean .hero-names { --names-size: clamp(48px, 16.5vw, 60px); }
+  body.theme-mediterranean .hero-date-pill { font-size: 11.5px; letter-spacing: .22em; }
+  body.theme-mediterranean { --mo-gutter: 22px; --mo-section-y: 64px; }
+}
+@media (min-width: 700px) {
+  body.theme-mediterranean { --mo-section-y: 92px; }
+  body.theme-mediterranean .hero-content { max-width: 720px; }
+  body.theme-mediterranean .hero-names { --names-size: clamp(72px, 11vw, 96px); }
+  body.theme-mediterranean .hero-kicker { font-size: 25px; }
+  body.theme-mediterranean .hero-content::before { margin-top: 18px; margin-bottom: 14px; }
+  body.theme-mediterranean .template-ornament::before { width: 170px; }
+  body.theme-mediterranean .hero-date-pill { font-size: 13.5px; }
+  body.theme-mediterranean .hero-details #hero-venue { font-size: 28px; }
+  body.theme-mediterranean .hero-details #hero-address { font-size: 15px; }
+  body.theme-mediterranean #hero + .section::before { height: 112px; background-size: auto 88px, calc(50% - 72px) 1px, calc(50% - 72px) 1px; }
+}
+/* Escritorio: la villa gana presencia a la izquierda y los textos se ordenan a su derecha */
+@media (min-width: 960px) {
+  body.theme-mediterranean:not(.has-hero-photo) .hero { padding: clamp(36px, 7svh, 76px) 48px; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content {
+    max-width: 1400px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
+    column-gap: clamp(32px, 4.5vw, 84px);
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content > * { grid-column: 2; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-content::before {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    order: 0;
+    width: 100%;
+    margin: 0;
+  }
+  body.theme-mediterranean .hero-names { --names-size: clamp(66px, 6.4vw, 104px); }
+  body.theme-mediterranean .hero-names[data-len="l"] { font-size: calc(var(--names-size) * .86); }
+  body.theme-mediterranean .hero-names[data-len="xl"] { font-size: calc(var(--names-size) * .7); }
+  body.theme-mediterranean .hero-kicker { max-width: 15em; font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.theme-mediterranean * { transition: none !important; animation: none !important; }
+}
+
+/* ==========================================================================
+   [HEREDADO · PENDIENTE DE FASE 2] Componentes de sección
+   Maquetación anterior, recoloreada con los tokens de este bloque para que la
+   demo no desentone. Se rediseñan, sección a sección, en la Fase 2.
+   ========================================================================== */
+
+/* --- Secciones --- */
 body.theme-mediterranean .section-text strong { color: var(--text-main); font-weight: 600; }
 body.theme-mediterranean .section > .divider-ornament { color: var(--terra); margin-top: 30px; }
-
 body.theme-mediterranean .countdown-grid { gap: 8px; margin: 26px auto 26px; max-width: 400px; }
 body.theme-mediterranean .cd-box,
 body.theme-mediterranean .section:not(.section-alt) .cd-box {
-  background: #EFE8DA;
-  border: 1px solid rgba(119, 124, 91, .38);
+  background: var(--mo-sky-soft);
+  border: 1px solid var(--mo-line);
   border-radius: 46px 46px 3px 3px;
   padding: 20px 2px 14px;
 }
 body.theme-mediterranean .section-alt .cd-box { background: var(--bg-page); }
 body.theme-mediterranean .cd-num { font: 400 30px/1 var(--font-heading); color: var(--terra-ink); }
 body.theme-mediterranean .cd-label { margin-top: 8px; font: 600 9px/1 var(--font-body); letter-spacing: .18em; color: var(--olive-deep); }
-
-body.theme-mediterranean .btn-primary,
-body.theme-mediterranean .btn-outline { padding: 15px 28px; font: 600 11px/1.2 var(--font-body); letter-spacing: .22em; border-radius: 2px; }
-body.theme-mediterranean .btn-primary { background: var(--olive-deep); border: 1px solid var(--olive-deep); color: #F7F4ED; }
-body.theme-mediterranean .btn-primary:hover { background: #4E543A; opacity: 1; }
-body.theme-mediterranean .btn-outline { background: transparent; border: 1px solid var(--olive-deep); color: var(--olive-deep); }
-body.theme-mediterranean .btn-outline:hover { background: var(--olive-deep); color: #F7F4ED; }
-
 /* Itinerario: hilo punteado con nodos verde oliva */
 body.theme-mediterranean #sec-itinerary { margin-top: 56px !important; }
 body.theme-mediterranean .timeline { max-width: 400px; margin-top: 30px; }
-body.theme-mediterranean .timeline::before { left: 22px; width: 0; background: none; border-left: 1px dotted rgba(95, 102, 72, .7); }
+body.theme-mediterranean .timeline::before { left: 22px; width: 0; background: none; border-left: 1px dotted rgba(49, 95, 145, .55); }
 body.theme-mediterranean .timeline-item { gap: 18px; padding-bottom: 30px; }
-body.theme-mediterranean .timeline-dot { width: 46px; height: 46px; background: var(--olive-deep); border: 0; color: #F7F4ED; }
+body.theme-mediterranean .timeline-dot { width: 46px; height: 46px; background: var(--olive-deep); border: 0; color: var(--mo-ivory); }
 body.theme-mediterranean .timeline-dot svg { stroke-width: 1.15; }
 body.theme-mediterranean .timeline-card { background: none; border: 0; border-radius: 0; padding: 2px 0 0; }
 body.theme-mediterranean .timeline-time { font: 600 11px/1.4 var(--font-body); letter-spacing: .22em; color: var(--terra-ink); }
 body.theme-mediterranean .timeline-title { margin: 3px 0 2px; font: 400 24px/1.2 var(--font-heading); color: var(--text-main); }
 body.theme-mediterranean .timeline-place { font: 400 14px/1.5 var(--font-body); color: var(--text-muted); }
-
 /* Galería: ventanas arqueadas */
 body.theme-mediterranean .gallery-grid { gap: 14px; margin-top: 32px; }
 body.theme-mediterranean .gallery-item { border: 0; border-radius: 999px 999px 4px 4px; background: var(--sand); }
 body.theme-mediterranean .gallery-item:first-child { aspect-ratio: 5 / 4; border-radius: 999px 999px 4px 4px; }
-
 /* Detalles: panel verde oliva con texto marfil */
 body.theme-mediterranean #sec-details { background: var(--olive-deep); }
-body.theme-mediterranean #sec-details .eyebrow { color: #E5DBC4; }
-body.theme-mediterranean #sec-details .section-title { color: #F7F4ED; }
+body.theme-mediterranean #sec-details .eyebrow { color: #DCE9F2; }
+body.theme-mediterranean #sec-details .section-title { color: var(--mo-ivory); }
 body.theme-mediterranean #sec-details .section-title::after { display: none; }
 body.theme-mediterranean #sec-details .section-title { margin-bottom: 4px; }
 body.theme-mediterranean .info-cards { gap: 14px; margin-top: 30px; text-align: center; }
 body.theme-mediterranean .info-card {
   padding: 28px 22px 26px;
-  background: rgba(247, 244, 237, .07);
-  border: 1px solid rgba(247, 244, 237, .42);
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .4);
   border-radius: 3px;
 }
-body.theme-mediterranean .info-card h4 { margin-bottom: 10px; font: 400 23px/1.2 var(--font-heading); color: #F7F4ED; }
-body.theme-mediterranean .info-card p { font: 400 15px/1.8 var(--font-body); color: #ECE6D6; }
-
+body.theme-mediterranean .info-card h4 { margin-bottom: 10px; font: 400 23px/1.2 var(--font-heading); color: var(--mo-ivory); }
+body.theme-mediterranean .info-card p { font: 400 15px/1.8 var(--font-body); color: #E8F0F6; }
 /* Regalos */
-body.theme-mediterranean .iban-box { margin-top: 28px; padding: 24px 16px 20px; background: #F7F4ED; border: 1px solid rgba(119, 124, 91, .45); border-radius: 3px; }
+body.theme-mediterranean .iban-box { margin-top: 28px; padding: 24px 16px 20px; background: var(--mo-ivory); border: 1px solid var(--mo-line); border-radius: 3px; }
 body.theme-mediterranean .section-alt .iban-box { background: var(--bg-page); }
 body.theme-mediterranean .iban-number { font: 600 15px/1.5 var(--font-body); letter-spacing: .08em; color: var(--text-main); }
 body.theme-mediterranean #copy-iban-btn { padding: 12px 20px !important; font-size: 10.5px !important; margin-top: 4px !important; }
-
 /* RSVP */
 body.theme-mediterranean #sec-rsvp { background: var(--bg-alt); }
-body.theme-mediterranean .rsvp-form { margin-top: 32px; padding: 30px 22px 26px; background: #F7F4ED; border: 1px solid rgba(119, 124, 91, .4); border-radius: 3px; }
+body.theme-mediterranean .rsvp-form { margin-top: 32px; padding: 30px 22px 26px; background: var(--mo-ivory); border: 1px solid var(--mo-line); border-radius: 3px; }
 body.theme-mediterranean .form-group label,
 body.theme-mediterranean .companions-head { font: 600 10.5px/1.4 var(--font-body); letter-spacing: .18em; color: var(--olive-deep); }
 body.theme-mediterranean .companions-head small { font: 400 13px/1.5 var(--font-body); color: var(--text-muted); }
@@ -1302,8 +1513,8 @@ body.theme-mediterranean .form-group input,
 body.theme-mediterranean .form-group select,
 body.theme-mediterranean .companion-row input,
 body.theme-mediterranean .companion-row select {
-  background-color: #FBF9F4;
-  border: 1px solid rgba(101, 92, 78, .3);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(36, 66, 90, .28);
   border-radius: 2px;
   font-family: var(--font-body);
   color: var(--text-main);
@@ -1314,23 +1525,22 @@ body.theme-mediterranean .form-group input:focus,
 body.theme-mediterranean .form-group select:focus { border-color: var(--olive-deep); outline: none; }
 body.theme-mediterranean .consent-label { font-size: 13px !important; }
 body.theme-mediterranean .rsvp-form .btn-primary { width: 100%; margin-top: 8px; padding: 17px 20px; }
-body.theme-mediterranean .rsvp-success { background: #F7F4ED; border: 1px solid rgba(119, 124, 91, .5); border-radius: 3px; color: var(--text-main); }
-
+body.theme-mediterranean .rsvp-success { background: var(--mo-ivory); border: 1px solid var(--mo-line); border-radius: 3px; color: var(--text-main); }
 /* Pie verde oliva: cierra la invitación igual que la abre la portada */
 body.theme-mediterranean .invite-footer {
   padding: 58px 24px 50px;
   background: var(--olive-deep);
   font: 600 11px/1.6 var(--font-body);
   letter-spacing: .28em;
-  color: #E5DBC4;
+  color: #DCE9F2;
 }
-body.theme-mediterranean .invite-footer h3 { font: 400 clamp(32px, 9vw, 42px)/1.1 var(--font-heading); letter-spacing: -.01em; color: #F7F4ED; }
-body.theme-mediterranean #share-wa-btn { padding: 12px 20px !important; font-size: 10.5px !important; border-color: #E5DBC4; color: #F7F4ED; }
-body.theme-mediterranean #share-wa-btn:hover { background: #F7F4ED; color: var(--olive-deep); }
-body.theme-mediterranean .footer-legal { font: 400 12px/1.5 var(--font-body); letter-spacing: .02em; color: #D9D1BC; }
-body.theme-mediterranean .footer-legal a { color: #D9D1BC; }
-body.theme-mediterranean .music-toggle { background: #F7F4ED; color: var(--olive-deep); border: 1px solid var(--olive-deep); }
-body.theme-mediterranean .music-toggle.playing { background: var(--olive-deep); color: #F7F4ED; }
+body.theme-mediterranean .invite-footer h3 { font: 400 clamp(32px, 9vw, 42px)/1.1 var(--font-heading); letter-spacing: -.01em; color: var(--mo-ivory); }
+body.theme-mediterranean #share-wa-btn { padding: 12px 20px !important; font-size: 10.5px !important; border-color: #DCE9F2; color: var(--mo-ivory); }
+body.theme-mediterranean #share-wa-btn:hover { background: var(--mo-ivory); color: var(--olive-deep); }
+body.theme-mediterranean .footer-legal { font: 400 12px/1.5 var(--font-body); letter-spacing: .02em; color: #CFE0EC; }
+body.theme-mediterranean .footer-legal a { color: #CFE0EC; }
+body.theme-mediterranean .music-toggle { background: var(--mo-ivory); color: var(--olive-deep); border: 1px solid var(--olive-deep); }
+body.theme-mediterranean .music-toggle.playing { background: var(--olive-deep); color: var(--mo-ivory); }
 
 /* Sobre */
 body.theme-mediterranean .envelope-overlay.env-verde {
@@ -1354,6 +1564,14 @@ body.theme-mediterranean .envelope-overlay.env-marfil {
   --seal-text: #FFF6EE;
 }
 
+/* Cifras alineadas: Cormorant usa numerales antiguos por defecto y la abreviatura `font`
+   de cada regla los restablece, por eso se fijan aquí, después de todas ellas. */
+body.theme-mediterranean :is(.hero-names, .hero-amp, .hero-kicker, .hero-details span, .hero-date-pill, .eyebrow,
+  .section-title, .section-text, .cd-num, .cd-label, .timeline-time, .timeline-title, .timeline-place,
+  .info-card h4, .info-card p, .iban-number, .invite-footer, .invite-footer h3) {
+  font-variant-numeric: lining-nums;
+}
+
 /* ==========================================================================
    ESCRITORIO Y AJUSTES FINOS
    ========================================================================== */
@@ -1367,10 +1585,8 @@ body.theme-mediterranean .envelope-overlay.env-marfil {
   body.theme-minimal .hero-date-stack { padding-left: 40px; }
   body.theme-minimal .section,
   body.theme-minimal .invite-footer { padding-left: 40px; padding-right: 40px; }
-  body.theme-mediterranean .hero { padding: 22px 22px 0; }
   body.theme-classic .section,
-  body.theme-romantic .section,
-  body.theme-mediterranean .section { padding-left: 48px; padding-right: 48px; }
+  body.theme-romantic .section { padding-left: 48px; padding-right: 48px; }
 }
 @media (max-width: 380px) {
   body.theme-classic .hero { padding: 12px 10px; }
@@ -1381,7 +1597,6 @@ body.theme-mediterranean .envelope-overlay.env-marfil {
   body.theme-romantic .hero-content { padding-left: 16px; padding-right: 16px; }
   body.theme-minimal .timeline-item { grid-template-columns: 74px 1fr 24px; column-gap: 10px; }
   body.theme-minimal .timeline-time { font-size: 17px; }
-  body.theme-mediterranean .hero { padding: 12px 10px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   body:is(.theme-classic, .theme-romantic, .theme-minimal, .theme-mediterranean) * { transition: none !important; }
