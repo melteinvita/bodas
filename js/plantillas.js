@@ -85,7 +85,9 @@ window.WEDDING_TEMPLATES = {
     desc: 'Burdeos profundo, marfil cálido y detalles oro champán. Una invitación editorial de inspiración clásica para una celebración elegante.',
     colors: ['#5A1727', '#F7F1E8', '#C5A46D'],
     defaultEnvelope: true,
-    defaultSealColor: 'burdeos'
+    defaultSealColor: 'burdeos',
+    demoHero: 'img/demo/black-tie-hero.jpg',
+    demoGallery: ['img/demo/black-tie-1.jpg', 'img/demo/black-tie-2.jpg', 'img/demo/black-tie-3.jpg']
   },
   garden: {
     id: 'garden',
