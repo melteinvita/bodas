@@ -3,7 +3,7 @@
    ===================================================================== */
 window.WEDDING_TEMPLATES = {
   /* ---------------------------------------------------------------
-     COLECCIÓN ACTUAL · las ocho plantillas comerciales de MelTeInvita
+     COLECCIÓN ACTUAL · las nueve plantillas comerciales de MelTeInvita
      --------------------------------------------------------------- */
   classic: {
     id: 'classic',
@@ -77,6 +77,15 @@ window.WEDDING_TEMPLATES = {
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
     demoHero: 'img/demo/black-tie-hero.jpg',
     demoGallery: ['img/demo/black-tie-1.jpg', 'img/demo/black-tie-2.jpg', 'img/demo/black-tie-3.jpg']
+  },
+  'royal-burgundy': {
+    id: 'royal-burgundy',
+    name: '09 · Royal Burgundy',
+    badge: 'Romántica y de Gala',
+    desc: 'Burdeos profundo, marfil cálido y detalles oro champán. Una invitación editorial de inspiración clásica para una celebración elegante.',
+    colors: ['#5A1727', '#F7F1E8', '#C5A46D'],
+    defaultEnvelope: true,
+    defaultSealColor: 'burdeos'
   },
   garden: {
     id: 'garden',
