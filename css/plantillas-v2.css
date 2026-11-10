@@ -1379,15 +1379,16 @@ body.theme-mediterranean .hero-details #hero-address {
   color: var(--mo-ink-soft);
 }
 
-/* ---- MÓVIL · escena vertical a sangre, nombres sobre la disolución ---- */
+/* ---- MÓVIL · escena vertical rica: villa y limones arriba, nombres sobre la disolución, mar e hortensias abajo ---- */
 body.theme-mediterranean:not(.has-hero-photo) .hero {
   --mo-pad: 6vw;
-  --mo-art-top: 96px;
-  --mo-art-w: min(126vw, 880px);
+  --mo-art-top: 70px;
+  --mo-art-w: min(124vw, 860px);
   --mo-art-h: calc(var(--mo-art-w) * 1.0664);
-  --mo-fade: 56vw;                        /* alto de la disolución sobre la pintura */
-  --mo-names: 46vw;                       /* dónde arrancan los nombres, contado desde el pie de la pintura */
-  padding-bottom: 30px;
+  --mo-fade: 54vw;                        /* alto de la disolución sobre la pintura */
+  --mo-names: 44vw;                       /* dónde arrancan los nombres, contado desde el pie de la pintura */
+  --mo-sea: 62vw;                         /* alto de la banda de mar inferior */
+  padding-bottom: calc(var(--mo-sea) + 2vw);
   background:
     radial-gradient(130% 46% at 50% 0%, rgba(185, 215, 232, .62), transparent 74%),
     var(--mo-ivory);
@@ -1397,24 +1398,34 @@ body.theme-mediterranean:not(.has-hero-photo) .hero::before {
   display: block;
   position: absolute;
   z-index: 1;
-  top: var(--mo-art-top);
-  left: 50%;
-  width: var(--mo-art-w);
-  aspect-ratio: 1100 / 1173;
-  transform: translateX(-50%);
-  background: url('../img/plantillas/mediterranean-organic/villa-portada.webp') center / contain no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--mo-art-top) + var(--mo-art-h));
+  background:
+    url('../img/plantillas/mediterranean-organic/ramo-limones.webp') right -3vw top 34px / min(52vw, 360px) auto no-repeat,
+    url('../img/plantillas/mediterranean-organic/villa-portada.webp') 50% 100% / var(--mo-art-w) auto no-repeat;
   mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - var(--mo-fade)), rgba(0,0,0,.4) calc(100% - var(--mo-fade) * .7), rgba(0,0,0,.07) calc(100% - var(--mo-fade) * .46), transparent calc(100% - var(--mo-fade) * .22));
+          mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - var(--mo-fade)), rgba(0,0,0,.4) calc(100% - var(--mo-fade) * .7), rgba(0,0,0,.07) calc(100% - var(--mo-fade) * .46), transparent calc(100% - var(--mo-fade) * .22));
   pointer-events: none;
 }
 body.theme-mediterranean:not(.has-hero-photo) .hero::after {
   content: '';
   display: block;
   position: absolute;
-  z-index: 2;
-  inset: auto 0 auto 0;
-  top: calc(var(--mo-art-top) + var(--mo-art-h) - var(--mo-fade));
-  height: calc(var(--mo-fade) + 14vw);
-  background: linear-gradient(to bottom, rgba(250, 248, 241, 0) 0%, rgba(250, 248, 241, .6) 30%, rgba(250, 248, 241, .93) 54%, #FAF8F1 78%);
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  height: var(--mo-sea);
+  background:
+    url('../img/plantillas/mediterranean-organic/ramo-hortensias.webp') right -6vw bottom -4vw / 52vw auto no-repeat,
+    url('../img/plantillas/mediterranean-organic/villa-panoramica.webp') 100% 78% / 200vw auto no-repeat;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.7) 34%, #000 62%);
+          mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,.7) 34%, #000 62%);
   pointer-events: none;
 }
 body.theme-mediterranean:not(.has-hero-photo) .hero-kicker { padding: 0 var(--mo-pad); max-width: 19em; }
@@ -1460,103 +1471,98 @@ body.theme-mediterranean.has-hero-photo .hero-photo-bg {
 }
 @media (min-width: 700px) { body.theme-mediterranean { --mo-section-y: 92px; } }
 
-/* ---- ESCRITORIO · panorámica a sangre; nombres en una sola línea sobre la terraza ---- */
+/* ---- ESCRITORIO · villa a la izquierda, mar y limones a la derecha, nombres en el claro central ---- */
 @media (min-width: 960px) {
   body.theme-mediterranean .lang-switcher { top: 16px; left: 18px; }
   body.theme-mediterranean .music-toggle { top: 16px; right: 18px; }
   body.theme-mediterranean:not(.has-hero-photo) .hero {
     --mo-pad: 0px;
     min-height: clamp(680px, 100svh, 1040px);
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     padding: 0;
     background:
-      radial-gradient(90% 60% at 70% 0%, rgba(185, 215, 232, .6), transparent 72%),
+      radial-gradient(80% 60% at 70% 0%, rgba(185, 215, 232, .55), transparent 72%),
       var(--mo-ivory);
   }
+  /* izquierda: la villa con su buganvilla, puerta, farol y macetas; se disuelve hacia el centro */
   body.theme-mediterranean:not(.has-hero-photo) .hero::before {
     top: 0;
     bottom: 0;
-    left: -3%;
-    right: -3%;
-    width: auto;
-    aspect-ratio: auto;
-    transform: none;
-    background: url('../img/plantillas/mediterranean-organic/villa-panoramica.webp') 46% 0% / cover no-repeat;
-    mix-blend-mode: normal;
+    left: 0;
+    width: 41%;
+    height: auto;
+    background: url('../img/plantillas/mediterranean-organic/villa-panoramica.webp') 0% 0% / auto 100% no-repeat;
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 56%, transparent 100%);
+            mask-image: linear-gradient(to right, #000 0, #000 56%, transparent 100%);
   }
+  /* derecha: limones arriba, mar y costa, hortensias abajo; se disuelve hacia el centro */
   body.theme-mediterranean:not(.has-hero-photo) .hero::after {
-    top: auto;
+    top: 0;
     bottom: 0;
-    height: 60%;
-    background: linear-gradient(to bottom, rgba(250, 248, 241, 0) 0%, rgba(250, 248, 241, .46) 34%, rgba(250, 248, 241, .9) 64%, #FAF8F1 92%);
+    left: auto;
+    right: 0;
+    width: 40%;
+    height: auto;
+    background:
+      url('../img/plantillas/mediterranean-organic/ramo-limones.webp') right -1% top -1% / min(27vw, 520px) auto no-repeat,
+      url('../img/plantillas/mediterranean-organic/ramo-hortensias.webp') right -2% bottom -2% / min(23vw, 430px) auto no-repeat,
+      url('../img/plantillas/mediterranean-organic/villa-panoramica.webp') 100% 100% / auto 100% no-repeat;
+    -webkit-mask-image: linear-gradient(to left, #000 0, #000 66%, transparent 100%);
+            mask-image: linear-gradient(to left, #000 0, #000 66%, transparent 100%);
   }
   body.theme-mediterranean:not(.has-hero-photo) .hero-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "names   names"
-      "kicker  eyebrow"
-      "details date";
-    align-items: end;
-    column-gap: 4vw;
-    padding: 0 clamp(36px, 5.2vw, 110px) clamp(34px, 5.6svh, 64px);
+    width: min(31vw, 540px);
+    margin: 0 auto;
+    padding: clamp(60px, 9svh, 110px) 0 clamp(40px, 7svh, 90px);
+    align-items: center;
+    text-align: center;
   }
   body.theme-mediterranean:not(.has-hero-photo) .hero-content::before { display: none; }
-  /* "¡nos casamos!" cierra la línea de los nombres; la frase de bienvenida precede a los datos */
-  body.theme-mediterranean:not(.has-hero-photo) .hero .eyebrow {
-    grid-area: eyebrow;
-    align-self: end;
-    justify-self: end;
-    margin: 0 0 .1em;
-    padding: 0;
-    white-space: nowrap;
-    font-size: clamp(40px, 3.5vw, 66px);
-  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero .eyebrow { padding: 0; margin: 0 0 6px; font-size: clamp(30px, 2.8vw, 50px); }
   body.theme-mediterranean:not(.has-hero-photo) .hero-kicker {
-    grid-area: kicker;
-    max-width: none;
-    align-self: end;
-    margin: 0 0 clamp(12px, 1.6svh, 20px);
+    max-width: 100%;
+    text-wrap: balance;
+    margin: 0 0 clamp(16px, 2.6svh, 28px);
     padding: 0;
-    font-size: clamp(19px, 1.55vw, 27px);
-    text-align: left;
+    font-size: clamp(17px, 1.3vw, 24px);
+    text-align: center;
+  }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-kicker::after {
+    content: '';
+    display: block;
+    width: 62%;
+    height: 1px;
+    margin: clamp(14px, 2.2svh, 24px) auto 0;
+    background: linear-gradient(to right, transparent, rgba(49, 95, 145, .55), transparent);
   }
   body.theme-mediterranean:not(.has-hero-photo) .hero-names {
-    grid-area: names;
-    --names-size: clamp(76px, 9.6vw, 186px);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: .2em;
-    margin: .02em 0 .1em -.03em;
-    line-height: .92;
+    --names-size: clamp(56px, 6.3vw, 124px);
+    display: block;
+    margin: 0 0 clamp(16px, 2.6svh, 30px);
+    line-height: .9;
+    text-align: center;
   }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-names[data-len="l"] { --names-size: clamp(64px, 7.6vw, 150px); }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-names[data-len="xl"] { --names-size: clamp(52px, 6.2vw, 124px); }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-names > span { display: inline; padding: 0; text-align: left; }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-amp { display: inline; padding: 0; margin: 0; font-size: .78em; }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-details {
-    grid-area: details;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: 22px;
-  }
-  body.theme-mediterranean:not(.has-hero-photo) .hero-details #hero-venue { font-size: clamp(24px, 2vw, 34px); }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-names[data-len="l"] { --names-size: clamp(44px, 4.7vw, 94px); }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-names[data-len="xl"] { --names-size: clamp(36px, 3.9vw, 78px); }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-names > span,
+  body.theme-mediterranean:not(.has-hero-photo) .hero-names > span:first-child,
+  body.theme-mediterranean:not(.has-hero-photo) .hero-names > span:last-child { display: block; padding: 0; text-align: center; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-amp { display: block; padding: 0; margin: .02em 0 0; font-size: .74em; }
   body.theme-mediterranean:not(.has-hero-photo) .hero-date-pill {
-    grid-area: date;
-    justify-self: end;
     padding: 0;
     margin: 0;
     font-size: clamp(13px, 1.05vw, 17px);
   }
-}
-@media (min-width: 1700px) {
-  body.theme-mediterranean:not(.has-hero-photo) .hero::after {
-    height: 68%;
-    background: linear-gradient(to bottom, rgba(250, 248, 241, 0) 0%, rgba(250, 248, 241, .6) 30%, rgba(250, 248, 241, .94) 54%, #FAF8F1 84%);
+  body.theme-mediterranean:not(.has-hero-photo) .hero-details { padding: 0; margin: 10px 0 0; text-align: center; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-details #hero-venue { font-size: clamp(24px, 2vw, 34px); margin-top: 4px; }
+  body.theme-mediterranean:not(.has-hero-photo) .hero-details::after {
+    content: '';
+    display: block;
+    width: 62%;
+    height: 1px;
+    margin: clamp(14px, 2.2svh, 24px) auto 0;
+    background: linear-gradient(to right, transparent, rgba(49, 95, 145, .55), transparent);
   }
 }
 @media (prefers-reduced-motion: reduce) {
