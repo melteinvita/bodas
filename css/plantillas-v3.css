@@ -2422,28 +2422,28 @@ body.theme-royal-burgundy .hero-footnote,body.theme-royal-burgundy .editorial-bi
 body.theme-royal-burgundy .hero-date-stack { display:none; }
 
 /* La segunda pantalla: bienvenida y finca, sobre una superficie vino */
-body.theme-royal-burgundy #invite-shell > .section:first-of-type,
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2),
 body.theme-royal-burgundy #sec-story,
 body.theme-royal-burgundy #sec-location {
   background:var(--rb-wine); color:#f7eee4; border:0;
 }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type:before,
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2):before,
 body.theme-royal-burgundy #sec-story:before,
 body.theme-royal-burgundy #sec-location:before {
   inset:12px; border:1px solid #c7a66c75;
 }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .eyebrow,
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .eyebrow,
 body.theme-royal-burgundy #sec-story .eyebrow,
 body.theme-royal-burgundy #sec-location .eyebrow { color:#d8bb89; }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .section-title,
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .section-title,
 body.theme-royal-burgundy #sec-story .section-title,
 body.theme-royal-burgundy #sec-location .section-title { color:#fff5e9; }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .section-text,
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .section-text,
 body.theme-royal-burgundy #sec-story .section-text,
 body.theme-royal-burgundy #sec-location .section-text { color:#ead8c8; }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .cd-num { color:#fff4e6; }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .cd-label { color:#d6bd9e; }
-body.theme-royal-burgundy #invite-shell > .section:first-of-type .btn-outline { color:#fff5e9; border-color:#c9a875; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .cd-num { color:#fff4e6; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .cd-label { color:#d6bd9e; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .btn-outline { color:#fff5e9; border-color:#c9a875; }
 body.theme-royal-burgundy #sec-story { background:#f7efe5; color:var(--rb-ink); }
 body.theme-royal-burgundy #sec-story .section-title { color:var(--rb-wine); }
 body.theme-royal-burgundy #sec-story .section-text { color:#68565a; }
