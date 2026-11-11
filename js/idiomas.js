@@ -321,9 +321,9 @@
       en: { name: '08 · Garden Wedding', badge: 'Garden & Nature', desc: 'Watercolour foliage in forest green and sage with touches of nude rose. An outdoor wedding in a private garden.' }
     },
     'royal-burgundy': {
-      es: { name: '09 · Royal Burgundy', badge: 'Romántica y de Gala', desc: 'Burdeos profundo, marfil cálido y detalles oro champán. Una invitación editorial de inspiración clásica para una celebración elegante.' },
-      val: { name: '09 · Royal Burgundy', badge: 'Romàntica i de Gala', desc: 'Bordeus profund, marfil càlid i detalls d’or xampany. Una invitació editorial d’inspiració clàssica per a una celebració elegant.' },
-      en: { name: '09 · Royal Burgundy', badge: 'Romantic & Grand', desc: 'Deep burgundy, warm ivory and champagne-gold details. A classic-inspired editorial invitation for an elegant celebration.' }
+      es: { name: '09 · Royal Burgundy', badge: 'Romántica y de Gala', desc: 'Cuatro escenas de inspiración cinematográfica: retrato en burdeos, bienvenida con fotografía del lugar, programa sobre marfil y confirmación en vino y champán.' },
+      val: { name: '09 · Royal Burgundy', badge: 'Romàntica i de Gala', desc: 'Quatre escenes d’inspiració cinematogràfica: retrat en bordeus, benvinguda amb fotografia del lloc, programa sobre marfil i confirmació en vi i xampany.' },
+      en: { name: '09 · Royal Burgundy', badge: 'Romantic & Grand', desc: 'Four cinematic scenes: a burgundy portrait, venue welcome, ivory event programme and wine-and-champagne RSVP.' }
     },
     olivo: {
       es: { name: '01 · Olivo Mediterráneo', badge: 'Fincas y Exterior', desc: 'Verde oliva, marfil y ramas botánicas. Papel orgánico y tipografía clásica.' },
