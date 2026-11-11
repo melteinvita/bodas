@@ -2371,3 +2371,146 @@ body.theme-royal-burgundy .envelope-overlay.env-burdeos{background:radial-gradie
 body.theme-royal-burgundy .env-top-hint,body.theme-royal-burgundy .env-skip-btn{color:#f5e7d6}
 @media(max-width:560px){body.theme-royal-burgundy .hero{min-height:820px;min-height:100svh;padding:300px 24px 64px}body.theme-royal-burgundy .hero:after{inset:12px}body.theme-royal-burgundy .section{padding:58px 24px}body.theme-royal-burgundy .section:before{inset:8px}body.theme-royal-burgundy .timeline-item{grid-template-columns:1fr 32px 1fr;gap:4px}body.theme-royal-burgundy .timeline-title{font-size:20px}body.theme-royal-burgundy .timeline-place{font-size:11px}}
 @media(prefers-reduced-motion:reduce){body.theme-royal-burgundy *,body.theme-royal-burgundy *:before,body.theme-royal-burgundy *:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* ROYAL BURGUNDY — fidelidad a la referencia de cuatro pantallas */
+body.theme-royal-burgundy {
+  --rb-wine:#541321; --rb-wine-deep:#35101b; --rb-paper:#f8f1e9;
+  --rb-gold:#c8a875; --rb-ink:#2a1b1d;
+  background:#e9dfd3;
+}
+body.theme-royal-burgundy .invite-shell { max-width:760px; background:var(--rb-paper); }
+body.theme-royal-burgundy .hero {
+  min-height: min(900px, 112svh); padding:clamp(250px,42vh,390px) 26px 64px;
+  background:var(--rb-wine); isolation:isolate; overflow:hidden;
+}
+body.theme-royal-burgundy .hero-photo-bg {
+  display:block; inset:0; height:100%; z-index:-2; background-size:cover;
+  background-position:center 34%; filter:grayscale(1) contrast(1.08);
+}
+body.theme-royal-burgundy .hero:before {
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg,#240b1200 12%,#260b1280 48%,#3d101eeF 100%);
+}
+body.theme-royal-burgundy .hero:after {
+  inset:18px; border:1px solid #d5b77d99; box-shadow:inset 0 0 0 5px #fff5e90d;
+}
+body.theme-royal-burgundy .hero-content { max-width:620px; }
+body.theme-royal-burgundy .hero-content:before {
+  content:"✦  NUESTRA BODA  ✦"; display:block; margin:0 auto 18px;
+  color:#e2c99f; font:500 9px/1.5 var(--font-body); letter-spacing:.3em;
+}
+body.theme-royal-burgundy .hero-kicker { display:none; }
+body.theme-royal-burgundy .hero .eyebrow { color:#f0d9bd; letter-spacing:.28em; }
+body.theme-royal-burgundy .hero-script { color:#e5c69b; font-size:clamp(24px,5vw,34px); margin-bottom:4px; }
+body.theme-royal-burgundy .hero-names {
+  display:flex; flex-direction:column; gap:0; margin:0 auto 18px;
+  color:#fff8ef; font:400 clamp(66px,13vw,112px)/.78 var(--font-heading);
+  letter-spacing:-.055em; text-shadow:0 4px 24px #16070b80;
+}
+body.theme-royal-burgundy .hero-amp { color:#d8b77d; font-size:.48em; line-height:1.1; }
+body.theme-royal-burgundy .hero-date-pill {
+  display:inline-block; padding:10px 18px; border-block:1px solid #d0ad70;
+  color:#f7e8d4; background:transparent; border-radius:0; letter-spacing:.24em;
+  font:600 10px/1.6 var(--font-body);
+}
+body.theme-royal-burgundy .hero-details { display:flex; flex-direction:column; gap:4px; margin:18px auto 0; }
+body.theme-royal-burgundy .hero-details #hero-time { color:#e3c28c; letter-spacing:.18em; }
+body.theme-royal-burgundy .hero-details #hero-venue { color:#fff7eb; font:italic 26px/1.25 var(--font-heading); }
+body.theme-royal-burgundy .hero-details #hero-address { color:#ead9c8; font-size:11px; letter-spacing:.1em; }
+body.theme-royal-burgundy .hero-footnote,body.theme-royal-burgundy .editorial-big-date,
+body.theme-royal-burgundy .hero-date-stack { display:none; }
+
+/* La segunda pantalla: bienvenida y finca, sobre una superficie vino */
+body.theme-royal-burgundy #invite-shell > .section:first-of-type,
+body.theme-royal-burgundy #sec-story,
+body.theme-royal-burgundy #sec-location {
+  background:var(--rb-wine); color:#f7eee4; border:0;
+}
+body.theme-royal-burgundy #invite-shell > .section:first-of-type:before,
+body.theme-royal-burgundy #sec-story:before,
+body.theme-royal-burgundy #sec-location:before {
+  inset:12px; border:1px solid #c7a66c75;
+}
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .eyebrow,
+body.theme-royal-burgundy #sec-story .eyebrow,
+body.theme-royal-burgundy #sec-location .eyebrow { color:#d8bb89; }
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .section-title,
+body.theme-royal-burgundy #sec-story .section-title,
+body.theme-royal-burgundy #sec-location .section-title { color:#fff5e9; }
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .section-text,
+body.theme-royal-burgundy #sec-story .section-text,
+body.theme-royal-burgundy #sec-location .section-text { color:#ead8c8; }
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .cd-num { color:#fff4e6; }
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .cd-label { color:#d6bd9e; }
+body.theme-royal-burgundy #invite-shell > .section:first-of-type .btn-outline { color:#fff5e9; border-color:#c9a875; }
+body.theme-royal-burgundy #sec-story { background:#f7efe5; color:var(--rb-ink); }
+body.theme-royal-burgundy #sec-story .section-title { color:var(--rb-wine); }
+body.theme-royal-burgundy #sec-story .section-text { color:#68565a; }
+body.theme-royal-burgundy .royal-venue-photo {
+  position:relative; margin:30px auto 26px; max-width:560px; padding:7px;
+  border:1px solid #c9a875; background:#f7efe5;
+}
+body.theme-royal-burgundy .royal-venue-photo img {
+  display:block; width:100%; max-height:340px; aspect-ratio:16/9; object-fit:cover;
+  filter:saturate(.82) contrast(1.04);
+}
+body.theme-royal-burgundy .royal-venue-photo figcaption {
+  padding:10px 4px 3px; color:#795d43; font:600 8px/1.5 var(--font-body);
+  letter-spacing:.24em;
+}
+body.theme-royal-burgundy #sec-location .btn-primary { background:#ead6b6; border-color:#ead6b6; color:#42111e; }
+
+/* Programa: página marfil, eje vertical e iconos de ceremonia */
+body.theme-royal-burgundy #sec-itinerary {
+  margin:48px -12px 0 !important; padding:42px 12px 12px;
+  background:#f8f1e9; color:var(--rb-ink);
+}
+body.theme-royal-burgundy #sec-itinerary .eyebrow { color:#92714b; }
+body.theme-royal-burgundy #sec-itinerary .timeline:before { background:#c7ad87; }
+body.theme-royal-burgundy #sec-itinerary .timeline-dot {
+  background:#f8f1e9; color:var(--rb-wine); border:1px solid #b99a69;
+}
+body.theme-royal-burgundy #sec-itinerary .timeline-card { background:transparent; }
+body.theme-royal-burgundy #sec-itinerary .timeline-time { color:#8e6b43; }
+body.theme-royal-burgundy #sec-itinerary .timeline-title { color:var(--rb-wine); }
+body.theme-royal-burgundy #sec-itinerary .timeline-place { color:#77666a; }
+
+/* Confirmación como la cuarta pantalla de la referencia */
+body.theme-royal-burgundy #sec-rsvp {
+  background:var(--rb-wine); color:#f8eee4; border:0;
+}
+body.theme-royal-burgundy #sec-rsvp:before { border:1px solid #c7a66c88; }
+body.theme-royal-burgundy #sec-rsvp .eyebrow { color:#d9bd8d; }
+body.theme-royal-burgundy #sec-rsvp .section-title { color:#fff6eb; }
+body.theme-royal-burgundy #sec-rsvp .section-text { color:#e9d7c6; }
+body.theme-royal-burgundy #sec-rsvp .section-text strong { color:#f2d9a8; }
+body.theme-royal-burgundy #sec-rsvp .rsvp-form {
+  background:transparent; border:1px solid #c9a875; box-shadow:none; color:#fff6eb;
+}
+body.theme-royal-burgundy #sec-rsvp .form-group label,
+body.theme-royal-burgundy #sec-rsvp .companions-head { color:#f1dfc9; }
+body.theme-royal-burgundy #sec-rsvp .form-group input,
+body.theme-royal-burgundy #sec-rsvp .form-group select,
+body.theme-royal-burgundy #sec-rsvp .companion-row input,
+body.theme-royal-burgundy #sec-rsvp .companion-row select {
+  color:#fff8ef; background:#42111e; border:1px solid #a77d6e; border-radius:2px;
+}
+body.theme-royal-burgundy #sec-rsvp .form-group input::placeholder { color:#c9b4aa; }
+body.theme-royal-burgundy #sec-rsvp .rsvp-form .btn-primary {
+  color:#35101b; background:#ead4ad; border-color:#ead4ad;
+}
+body.theme-royal-burgundy .invite-footer { background:#310d18; color:#ead8c5; }
+body.theme-royal-burgundy .music-toggle { background:#ead4ad; color:#48101f; border-color:#c8a875; }
+@media(max-width:560px) {
+  body.theme-royal-burgundy .hero { min-height:100svh; padding:230px 22px 54px; }
+  body.theme-royal-burgundy .hero:after { inset:10px; }
+  body.theme-royal-burgundy .section { padding:58px 24px; }
+  body.theme-royal-burgundy #sec-itinerary { margin-inline:-12px !important; }
+  body.theme-royal-burgundy .royal-venue-photo img { aspect-ratio:4/3; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.theme-royal-burgundy *,body.theme-royal-burgundy *:before,body.theme-royal-burgundy *:after {
+    animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important;
+  }
+}
