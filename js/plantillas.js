@@ -75,8 +75,8 @@ window.WEDDING_TEMPLATES = {
     defaultEnvelope: true,
     defaultSealColor: 'noche',
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
-    demoHero: 'img/demo/black-tie-hero.jpg',
-    demoGallery: ['img/demo/black-tie-1.jpg', 'img/demo/black-tie-2.jpg', 'img/demo/black-tie-3.jpg']
+    demoHero: 'img/hero-elegante.jpg',
+    demoGallery: ['img/galeria-1.jpg', 'img/galeria-2.jpg', 'img/galeria-3.jpg']
   },
   garden: {
     id: 'garden',
