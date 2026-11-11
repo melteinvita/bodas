@@ -42,7 +42,7 @@
   };
   /* Las plantillas 10-19 construyen su portada solo con CSS (gradientes,
      texturas y patrones): no dependen de ninguna fotografía. */
-  var CSS_HERO_THEMES = ['classic', 'romantic', 'minimal', 'mediterranean', 'timeless', 'french-romance', 'black-tie', 'garden', 'royal-burgundy', 'ibiza', 'bridgerton', 'amalfi', 'bodega', 'viajeros', 'festival', 'harrypotter', 'lotr', 'hollywood', 'gamer'];
+  var CSS_HERO_THEMES = ['classic', 'romantic', 'minimal', 'mediterranean', 'timeless', 'french-romance', 'black-tie', 'garden', 'ibiza', 'bridgerton', 'amalfi', 'bodega', 'viajeros', 'festival', 'harrypotter', 'lotr', 'hollywood', 'gamer'];
   var ORNAMENTS_SVG = {
     olivo: '<svg viewBox="0 0 100 40"><path d="M10,30 Q50,5 90,30 M30,22 C25,12 18,15 22,24 M50,17 C46,7 38,10 42,19 M70,22 C66,12 58,15 62,24" stroke-width="1.5" stroke-linecap="round"/></svg>',
     editorial: '<svg viewBox="0 0 100 20"><line x1="20" y1="10" x2="80" y2="10" stroke-width="1"/></svg>',
@@ -368,6 +368,13 @@
     var heroBg = el('hero-bg');
     if (heroBg) heroBg.style.backgroundImage = heroPhoto ? window.cssImageUrl(heroPhoto) : '';
     rootBody.classList.toggle('has-hero-photo', !!heroPhoto);
+
+    var venuePhoto = el('royal-venue-image');
+    if (venuePhoto) {
+      var venueImage = (d.galleryPhotos && d.galleryPhotos.length ? safePhoto(d.galleryPhotos[0]) : '') || safePhoto(DEFAULT_GALLERY[0]);
+      venuePhoto.src = venueImage || '';
+      venuePhoto.parentNode.hidden = !venueImage;
+    }
 
     updateDateDisplay(d);
     renderHeroExtras(d);
