@@ -37,6 +37,7 @@
     noche: 'img/hero-noche.jpg',
     gotico: 'img/hero-gotico.jpg',
     elegante: 'img/hero-elegante.jpg',
+    'royal-burgundy': 'img/hero-elegante.jpg',
     starwars: 'img/hero-starwars.jpg'
   };
   /* Las plantillas 10-19 construyen su portada solo con CSS (gradientes,
