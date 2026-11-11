@@ -320,6 +320,11 @@
       val: { name: '08 · Garden Wedding', badge: 'Jardí i Natura', desc: 'Fullatge a l\'aquarel·la en verd bosc i sàlvia, amb tocs de rosa nude. Un casament a l\'aire lliure en un jardí privat.' },
       en: { name: '08 · Garden Wedding', badge: 'Garden & Nature', desc: 'Watercolour foliage in forest green and sage with touches of nude rose. An outdoor wedding in a private garden.' }
     },
+    'royal-burgundy': {
+      es: { name: '09 · Royal Burgundy', badge: 'Romántica y de Gala', desc: 'Cuatro escenas de inspiración cinematográfica: retrato en burdeos, bienvenida con fotografía del lugar, programa sobre marfil y confirmación en vino y champán.' },
+      val: { name: '09 · Royal Burgundy', badge: 'Romàntica i de Gala', desc: 'Quatre escenes d’inspiració cinematogràfica: retrat en bordeus, benvinguda amb fotografia del lloc, programa sobre marfil i confirmació en vi i xampany.' },
+      en: { name: '09 · Royal Burgundy', badge: 'Romantic & Grand', desc: 'Four cinematic scenes: a burgundy portrait, venue welcome, ivory event programme and wine-and-champagne RSVP.' }
+    },
     olivo: {
       es: { name: '01 · Olivo Mediterráneo', badge: 'Fincas y Exterior', desc: 'Verde oliva, marfil y ramas botánicas. Papel orgánico y tipografía clásica.' },
       val: { name: '01 · Olivera Mediterrània', badge: 'Fincas i Exterior', desc: 'Verd oliva, marfil i branques botàniques. Paper orgànic i tipografia clàssica.' },

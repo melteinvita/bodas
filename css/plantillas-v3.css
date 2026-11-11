@@ -1945,3 +1945,572 @@ body.theme-garden .envelope-overlay.env-verde {
 }
 body.theme-garden .env-top-hint,
 body.theme-garden .env-skip-btn { color: #F0EBDD; }
+
+
+/* ==========================================================================
+   09 · ROYAL BURGUNDY
+   Burdeos profundo · marfil cálido · oro champán
+   Diseño editorial de gala, adaptado al sistema de secciones y RSVP existente.
+   ========================================================================== */
+body.theme-royal-burgundy {
+  --bg-page: #F7F1E8;
+  --bg-card: #FFFCF7;
+  --bg-alt: #EFE5DA;
+  --text-main: #351923;
+  --text-muted: #78636A;
+  --accent: #681F32;
+  --accent-light: #EADDE0;
+  --gold: #B8945E;
+  --border-col: #E4D5C8;
+  --font-heading: 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', 'Montserrat', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --radius-card: 3px;
+  --hero-overlay: linear-gradient(180deg, rgba(30, 8, 17, .08) 0%, rgba(43, 12, 24, .2) 44%, #F7F1E8 74%);
+  background: #EFE6DC;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body.theme-royal-burgundy .invite-shell {
+  max-width: 620px;
+  background: var(--bg-page);
+  box-shadow: 0 18px 70px rgba(54, 24, 34, .13);
+}
+@media (min-width: 700px) {
+  body.theme-royal-burgundy .invite-shell {
+    max-width: 700px;
+    box-shadow: 0 0 0 1px rgba(184, 148, 94, .28), 0 30px 80px -40px rgba(54, 24, 34, .32);
+  }
+}
+body.theme-royal-burgundy .hero {
+  position: relative;
+  min-height: 720px;
+  min-height: 100svh;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: clamp(270px, 58vw, 390px) 28px 58px;
+  color: var(--text-main);
+  background:
+    radial-gradient(ellipse at 50% 15%, rgba(255,255,255,.9), transparent 48%),
+    linear-gradient(180deg, #E8DCD1 0%, #F7F1E8 58%, #F7F1E8 100%);
+}
+body.theme-royal-burgundy .hero::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: clamp(230px, 52vw, 370px);
+  background: linear-gradient(180deg, rgba(31, 9, 17, .02), rgba(31, 9, 17, .16));
+  border-bottom: 1px solid rgba(184, 148, 94, .48);
+  pointer-events: none;
+}
+body.theme-royal-burgundy .hero::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 12%;
+  right: 12%;
+  top: clamp(230px, 52vw, 370px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+body.theme-royal-burgundy .hero-photo-bg {
+  display: block;
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(230px, 52vw, 370px);
+  background-color: #D7C5B7;
+  background-position: center 42%;
+  background-size: cover;
+  filter: saturate(.82);
+}
+body.theme-royal-burgundy .hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+body.theme-royal-burgundy .template-ornament { display: block; margin: 0 auto 20px; opacity: 1; }
+body.theme-royal-burgundy .template-ornament svg { width: min(160px, 54%); height: auto; }
+body.theme-royal-burgundy .hero-kicker {
+  max-width: 27em;
+  margin: 0 auto 12px;
+  color: var(--text-muted);
+  font: italic 500 18px/1.5 var(--font-heading);
+  letter-spacing: .015em;
+}
+body.theme-royal-burgundy .hero .eyebrow {
+  color: var(--accent);
+  font: 600 10px/1.5 var(--font-body);
+  letter-spacing: .28em;
+}
+body.theme-royal-burgundy .hero-script {
+  display: block;
+  margin: 8px 0 0;
+  color: #8D5964;
+  font: italic 400 25px/1.25 var(--font-script);
+}
+body.theme-royal-burgundy .hero-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin: 4px 0 16px;
+  color: #54192A;
+  font: 400 clamp(52px, 13vw, 88px)/.9 var(--font-heading);
+  letter-spacing: -.045em;
+  text-transform: none;
+}
+body.theme-royal-burgundy .hero-amp {
+  margin: 3px 0;
+  color: var(--gold);
+  font: italic 400 .5em/1 var(--font-heading);
+}
+body.theme-royal-burgundy .hero-date-pill {
+  display: inline-flex;
+  padding: 10px 18px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
+  font: 600 10px/1.4 var(--font-body);
+  letter-spacing: .22em;
+}
+body.theme-royal-burgundy .hero-details { margin-top: 18px; color: var(--text-muted); }
+body.theme-royal-burgundy .hero-details span { display: block; }
+body.theme-royal-burgundy .hero-details #hero-time {
+  color: var(--accent);
+  font: 600 11px/1.8 var(--font-body);
+  letter-spacing: .2em;
+}
+body.theme-royal-burgundy .hero-details #hero-venue {
+  color: var(--text-main);
+  font: italic 500 24px/1.35 var(--font-heading);
+}
+body.theme-royal-burgundy .hero-details #hero-address {
+  font: 400 11px/1.8 var(--font-body);
+  letter-spacing: .08em;
+}
+body.theme-royal-burgundy .hero-footnote {
+  margin-top: 18px;
+  color: #8D5964;
+  font: italic 400 20px/1.4 var(--font-script);
+}
+body.theme-royal-burgundy .editorial-big-date { display: none; }
+body.theme-royal-burgundy .section {
+  padding: 58px 30px;
+  border: 0;
+  border-bottom: 1px solid rgba(184, 148, 94, .22);
+  background: var(--bg-page);
+  text-align: center;
+}
+body.theme-royal-burgundy .section:nth-of-type(even) { background: #F0E7DD; }
+body.theme-royal-burgundy .section > .eyebrow {
+  color: #9A7650;
+  font: 600 9px/1.7 var(--font-body);
+  letter-spacing: .26em;
+}
+body.theme-royal-burgundy .section > .eyebrow::before,
+body.theme-royal-burgundy .section > .eyebrow::after { display: none; }
+body.theme-royal-burgundy .section-title {
+  margin: 10px auto 16px;
+  color: #54192A;
+  font: 400 clamp(34px, 8vw, 48px)/1.05 var(--font-heading);
+  letter-spacing: -.02em;
+}
+body.theme-royal-burgundy .section-text {
+  max-width: 34em;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font: 400 14px/1.9 var(--font-body);
+}
+body.theme-royal-burgundy .divider-ornament { color: var(--gold); }
+body.theme-royal-burgundy .countdown-grid { gap: 8px; max-width: 390px; margin: 28px auto; }
+body.theme-royal-burgundy .cd-box {
+  padding: 15px 7px;
+  border: 1px solid rgba(184, 148, 94, .42);
+  border-radius: 2px;
+  background: #FFFCF7;
+}
+body.theme-royal-burgundy .cd-num { color: var(--accent); font: 400 30px/1.1 var(--font-heading); }
+body.theme-royal-burgundy .cd-label { color: var(--text-muted); font: 500 9px/1.4 var(--font-body); letter-spacing: .12em; text-transform: uppercase; }
+body.theme-royal-burgundy .btn-primary,
+body.theme-royal-burgundy .btn-outline {
+  min-height: 46px;
+  padding: 14px 22px;
+  border-radius: 2px;
+  font: 600 10px/1.4 var(--font-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+body.theme-royal-burgundy .btn-primary {
+  border: 1px solid #5A1727;
+  background: #5A1727;
+  color: #FFF9F0;
+}
+body.theme-royal-burgundy .btn-primary:hover { border-color: #3F101D; background: #3F101D; }
+body.theme-royal-burgundy .btn-outline {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--accent);
+}
+body.theme-royal-burgundy .btn-outline:hover { background: #5A1727; color: #FFF9F0; }
+body.theme-royal-burgundy #sec-location .section-text { margin-bottom: 18px; }
+body.theme-royal-burgundy #sec-itinerary { margin-top: 58px !important; }
+body.theme-royal-burgundy .timeline {
+  position: relative;
+  max-width: 390px;
+  margin: 34px auto 0;
+  text-align: left;
+}
+body.theme-royal-burgundy .timeline::before {
+  left: 50%;
+  width: 1px;
+  background: rgba(184, 148, 94, .55);
+}
+body.theme-royal-burgundy .timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 42px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 36px;
+}
+body.theme-royal-burgundy .timeline-item:nth-child(odd) .timeline-dot { grid-column: 2; grid-row: 1; }
+body.theme-royal-burgundy .timeline-item:nth-child(odd) .timeline-card { grid-column: 1; grid-row: 1; text-align: right; }
+body.theme-royal-burgundy .timeline-item:nth-child(even) .timeline-dot { grid-column: 2; grid-row: 1; }
+body.theme-royal-burgundy .timeline-item:nth-child(even) .timeline-card { grid-column: 3; grid-row: 1; text-align: left; }
+body.theme-royal-burgundy .timeline-dot {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: auto;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--bg-page);
+  color: var(--accent);
+  font-size: 0;
+}
+body.theme-royal-burgundy .timeline-dot svg { width: 19px; height: 19px; stroke-width: 1.1; }
+body.theme-royal-burgundy .timeline-card { padding: 0; border: 0; background: transparent; }
+body.theme-royal-burgundy .timeline-time { color: #9A7650; font: 600 10px/1.5 var(--font-body); letter-spacing: .12em; }
+body.theme-royal-burgundy .timeline-title { margin: 4px 0; color: #54192A; font: 500 22px/1.15 var(--font-heading); }
+body.theme-royal-burgundy .timeline-place { color: var(--text-muted); font: italic 400 15px/1.4 var(--font-heading); }
+body.theme-royal-burgundy .gallery-grid { gap: 12px; margin-top: 28px; }
+body.theme-royal-burgundy .gallery-item,
+body.theme-royal-burgundy .gallery-item img { border-radius: 2px; }
+body.theme-royal-burgundy .info-cards { gap: 14px; margin-top: 28px; }
+body.theme-royal-burgundy .info-card {
+  padding: 24px 20px;
+  border: 1px solid rgba(184, 148, 94, .38);
+  border-radius: 2px;
+  background: #FFFCF7;
+  text-align: center;
+}
+body.theme-royal-burgundy .info-card h4 {
+  margin-bottom: 9px;
+  color: var(--accent);
+  font: italic 500 23px/1.2 var(--font-heading);
+}
+body.theme-royal-burgundy .info-card p { color: var(--text-muted); font: 400 13px/1.8 var(--font-body); }
+body.theme-royal-burgundy .iban-box {
+  margin-top: 24px;
+  padding: 24px 18px;
+  border: 1px solid rgba(184, 148, 94, .45);
+  background: #FFFCF7;
+}
+body.theme-royal-burgundy .iban-number { color: var(--accent); font: 600 13px/1.7 var(--font-body); letter-spacing: .08em; }
+body.theme-royal-burgundy .rsvp-form {
+  max-width: 460px;
+  margin: 30px auto 0;
+  padding: 28px 22px;
+  border: 1px solid rgba(184, 148, 94, .48);
+  border-radius: 2px;
+  background: #FFFCF7;
+  text-align: left;
+}
+body.theme-royal-burgundy .form-group label,
+body.theme-royal-burgundy .companions-head {
+  color: var(--accent);
+  font: 600 10px/1.6 var(--font-body);
+  letter-spacing: .08em;
+}
+body.theme-royal-burgundy .form-group input,
+body.theme-royal-burgundy .form-group select,
+body.theme-royal-burgundy .companion-row input,
+body.theme-royal-burgundy .companion-row select {
+  min-height: 46px;
+  padding: 12px 13px;
+  border: 1px solid #DCCBC1;
+  border-radius: 2px;
+  background-color: #FFFDF9;
+  color: #351923;
+  font: 400 16px/1.4 var(--font-body);
+}
+body.theme-royal-burgundy .form-group input:focus,
+body.theme-royal-burgundy .form-group select:focus { border-color: var(--accent); outline: 2px solid rgba(104, 31, 50, .12); }
+body.theme-royal-burgundy .consent-label { color: var(--text-muted); font: 400 12px/1.6 var(--font-body) !important; }
+body.theme-royal-burgundy .rsvp-form .btn-primary { width: 100%; margin-top: 10px; }
+body.theme-royal-burgundy .rsvp-success { border: 1px solid rgba(184, 148, 94, .5); background: #F1E7D9; color: var(--accent); }
+body.theme-royal-burgundy .rsvp-error { border: 1px solid rgba(104, 31, 50, .35); }
+body.theme-royal-burgundy .invite-footer {
+  padding: 62px 24px 76px;
+  background: #4B1423;
+  color: #EADBC8;
+  letter-spacing: .16em;
+}
+body.theme-royal-burgundy .invite-footer h3 {
+  color: #FFF8EF;
+  font: italic 400 clamp(30px, 8vw, 42px)/1.15 var(--font-heading);
+}
+body.theme-royal-burgundy .footer-legal { color: #D5C0B0; font: 400 12px/1.7 var(--font-body); }
+body.theme-royal-burgundy .footer-legal a { color: #E7C995; }
+body.theme-royal-burgundy .music-toggle {
+  border: 1px solid var(--gold);
+  background: #FFFCF7;
+  color: var(--accent);
+  box-shadow: 0 5px 18px rgba(53, 25, 35, .14);
+}
+body.theme-royal-burgundy .music-toggle.playing { background: var(--accent); color: #FFF9F0; }
+body.theme-royal-burgundy .envelope-overlay.env-burdeos {
+  background: radial-gradient(circle at 50% 40%, #762B3D 0%, #3B101D 100%);
+  --env-body: #F6EEE4;
+  --env-flap: #EADCCB;
+  --env-side: #F0E5D8;
+  --env-text: #54192A;
+  --seal-bg: radial-gradient(circle at 35% 30%, #D9BD87, #B58D50 65%, #866333 100%);
+  --seal-border: #E7D2A8;
+  --seal-text: #FFF9F0;
+}
+body.theme-royal-burgundy .env-top-hint,
+body.theme-royal-burgundy .env-skip-btn { color: #F4E7D7; }
+@media (max-width: 480px) {
+  body.theme-royal-burgundy .hero { padding: 245px 22px 46px; }
+  body.theme-royal-burgundy .section { padding: 48px 20px; }
+  body.theme-royal-burgundy .rsvp-form { padding: 24px 17px; }
+  body.theme-royal-burgundy .timeline-item { grid-template-columns: 1fr 34px 1fr; gap: 5px; }
+  body.theme-royal-burgundy .timeline-title { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.theme-royal-burgundy *,
+  body.theme-royal-burgundy *::before,
+  body.theme-royal-burgundy *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ROYAL BURGUNDY — dirección de arte editorial v2 */
+body.theme-royal-burgundy{--rb-wine:#48101f;--rb-wine2:#641d31;--rb-paper:#f5eee3;--rb-gold:#c5a36c;--bg-page:var(--rb-paper);--bg-card:#fffaf2;--bg-alt:#e9ddce;--text-main:#27151a;--text-muted:#77636a;--accent:var(--rb-wine2);--gold:var(--rb-gold);background:#d9c9bb;color:#27151a}
+body.theme-royal-burgundy .invite-shell{width:min(100%,760px);max-width:760px;overflow:hidden;background:var(--rb-paper);box-shadow:0 30px 100px #280c153d}
+body.theme-royal-burgundy .hero{isolation:isolate;position:relative;min-height:min(980px,118svh);padding:clamp(320px,60vh,570px) clamp(24px,7vw,70px) 82px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;color:#fff8ed;text-align:center;background:#48101f}
+body.theme-royal-burgundy .hero-photo-bg{position:absolute;z-index:-2;inset:0;height:100%;display:block;background-position:center 38%;background-size:cover;filter:saturate(.72) contrast(1.06)}
+body.theme-royal-burgundy .hero:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,#18070d12 0%,#2207101a 28%,#280711b8 62%,#35101d 100%)}
+body.theme-royal-burgundy .hero:after{content:"";position:absolute;inset:18px;z-index:0;pointer-events:none;border:1px solid #e0c28fb8;box-shadow:inset 0 0 0 6px #fff8ed14}
+body.theme-royal-burgundy .hero-content{width:100%;max-width:600px;position:relative;z-index:1}
+body.theme-royal-burgundy .hero-content:before{content:"✦ THE WEDDING CELEBRATION ✦";display:block;margin:0 auto 22px;color:#e3c99b;font:600 9px/1.6 var(--font-body);letter-spacing:.34em}
+body.theme-royal-burgundy .hero .eyebrow{color:#f0d9b5;font:600 10px/1.5 var(--font-body);letter-spacing:.32em}
+body.theme-royal-burgundy .template-ornament{margin:0 auto 18px;color:#d6b77e}
+body.theme-royal-burgundy .template-ornament svg{width:145px;height:auto}
+body.theme-royal-burgundy .hero-kicker{color:#f2dfc5;font:italic 400 clamp(20px,4vw,28px)/1.3 var(--font-heading);margin:0 auto 18px}
+body.theme-royal-burgundy .hero-script{color:#e4c58f;font:italic 400 25px/1.2 var(--font-script);margin:0 0 10px}
+body.theme-royal-burgundy .hero-names{display:flex;flex-direction:column;align-items:center;gap:2px;margin:0 auto 26px;color:#fff8ed;font:400 clamp(64px,13vw,112px)/.79 var(--font-heading);letter-spacing:-.065em;text-shadow:0 3px 28px #0003}
+body.theme-royal-burgundy .hero-amp{color:#d7b77d;font:italic 400 .43em/1.05 var(--font-heading)}
+body.theme-royal-burgundy .hero-date-pill{display:inline-block;padding:13px 22px;border-block:1px solid #c7a66f;border-radius:0;background:transparent;color:#f7e8d0;font:600 9px/1.6 var(--font-body);letter-spacing:.28em}
+body.theme-royal-burgundy .hero-details{margin:24px 0 0;color:#f4e6d5}
+body.theme-royal-burgundy .hero-details #hero-time{color:#d8bb88;font:600 10px/1.8 var(--font-body);letter-spacing:.24em}
+body.theme-royal-burgundy .hero-details #hero-venue{color:#fff8ed;font:italic 400 28px/1.3 var(--font-heading)}
+body.theme-royal-burgundy .hero-details #hero-address{color:#e4d1bd;font:400 10px/1.8 var(--font-body);letter-spacing:.13em}
+body.theme-royal-burgundy .section{position:relative;padding:clamp(62px,10vw,100px) clamp(24px,7vw,72px);border:0;border-bottom:1px solid #976f4e33;background:var(--rb-paper);text-align:center}
+body.theme-royal-burgundy .section:nth-of-type(even){background:#eee3d6}
+body.theme-royal-burgundy .section:before{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid #b8915b38}
+body.theme-royal-burgundy .section>.eyebrow{color:#9b7749;font:600 9px/1.8 var(--font-body);letter-spacing:.34em}
+body.theme-royal-burgundy .section-title{max-width:12ch;margin:14px auto 20px;color:var(--rb-wine);font:400 clamp(42px,8vw,66px)/.98 var(--font-heading);letter-spacing:-.045em}
+body.theme-royal-burgundy .section-title:after{content:"";display:block;width:62px;height:1px;margin:23px auto 0;background:linear-gradient(90deg,transparent,var(--rb-gold),transparent)}
+body.theme-royal-burgundy .section-text{max-width:36em;color:#705d5e;font:400 14px/2 var(--font-body)}
+body.theme-royal-burgundy .countdown-grid{max-width:460px;gap:0;margin:38px auto}
+body.theme-royal-burgundy .cd-box{padding:18px 6px;border:0;border-inline-end:1px solid #b8915b66;border-radius:0;background:transparent}
+body.theme-royal-burgundy .cd-box:last-child{border:0}
+body.theme-royal-burgundy .cd-num{color:var(--rb-wine);font:400 clamp(36px,7vw,48px)/1 var(--font-heading)}
+body.theme-royal-burgundy .cd-label{color:#8b746b;font:600 8px var(--font-body);letter-spacing:.2em}
+body.theme-royal-burgundy .btn-primary,body.theme-royal-burgundy .btn-outline{min-height:48px;padding:15px 25px;border-radius:0;font:600 9px/1.4 var(--font-body);letter-spacing:.2em;text-transform:uppercase}
+body.theme-royal-burgundy .btn-primary{border:1px solid var(--rb-wine);background:var(--rb-wine);color:#fff8ed}
+body.theme-royal-burgundy .btn-outline{border:1px solid var(--rb-gold);background:transparent;color:var(--rb-wine)}
+body.theme-royal-burgundy .timeline{max-width:520px;margin:42px auto}
+body.theme-royal-burgundy .timeline:before{left:50%;width:1px;background:linear-gradient(transparent,#b99662 10%,#b99662 90%,transparent)}
+body.theme-royal-burgundy .timeline-item{display:grid;grid-template-columns:1fr 46px 1fr;gap:8px;padding:0 0 42px;align-items:center}
+body.theme-royal-burgundy .timeline-item:nth-child(odd) .timeline-dot,body.theme-royal-burgundy .timeline-item:nth-child(even) .timeline-dot{grid-column:2;grid-row:1}
+body.theme-royal-burgundy .timeline-item:nth-child(odd) .timeline-card{grid-column:1;grid-row:1;text-align:right}
+body.theme-royal-burgundy .timeline-item:nth-child(even) .timeline-card{grid-column:3;grid-row:1;text-align:left}
+body.theme-royal-burgundy .timeline-dot{width:36px;height:36px;border:1px solid #b99662;border-radius:50%;background:var(--rb-paper);color:var(--rb-wine)}
+body.theme-royal-burgundy .timeline-card{padding:0;border:0;background:transparent}
+body.theme-royal-burgundy .timeline-time{color:#a17a49;font:600 9px var(--font-body);letter-spacing:.16em}
+body.theme-royal-burgundy .timeline-title{color:var(--rb-wine);font:italic 400 25px/1.15 var(--font-heading)}
+body.theme-royal-burgundy .timeline-place{color:#78666a;font:400 12px/1.6 var(--font-body)}
+body.theme-royal-burgundy .gallery-grid{gap:10px;margin-top:36px}
+body.theme-royal-burgundy .gallery-item,body.theme-royal-burgundy .gallery-item img{border-radius:0}
+body.theme-royal-burgundy .info-card,body.theme-royal-burgundy .iban-box{border:1px solid #b8915b8c;border-radius:0;background:#fffaf2;box-shadow:5px 5px 0 #6927330f}
+body.theme-royal-burgundy .info-card h4{color:var(--rb-wine);font:italic 400 27px var(--font-heading)}
+body.theme-royal-burgundy .rsvp-form{border:1px solid #c3a16d;border-radius:0;background:#fffaf2;box-shadow:10px 10px 0 #591d2d14;padding:clamp(24px,5vw,42px)}
+body.theme-royal-burgundy .form-group label,body.theme-royal-burgundy .companions-head{color:var(--rb-wine);font:600 9px/1.8 var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+body.theme-royal-burgundy .form-group input,body.theme-royal-burgundy .form-group select,body.theme-royal-burgundy .companion-row input,body.theme-royal-burgundy .companion-row select{min-height:48px;border:1px solid #d7c7b6;border-radius:0;background:#fffdf8;color:#27151a}
+body.theme-royal-burgundy .rsvp-form .btn-primary{width:100%;margin-top:14px}
+body.theme-royal-burgundy .invite-footer{position:relative;padding:90px 28px 100px;background:var(--rb-wine);color:#ead9c4;letter-spacing:.18em}
+body.theme-royal-burgundy .invite-footer:before{content:"";position:absolute;inset:16px;border:1px solid #dabb837a;pointer-events:none}
+body.theme-royal-burgundy .invite-footer h3{color:#fff6e9;font:italic 400 clamp(40px,9vw,62px)/1.05 var(--font-heading)}
+body.theme-royal-burgundy .footer-legal{color:#d9c5ae}
+body.theme-royal-burgundy .music-toggle{border:1px solid var(--rb-gold);border-radius:50%;background:#fffaf2;color:var(--rb-wine)}
+body.theme-royal-burgundy .envelope-overlay.env-burdeos{background:radial-gradient(circle at 35% 25%,#7b3043 0%,#4a1222 65%,#2e0b15 100%);--env-body:#f6eee3;--env-flap:#eadcc9;--env-side:#efe4d6;--env-text:#50182a;--seal-bg:radial-gradient(circle at 35% 30%,#dfc28b,#b48a4b 68%,#78582f);--seal-border:#ead4a9;--seal-text:#fff8ed}
+body.theme-royal-burgundy .env-top-hint,body.theme-royal-burgundy .env-skip-btn{color:#f5e7d6}
+@media(max-width:560px){body.theme-royal-burgundy .hero{min-height:820px;min-height:100svh;padding:300px 24px 64px}body.theme-royal-burgundy .hero:after{inset:12px}body.theme-royal-burgundy .section{padding:58px 24px}body.theme-royal-burgundy .section:before{inset:8px}body.theme-royal-burgundy .timeline-item{grid-template-columns:1fr 32px 1fr;gap:4px}body.theme-royal-burgundy .timeline-title{font-size:20px}body.theme-royal-burgundy .timeline-place{font-size:11px}}
+@media(prefers-reduced-motion:reduce){body.theme-royal-burgundy *,body.theme-royal-burgundy *:before,body.theme-royal-burgundy *:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* ROYAL BURGUNDY — fidelidad a la referencia de cuatro pantallas */
+body.theme-royal-burgundy {
+  --rb-wine:#541321; --rb-wine-deep:#35101b; --rb-paper:#f8f1e9;
+  --rb-gold:#c8a875; --rb-ink:#2a1b1d;
+  background:#e9dfd3;
+}
+body.theme-royal-burgundy .invite-shell { max-width:760px; background:var(--rb-paper); }
+body.theme-royal-burgundy .hero {
+  min-height: min(900px, 112svh); padding:clamp(250px,42vh,390px) 26px 64px;
+  background:var(--rb-wine); isolation:isolate; overflow:hidden;
+}
+body.theme-royal-burgundy .hero-photo-bg {
+  display:block; inset:0; height:100%; z-index:-2; background-size:cover;
+  background-position:center 34%; filter:grayscale(1) contrast(1.08);
+}
+body.theme-royal-burgundy .hero:before {
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg,#240b1200 12%,#260b1280 48%,#3d101eeF 100%);
+}
+body.theme-royal-burgundy .hero:after {
+  inset:18px; border:1px solid #d5b77d99; box-shadow:inset 0 0 0 5px #fff5e90d;
+}
+body.theme-royal-burgundy .hero-content { max-width:620px; }
+body.theme-royal-burgundy .hero-content:before {
+  content:"✦  NUESTRA BODA  ✦"; display:block; margin:0 auto 18px;
+  color:#e2c99f; font:500 9px/1.5 var(--font-body); letter-spacing:.3em;
+}
+body.theme-royal-burgundy .hero-kicker { display:none; }
+body.theme-royal-burgundy .hero .eyebrow { color:#f0d9bd; letter-spacing:.28em; }
+body.theme-royal-burgundy .hero-script { color:#e5c69b; font-size:clamp(24px,5vw,34px); margin-bottom:4px; }
+body.theme-royal-burgundy .hero-names {
+  display:flex; flex-direction:column; gap:0; margin:0 auto 18px;
+  color:#fff8ef; font:400 clamp(66px,13vw,112px)/.78 var(--font-heading);
+  letter-spacing:-.055em; text-shadow:0 4px 24px #16070b80;
+}
+body.theme-royal-burgundy .hero-amp { color:#d8b77d; font-size:.48em; line-height:1.1; }
+body.theme-royal-burgundy .hero-date-pill {
+  display:inline-block; padding:10px 18px; border-block:1px solid #d0ad70;
+  color:#f7e8d4; background:transparent; border-radius:0; letter-spacing:.24em;
+  font:600 10px/1.6 var(--font-body);
+}
+body.theme-royal-burgundy .hero-details { display:flex; flex-direction:column; gap:4px; margin:18px auto 0; }
+body.theme-royal-burgundy .hero-details #hero-time { color:#e3c28c; letter-spacing:.18em; }
+body.theme-royal-burgundy .hero-details #hero-venue { color:#fff7eb; font:italic 26px/1.25 var(--font-heading); }
+body.theme-royal-burgundy .hero-details #hero-address { color:#ead9c8; font-size:11px; letter-spacing:.1em; }
+body.theme-royal-burgundy .hero-footnote,body.theme-royal-burgundy .editorial-big-date,
+body.theme-royal-burgundy .hero-date-stack { display:none; }
+
+/* La segunda pantalla: bienvenida y finca, sobre una superficie vino */
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2),
+body.theme-royal-burgundy #sec-story,
+body.theme-royal-burgundy #sec-location {
+  background:var(--rb-wine); color:#f7eee4; border:0;
+}
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2):before,
+body.theme-royal-burgundy #sec-story:before,
+body.theme-royal-burgundy #sec-location:before {
+  inset:12px; border:1px solid #c7a66c75;
+}
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .eyebrow,
+body.theme-royal-burgundy #sec-story .eyebrow,
+body.theme-royal-burgundy #sec-location .eyebrow { color:#d8bb89; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .section-title,
+body.theme-royal-burgundy #sec-story .section-title,
+body.theme-royal-burgundy #sec-location .section-title { color:#fff5e9; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .section-text,
+body.theme-royal-burgundy #sec-story .section-text,
+body.theme-royal-burgundy #sec-location .section-text { color:#ead8c8; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .cd-num { color:#fff4e6; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .cd-label { color:#d6bd9e; }
+body.theme-royal-burgundy #invite-shell > section.section:nth-of-type(2) .btn-outline { color:#fff5e9; border-color:#c9a875; }
+body.theme-royal-burgundy #sec-story { background:#f7efe5; color:var(--rb-ink); }
+body.theme-royal-burgundy #sec-story .section-title { color:var(--rb-wine); }
+body.theme-royal-burgundy #sec-story .section-text { color:#68565a; }
+body.theme-royal-burgundy .royal-venue-photo {
+  position:relative; margin:30px auto 26px; max-width:560px; padding:7px;
+  border:1px solid #c9a875; background:#f7efe5;
+}
+body.theme-royal-burgundy .royal-venue-photo img {
+  display:block; width:100%; max-height:340px; aspect-ratio:16/9; object-fit:cover;
+  filter:saturate(.82) contrast(1.04);
+}
+body.theme-royal-burgundy .royal-venue-photo figcaption {
+  padding:10px 4px 3px; color:#795d43; font:600 8px/1.5 var(--font-body);
+  letter-spacing:.24em;
+}
+body.theme-royal-burgundy #sec-location .btn-primary { background:#ead6b6; border-color:#ead6b6; color:#42111e; }
+
+/* Programa: página marfil, eje vertical e iconos de ceremonia */
+body.theme-royal-burgundy #sec-itinerary {
+  margin:48px -12px 0 !important; padding:42px 12px 12px;
+  background:#f8f1e9; color:var(--rb-ink);
+}
+body.theme-royal-burgundy #sec-itinerary .eyebrow { color:#92714b; }
+body.theme-royal-burgundy #sec-itinerary .timeline:before { background:#c7ad87; }
+body.theme-royal-burgundy #sec-itinerary .timeline-dot {
+  background:#f8f1e9; color:var(--rb-wine); border:1px solid #b99a69;
+}
+body.theme-royal-burgundy #sec-itinerary .timeline-card { background:transparent; }
+body.theme-royal-burgundy #sec-itinerary .timeline-time { color:#8e6b43; }
+body.theme-royal-burgundy #sec-itinerary .timeline-title { color:var(--rb-wine); }
+body.theme-royal-burgundy #sec-itinerary .timeline-place { color:#77666a; }
+
+/* Confirmación como la cuarta pantalla de la referencia */
+body.theme-royal-burgundy #sec-rsvp {
+  background:var(--rb-wine); color:#f8eee4; border:0;
+}
+body.theme-royal-burgundy #sec-rsvp:before { border:1px solid #c7a66c88; }
+body.theme-royal-burgundy #sec-rsvp .eyebrow { color:#d9bd8d; }
+body.theme-royal-burgundy #sec-rsvp .section-title { color:#fff6eb; }
+body.theme-royal-burgundy #sec-rsvp .section-text { color:#e9d7c6; }
+body.theme-royal-burgundy #sec-rsvp .section-text strong { color:#f2d9a8; }
+body.theme-royal-burgundy #sec-rsvp .rsvp-form {
+  background:transparent; border:1px solid #c9a875; box-shadow:none; color:#fff6eb;
+}
+body.theme-royal-burgundy #sec-rsvp .form-group label,
+body.theme-royal-burgundy #sec-rsvp .companions-head { color:#f1dfc9; }
+body.theme-royal-burgundy #sec-rsvp .form-group input,
+body.theme-royal-burgundy #sec-rsvp .form-group select,
+body.theme-royal-burgundy #sec-rsvp .companion-row input,
+body.theme-royal-burgundy #sec-rsvp .companion-row select {
+  color:#fff8ef; background:#42111e; border:1px solid #a77d6e; border-radius:2px;
+}
+body.theme-royal-burgundy #sec-rsvp .form-group input::placeholder { color:#c9b4aa; }
+body.theme-royal-burgundy #sec-rsvp .rsvp-form .btn-primary {
+  color:#35101b; background:#ead4ad; border-color:#ead4ad;
+}
+body.theme-royal-burgundy .invite-footer { background:#310d18; color:#ead8c5; }
+body.theme-royal-burgundy .music-toggle { background:#ead4ad; color:#48101f; border-color:#c8a875; }
+@media(max-width:560px) {
+  body.theme-royal-burgundy .hero { min-height:100svh; padding:230px 22px 54px; }
+  body.theme-royal-burgundy .hero:after { inset:10px; }
+  body.theme-royal-burgundy .section { padding:58px 24px; }
+  body.theme-royal-burgundy #sec-itinerary { margin-inline:-12px !important; }
+  body.theme-royal-burgundy .royal-venue-photo img { aspect-ratio:4/3; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.theme-royal-burgundy *,body.theme-royal-burgundy *:before,body.theme-royal-burgundy *:after {
+    animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important;
+  }
+}

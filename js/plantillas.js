@@ -3,7 +3,7 @@
    ===================================================================== */
 window.WEDDING_TEMPLATES = {
   /* ---------------------------------------------------------------
-     COLECCIÓN ACTUAL · las ocho plantillas comerciales de MelTeInvita
+     COLECCIÓN ACTUAL · las nueve plantillas comerciales de MelTeInvita
      --------------------------------------------------------------- */
   classic: {
     id: 'classic',
@@ -89,6 +89,17 @@ window.WEDDING_TEMPLATES = {
     /* Imágenes de ambiente solo para la demo del catálogo (no son fotos de la pareja) */
     demoHero: 'img/demo/garden-hero.jpg',
     demoGallery: ['img/demo/garden-1.jpg', 'img/demo/garden-2.jpg', 'img/demo/garden-3.jpg']
+  },
+  'royal-burgundy': {
+    id: 'royal-burgundy',
+    name: '09 · Royal Burgundy',
+    badge: 'Romántica y de Gala',
+    desc: 'Cuatro escenas de inspiración cinematográfica: retrato en burdeos, bienvenida con fotografía del lugar, programa sobre marfil y confirmación en vino y champán.',
+    colors: ['#5A1727', '#F7F1E8', '#C5A46D'],
+    defaultEnvelope: true,
+    defaultSealColor: 'burdeos',
+    demoHero: 'img/hero-elegante.jpg',
+    demoGallery: ['img/galeria-1.jpg', 'img/galeria-2.jpg', 'img/galeria-3.jpg']
   },
 
   /* ---------------------------------------------------------------
