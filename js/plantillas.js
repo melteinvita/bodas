@@ -94,7 +94,7 @@ window.WEDDING_TEMPLATES = {
     id: 'royal-burgundy',
     name: '09 · Royal Burgundy',
     badge: 'Romántica y de Gala',
-    desc: 'Burdeos profundo, marfil cálido y detalles oro champán. Una invitación editorial de inspiración clásica para una celebración elegante.',
+    desc: 'Cuatro escenas de inspiración cinematográfica: retrato en burdeos, bienvenida con fotografía del lugar, programa sobre marfil y confirmación en vino y champán.',
     colors: ['#5A1727', '#F7F1E8', '#C5A46D'],
     defaultEnvelope: true,
     defaultSealColor: 'burdeos',
